@@ -1,0 +1,157 @@
+
+.top-menu {
+    position: fixed; /* Fija la posición del div */
+    top: 0; /* Lo coloca en la parte superior de la ventana */
+    left: 0; /* Lo coloca en el lado izquierdo de la ventana */
+    width: 100%; /* Ancho del div */
+    background-color: #333; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
+    z-index: 9999; /* Establece la profundidad de apilamiento */
+}
+
+.bottom-menu {
+    background-color: #555; /* Color de fondo gris */
+    color: #fff; /* Color de texto blanco */
+    padding: 10px 0; /* Espaciado interno */
+    width: 100%; /* Ocupa todo el ancho */
+    position: fixed; /* Fija el menú en la parte inferior */
+    bottom: 0; /* Fija el menú en la parte inferior */
+    left: 0; /* Alinea el menú a la izquierda */  
+    right: 0; /* Alinea el menú a la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.top-menu nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-menu nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.top-menu nav ul li:last-child {
+    margin-right: 0;
+}
+
+.top-menu nav ul li a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container {
+    display: flex; /* Utiliza flexbox para colocar los contenedores en línea */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin-top: 80px; /* Ajusta el espacio superior para evitar que se superponga con el menú */
+}
+
+.login-box {
+    width: 30em;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    padding: 30px; /* Aumentado el padding para más espacio */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 40px; /* Espacio entre los contenedores */
+}
+
+.login-box:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último contenedor */
+    margin-left: 40px;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4CAF50;
+}
+
+.input-group {
+    margin-bottom: 20px; /* Aumentado el margen inferior */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px; /* Ajustado el margen inferior */
+    color: #555;
+}
+
+.input-group input {
+    width: calc(100% - 16px); /* Ajustado el ancho para compensar el padding */
+    padding: 10px; /* Aumentado el padding */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px; /* Aumentado el padding */
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+    color: #2f7633;
+}
+
+.register-link:hover {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+    color: #4CAF50;
+}
+
+#logo{
+    height: 10em;
+    width: 10em;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%; /* Añade esta línea para ocupar toda la altura disponible */
+}
+
+.ap1, .ap2, .ap3, .ap4 {
+    background-color: #ff7f0e; /* Color de fondo para la primera sección */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ancho del div */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.ap1 {
+    background-color: #ff7f0e; /* Color de fondo para la primera sección */
+    height: 350px; /* Altura de la primera sección */
+}
+
+.ap2 {
+    background-color: #2ca02c; /* Color de fondo para la segunda sección */
+    height: 350px; /* Altura de la segunda sección */
+}
+
+.ap3 {
+    background-color: #1f77b4; /* Color de fondo para la tercera sección */
+    height: 350px; /* Altura de la tercera sección */
+}
+
+.ap4 {
+    background-color: #d62728; /* Color de fondo para la cuarta sección */
+    height: 350px; /* Altura de la cuarta sección */
+}
