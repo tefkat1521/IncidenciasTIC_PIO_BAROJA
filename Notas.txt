@@ -1,0 +1,1 @@
+Los profesores NO crean incidencias, solo las registran, y el encargado de mirarlas las crea.
