@@ -27,30 +27,32 @@ body {
     margin: 1.5em;
     overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura máxima */
     padding: 1em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 /* Estilos para los divs ap1, ap2, ap3 y ap4 */
 .ap1 {
-    background-color: #7fbf7f; /* Verde claro */
-    height: 450px; /* Altura fija */
+    background-color: #7fbf7f; 
+    min-height: 450px;
+    height: fit-content;
 }
 
 .ap2 {
-    background-color: #3b7f3b; /* Verde oscuro */
-    height: 350px; /* Altura fija */
-}
+    background-color: #4b924b;
+    min-height: 450px; 
+    height: fit-content;}
 
 .ap3 {
-    background-color: #a2d9a2; /* Verde pastel */
-    height: 350px; /* Altura fija */
-}
+    background-color: #a2d9a2;
+    min-height: 450px; 
+    height: fit-content;}
 
 .ap4 {
-    background-color: #2a5f2a; /* Verde profundo */
-    height: 350px; /* Altura fija */
-}
+    background-color:  #529a52;
+    min-height: 450px; 
+    height: fit-content;}
 
-/* Estilo del menú superior */
+/*********************************************** Estilo del menú superior *************************************************************/
 .nav {
     background-color: #888; 
     color: #fff; 
@@ -65,18 +67,6 @@ body {
 }
 
 
-
-
-/* .nav {
-    padding: 5px;
-    background-color: #888; 
-
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0; 
-    width: 100%;
-  } */
   
   .nav ul {
     display: flex;
@@ -101,7 +91,7 @@ body {
 
 
 
-/* Estilo del footer */
+/*************************************************** Estilo del footer **************************************************************/
 .bottom-menu {
     background-color: #888; /* Color de fondo gris */
     color: #fff; /* Color del texto */
@@ -111,18 +101,17 @@ body {
     position: fixed; /* Fija la posición */
     bottom: 0; /* Se coloca en la parte inferior */
     left: 0; /* Se coloca en el lado izquierdo */
-    text-decoration: none;
 }
-
 
 .bottom-menu ul {
     list-style: none; /* Quita los puntos de la lista */
     padding: 0; /* Elimina el relleno predeterminado de la lista */
     margin: 0; /* Elimina el margen predeterminado de la lista */
+    display: flex; /* Muestra los elementos de la lista en línea */
+    justify-content: space-around; /* Centra horizontalmente los elementos */
 }
 
 .bottom-menu ul li {
-    /* display: inline; Muestra los elementos de la lista en línea */
     margin-right: 10px; /* Añade un espacio entre los elementos */
 }
 
@@ -131,3 +120,64 @@ body {
     color: #fff; /* Color del texto */
 }
 
+
+/*************************************************** FORMULARIO *******************************************************************/
+
+/* Estilos generales del formulario */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: #f2f2f2; */
+    /* border-radius: 10px; */
+}
+
+/* Estilos para los campos del formulario */
+form table {
+    width: 100%;
+}
+
+form table td {
+    padding: 10px 0;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Estilos para el botón */
+.boton {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    /* border-radius: 5px; */
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: #d4d3d3 solid 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+button[type="send"]:hover {
+    background-color: #45a049;
+}
