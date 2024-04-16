@@ -13,7 +13,7 @@ function ComprobarCredenciales() {
 
     if (user === "admin" && pass === "admin") {
         // Si las credenciales son correctas, redirige a la página paginaprincipal.html
-        window.location.href = "paginaprincipal.html";
+        window.location.href = "home.html";
     } else {
         alert("Usuario o contraseña incorrectos");
     }

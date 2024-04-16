@@ -17,7 +17,7 @@ body {
     min-height: calc(100vh - 7em); /* Ajusta la altura restando el tamaño del footer */
     margin-top: 80px; /* Espacio sobre el menú superior */
     margin-bottom: 7em; /* Espacio bajo el footer */
-    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura */
+    /* overflow-y: auto; Habilita el scroll vertical si el contenido excede la altura */
 }
 
 
@@ -25,7 +25,7 @@ body {
     width: 85%;
     max-height: 65vh; /* Altura máxima del 65% de la altura de la ventana */
     margin: 1.5em;
-    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura máxima */
+    /* overflow-y: auto; Habilita el scroll vertical si el contenido excede la altura máxima */
     padding: 1em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
