@@ -6,7 +6,7 @@
     <H1>INSERTA UNA INCIDENCIA</H1>
 
 <?php
-    $conexion = mysqli_connect("localhost","root","","incidencias_tic");
+    $conexion = mysqli_connect("localhost","root",'',"incidencias_tic");
     mysqli_select_db($conexion,"incidencias_tic") or die ("No se puede seleccionar la BD");
 
 	// $conexion = mysqli_connect("localhost","root","","ropa");

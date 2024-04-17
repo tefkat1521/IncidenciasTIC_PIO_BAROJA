@@ -1,20 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
-        //Evitamos que el formulario mande a algún lado, si conectamos el html con el php borrar esta línea
-
-        ComprobarCredenciales();//Función para comprobar credenciales de prueba, sin usar base de datos
+        ComprobarCredenciales(); // Llamada a la función para comprobar credenciales
     });
 });
 
 function ComprobarCredenciales() {
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
+    var xhttp = new XMLHttpRequest();
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
 
-    if (user === "admin" && pass === "admin") {
-        // Si las credenciales son correctas, redirige a la página paginaprincipal.html
-        window.location.href = "home.html";
-    } else {
-        alert("Usuario o contraseña incorrectos");
-    }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var sesion = this.response; // Obtener la respuesta del servidor
+            if (sesion === "true") {
+                // Si las credenciales son correctas, redirige a la página ini.html
+                window.location.href = "ini.html";
+            } else {
+                // Si las credenciales son incorrectas, mostrar un mensaje de alerta
+                // alert("Usuario o contraseña incorrectos");
+                alert("Usuario incorrecto mamon")
+            }
+        }
+    };
+
+    xhttp.open("POST", "comprobarCredenciales.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("user=" + user + "&pass=" + pass);
 }
