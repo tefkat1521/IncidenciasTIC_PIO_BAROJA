@@ -15,7 +15,7 @@ function ComprobarCredenciales() {
             var sesion = this.response; // Obtener la respuesta del servidor
             if (sesion === "true") {
                 // Si las credenciales son correctas, redirige a la página ini.html
-                window.location.href = "ini.html";
+                window.location.href = "principal.html";
             } else {
                 // Si las credenciales son incorrectas, mostrar un mensaje de alerta
                 // alert("Usuario o contraseña incorrectos");
@@ -24,7 +24,7 @@ function ComprobarCredenciales() {
         }
     };
 
-    xhttp.open("POST", "comprobarCredenciales.php", true);
+    xhttp.open("POST", "code.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("user=" + user + "&pass=" + pass);
 }
