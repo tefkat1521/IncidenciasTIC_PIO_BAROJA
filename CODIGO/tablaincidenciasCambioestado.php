@@ -39,5 +39,19 @@
 
     }
 
+    elseif(isset($_POST["ABORRAR"]))
+    {
+
+        $resultado = mysqli_query($conexion, "DELETE FROM Incidencias WHERE id_incidencia = '". $_POST['borrar']."'");
+        if (mysqli_connect_errno()) {
+            printf("<p>Conexión fallida: %s</p>", mysqli_connect_error());
+            exit();
+        }
+        header("Location: tablaincidencias.php"); 
+        exit(); 
+
+    }
+
+
 
 ?>

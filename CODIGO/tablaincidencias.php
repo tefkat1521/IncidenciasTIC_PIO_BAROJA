@@ -65,6 +65,12 @@
                         <input type="hidden" name="pendiente" value="<?php echo $INC["id_incidencia"]; ?>">
                         <input type=submit name="APENDIENTE" value="Pasar a pendiente ">
                         </form>
+
+                        <form method="post" action="tablaincidenciasCambioestado.php">
+                        <input type="hidden" name="borrar" value="<?php echo $INC["id_incidencia"]; ?>">
+                        <input type=submit name="ABORRAR" value="Dar por terminada y borrar">
+                        </form>
+
                     </div>
     
          
