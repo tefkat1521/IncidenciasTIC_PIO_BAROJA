@@ -16,6 +16,7 @@ CREATE TABLE Departamento (
 CREATE TABLE Profesor (
     ID_Profe INT PRIMARY KEY,
     nombre VARCHAR(50),
+    correo VARCHAR(100),
     clave_acceso VARCHAR(8),
     dep INT,
     FOREIGN KEY (dep) REFERENCES Departamento(dep) ON DELETE CASCADE
@@ -45,7 +46,8 @@ CREATE TABLE Incidencias (
     ID_Aula INT,
     ID_Profe INT,
     id_tipo_incidencia VARCHAR(5),
-    Estado VARCHAR(20) CHECK (Estado IN ('Solucionado', 'Pendiente', 'En proceso')),
+    niveldeprioridad INT CHECK (niveldeprioridad IN (1, 2, 3)),
+    Estado VARCHAR(20) CHECK (Estado IN ('Solucionado', 'Pendiente', 'En_proceso')),
     FOREIGN KEY (ID_Aula) REFERENCES Aula(ID_Aula) ON DELETE CASCADE,
     FOREIGN KEY (id_tipo_incidencia) REFERENCES Tipo_Incidencia(id_tipo_incidencia) ON DELETE CASCADE,
     FOREIGN KEY (ID_Profe) REFERENCES Profesor(ID_Profe)
@@ -57,3 +59,4 @@ CREATE TABLE Incidencias (
 --     id_recurso VARCHAR(5) PRIMARY KEY,
 --     tipo_incidencia VARCHAR(50),
 -- );
+

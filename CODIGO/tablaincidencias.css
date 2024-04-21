@@ -1,0 +1,26 @@
+#incidencias
+{
+    display: flex;
+    
+    gap: 0.2em;
+}
+div.incEn_proceso
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(255, 38, 0)  ;
+}
+
+div.incPendiente
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(255, 251, 0)  ;
+}
+
+div.incSolucionado
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(60, 255, 0) ;
+}

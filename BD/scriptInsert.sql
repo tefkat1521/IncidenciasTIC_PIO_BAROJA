@@ -41,12 +41,12 @@ INSERT INTO Departamento (dep, Nombre_dep) VALUES
 (3, 'Departamento C');
 
 
-INSERT INTO Profesor (ID_Profe, nombre, clave_acceso, dep) VALUES
-(1, 'Juan Perez', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
-(2, 'Maria Lopez', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
-(3, 'Carlos Ramirez', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
-(4, 'Ana Martinez', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
-(5, 'Pedro Gomez', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 3);
+INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES
+(1, 'user1', 'user1@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
+(2, 'user2', 'user2@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
+(3, 'user3', 'user3@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
+(4, 'user4', 'user4@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
+(5, 'user5', 'user5@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 3);
 
 
 
