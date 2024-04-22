@@ -12,7 +12,32 @@ body{
 }
 
 
-
+#contenedor_incidencias {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  #contenedor_incidencias table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #contenedor_incidencias th,
+  #contenedor_incidencias td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #contenedor_incidencias th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  #contenedor_incidencias tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
 
 
 
