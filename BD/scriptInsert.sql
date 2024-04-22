@@ -19,6 +19,65 @@ VALUES (
     'Hardware'
 );
 
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'Conectividad'
+);
+
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'Recursos EducaMadrid'
+);
+
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'Office 365/Teams'
+);
+
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'PDI'
+);
+
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'Impresión'
+);
+
+INSERT INTO Tipo_Incidencia (id_tipo_incidencia, tipo_incidencia) 
+VALUES (
+    CONCAT(
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        CHAR(FLOOR(65 + RAND() * 26)),  
+        LPAD(FLOOR(RAND() * 1000), 3, '0')  
+    ),
+    'Otros'
+);
 /*/////////////////////////////////////////////////////////////-*/
 
 
@@ -35,10 +94,7 @@ INSERT INTO Aula (ID_Aula, Nombre_aula, Num_Aula) VALUES
 
 /*/////////////////////////////////////////////////////////////-*/
 
-INSERT INTO Departamento (dep, Nombre_dep) VALUES
-(1, 'Departamento A'),
-(2, 'Departamento B'),
-(3, 'Departamento C');
+
 
 
 INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES

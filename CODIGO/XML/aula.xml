@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<registros><registro><ID_Aula>1</ID_Aula><Nombre_aula>Salon de actos</Nombre_aula><Num_Aula/></registro><registro><ID_Aula>2</ID_Aula><Nombre_aula>Despacho</Nombre_aula><Num_Aula/></registro><registro><ID_Aula>3</ID_Aula><Nombre_aula>2.1</Nombre_aula><Num_Aula>2.1</Num_Aula></registro><registro><ID_Aula>4</ID_Aula><Nombre_aula>2.2</Nombre_aula><Num_Aula>2.2</Num_Aula></registro><registro><ID_Aula>5</ID_Aula><Nombre_aula>2.3</Nombre_aula><Num_Aula>2.3</Num_Aula></registro></registros>

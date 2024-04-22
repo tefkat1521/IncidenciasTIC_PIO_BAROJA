@@ -18,3 +18,13 @@ Estado creada, en proceso, terminada.
 El administrador puede poner incidencias.
 
 Cuando la incidencia esté resuelta se le envía algo.
+
+
+
+///////////////////////////////////////////////////////
+
+cambiar tablaincidencias con ajax
+
+cambiar pagina pricipal a ajax para que muestre 
+
+INSERTAR CICLO A LA HORA DE REGISTRAr INCIDENCIA

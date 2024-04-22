@@ -15,7 +15,7 @@
         $IDaleatorio = $_POST['tipo_inc'].substr(str_shuffle($caracteres), 0, 5);
         
         $query = "INSERT into incidencias VALUES
-        ('". $IDaleatorio ."' , '". date("Y-m-d") ."','". $_POST['descripcion']."' ,".$_POST['aula'].", ".$_POST['profesor'].", '".$_POST['tipo_inc']."',".$_POST['niveldeprioridad'].", 'Pendiente')";
+        ('". $IDaleatorio ."' , '". date("Y-m-d") ."','". $_POST['descripcion']."' ,'insertarciclo' ,".$_POST['aula'].", ".$_POST['profesor'].", '".$_POST['tipo_inc']."',".$_POST['niveldeprioridad'].", 'Pendiente')";
 
         mysqli_query($conexion, $query);
         if (mysqli_connect_errno()) {
@@ -60,6 +60,7 @@
                 ?>
         </select>
                 <br>
+
         <label>AULA</label><!--esto vendra recogido por coockies o sesion-->
         <select name="aula" required>
             <option value="" selected disabled>Selecciona un aula</option> 
