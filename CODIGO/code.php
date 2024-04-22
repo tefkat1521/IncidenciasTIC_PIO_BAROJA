@@ -47,7 +47,11 @@ function comprobarCredenciales()
 function mostrarIncidencias()
 {
     global $conexion;
-    $consulta = "SELECT * FROM incidencias WHERE ID_profe = (SELECT ID_profe FROM profesor WHERE nombre = '{$_SESSION["usuario"]}')";
+    // $consulta = "SELECT * FROM incidencias WHERE ID_profe = (SELECT ID_profe FROM profesor WHERE nombre = '{$_SESSION["usuario"]}')";
+    $consulta = "SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe
+    FROM Incidencias i, Aula a , Tipo_Incidencia t, Profesor p
+    WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia AND p.ID_Profe = i.ID_Profe AND  p.ID_Profe = (SELECT ID_profe FROM profesor WHERE nombre = '{$_SESSION["usuario"]}')
+    ORDER BY i.niveldeprioridad DESC;";
 
     $resultado = mysqli_query($conexion, $consulta);
     
@@ -64,10 +68,10 @@ function mostrarIncidencias()
             $out .= "<td>" . $incidencia['id_incidencia'] . "</td>";
             $out .= "<td>" . $_SESSION["usuario"] . "</td>";
             $out .= "<td>" . $incidencia['descripcion'] . "</td>";
-            $out .= "<td>" . $incidencia['tipo'] . "</td>";
+            $out .= "<td>" . $incidencia['tipo_incidencia'] . "</td>";
             $out .= "<td>" . $incidencia['fecha'] . "</td>";
-            $out .= "<td>" . $incidencia['N_Aula'] . "</td>";
-            $out .= "<td>" . $incidencia['Estado'] . "</td>";
+            $out .= "<td>" . $incidencia['Nombre_aula'] . "</td>";
+            $out .= "<td>" . $incidencia['estado'] . "</td>";
             $out .= "</tr>";
         }
         $out .= "</table>";

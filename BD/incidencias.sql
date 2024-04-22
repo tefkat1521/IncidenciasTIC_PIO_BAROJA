@@ -53,7 +53,8 @@ CREATE TABLE Incidencias (
     FOREIGN KEY (ID_Profe) REFERENCES Profesor(ID_Profe)
 );
 
-
+INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES
+(1, 'maite', 'maite@educa.madrid.org', "admin", 1);
 
 -- CREATE TABLE Recurso (
 --     id_recurso VARCHAR(5) PRIMARY KEY,
