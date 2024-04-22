@@ -1,20 +1,29 @@
+<script src="insertarPROprueba1.js"></script>
+
 <h1>AÑADIR PROFESOR</h1>
-<form action="insertarPROprueba1.php" method="get">
+<form action="insertarPROprueba1.php" method="get" id="loginform">
 
 
     <!--AGREGAR expresiones regulares-->
     <label>Nombre Completo</label> 
-    <input type="text" name="nombre"/>
+    <input type="text" name="nombre" required/>
     <br>
     <label>Correo</label> 
-    <input type="text" name="correo"/>
+    <input type="text" name="correo" required/>
     <br>
+    <label>Departamento</label> 
+    <select name="dept" required>
+        <option value="1">1</option>
+    </select>
+<br></br>
+
     <label>Contraseña</label> 
-    <input type="password" name="pass"/>
+    <input type="password" name="pass" required/>
     <br>
     <label>Repita la contraseña</label> 
-    <input type="password"/>
+    <input type="password" required/>
 
-    <p><input type="submit" name="crear" /></p>
+    <!-- <p><input type="submit" name="crear" /></p> -->
+    <button type="submit">crear</button>
 
 </form>
