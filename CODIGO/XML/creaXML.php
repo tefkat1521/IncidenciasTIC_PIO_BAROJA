@@ -8,7 +8,7 @@ if ($conexion->connect_error) {
 }
 
 // Consulta SQL
-$sql = "SELECT * FROM aula";
+$sql = "SELECT * FROM departamento";
 
 // Ejecutar la consulta
 $resultado = $conexion->query($sql);
@@ -25,7 +25,7 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 // Guardar el documento XML en un archivo
-$xml->asXML('aula.xml');
+$xml->asXML('departamentos.xml');
 
 // Cerrar la conexión
 $conexion->close();
