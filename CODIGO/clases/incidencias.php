@@ -21,9 +21,9 @@ class incidencias extends conexion
 
     public function get_incidencias_datos()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.niveldeprioridad, i.estado, t.tipo_incidencia 
-        FROM Incidencias i, Aula a , Tipo_Incidencia t
-        WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
+        FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
+        WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia AND c.id_ciclo = i.id_ciclo 
         ORDER BY i.niveldeprioridad DESC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);

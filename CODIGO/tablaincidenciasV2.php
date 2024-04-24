@@ -48,9 +48,11 @@
                         <ul>
                             <li>Fecha: <?php echo $laincidencia["fecha"]; ?> </li>
                             <li>Aula: <?php echo $laincidencia["Nombre_aula"]; ?> </li>
+                            <li>Ciclo: <?php echo $laincidencia["ciclo"]; ?> </li>
                             <li>Tipo: <?php echo $laincidencia["tipo_incidencia"]; ?> </li>
                             <li><?php echo $laincidencia["descripcion"]; ?> </li>
                             <li>Nivel de urgencia: <?php echo $laincidencia["niveldeprioridad"]; ?> </li>
+                            <li>Estado: <?php echo $laincidencia["estado"]; ?> </li>
                         </ul>
 
                         <div id="estado">
