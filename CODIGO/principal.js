@@ -24,10 +24,10 @@ function SesionUser() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
-            Logueado = this.responseText; // Obtener la respuesta del servidor
-            if (Logueado != "exit"){
+            var logueado = this.responseText; // Obtener la respuesta del servidor
+            if (logueado != "exit"){
                 var saludo = document.getElementById("saludo");
-                saludo.innerHTML = "HOLA " + Logueado;
+                saludo.innerHTML = "HOLA " + logueado;
             }else{
                 noLogueado();
             }

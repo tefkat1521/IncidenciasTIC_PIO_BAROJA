@@ -6,6 +6,7 @@ $conexion = mysqli_connect("localhost", "root", "", "incidencias_tic");
 mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
 
 session_start();//Inicializamos variables de sesión
+// session_set_cookie_params(3600);
 
 // Verificar si se envió el formulario
 if (isset($_POST['user'])) {
@@ -28,6 +29,7 @@ function comprobarCredenciales()
     global $conexion;
 
     // Obtener las credenciales del formulario
+    
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $_SESSION['usuario'] = $user;
@@ -80,11 +82,11 @@ function mostrarIncidencias()
 
 
 function returnUser(){
-    if (isset($user)) {
-        echo $user;
+    if (isset($_SESSION['usuario'])) {
+        echo $_SESSION['usuario'];
     }else {
         echo "exit";
     }
 }
-session_destroy();
+// session_destroy();
 ?>
