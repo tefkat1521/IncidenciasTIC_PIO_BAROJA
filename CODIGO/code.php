@@ -28,6 +28,8 @@ function comprobarCredenciales()
     global $conexion;
 
     // Obtener las credenciales del formulario
+    $tiempoSesion = 600;
+    session_set_cookie_params($tiempoSesion);
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $_SESSION['usuario'] = $user;
@@ -80,11 +82,11 @@ function mostrarIncidencias()
 
 
 function returnUser(){
-    if (isset($user)) {
-        echo $user;
+    if (isset($_SESSION['usuario'])) {
+        echo $_SESSION['usuario'];
     }else {
         echo "exit";
     }
 }
-session_destroy();
+// session_destroy();
 ?>
