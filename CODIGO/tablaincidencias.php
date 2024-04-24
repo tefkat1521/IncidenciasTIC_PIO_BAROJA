@@ -1,3 +1,7 @@
+<?php
+    require "clases/incidencias.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,52 +26,41 @@
      * 
      */
 
-        $conexion = mysqli_connect("localhost","root",'',"incidencias_tic");
-        mysqli_select_db($conexion,"incidencias_tic") or die ("No se puede seleccionar la BD");
-        if (mysqli_connect_errno()) {
-            printf("<p>Conexión fallida: %s</p>", mysqli_connect_error());
-            exit();}
+        $incidencias = new incidencias();
+        $array_incidencias = $incidencias->get_incidencias_por_profesor("user1");
 
-
-            $incidencias = mysqli_query($conexion, 
-            "SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.niveldeprioridad, i.estado, t.tipo_incidencia 
-            FROM Incidencias i, Aula a , Tipo_Incidencia t
-            WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-            ORDER BY i.niveldeprioridad DESC;");
-            $NI = mysqli_num_rows($incidencias);
-
-            if ($NI > 0) 
+            if (count($array_incidencias) > 0) 
             {
-                while ($INC = mysqli_fetch_array($incidencias, MYSQLI_ASSOC)) 
+                foreach($array_incidencias as $laincidencia)
                 {
     ?>
-                    <div class="inc<?php echo $INC["estado"]; ?>">
+                    <div class="inc<?php echo $laincidencia["estado"]; ?>">
                         <ul>
-                            <li>Fecha: <?php echo $INC["fecha"]; ?> </li>
-                            <li>Aula: <?php echo $INC["Nombre_aula"]; ?> </li>
-                            <li>Tipo: <?php echo $INC["tipo_incidencia"]; ?> </li>
-                            <li><?php echo $INC["descripcion"]; ?> </li>
-                            <li>Nivel de urgencia: <?php echo $INC["niveldeprioridad"]; ?> </li>
+                            <li>Fecha: <?php echo $laincidencia["fecha"]; ?> </li>
+                            <li>Aula: <?php echo $laincidencia["Nombre_aula"]; ?> </li>
+                            <li>Tipo: <?php echo $laincidencia["tipo_incidencia"]; ?> </li>
+                            <li><?php echo $laincidencia["descripcion"]; ?> </li>
+                            <li>Nivel de urgencia: <?php echo $laincidencia["niveldeprioridad"]; ?> </li>
                         </ul>
 
                         <form method="post" action="tablaincidenciasCambioestado.php">
-                        <input type="hidden" name="revision" value="<?php echo $INC["id_incidencia"]; ?>">
+                        <input type="hidden" name="revision" value="<?php echo $IlaincidenciaNC["id_incidencia"]; ?>">
                         <input type=submit name="AREVISION" value="En proceso">
                         </form>
 
                         <form method="post" action="tablaincidenciasCambioestado.php">
-                        <input type="hidden" name="solucionado" value="<?php echo $INC["id_incidencia"]; ?>">
+                        <input type="hidden" name="solucionado" value="<?php echo $laincidencia["id_incidencia"]; ?>">
                         <input type=submit name="ARESUELTAS" value="Hecha">
                         </form>
 
                         <!--No es necesario , pero es de prueba -->
                         <form method="post" action="tablaincidenciasCambioestado.php">
-                        <input type="hidden" name="pendiente" value="<?php echo $INC["id_incidencia"]; ?>">
+                        <input type="hidden" name="pendiente" value="<?php echo $laincidencia["id_incidencia"]; ?>">
                         <input type=submit name="APENDIENTE" value="Pasar a pendiente ">
                         </form>
 
                         <form method="post" action="tablaincidenciasCambioestado.php">
-                        <input type="hidden" name="borrar" value="<?php echo $INC["id_incidencia"]; ?>">
+                        <input type="hidden" name="borrar" value="<?php echo $laincidencia["id_incidencia"]; ?>">
                         <input type=submit name="ABORRAR" value="Dar por terminada y borrar">
                         </form>
 

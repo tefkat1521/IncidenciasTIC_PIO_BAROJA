@@ -1,7 +1,7 @@
 
 <form method="post" action="insertarINCprueba1.php">
           
-        <label>AULA</label><!--esto vendra recogido por coockies o sesion-->
+        <label>AULA</label>
         <select name="aula" required>
             <option value="" selected disabled>Selecciona un aula</option> 
             <?php
@@ -14,8 +14,10 @@
                 }
                 ?>
         </select>
+
                 <br>
-        <label>Tipo incidencia</label><!--esto vendra recogido por coockies o sesion-->
+                
+        <label>Tipo incidencia</label>
         <select name="tipo_inc" required>
             <option value="" selected disabled>Selecciona tipo</option> 
             <?php
