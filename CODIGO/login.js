@@ -14,6 +14,7 @@ function ComprobarCredenciales() {
         if (this.readyState == 4 && this.status == 200) {
             var sesion = this.response; // Obtener la respuesta del servidor
             if (sesion === "true") {
+
                 // Si las credenciales son correctas, redirige a la página ini.html
                 window.location.href = "index.html";
             } else {

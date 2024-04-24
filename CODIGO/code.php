@@ -8,12 +8,17 @@ mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar l
 session_start();//Inicializamos variables de sesión
 
 // Verificar si se envió el formulario
+if (isset($_POST['user'])) {
+    comprobarCredenciales();
+}
+
 if (isset($_POST['PaginaPrincipal'])) {
     mostrarIncidencias();
 }
 
-if (isset($_POST['user'])) {
-    comprobarCredenciales();
+
+if (isset($_POST['sesion'])) {
+    returnUser();
 }
 
 // Definir la función comprobarCredenciales
@@ -46,13 +51,13 @@ function comprobarCredenciales()
 
 function mostrarIncidencias()
 {
+    $out = ""; // Inicializamos la variable fuera del bloque if
+
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
 
-    
     if ($resultado) {
-
-        $out = "<table>";
+        $out .= "<table>";
         $out .= "<tr><th>ID</th><th>Descripción</th><th>Tipo</th><th>Fecha</th><th>Aula</th><th>Estado</th></tr>";
 
         foreach ($resultado as $incidencia) {
@@ -66,8 +71,20 @@ function mostrarIncidencias()
             $out .= "</tr>";
         }
         $out .= "</table>";
+    } else {
+        // Si no hay resultados, podrías mostrar un mensaje indicando que no hay incidencias
+        $out .= "No se encontraron incidencias.";
     }
     echo $out;
 }
 
+
+function returnUser(){
+    if (isset($user)) {
+        echo $user;
+    }else {
+        echo "exit";
+    }
+}
+session_destroy();
 ?>

@@ -16,26 +16,57 @@ function consultarIncidencias() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("PaginaPrincipal=" + PaginaPrincipal);
 }
-
-function insertarIncidencia() {
-    var formulario = document.getElementById("formulario_incidencia");
-    var datosFormulario = new FormData(formulario);
+function SesionUser() {
+    var sesion = "";
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            // Manejar la respuesta del servidor si es necesario
-            console.log(this.responseText);
+
+            Logueado = this.responseText; // Obtener la respuesta del servidor
+            if (Logueado != "exit"){
+                var saludo = document.getElementById("saludo");
+                saludo.innerHTML = "HOLA " + Logueado;
+            }else{
+                noLogueado();
+            }
+            
         }
     };
 
-    xhttp.open("POST", "insertar_incidencia.php", true); // Ajusta la URL según tu estructura
-    xhttp.send(datosFormulario);
+    xhttp.open("POST", "code.php", true); // true indica una solicitud asíncrona
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("sesion=" + sesion);
 }
+function noLogueado() {
+    window.location.href = "login.html";
+}
+
+// function insertarIncidencia() {
+//     var formulario = document.getElementById("formulario_incidencia");
+//     var datosFormulario = new FormData(formulario);
+
+//     var xhttp = new XMLHttpRequest();
+
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             // Manejar la respuesta del servidor si es necesario
+//             console.log(this.responseText);
+//         }
+//     };
+
+//     xhttp.open("POST", "insertar_incidencia.php", true); // Ajusta la URL según tu estructura
+//     xhttp.send(datosFormulario);
+// }
 
 // Llama a la función consultarIncidencias al cargar el DOM
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
-    // insertarIncidencia();
+    SesionUser();
+    
+    
+    
+
+
 });
