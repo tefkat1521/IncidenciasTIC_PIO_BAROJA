@@ -60,7 +60,7 @@ function mostrarIncidencias()
 
     if ($resultado) {
         $out .= "<table>";
-        $out .= "<tr><th>ID</th><th>Descripción</th><th>Tipo</th><th>Fecha</th><th>Aula</th><th>Estado</th></tr>";
+        $out .= "<tr><th>ID</th><th>Descripción</th><th>Tipo</th><th>Fecha</th><th>Aula</th><th>Ciclo</th><th>Estado</th></tr>";
 
         foreach ($resultado as $incidencia) {
             $out .= "<tr>";
@@ -69,6 +69,7 @@ function mostrarIncidencias()
             $out .= "<td>" . $incidencia['tipo_incidencia'] . "</td>";
             $out .= "<td>" . $incidencia['fecha'] . "</td>";
             $out .= "<td>" . $incidencia['Nombre_aula'] . "</td>";
+            $out .= "<td>" . $incidencia['ciclo'] . "</td>";
             $out .= "<td>" . $incidencia['estado'] . "</td>";
             $out .= "</tr>";
         }
