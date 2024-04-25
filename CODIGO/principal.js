@@ -16,6 +16,28 @@ function consultarIncidencias() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("PaginaPrincipal=" + PaginaPrincipal);
 }
+
+function insertarIncidencia() {
+    var insertar = "";
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var formulario = this.response; // Obtener la respuesta del servidor
+            var divInsertarNueva = document.getElementById("ContenedorInsertarIncidencia");
+
+            divInsertarNueva.innerHTML = formulario;
+        }
+    };
+
+    xhttp.open("POST", "code.php", true); // true indica una solicitud asíncrona
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("insertar=" + insertar);
+}
+
+
+
 function SesionUser() {
     var sesion = "";
 
@@ -60,10 +82,14 @@ function noLogueado() {
 //     xhttp.send(datosFormulario);
 // }
 
+////////////////////////////////////////LLAMADAS FUNCIONES///////////////////////////////////////////////////
+
 // Llama a la función consultarIncidencias al cargar el DOM
 document.addEventListener("DOMContentLoaded", function () {
+    
     consultarIncidencias();
     SesionUser();
+    insertarIncidencia();
     
     
     
