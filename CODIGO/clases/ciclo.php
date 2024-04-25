@@ -1,5 +1,7 @@
 <?php
-require "conexion.php";
+require_once  "conexion.php";
+
+
 
 class ciclo extends conexion
 {

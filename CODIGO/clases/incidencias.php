@@ -1,6 +1,7 @@
 <?php
 
-require "conexion.php";
+require_once  "conexion.php";
+
 
 class incidencias extends conexion
 {
@@ -79,6 +80,30 @@ class incidencias extends conexion
             return false;
         }
     }
+
+
+    public function insertar_incidencia($fecha ,$id_aula, $descripcion, $id_tipo_incidencia, $id_profe, $id_ciclo, $estado)
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $IDaleatorio = $id_tipo_incidencia.substr(str_shuffle($caracteres), 0, 5);
+
+        $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        // $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) 
+        // VALUES (?, STR_TO_DATE(?, '%Y-%m-%d'), ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->conect->prepare($sql);
+
+
+       
+        $stmt->bind_param("sssisiss",$IDaleatorio, $fecha, $descripcion, $id_ciclo, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }

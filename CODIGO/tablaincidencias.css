@@ -1,8 +1,17 @@
 #incidencias
 {
     display: flex;
-    
+    flex-wrap: wrap;
     gap: 0.2em;
+}
+
+
+#incidencias > div  
+{
+    width: 300px;
+    margin-bottom: 20px; /* Espacio entre las incidencias y la siguiente fila */
+    padding: 20px;
+    box-sizing: border-box;
 }
 div.incEn_proceso
 {

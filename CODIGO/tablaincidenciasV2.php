@@ -43,7 +43,11 @@
             {
                 foreach($array_incidencias as $laincidencia)
                 {
-    ?>
+                    if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
+                    elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
+                    elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
+                    else{$prioridad = "Alta";}
+    ?>              
                     <div class="inc<?php echo $laincidencia["estado"]; ?>">
                         <ul>
                             <li>Fecha: <?php echo $laincidencia["fecha"]; ?> </li>
@@ -51,7 +55,7 @@
                             <li>Ciclo: <?php echo $laincidencia["ciclo"]; ?> </li>
                             <li>Tipo: <?php echo $laincidencia["tipo_incidencia"]; ?> </li>
                             <li><?php echo $laincidencia["descripcion"]; ?> </li>
-                            <li>Nivel de urgencia: <?php echo $laincidencia["niveldeprioridad"]; ?> </li>
+                            <li>Nivel de urgencia: <?php echo $prioridad; ?> </li>
                             <li>Estado: <?php echo $laincidencia["estado"]; ?> </li>
                         </ul>
 
