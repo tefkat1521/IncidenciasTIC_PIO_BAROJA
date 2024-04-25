@@ -1,21 +1,49 @@
 <?php
+require "clases/profesor.php";
+require "clases/departamento.php";
 
-        $conexion = mysqli_connect("localhost","root","","incidencias_tic");        
-        mysqli_select_db($conexion,"incidencias_tic") or die ("No se puede seleccionar la BD");
-        if (mysqli_connect_errno()) {
-            printf("<p>Conexión fallida: %s</p>", mysqli_connect_error());
-            exit();}
-
-        $id = $numero_aleatorio = rand(10000, 99999);
-        $nombre = $_GET['nombre'];
-        $correo = $_GET['correo'];
-        $contrasena = $_GET['pass'];
-        $departamento = $_GET['dept'];
-
-        $profesor = mysqli_query($conexion, "INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (".$id.", '".$nombre."', '".$correo."', '".$contrasena."', ".$departamento.")");
-        
-        if (mysqli_connect_errno()) {
-            printf("<p>Conexión fallida: %s</p>", mysqli_connect_error());
-            exit();
+if(isset($_POST["hecho"]))
+    { 
+        $prof = new profesor();
+        $prof->insertar_profesor($_POST["nombre"], $_POST["correo"], $_POST["pass"], $_POST["dept"]);
+        if($prof)
+        {
+            echo "Insertado profesor: " . $_POST["nombre"];
         }
- ?>
+    }
+
+    $deps = new departamento();
+    $array_deps = $deps->get_departamento();
+?>
+
+
+<form action="insertarPROprueba1.php" method="post" id="loginform">
+
+
+    <!--AGREGAR expresiones regulares-->
+    <label>Nombre Completo</label> 
+    <input type="text" name="nombre" required/>
+    <br>
+    <label>Correo</label> 
+    <input type="text" name="correo" required/>
+    <br>
+    <label>Departamento</label> 
+    <select name="dept" required>
+        <?php
+            foreach($array_deps as $depart)
+            {
+                echo "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
+            }
+        ?>
+    </select>
+<br></br>
+
+    <label>Contraseña</label> 
+    <input type="password" name="pass" required/>
+    <br>
+    <label>Repita la contraseña</label> 
+    <input type="password" required/>
+
+    <input type="submit" name="hecho" value="CREAR">
+
+</form>

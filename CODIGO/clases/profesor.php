@@ -29,5 +29,21 @@ class profesor extends conexion
             return null;
         }
     }
+
+
+    public function insertar_profesor($nombre ,$correo, $password, $dep)
+    {
+        $id = rand(10000, 99999);
+        $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
+
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("isssi",$id, $nombre, $correo, $password, $dep);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

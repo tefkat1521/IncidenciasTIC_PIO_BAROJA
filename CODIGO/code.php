@@ -142,7 +142,7 @@ function mostrarFormularioIncidencia()
     // Agregar el formulario HTML a la cadena
     $htmlOutput .= '<form method="post" action="code.php">';
     $htmlOutput .= '<label>Ciclo</label><br>';
-    $htmlOutput .= '<select name="ciclo" required>';
+    $htmlOutput .= '<select name="ciclo">';
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";
     }

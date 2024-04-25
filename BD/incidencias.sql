@@ -107,7 +107,9 @@ INSERT INTO ciclo (id_ciclo, ciclo, turno) VALUES
 (1, 'DAW','Matutino'),
 (2, 'DAM','Matutino'),
 (3, 'TSEAS','Matutino'),
-(4, 'ASIR', 'vespertino');
+(5, 'Horario De Mañana','Matutino'),
+(6, 'Horario De Tarde','Vespertino'),
+(4, 'ASIR', 'Vespertino');
 
 /*/////////////////////////////////////////////////////////////-*/
 
