@@ -8,11 +8,13 @@
     <meta name="description" content="">
 	<meta name="author" content="Cemre Tellioğlu Tunçay">
 	<link rel="icon" type="image/png" href="logo pio baroja circular.png" sizes="32x32" />
+	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=latin-ext" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="principal.js"></script>
 
   </head>
@@ -61,8 +63,9 @@
 
 
 				<div class="col-lg-1 col-md-2 col-xs-12 col-sm-12 marginTop ">
-					<button type="button" class="btn btn-default form-control myButton">Cerrar sesión</button>
-				
+					<form method="post" action="code.php" >
+					<button type="send" class="btn btn-default form-control myButton" name="cerrarSesion">Cerrar sesión</button>
+					</form>
 				</div>
 			</div>
 			</div>
@@ -119,7 +122,9 @@
 									<!-- <textarea id="Descripción_Incidencia" name="Descripción_Incidencia" class="form-control myInputFooter" placeholder="Descripción" aria-describedby="basic-addon1" style="width: 485px; height: 200px; resize: none;"></textarea>
 
 								</div> -->
-								<div id="ContenedorInsertarIncidencia"></div>
+								<div id="ContenedorInsertarIncidencia">
+									<!-- Aquí se muestra el formulario de incidencias -->
+								</div>
 								<div class="col-md-2">
 									<a href="insertarINCprueba3.php">
 									<!-- <button type="button" class="btn btn-default form-control myButton" >Crear</button></a> -->
@@ -139,7 +144,9 @@
     <h2>MIS INCIDENCIAS</h2>
     <div class="col-md-12 noPadding text-center backNewsletter">
 		
-		<div id="contenedor_incidencias"></div>
+		<div id="contenedor_incidencias">
+			<!-- Aquí se muestran las incidencias -->
+		</div>
         
     </div>
 </div>

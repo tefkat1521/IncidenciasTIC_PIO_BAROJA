@@ -30,6 +30,11 @@ if (isset($_POST["insertar"])) {
 if (isset($_POST["aula"])) {
        insertarIncidencia();
     }
+if (isset($_POST['cerrarSesion'])) {
+    session_destroy();
+    header("Location: login.html");
+    exit; // Asegura que el script se detenga después de la redirección
+}
 
 /*****************************FUNCIONES*********************************************** */
 // Definir la función comprobarCredenciales
@@ -166,5 +171,4 @@ function mostrarFormularioIncidencia()
     echo $htmlOutput;
 }
 
-// session_destroy();
 ?>

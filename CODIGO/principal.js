@@ -26,7 +26,6 @@ function insertarIncidencia() {
         if (this.readyState == 4 && this.status == 200) {
             var formulario = this.response; // Obtener la respuesta del servidor
             var divInsertarNueva = document.getElementById("ContenedorInsertarIncidencia");
-
             divInsertarNueva.innerHTML = formulario;
         }
     };
@@ -65,34 +64,13 @@ function noLogueado() {
     window.location.href = "login.html";
 }
 
-// function insertarIncidencia() {
-//     var formulario = document.getElementById("formulario_incidencia");
-//     var datosFormulario = new FormData(formulario);
-
-//     var xhttp = new XMLHttpRequest();
-
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             // Manejar la respuesta del servidor si es necesario
-//             console.log(this.responseText);
-//         }
-//     };
-
-//     xhttp.open("POST", "insertar_incidencia.php", true); // Ajusta la URL según tu estructura
-//     xhttp.send(datosFormulario);
-// }
 
 ////////////////////////////////////////LLAMADAS FUNCIONES///////////////////////////////////////////////////
 
 // Llama a la función consultarIncidencias al cargar el DOM
 document.addEventListener("DOMContentLoaded", function () {
-    
     consultarIncidencias();
     SesionUser();
     insertarIncidencia();
-    
-    
-    
-
 
 });
