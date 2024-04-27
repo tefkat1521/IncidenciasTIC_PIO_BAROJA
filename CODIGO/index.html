@@ -13,75 +13,69 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- <link href="css/responsive.css" rel="stylesheet"> -->
+	<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
 	<script src="principal.js"></script>
 
   </head>
   <body>
 	<!-- -------------------------------------------------------------HEADER------------------------------------------------------------------- -->
 
-			<div class="col-md-12 noPadding fixedArea">
-			  <div class="container topOff">
-
-				<div class="col-lg-2 col-md-2 col-xs-4 col-sm-2">
-					<img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 50px; height: auto;">
-				</div>
-				
-				<div class="col-lg-7 col-md-8 col-xs-8 col-sm-10">
-
-
-
-					<nav class="navbar navbar-expand-lg navbar-light bg-light myNavbar">
-						<div class="container-fluid">
-						
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav myNavUl">
-			
-								<li class="nav-item"><a href="#section1" class="nav-link text-uppercase font-weight-bold js-scroll-trigger">Nueva Incidencia</a></li>
-								<li class="nav-item"><a href="#section2" class="nav-link text-uppercase font-weight-bold js-scroll-trigger">Mis Incidencias</a></li>
-								<!-- <li class="nav-item"><a href="#section5" class="nav-link text-uppercase font-weight-bold js-scroll-trigger">Filtrar</a></li>  -->
-
-							</ul>
-						</div><!-- /.navbar-collapse -->
-						</div><!-- /.container-fluid -->
-					</nav>
-
+			<div class="col-md-12 fixedArea">
+				<!-- <div class="col-md-12"> -->
+					<div class="hola">
+						<!-- LOGO -->
+						<div class="col-lg-1 col-md-1 col-xs-2 col-sm-1">
+							<div id="pruebecilla"></div>
+							<!-- <img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 6em; height: auto;"> -->
+						</div>
+						<!-- ENLACES -->
+						<div class="col-lg-7 col-md-8 col-xs-8 col-sm-10">
+									<ul class="myNavUl">
 					
+										<li><a href="#section1" class=" text-uppercase font-weight-bold">Nueva Incidencia</a></li>
+										<li><a href="#section2" class="nav-link text-uppercase font-weight-bold">Mis Incidencias</a></li>
 
-					
+									</ul>
+						</div>
+						<!-- SALUDO -->
+						<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+							<div id="saludo"></div>
+							
+
+						</div>
+
+						<!-- CERRAR SESION -->
+						<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+
+							<!-- <form method="post" action="code.php" >
+							<button type="send" class="cerrarSesion" name="cerrarSesion">Cerrar sesión</button>
+							</form> -->
+
+
+							<form id="formCerrarSesion" method="post" action="code.php" style="display: inline;">
+								<input type="hidden" name="cerrarSesion">
+								<a href="code.php" onclick="document.getElementById('formCerrarSesion').submit(); return false;" class="cerrarSesion">Cerrar sesión</a>
+							</form>
+							
+
+						</div>
 				</div>
-				<!-- REDES SOCIALES -->
-				<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 marginTop ">
-					<div id="saludo">
-
-					</div>
-					
-
-				</div>
-
-
-				<div class="col-lg-1 col-md-2 col-xs-12 col-sm-12 marginTop ">
-					<form method="post" action="code.php" >
-					<button type="send" class="btn btn-default form-control myButton" name="cerrarSesion">Cerrar sesión</button>
-					</form>
-				</div>
-			</div>
 			</div>
 
 
 
 				
+		</div>
+
+		<div class="col-md-12 noPadding">
+			<div class="filterBack"></div>
+			<div class="abs text-center">
+				<h2 class="absTitle">Gestor de Incidencias TIC.</h2>
+				<img src="img/shape.png">
+				<p class="absText">Crear y ver incidencias</p>
 			</div>
-			<div class="col-md-12 noPadding">
-				<div class="filterBack"></div>
-				<div class="abs text-center">
-					<h2 class="absTitle">Gestor de Incidencias TIC.</h2>
-					<img src="img/shape.png">
-					<p class="absText">Crear y ver incidencias</p>
-				</div>
-			</div>
+		</div>
 
 
 
@@ -89,51 +83,22 @@
 <!-- ------------------------------------------------------------- CREAR INCIDENCIA ------------------------------------------------------------------- -->
 
 
-				<div id="section1" class="col-md-12 noPadding text-center priceBackground">
-					<h2>NUEVA INCIDENCIA</h2>
-					<div class="col-md-12 noPadding text-center backNewsletter">
-						<div class="col-md-8 col-md-offset-2">
-							<div class="row">
-								<div class="col-md-4">
-									<!-- Filtra una incidencia -->
-									<h3 class="noTop">Crear una nueva incidencia</h3>
-		
-								<!-- </div>
-								<div class="col-md-6">
-									<input type="text" class="form-control myInputFooter" id="ciclo" name="ciclo" placeholder="Ciclo" aria-describedby="basic-addon1">
-									<input type="text" class="form-control myInputFooter" id="aula" name="aula" placeholder="Aula" aria-describedby="basic-addon1"> -->
-									<!-- <input type="text" class="form-control myInputFooter" placeholder="Incidencia" aria-describedby="basic-addon1"> -->
+<div id="section1" class="col-md-12 noPadding text-center priceBackground">
+    <br>
+    <h2>NUEVA INCIDENCIA</h2>
+    <div class="col-md-12 noPadding text-center backNewsletter">
+        <div class="container">
+			<h3 class="noTop">Crear una nueva incidencia</h3>
 
-
-									<!-- <label for="incidencia">incidencia</label> -->
-									<!-- <select name="incidencia" id="incidencia" class="form-control myInputFooter" >
-										<option value="" disabled selected>Tipo Incidencia</option> 
-										<option value="Hardware">Hardware</option>
-										<option value="Software">Software</option>
-										<option value="Conectividad">Conectividad</option>
-										<option value="Recursos_EducaMadrid">Recursos EducaMadrid</option>
-										<option value="Office_365/Teams">Office 365/Teams</option>
-										<option value="PDI">PDI</option>
-										<option value="Impresión">Impresión</option>
-										<option value="otro">otro</option>
-									</select>
-									 -->
-
-									<!-- <textarea id="Descripción_Incidencia" name="Descripción_Incidencia" class="form-control myInputFooter" placeholder="Descripción" aria-describedby="basic-addon1" style="width: 485px; height: 200px; resize: none;"></textarea>
-
-								</div> -->
-								<div id="ContenedorInsertarIncidencia">
-									<!-- Aquí se muestra el formulario de incidencias -->
-								</div>
-								<div class="col-md-2">
-									
-									<!-- <button type="button" class="btn btn-default form-control myButton" >Crear</button></a> -->
-								</div>
-							</div>
-						</div>
-					</div>
-					
-
+                <div class="col-md-12 col-md-offset-1">
+                    <!-- Filtra una incidencia -->
+                    <div id="ContenedorInsertarIncidencia">
+                        <!-- Aquí se muestra el formulario de incidencias -->
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
 
 
 					
@@ -142,7 +107,7 @@
 
 <div id="section2" class="col-md-12 noPadding text-center priceBackground">
     <h2>MIS INCIDENCIAS</h2>
-    <div class="col-md-12 noPadding text-center backNewsletter">
+    <div class="col-md-10 col-md-offset-1 noPadding text-center backNewsletter">
 		
 		<div id="contenedor_incidencias">
 			<!-- Aquí se muestran las incidencias -->
@@ -158,27 +123,24 @@
 
 
 <div class="col-md-12 noPadding text-center backFooter">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="row">
-            <div class="col-md-4 col-xs-12 marginTop">
+
+            <div class="col-md-6 col-xs-12 marginTop" id="textofooter">
                 <h3 class="footertext">IES Pío Baroja</h3>
                 <h3 class="footertext">C/ Tolosa nº4</h3>
-                <h3 class="footertext">https://www.educa2.madrid.org/web/centro.ies.piobaroja.madrid</h3>
+                <h3 class="footertext"><a href="https://www.educa2.madrid.org/web/centro.ies.piobaroja.madrid">www.educa2.madrid.org</a></h3>
             </div>
 
-            <div class="col-md-4 col-xs-12 col-lg-2 col-lg-offset-6 marginTop">
+            <div class="col-md-6 col-xs-12 col-lg-2 col-lg marginTop" id="logofooter">
                 <img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 80px; height: auto;">
             </div>
-        </div>
-    </div>
 </div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-easing/jquery.easing.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/ajax-mail.js"></script>
-	<script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/scripts.js"></script>
+	<!-- <script src="js/jquery.min.js"></script> -->
+	<!-- <script src="js/jquery-easing/jquery.easing.min.js"></script> -->
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<!-- <script src="js/ajax-mail.js"></script> -->
+	<!-- <script src="js/jquery.nicescroll.min.js"></script> -->
+    <!-- <script src="js/scripts.js"></script> -->
   </body>
 </html>

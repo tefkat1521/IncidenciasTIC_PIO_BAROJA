@@ -48,7 +48,7 @@ function SesionUser() {
             var logueado = this.responseText; // Obtener la respuesta del servidor
             if (logueado != "exit"){
                 var saludo = document.getElementById("saludo");
-                saludo.innerHTML = "HOLA " + logueado;
+                saludo.innerHTML = "HOLA, " + logueado;
             }else{
                 noLogueado();
             }

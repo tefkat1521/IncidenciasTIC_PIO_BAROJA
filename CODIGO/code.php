@@ -140,35 +140,39 @@ function mostrarFormularioIncidencia()
     $array_tipos = $tipoIncidencia->get_Tipo_Incidencia();
 
     // Agregar el formulario HTML a la cadena
+
+    $htmlOutput .= '<div class="col-md-8" style="margin: 5em;">';
+
     $htmlOutput .= '<form method="post" action="code.php">';
-    $htmlOutput .= '<label>Ciclo</label><br>';
-    $htmlOutput .= '<select name="ciclo">';
+    $htmlOutput .= '<select name="ciclo" class="form-control myInputFooter">';
+    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona un ciclo</option>'; // Placeholder
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
-
-    $htmlOutput .= '<label>Aula</label><br>';
-    $htmlOutput .= '<select name="aula" required>';
+    
+    $htmlOutput .= '<select name="aula" class="form-control myInputFooter" required>';
+    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona un Aula</option>'; // Placeholder
     foreach ($array_aula as $aula) {
         $htmlOutput .= "<option value='" . $aula['ID_Aula'] . "'>" . $aula['Nombre_aula'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
-
-    $htmlOutput .= '<label>Tipo de Incidencia</label><br>';
-    $htmlOutput .= '<select name="tipo" required>';
+    
+    $htmlOutput .= '<select name="tipo" class="form-control myInputFooter" required>';
+    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona una incidencia</option>'; // Placeholder
     foreach ($array_tipos as $tipo) {
         $htmlOutput .= "<option value='" . $tipo['id_tipo_incidencia'] . "'>" . $tipo['tipo_incidencia'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
-
-    $htmlOutput .= '<label for="descripcion">Descripción:</label><br>';
-    $htmlOutput .= '<textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br>';
-    $htmlOutput .= '<input type="submit" name="hecho" value="CREAR">';
+    
+    $htmlOutput .= '<textarea id="descripcion" name="descripcion" class="myInputFooter" placeholder="   Descripción"  style="width: 100%; height: 15em; resize: none;"></textarea><br>';
+    $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $htmlOutput .= '</form>';
-
+    $htmlOutput .= '</div>';
+    
     // Imprimir la cadena HTML completa
     echo $htmlOutput;
+    
 }
 
 ?>

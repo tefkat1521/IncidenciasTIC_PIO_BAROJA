@@ -12,6 +12,13 @@ body{
 }
 
 
+#saludo{
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+}
 
 
 
