@@ -78,18 +78,27 @@ body{
   }
   
   .fixedArea {
-    position: fixed;
+    /* position: fixed; */
+    position: relative;
     z-index: 99999;
     background: #4b924b;
     border-bottom: 1px solid #ddd;
     padding: 1em;
     height: 8em;
+    
+}
+
+.hola{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .myNavUl {
     padding: 0;
     margin: 0;
     list-style: none;
+    float: left;
 }
 
 .myNavUl > li {
@@ -104,6 +113,8 @@ body{
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
+    line-height: 1.1;
+    font-size: 16px;
     
 }
 
