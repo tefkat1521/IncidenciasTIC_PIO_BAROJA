@@ -87,7 +87,7 @@ class incidencias extends conexion
     }
 
     /**
-     *  Datos por incidencia sin ansignar
+     *  Datos por incidencia sin ansignar (sin nivel de prioridad)
      */
     public function get_incidencias_sin_asignar()
     {
@@ -98,6 +98,60 @@ class incidencias extends conexion
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
         AND i.niveldeprioridad IS NULL;");
+
+        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+
+        return $incidencias;
+    }
+
+    /**
+     *  Datos por incidencia prioridad baja
+     */
+    public function get_incidencias_prioridad_baja()
+    {
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND p.ID_Profe = i.ID_Profe 
+        AND c.id_ciclo = i.id_ciclo 
+        AND i.niveldeprioridad = 1;");
+
+        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+
+        return $incidencias;
+    }
+
+     /**
+     *  Datos por incidencia prioridad media
+     */
+    public function get_incidencias_prioridad_media()
+    {
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND p.ID_Profe = i.ID_Profe 
+        AND c.id_ciclo = i.id_ciclo 
+        AND i.niveldeprioridad = 2;");
+
+        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+
+        return $incidencias;
+    }
+
+     /**
+     *  Datos por incidencia prioridad alta
+     */
+    public function get_incidencias_prioridad_alta()
+    {
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND p.ID_Profe = i.ID_Profe 
+        AND c.id_ciclo = i.id_ciclo 
+        AND i.niveldeprioridad = 3;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -153,6 +207,44 @@ class incidencias extends conexion
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
         AND i.estado IS 'Pendiente';");
+
+        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+
+        return $incidencias;
+    }
+
+     /**
+     *  Datos por incidencia por aula
+     */
+    public function get_incidencias_por_aula($aula)
+    {
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND p.ID_Profe = i.ID_Profe 
+        AND c.id_ciclo = i.id_ciclo 
+        AND i.estado IS 'Pendiente'
+        AND a.Nombre_aula = '$aula';");
+
+        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+
+        return $incidencias;
+    }
+
+    /**
+     *  Datos por incidencia por tipo incidencia
+     */
+    public function get_incidencias_por_tipo($tipo)
+    {
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND p.ID_Profe = i.ID_Profe 
+        AND c.id_ciclo = i.id_ciclo 
+        AND i.estado IS 'Pendiente'
+        AND t.tipo_incidencia = '$tipo';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 

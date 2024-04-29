@@ -25,18 +25,6 @@
         }
     }
 
-
-
-
-
-            if(isset($_POST["EST"]))
-            {  
-                $incidencias->update_incidencia_estado($_POST['id'], $_POST['estado']);
-            }
-            elseif(isset($_POST["URG"]))
-            {
-                $incidencias->update_incidencia_prioridad($_POST['id'], $_POST['urgencia']);
-            }
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +104,7 @@
                 }
     ?>
     </div>
-    <?phps
+    <?php
             }
             else
             {
