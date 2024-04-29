@@ -78,7 +78,7 @@ body{
   }
   
   .fixedArea {
-    /* position: fixed; */
+    /* position: sticky; */
     position: relative;
     z-index: 99999;
     background: #4b924b;
