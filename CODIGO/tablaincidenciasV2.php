@@ -2,6 +2,33 @@
     require "clases/incidencias.php";
     $incidencias = new Incidencias();
 
+
+
+    if(isset($_POST["submit"])) {
+        $id_incidencia = $_POST['id'];
+    
+        // Verificar si se completó el campo de estado
+        if(isset($_POST['estado']) && !empty($_POST['estado'])) {
+            $estado = $_POST['estado'];
+            $incidencias->update_incidencia_estado($id_incidencia, $estado);
+        }
+    
+        // Verificar si se completó el campo de urgencia
+        if(isset($_POST['urgencia']) && !empty($_POST['urgencia'])) {
+            $urgencia = $_POST['urgencia'];
+            $incidencias->update_incidencia_prioridad($id_incidencia, $urgencia);
+        }
+    
+        // Si no se completó ningún campo, mostrar un mensaje de error
+        if(empty($_POST['estado']) && empty($_POST['urgencia'])) {
+            echo "Por favor complete al menos uno de los campos.";
+        }
+    }
+
+
+
+
+
             if(isset($_POST["EST"]))
             {  
                 $incidencias->update_incidencia_estado($_POST['id'], $_POST['estado']);
@@ -59,29 +86,26 @@
                             <li>Estado: <?php echo $laincidencia["estado"]; ?> </li>
                         </ul>
 
-                        <div id="estado">
+                        <div id="form">
                             <label>Cambiar estado</label>
                             <form method="post" action="tablaincidenciasV2.php">
-                                <select name="estado" required>
-                                    <option value ="Pendiente" selected>Pendiente</option>
+                                <select name="estado">
+                                    <option value="" selected disabled>Seleccionar estado</option>
+                                    <option value ="Pendiente" >Pendiente</option>
                                     <option value ="En_proceso">En proceso</option>
                                     <option value ="Solucionado">Solucionado</option>
                                 <select>
-                                <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>">
-                                <input type=submit name="EST" value="Cambiar">
-                            </form>
-                        </div>
-
-                        <div id="urgencia">
+                                    <br>
                             <label>Agregar Prioridad</label>
-                            <form method="post" action="tablaincidenciasV2.php">
-                                <select name="urgencia" required>
+                                <select name="urgencia">
+                                    <option value="" selected disabled>Seleccionar urgencia</option>
                                     <option value ="1">Baja</option>
                                     <option value ="2">Media</option>
                                     <option value ="3">Alta</option>
                                 <select>
+
                                 <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>">
-                                <input type=submit name="URG" value="Cambiar">
+                                <input type=submit name="submit" value="Actualizar">
                             </form>
                         </div>
 
@@ -92,7 +116,7 @@
                 }
     ?>
     </div>
-    <?php
+    <?phps
             }
             else
             {
