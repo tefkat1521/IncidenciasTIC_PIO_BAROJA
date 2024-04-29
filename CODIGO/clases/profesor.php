@@ -31,6 +31,26 @@ class profesor extends conexion
     }
 
 
+    public function get_nombre_profesor($correo)
+    {
+        $sql = "SELECT nombre FROM Profesor WHERE correo = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) 
+        {
+            $row = $result->fetch_assoc();
+            return $row['nombre'];
+        } 
+        else 
+        {
+            return null;
+        }
+    }
+
+
     public function insertar_profesor($nombre ,$correo, $password, $dep)
     {
         $id = rand(10000, 99999);
@@ -45,5 +65,6 @@ class profesor extends conexion
             return false;
         }
     }
+    
 }
 ?>

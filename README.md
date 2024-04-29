@@ -28,3 +28,14 @@ cambiar tablaincidencias con ajax
 cambiar pagina pricipal a ajax para que muestre 
 
 INSERTAR CICLO A LA HORA DE REGISTRAr INCIDENCIA
+
+
+////////////////////////////////////////////////////////
+
+Hacer comprobaciones de id al insertar
+
+Hacer expresiones regulares
+
+Preguntar a maite, poner una opcion de Cambiar contraseña y Has olvidado la contraseña
+
+
