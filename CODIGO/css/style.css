@@ -5,6 +5,8 @@ Author: Cemre Tellioğlu Tunçay
 Author URI: https://cemreworks.com
 */
 
+
+
 body{
 
     font-family: 'Montserrat', sans-serif;
@@ -12,9 +14,19 @@ body{
 }
 
 
-.pruebecilla{
-    background-color: blue;
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
 }
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+
 
 #saludo{
     font-size: 12pt;
@@ -79,31 +91,46 @@ body{
   
   .fixedArea {
     /* position: sticky; */
-    position: relative;
-    z-index: 99999;
+    /* position: relative; */
+    /* z-index: 99999; */
     background: #4b924b;
     border-bottom: 1px solid #ddd;
     padding: 1em;
     height: 8em;
+    /* position: sticky; */
+    /* top: 0px; */
+
+
+
+    position: sticky;
+    top: 0;
+    /* background-color: white; Ajusta el color de fondo según tus necesidades */
+    z-index: 1000;
     
 }
-
-.hola{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.hola {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos del encabezado */
+    height: 8em;
 }
 
 .myNavUl {
     padding: 0;
     margin: 0;
     list-style: none;
-    float: left;
+    display: flex;
+    flex-direction: row; /* Mantiene la dirección del flexbox como fila */
+    align-items: center; /* Centra los elementos verticalmente en la fila */
+    height: 100%; /* Utiliza toda la altura del contenedor */
+    justify-content:left; /* Centra los elementos horizontalmente */
 }
 
 .myNavUl > li {
-    display: inline-block;
-    margin-right: 10px;
+    margin-right: 10px; /* Espacio entre los elementos li */
+}
+
+.myNavUl > li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento li */
 }
 
 .myNavUl > li > a {
@@ -115,7 +142,6 @@ body{
     color: #ffffff;
     line-height: 1.1;
     font-size: 16px;
-    
 }
 
 .text-center {
