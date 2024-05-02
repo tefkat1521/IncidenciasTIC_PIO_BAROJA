@@ -30,7 +30,6 @@ body{
 
 #saludo{
     font-size: 12pt;
-    /* font-weight: bold; */
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
@@ -89,29 +88,29 @@ body{
     
   }
   
+  .hi{
+height: 8em;
+
+  }
+
+
   .fixedArea {
-    /* position: sticky; */
-    /* position: relative; */
-    /* z-index: 99999; */
+   
     background: #4b924b;
     border-bottom: 1px solid #ddd;
     padding: 1em;
     height: 8em;
-    /* position: sticky; */
-    /* top: 0px; */
-
-
-
-    position: sticky;
-    top: 0;
-    /* background-color: white; Ajusta el color de fondo según tus necesidades */
     z-index: 1000;
+    position: sticky;
+    top:0;
     
 }
 .hola {
     display: flex;
     align-items: center; /* Centra verticalmente los elementos del encabezado */
     height: 8em;
+    /* position: sticky;
+    top: 0; */
 }
 
 .myNavUl {
@@ -176,7 +175,7 @@ body{
     background: url(../img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);
     background-position: top;
     background-size: cover;
-    min-height: 400px;
+    min-height: 550px;
     background-attachment: fixed;
 
 }
@@ -185,11 +184,10 @@ body{
 .abs{
     position: absolute;
     top: 0px;
-    min-height: 400px;
+    min-height: 550px;
     background-color: #000;
     position: absolute;
     top: 0px;
-    min-height: 400px;
     background-color: #0000008a;
     width: 100%;
     color: #fff;
@@ -197,7 +195,7 @@ body{
 }
 
 .absTitle{
-    margin-top: 200px;
+    margin-top: 300px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
