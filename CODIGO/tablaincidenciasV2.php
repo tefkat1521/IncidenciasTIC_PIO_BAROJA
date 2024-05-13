@@ -101,7 +101,7 @@
                                     <option value ="En_proceso">En proceso</option>
                                     <option value ="Solucionado">Solucionado</option>
                                 <select>
-                             
+                             <br>
                                 <label>Asignar Prioridad</label>
                                 <select name="urgencia">
                                     <option value="" selected disabled>Seleccionar urgencia</option>
