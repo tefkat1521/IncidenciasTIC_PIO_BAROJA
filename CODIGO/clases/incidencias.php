@@ -79,7 +79,7 @@ class incidencias extends conexion
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo
         AND i.estado != 'Solucionado'
-        AND p.ID_Profe = (SELECT ID_profe FROM profesor WHERE nombre = '".$profe."')
+        AND p.ID_Profe = (SELECT ID_profe FROM profesor WHERE correo LIKE '%".$profe."%')
         ORDER BY i.fecha DESC;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);

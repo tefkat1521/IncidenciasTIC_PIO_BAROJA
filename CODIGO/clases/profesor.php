@@ -13,12 +13,16 @@ class profesor extends conexion
 
     public function get_id_profesor($profe)
     {
-        $sql = "SELECT ID_Profe FROM Profesor WHERE correo = ?";
+        $sql = "SELECT ID_Profe FROM Profesor WHERE correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("s", $profe);
+    
+        // Crear el patrón de coincidencia
+        $profe_like = "%$profe%";
+    
+        $stmt->bind_param("s", $profe_like);
         $stmt->execute();
         $result = $stmt->get_result();
-
+    
         if ($result->num_rows > 0) 
         {
             $row = $result->fetch_assoc();
@@ -29,6 +33,7 @@ class profesor extends conexion
             return null;
         }
     }
+    
 
 
     public function get_nombre_profesor($correo)
@@ -51,25 +56,23 @@ class profesor extends conexion
     }
 
 
-    public function insertar_profesor($nombre ,$correo, $password, $dep)
+    public function insertar_profesor($nombre, $correo, $password, $dep)
     {
-
-        $id = rand(10000, 99999);
-        while($this->comprobar_id_profe($id))
-        {
+        do {
             $id = rand(10000, 99999);
-            $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->conect->prepare($sql);
-            $stmt->bind_param("isssi",$id, $nombre, $correo, $password, $dep);
-
-            if ($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
+        } while ($this->comprobar_id_profe($id));
+    
+        $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("isssi", $id, $nombre, $correo, $password, $dep);
+    
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
         }
-        
     }
+    
 
     public function comprobar_id_profe($id)
     {
