@@ -5,6 +5,117 @@ Author: Cemre Tellioğlu Tunçay
 Author URI: https://cemreworks.com
 */
 
+/* .container-fluid{
+height: 8em;
+} */
+
+
+
+
+
+#myNavbar {
+    padding: 15px 0; /* Espaciado interior similar al de .navbar-brand */
+  }
+  
+  #myNavbar img {
+    max-height: 50px; /* Altura máxima similar al tamaño típico de un logotipo en la barra de navegación */
+  }
+  
+#hamburguesa{
+    margin-top: 20px;
+}
+
+
+@media (max-width: 767px) {
+    .navbar-collapse.in {
+      /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
+      .nav li {
+        width: 50%; /* Establece el ancho al 100% */
+      }
+      
+      /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
+      .navbar-nav {
+        width: 50%; /* Establece el ancho al 100% */
+      }
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+/* Cambiar el color de fondo de la barra de navegación */
+.navbar-inverse {
+    background-color: #4b924b ; /* Cambia el color de fondo a negro */
+    border:none;
+    border-radius: 0%;
+  }
+  
+  /* Cambiar el estilo del texto en los elementos de la barra de navegación */
+  .navbar-inverse .navbar-nav > li > a {
+    color: #fff; /* Cambia el color del texto a blanco */
+    font-size: 1.15em; /* Cambia el tamaño de la fuente */
+  
+  }
+  
+  /* Opcional: Cambiar el estilo del texto en los enlaces al pasar el mouse */
+  .navbar-inverse .navbar-nav > li > a:hover {
+    color: #ccc; /* Cambia el color del texto a un tono más claro cuando se pasa el mouse */
+  }
+
+/* Estilo normal del elemento <li> */
+.navbar-inverse .navbar-nav > li.uno > a {
+    color: #fff !important;  }
+  
+  /* Eliminar efecto hover del elemento <li> */
+  .navbar-inverse .navbar-nav > li.uno > a:hover {
+    color: inherit;
+  }
+  
+
+/* Cambiar el color de fondo del botón de hamburguesa */
+.navbar-inverse .navbar-toggle {
+  background-color:  #376937; /* Cambia "your_color" por el color deseado */
+  border-color: transparent; /* Opcional: para eliminar el borde del botón */
+}
+
+/* Cambiar el color de fondo del botón de hamburguesa */
+.navbar-inverse .navbar-toggle:hover {
+    background-color:  #2a4f2a; /* Cambia "your_color" por el color deseado */
+    border-color: transparent; /* Opcional: para eliminar el borde del botón */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 body{
@@ -14,26 +125,28 @@ body{
 }
 
 
+
+
 .logo-container {
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1.5em;
-}
+    /* margin-top: 0px; */
+  }
+  
+  .logo {
+    height: 80%;
 
-.logo-container img {
-    max-width: 100%;
-    height: auto;
-}
-
+  }
+  
 
 
 #saludo{
-    font-size: 12pt;
+    font-size: 12pt; 
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
-    float: right;
+ 
 
 }
 
@@ -99,16 +212,15 @@ height: 8em;
     background: #4b924b;
     border-bottom: 1px solid #ddd;
     padding: 1em;
-    height: 8em;
+    /* height: 8em; */
     z-index: 1000;
-    position: sticky;
-    top:0;
+   
     
 }
 .hola {
     display: flex;
     align-items: center; /* Centra verticalmente los elementos del encabezado */
-    height: 8em;
+    /* height: 8em; */
     /* position: sticky;
     top: 0; */
 }
@@ -280,3 +392,61 @@ height: 8em;
 }
 
 
+/* *********************************************************** OTRO HEADER *********************************************************** */
+
+/* Estilos para el logo */
+.navbar-brand img {
+    max-height: 50px; /* Ajusta el tamaño del logo según tus necesidades */
+}
+
+/* Estilos para el botón de hamburguesa */
+.navbar-toggler {
+    border: none;
+}
+
+/* Estilos para el contenido del menú */
+.navbar-nav .nav-item {
+    margin-left: 10px; /* Espacio entre elementos del menú */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *********************************************************** RESPONSIVE *********************************************************** */
+
+
+
+/* Media query para dispositivos pequeños (sm) */
+@media (max-width: 767.98px) {
+    body {
+
+    }
+  }
+  
+  /* Media query para dispositivos extra pequeños (xs) */
+  @media (max-width: 575.98px) {
+    body {
+      font-size: 12px;
+    }
+}
