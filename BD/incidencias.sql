@@ -56,7 +56,7 @@ CREATE TABLE Incidencias (
     ID_Profe INT,
     id_tipo_incidencia VARCHAR(5),
     niveldeprioridad INT CHECK (niveldeprioridad IN (1, 2, 3)),
-    Estado VARCHAR(20) CHECK (Estado IN ('Solucionado', 'Pendiente', 'En_proceso')),  
+    Estado VARCHAR(20) CHECK (Estado IN ('Solucionado', 'Creada', 'En_proceso')),  
     FOREIGN KEY (id_ciclo) REFERENCES Ciclo(id_ciclo) ON DELETE CASCADE,
     FOREIGN KEY (ID_Aula) REFERENCES Aula(ID_Aula) ON DELETE CASCADE,
     FOREIGN KEY (id_tipo_incidencia) REFERENCES Tipo_Incidencia(id_tipo_incidencia) ON DELETE CASCADE,
@@ -134,9 +134,9 @@ INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES
 /*INCIDENCIAS*************************/
 
 INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe, id_tipo_incidencia, niveldeprioridad, Estado) VALUES
-('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 2, 12345, 'SFTW_', 2, 'Pendiente'),
-('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 2, 22222, 'CNTVD', 1, 'Pendiente'),
-('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 3, 5, 33333, 'RREDM', 1, 'Pendiente'),
-('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 2, 3, 22222, 'PDI__', 3, 'Pendiente'),
-('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba5', 4, 1, 44444, 'HRDW_', 2, 'Pendiente');
+('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 2, 12345, 'SFTW_', 2, 'Creada'),
+('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 2, 22222, 'CNTVD', 1, 'Creada'),
+('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 3, 5, 33333, 'RREDM', 1, 'Creada'),
+('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 2, 3, 22222, 'PDI__', 3, 'Creada'),
+('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba5', 4, 1, 44444, 'HRDW_', 2, 'Creada');
 

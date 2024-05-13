@@ -112,7 +112,7 @@ function insertarIncidencia()
         $descripcion = $_POST["descripcion"];
         $tipo = $_POST["tipo"];
         $ciclo = $_POST["ciclo"];
-        $estado = "Pendiente";
+        $estado = "Creada";
 
         // Obtener el ID del profesor
         $objeto_profesor = new profesor();

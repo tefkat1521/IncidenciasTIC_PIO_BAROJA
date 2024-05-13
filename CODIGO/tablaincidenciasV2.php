@@ -79,7 +79,7 @@
                             <form method="post" action="tablaincidenciasV2.php">
                                 <select name="estado">
                                     <option value="" selected disabled>Seleccionar estado</option>
-                                    <option value ="Pendiente" >Pendiente</option>
+                                    <option value ="Creada" >Creada</option>
                                     <option value ="En_proceso">En proceso</option>
                                     <option value ="Solucionado">Solucionado</option>
                                 <select>
