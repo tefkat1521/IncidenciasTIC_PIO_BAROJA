@@ -11,6 +11,18 @@
         if(isset($_POST['estado']) && !empty($_POST['estado'])) {
             $estado = $_POST['estado'];
             $incidencias->update_incidencia_estado($id_incidencia, $estado);
+            
+            // $remitente = 'jesusutrillagonzalez@gmail.com';
+            // $destinatario = 'victoria.mdorado2@gmail.com';
+            // $asunto = 'Prueba de correo electrónico';
+            // $mensaje = 'Este es un correo de prueba enviado desde PHP. Se ha solucionado la incidencia con id: '. $_POST['id'];
+
+            // if ($incidencias->enviarCorreo($remitente, $destinatario, $asunto, $mensaje)) {
+            //     echo 'El correo se envió correctamente.';
+            // } else {
+            //     echo 'Hubo un error al enviar el correo.';
+            // }
+
         }
     
         // Verificar si se completó el campo de urgencia
@@ -70,9 +82,15 @@
                             <li>Ciclo: <?php echo $laincidencia["ciclo"]; ?> </li>
                             <li>Tipo: <?php echo $laincidencia["tipo_incidencia"]; ?> </li>
                             <li><?php echo $laincidencia["descripcion"]; ?> </li>
-                            <li>Nivel de urgencia: <?php echo $prioridad; ?> </li>
                             <li>Estado: <?php echo $laincidencia["estado"]; ?> </li>
+                            <li>Nivel de urgencia: <?php echo $prioridad; ?> </li>
+                            
                         </ul>
+
+                        <?php 
+                            if($laincidencia["estado"]!="Solucionado")
+                            {
+                        ?>
 
                         <div id="form">
                             <label>Cambiar estado</label>
@@ -83,8 +101,8 @@
                                     <option value ="En_proceso">En proceso</option>
                                     <option value ="Solucionado">Solucionado</option>
                                 <select>
-                                    <br>
-                            <label>Agregar Prioridad</label>
+                             
+                                <label>Asignar Prioridad</label>
                                 <select name="urgencia">
                                     <option value="" selected disabled>Seleccionar urgencia</option>
                                     <option value ="1">Baja</option>
@@ -96,6 +114,13 @@
                                 <input type=submit name="submit" value="Actualizar">
                             </form>
                         </div>
+
+                            <?php
+                            }
+                            ?>
+
+                                
+                        
 
                     </div>
     

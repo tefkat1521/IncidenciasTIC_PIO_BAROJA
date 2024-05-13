@@ -77,7 +77,8 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado'
         AND p.ID_Profe = (SELECT ID_profe FROM profesor WHERE nombre = '".$profe."')
         ORDER BY i.fecha DESC;");
 
@@ -308,23 +309,84 @@ class incidencias extends conexion
 
 
 /*****************************************INSERTS******************************************** */
+    
+
+    public function comprobar_id_incidencia($id)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM Incidencias WHERE id_incidencia = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $count = $row['count'];
+        if ($count > 0) 
+        {
+            return true; 
+        } else 
+        {
+            return false; 
+        }
+    }
+
     public function insertar_incidencia($fecha ,$id_aula, $descripcion, $id_tipo_incidencia, $id_profe, $id_ciclo, $estado)
     {
         $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $IDaleatorio = $id_tipo_incidencia.substr(str_shuffle($caracteres), 0, 5);
+        do 
+        {
+            $IDaleatorio = $id_tipo_incidencia . substr(str_shuffle($caracteres), 0, 5);
+        } 
+        while ($this->comprobar_id_incidencia($IDaleatorio));
 
-        $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-       
-        $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("sssisiss",$IDaleatorio, $fecha, $descripcion, $id_ciclo, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
+            $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->conect->prepare($sql);
+            $stmt->bind_param("sssisiss",$IDaleatorio, $fecha, $descripcion, $id_ciclo, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
 
-        if ($stmt->execute()) {
-            return true;
-        } else {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        
+    }
+
+    public function borrar_incidencia($id)
+    {
+        if ($this->comprobar_id($id)) 
+        {
+            $sql = "DELETE FROM Incidencias WHERE id_incidencia = ?";
+            $stmt = $this->conect->prepare($sql);
+            $stmt->bind_param("s", $id);
+            if ($stmt->execute()) 
+            {
+                return true; 
+            } else 
+            {
+                return false; 
+            }
+        }
+         else 
+        {
+            
             return false;
         }
     }
 
+    /****************************************CORREO*********************************************/
+
+    public function enviarCorreo($remitente, $destinatario, $asunto, $mensaje) {
+        // Cabeceras del correo
+        $cabeceras = 'From: ' . $remitente . "\r\n" .
+                     'Reply-To: ' . $remitente . "\r\n" .
+                     'X-Mailer: PHP/' . phpversion();
+        
+        // Envío del correo
+        if (mail($destinatario, $asunto, $mensaje, $cabeceras)) {
+            return true; // Correo enviado correctamente
+        } else {
+            return false; // Error al enviar el correo
+        }
+    }
 
 
 }
