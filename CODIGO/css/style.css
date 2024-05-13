@@ -5,11 +5,6 @@ Author: Cemre Tellioğlu Tunçay
 Author URI: https://cemreworks.com
 */
 
-/* .container-fluid{
-height: 8em;
-} */
-
-
 
 
 
@@ -437,16 +432,3 @@ height: 8em;
 
 
 
-/* Media query para dispositivos pequeños (sm) */
-@media (max-width: 767.98px) {
-    body {
-
-    }
-  }
-  
-  /* Media query para dispositivos extra pequeños (xs) */
-  @media (max-width: 575.98px) {
-    body {
-      font-size: 12px;
-    }
-}

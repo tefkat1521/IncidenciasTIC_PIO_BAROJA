@@ -49,8 +49,14 @@ function comprobarCredenciales()
     $_SESSION['usuario'] = $user;
     $_SESSION['pass'] = $pass;
 
-    // Consulta SQL para verificar si el usuario y la contraseña existen en la tabla "profesor"
-    $consulta = "SELECT * FROM profesor WHERE nombre = '$user' AND clave_acceso = '$pass'";
+    // Comprobar si la cadena proporcionada contiene un símbolo "@"
+    if (strpos($user, '@') !== false) {
+        // Si contiene un símbolo "@", verificar si coincide con el correo electrónico en la base de datos
+        $consulta = "SELECT * FROM profesor WHERE correo = '$user' AND clave_acceso = '$pass'";
+    } else {
+        // Si no contiene un símbolo "@", buscar coincidencias con la primera parte del correo electrónico
+        $consulta = "SELECT * FROM profesor WHERE correo LIKE '%$user%' AND clave_acceso = '$pass'";
+    }
 
     // Ejecutar la consulta
     $resultado = mysqli_query($conexion, $consulta);
@@ -64,6 +70,8 @@ function comprobarCredenciales()
         echo "false";
     }
 }
+
+
 
 function mostrarIncidencias()
 {
@@ -97,12 +105,39 @@ function mostrarIncidencias()
 
 function returnUser()
 {
+    // Importar la variable de conexión global
+    global $conexion;
+
+    // Verificar si existe una sesión de usuario
     if (isset($_SESSION['usuario'])) {
-        echo $_SESSION['usuario'];
+        // Obtener el valor de la variable de sesión
+        $user = $_SESSION['usuario'];
+
+        // Consultar la base de datos para obtener el nombre asociado al correo electrónico
+        $consulta = "SELECT nombre FROM profesor WHERE correo = '$user' OR correo LIKE '%$user%'";
+
+        // Ejecutar la consulta
+        $resultado = mysqli_query($conexion, $consulta);
+
+        // Verificar si se encontró algún registro que coincida
+        if (mysqli_num_rows($resultado) > 0) {
+            // Obtener el nombre del primer registro encontrado
+            $row = mysqli_fetch_assoc($resultado);
+            $nombre = $row['nombre'];
+            
+            // Devolver el nombre obtenido
+            echo $nombre;
+        } else {
+            // Si no se encontró ningún registro, devolver "exit"
+            echo "exit";
+        }
     } else {
+        // Si no existe una sesión de usuario, devolver "exit"
         echo "exit";
     }
 }
+
+
 
 function insertarIncidencia()
 {
@@ -144,34 +179,39 @@ function mostrarFormularioIncidencia()
     $htmlOutput .= '<div class="col-md-8" style="margin: 5em;">';
 
     $htmlOutput .= '<form method="post" action="code.php">';
-    $htmlOutput .= '<select name="ciclo" class="form-control myInputFooter">';
-    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona un ciclo</option>'; // Placeholder
+    
+    // Selector para ciclo
+    $htmlOutput .= '<select name="ciclo" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un ciclo</option>'; // Placeholder
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
     
-    $htmlOutput .= '<select name="aula" class="form-control myInputFooter" required>';
-    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona un Aula</option>'; // Placeholder
+    // Selector para aula
+    $htmlOutput .= '<select name="aula" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un Aula</option>'; // Placeholder
     foreach ($array_aula as $aula) {
         $htmlOutput .= "<option value='" . $aula['ID_Aula'] . "'>" . $aula['Nombre_aula'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
     
-    $htmlOutput .= '<select name="tipo" class="form-control myInputFooter" required>';
-    $htmlOutput .= '<option disabled selected style="display:none;">Selecciona una incidencia</option>'; // Placeholder
+    // Selector para tipo de incidencia
+    $htmlOutput .= '<select name="tipo" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<option value="" selected disabled hidden>Selecciona una incidencia</option>'; // Placeholder
     foreach ($array_tipos as $tipo) {
         $htmlOutput .= "<option value='" . $tipo['id_tipo_incidencia'] . "'>" . $tipo['tipo_incidencia'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
     
-    $htmlOutput .= '<textarea id="descripcion" name="descripcion" class="myInputFooter" placeholder="   Descripción"  style="width: 100%; height: 15em; resize: none;"></textarea><br>';
+    $htmlOutput .= '<textarea id="descripcion" name="descripcion" required class="myInputFooter" placeholder="   Descripción"  style="width: 100%; height: 15em; resize: none;"></textarea><br>';
     $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $htmlOutput .= '</form>';
     $htmlOutput .= '</div>';
     
     // Imprimir la cadena HTML completa
     echo $htmlOutput;
+    
     
 }
 

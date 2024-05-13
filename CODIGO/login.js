@@ -27,7 +27,7 @@ function ComprobarCredenciales() {
                 window.location.href = 'index.html';
             } else {
                 // Si las credenciales son incorrectas, mostrar un mensaje de alerta
-                alert('Usuario incorrecto mamon');
+                alert('Usuario y/o contraseña incorrectos');
             }
         }
     });

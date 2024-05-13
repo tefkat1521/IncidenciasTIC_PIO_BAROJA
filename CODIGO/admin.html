@@ -12,10 +12,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=latin-ext" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- <link href="css/responsive.css" rel="stylesheet"> -->
-	<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
-	<script src="admin.js"></script>
+    <link href="css/style2.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="principal.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   </head>
   <body>
@@ -25,47 +28,54 @@
 
 	<!-- -------------------------------------------------------------HEADER------------------------------------------------------------------- -->
 
-			<div class="col-md-12 noPadding text-center fixedArea">
-				<!-- <div class="col-md-12"> -->
-					<div class="col-md-12 hola">
-						<!-- LOGO -->
-						<div class="col-lg-1 col-md-1 col-xs-2 col-sm-1">
-							<!-- <div id="pruebecilla"></div> -->
-							<!-- <img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 6em; height: auto;"> -->
-						</div>
-						<!-- ENLACES -->
-						<div class="col-lg-9 col-md-8 col-xs-8 col-sm-10">
-							<ul class="myNavUl">
-					
-								<li><a href="#section1" class=" text-uppercase font-weight-bold">Nueva Incidencia</a></li>
-								<li><a href="#section2" class="nav-link text-uppercase font-weight-bold">Mis Incidencias</a></li>
-
-							</ul>
-						</div>
-
-						<!-- SALUDO -->
-						<!-- <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
-							<div id="saludo"></div>
-						</div> -->
-
-						<!-- CERRAR SESION -->
-						<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
-
-							<!-- <form method="post" action="code.php" >
-							<button type="send" class="cerrarSesion" name="cerrarSesion">Cerrar sesión</button>
-							</form> -->
-
-
-							<form id="formCerrarSesion" method="post" action="code.php" style="display: inline;">
-								<input type="hidden" name="cerrarSesion">
-								<a href="code.php" onclick="document.getElementById('formCerrarSesion').submit(); return false;" class="cerrarSesion">Cerrar sesión</a>
-							</form>
-							
-
-						</div>
-					</div>
-				<!-- </div> -->
+	<nav class="navbar navbar-inverse menunavegacion navbar-fixed-top">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="hamburguesa">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span> 
+			</button>
+			
+			<div class="logo-container navbar-brand mx-auto">
+			  <img src="img/logo pio baroja circular.png" alt="Logo" class="logo">  
 			</div>
+		  </div>
+		  
+		  <div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-nav-scroll" style="margin-left: 10px;">
+			  <li><a href="#section0" class="nav-link text-uppercase font-weight-bold">INICIO</a></li>
+			  <li><a href="#section1" class="nav-link text-uppercase font-weight-bold">Incidencias</a></li>
+			  <li><a href="#section2" class="nav-link text-uppercase font-weight-bold">Profesores</a></li>
+
+			  <li class="dropdown">
+				<a class="dropdown-toggle text-uppercase" data-toggle="dropdown" href="#">Incidencias <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				<li><a href="#">Todas</a></li>
+				  <li><a href="#">Filtrar</a></li>
+				  <li><a href="#">Editar</a></li>
+				  <li><a href="#">Borrar</a></li>
+				</ul>
+			  </li>
+
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right" style="margin-left: 10px;">
+			  
+		
+							  
+			  <li>
+				<a href="code.php" onclick="document.getElementById('formCerrarSesion').submit(); return false;">
+				  <form id="formCerrarSesion" method="post" action="code.php">
+					<input type="hidden" name="cerrarSesion">
+					<span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión
+				  </form>
+				</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
 
 <!-- --------------------------------------------------------------------------------------------------------------------------- -->
 
