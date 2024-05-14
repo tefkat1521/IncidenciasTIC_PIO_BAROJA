@@ -40,13 +40,21 @@ if (isset($_POST['cerrarSesion'])) {
 // Definir la función comprobarCredenciales
 function comprobarCredenciales()
 {
-    // Importar la variable de conexión global
-    global $conexion;
+    // Importar la variable de conexión global si es necesario
+    //global $conexion;
+
+    // Conectar a la base de datos si no estás usando una conexión global
+    $conexion = mysqli_connect("localhost", "usuario", "contraseña", "basededatos");
+
+    // Verificar la conexión
+    if (mysqli_connect_errno()) {
+        echo "Error al conectar con MySQL: " . mysqli_connect_error();
+        exit();
+    }
 
     // Obtener las credenciales del formulario
     $user = $_POST['user'];
     $pass = $_POST['pass'];
-    
 
     // Comprobar si la cadena proporcionada contiene un símbolo "@"
     if (strpos($user, '@') !== false) {
@@ -54,9 +62,7 @@ function comprobarCredenciales()
         $consulta = "SELECT * FROM profesor WHERE correo = '$user' AND clave_acceso = '$pass'";
     } else {
         // Si no contiene un símbolo "@", buscar coincidencias con la primera parte del correo electrónico
-        $consulta = "SELECT * 
-        FROM profesor 
-        WHERE SUBSTRING_INDEX(correo, '@', 1) = '$user' AND clave_acceso = '$pass'";
+        $consulta = "SELECT * FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = '$user' AND clave_acceso = '$pass'";
     }
 
     // Ejecutar la consulta
@@ -65,15 +71,24 @@ function comprobarCredenciales()
     // Verificar si se encontró algún registro que coincida
     if (mysqli_num_rows($resultado) > 0) {
         // Usuario y contraseña válidos
-        $_SESSION['usuario'] = $user;
-        $_SESSION['pass'] = $pass;
-        echo "true";
-        
+        if ($user ==  "maite" || $user == "maite@educa.madrid.org") {
+            echo "admin";
+        } else {
+            // Iniciar sesión
+            session_start();
+            $_SESSION['usuario'] = $user;
+            $_SESSION['pass'] = $pass;
+            echo "true";
+        }
     } else {
         // Usuario y/o contraseña incorrectos
         echo "false";
     }
+
+    // Cerrar la conexión
+    mysqli_close($conexion);
 }
+
 
 
 

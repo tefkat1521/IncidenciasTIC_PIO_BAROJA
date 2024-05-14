@@ -1,0 +1,30 @@
+
+
+
+#incidencias > div  
+{
+    width: 300px;
+    margin-bottom: 20px; /* Espacio entre las incidencias y la siguiente fila */
+    padding: 20px;
+    box-sizing: border-box;
+}
+div.incEn_proceso
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(255, 38, 0)  ;
+}
+
+div.incCreada
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(255, 251, 0)  ;
+}
+
+div.incSolucionado
+{
+    margin: 0.4em;
+    padding: 0.4em;
+    border: 1px solid  rgb(60, 255, 0) ;
+}
