@@ -40,36 +40,23 @@ if (isset($_POST['cerrarSesion'])) {
 // Definir la función comprobarCredenciales
 function comprobarCredenciales()
 {
-    // Importar la variable de conexión global si es necesario
-    //global $conexion;
-
-    // Conectar a la base de datos si no estás usando una conexión global
-    $conexion = mysqli_connect("localhost", "usuario", "contraseña", "basededatos");
-
-    // Verificar la conexión
-    if (mysqli_connect_errno()) {
-        echo "Error al conectar con MySQL: " . mysqli_connect_error();
-        exit();
-    }
+    
 
     // Obtener las credenciales del formulario
     $user = $_POST['user'];
     $pass = $_POST['pass'];
+    $prof = new profesor();
 
     // Comprobar si la cadena proporcionada contiene un símbolo "@"
     if (strpos($user, '@') !== false) {
         // Si contiene un símbolo "@", verificar si coincide con el correo electrónico en la base de datos
-        $consulta = "SELECT * FROM profesor WHERE correo = '$user' AND clave_acceso = '$pass'";
+        $bool = $prof->comprobar_correo_contrasena_con_arroba($user,$pass);
     } else {
         // Si no contiene un símbolo "@", buscar coincidencias con la primera parte del correo electrónico
-        $consulta = "SELECT * FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = '$user' AND clave_acceso = '$pass'";
+        $bool = $prof->comprobar_correo_contrasena_sin_arroba($user,$pass);
     }
 
-    // Ejecutar la consulta
-    $resultado = mysqli_query($conexion, $consulta);
-
-    // Verificar si se encontró algún registro que coincida
-    if (mysqli_num_rows($resultado) > 0) {
+    if ($bool) {
         // Usuario y contraseña válidos
         if ($user ==  "maite" || $user == "maite@educa.madrid.org") {
             echo "admin";
@@ -85,10 +72,7 @@ function comprobarCredenciales()
         echo "false";
     }
 
-    // Cerrar la conexión
-    mysqli_close($conexion);
 }
-
 
 
 

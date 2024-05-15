@@ -56,6 +56,51 @@ class profesor extends conexion
     }
 
 
+    /***********COMPROBAR si existe PROFESOR************* */
+    public function comprobar_correo_contrasena_con_arroba($correo, $password)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM profesor WHERE correo = ? AND clave_acceso = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("ss", $correo, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $count = $row['count'];
+
+        if ($count > 0) 
+        {
+            return true; 
+        } 
+        else 
+        {
+            return false; 
+        }
+    }
+
+    public function comprobar_correo_contrasena_sin_arroba($correo, $password)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? AND clave_acceso = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("ss", $correo, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $count = $row['count'];
+
+        if ($count > 0) 
+        {
+            return true; 
+        } 
+        else 
+        {
+            return false; 
+        }
+    }
+/******************************************************************************************/ 
+
+
+
+
     public function insertar_profesor($nombre, $correo, $password, $dep)
     {
         do {

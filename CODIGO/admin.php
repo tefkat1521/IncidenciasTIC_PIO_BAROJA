@@ -1,4 +1,7 @@
 <?php
+require "clases/incidencias.php";
+
+
 if (isset($_POST['PaginaAdmin'])) {
     mostrarIncidencias();
 }
@@ -9,12 +12,14 @@ if(isset($_POST["submit"])) {
     // Verificar si se completó el campo de estado
     if(isset($_POST['estado']) && !empty($_POST['estado'])) {
         $estado = $_POST['estado'];
+        $incidencias = new Incidencias();
         $incidencias->update_incidencia_estado($id_incidencia, $estado);
     }
 
     // Verificar si se completó el campo de urgencia
     if(isset($_POST['urgencia']) && !empty($_POST['urgencia'])) {
         $urgencia = $_POST['urgencia'];
+        $incidencias = new Incidencias();
         $incidencias->update_incidencia_prioridad($id_incidencia, $urgencia);
     }
 
@@ -25,12 +30,14 @@ if(isset($_POST["submit"])) {
     header("Location: admin.html");
     exit;
 }
+
+
 function mostrarIncidencias(){
     ob_start(); // Inicia el búfer de salida
 
-    require "clases/incidencias.php";
+    // require "clases/incidencias.php";
+    // $incidencias = new Incidencias();
     $incidencias = new Incidencias();
-    
 
     
     // Almacena la parte HTML en una variable

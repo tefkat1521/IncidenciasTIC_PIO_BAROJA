@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
     $('#loginForm').submit(function (event) {
         event.preventDefault();
-        ComprobarCredenciales(); // Llamada a la función para comprobar credenciales
+        comprobarCredenciales(); // Llamada a la función para comprobar credenciales
         
     });
 });
@@ -31,6 +31,9 @@ function comprobarCredenciales() {
             } else {
                 // Si las credenciales son incorrectas, mostrar un mensaje de alerta
                 alert('Usuario y/o contraseña incorrectos');
+                console.log(user);
+                console.log(pass);
+                console.log(response);
             }
         },
         error: function () {
