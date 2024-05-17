@@ -30,6 +30,11 @@ if(isset($_POST["submit"])) {
     header("Location: admin.html");
     exit;
 }
+if(isset($_POST["submitborrado"]))
+    {
+        $id_incidencia = $_POST['id2'];
+        $incidencias->borrar_incidencia($id_incidencia);
+    }
 
 
 function mostrarIncidencias(){
@@ -73,8 +78,8 @@ function mostrarIncidencias(){
             {
                 $html_output .= '
                 <div id="form">
-                    <label>Cambiar estado</label>
                     <form method="post" action="admin.php">
+                    <label>Cambiar estado</label><br>
                         <select name="estado">
                             <option value="" selected disabled>Seleccionar estado</option>
                             <option value="Creada">Creada</option>
@@ -82,21 +87,29 @@ function mostrarIncidencias(){
                             <option value="Solucionado">Solucionado</option>
                         </select>
                         <br>
-                        <label>Asignar Prioridad</label>
+                        <label>Asignar Prioridad</label><br>
                         <select name="urgencia">
                             <option value="" selected disabled>Seleccionar urgencia</option>
                             <option value="1">Baja</option>
                             <option value="2">Media</option>
                             <option value="3">Alta</option>
                         </select>
-                        <input type="hidden" name="id" value="'. $laincidencia["id_incidencia"] .'">
+                        <input type="hidden" name="id" value="'. $laincidencia["id_incidencia"].'"><br>
                         <input type="submit" name="submit" value="Actualizar">
                     </form>
-                </div>';
+                </div> <br>';
                 
             }
             
-            $html_output .= '</div>';
+            $html_output .= '
+                <div id="borrado">
+                    <form method="post" action="admin.php">
+                        <input type="hidden" name="id2" value="<?php echo $laincidencia["id_incidencia"]; ?>
+                        <input type=submit name="submitborrado" value="Borrar">
+                    </form>
+                </div>
+            
+            </div>';
         }
     
         $html_output .= '</div>';

@@ -20,3 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
 
 });
+
+
+function editar_incidencia()
+{
+    let boton =  document.getElementById("form");
+    boton.style.display = "block";
+}

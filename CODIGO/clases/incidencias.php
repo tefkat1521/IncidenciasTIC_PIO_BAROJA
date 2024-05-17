@@ -77,7 +77,7 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo
+        AND c.id_ciclo = i.id_ciclo 
         AND i.estado != 'Solucionado'
         AND p.ID_Profe = (SELECT ID_profe FROM profesor WHERE correo LIKE '%".$profe."%')
         ORDER BY i.fecha DESC;");
@@ -352,8 +352,7 @@ class incidencias extends conexion
 
     public function borrar_incidencia($id)
     {
-        if ($this->comprobar_id($id)) 
-        {
+        
             $sql = "DELETE FROM Incidencias WHERE id_incidencia = ?";
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("s", $id);
@@ -364,12 +363,8 @@ class incidencias extends conexion
             {
                 return false; 
             }
-        }
-         else 
-        {
-            
-            return false;
-        }
+        
+       
     }
 
     /****************************************CORREO*********************************************/

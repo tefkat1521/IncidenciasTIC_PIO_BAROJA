@@ -89,16 +89,30 @@
 
                                 <div id="form">
                                     
-                                    <label>Cambiar estado</label>
-                                    <form method="post" action="tablaincidenciasV2.php">
-                                        <select name="estado">
+                                    
+
+                                        
+
+                                    <form method="post" action="tablaincidenciasV2.php" id="custom-select-form">
+                                        <label>Cambiar estado</label><br>
+                                    <!-- <div class="custom-select-container">
+                                            <button type="button" id="arrow-up">&#9650;</button>
+                                            <div class="options-wrapper">
+                                                <div id="selected-option"></div>
+                                                <div id="next-option" class="hidden"></div>
+                                            </div>
+                                            <button type="button" id="arrow-down">&#9660;</button> -->
+                                            
+                                        <select name="estado" id="hidden-select">
                                             <option value="" selected disabled>Seleccionar estado</option>
                                             <option value ="Creada" >Creada</option>
                                             <option value ="En_proceso">En proceso</option>
                                             <option value ="Solucionado">Solucionado</option>
                                         <select>
-                                    <br>
-                                        <label>Asignar Prioridad</label>
+                                    <!-- </div> -->
+
+                                    <br><br>
+                                        <label>Asignar Prioridad</label><br>
                                         <select name="urgencia">
                                             <option value="" selected disabled>Seleccionar urgencia</option>
                                             <option value ="1">Baja</option>
@@ -106,10 +120,10 @@
                                             <option value ="3">Alta</option>
                                         <select>
 
-                                        <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>">
+                                        <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>"> <br><br>
                                         <input type=submit name="submit" value="Actualizar">
                                     </form>
-
+                                    <!-- <script src="tablaincidencias.js"></script> -->
                                     <br><br>
  
 
