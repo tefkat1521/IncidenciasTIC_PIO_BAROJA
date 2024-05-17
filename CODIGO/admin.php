@@ -41,24 +41,15 @@ function mostrarIncidencias(){
 
     
     // Almacena la parte HTML en una variable
-    $html_output = '
-        <div id=incidencias>';
     
-    //Comprobaciones de cookies y sesiones
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
     
+  
     $array_incidencias = $incidencias->get_incidencias_datos();
     
     if (count($array_incidencias) > 0) 
     {
+        $html_output = '<div id=incidencias>';
+
         foreach($array_incidencias as $laincidencia)
         {
             if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
@@ -106,8 +97,9 @@ function mostrarIncidencias(){
             
             $html_output .= '</div>';
         }
+    
         $html_output .= '</div>';
-        $html_output .= '</div>';
+
     }
     else
     {
