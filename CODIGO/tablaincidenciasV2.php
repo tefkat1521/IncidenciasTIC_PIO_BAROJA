@@ -52,17 +52,7 @@
     <div id=incidencias>
     <?php
 
-    //Comprobaciones de cookies y sesiones
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-
+   
         $incidencias = new incidencias();
         $array_incidencias = $incidencias->get_incidencias_datos();
 
