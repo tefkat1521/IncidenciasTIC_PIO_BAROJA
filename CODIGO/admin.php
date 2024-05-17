@@ -93,6 +93,7 @@ function mostrarIncidencias(){
                         <input type="submit" name="submit" value="Actualizar">
                     </form>
                 </div>';
+                
             }
             
             $html_output .= '</div>';

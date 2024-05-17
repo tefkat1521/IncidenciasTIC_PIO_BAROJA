@@ -36,6 +36,11 @@
             echo "Por favor complete al menos uno de los campos.";
         }
     }
+    if(isset($_POST["submitborrado"]))
+    {
+        $id_incidencia = $_POST['id2'];
+        $incidencias->borrar_incidencia($id_incidencia);
+    }
 
 ?>
 
@@ -49,10 +54,10 @@
 </head>
 <body>
     <p>Amarillo -> no esta en revision ,  Rojo -> en proceso de solucion,  Verde -> hecha</p>
+
     <div id=incidencias>
     <?php
 
-   
         $incidencias = new incidencias();
         $array_incidencias = $incidencias->get_incidencias_datos();
 
@@ -82,33 +87,44 @@
                             {
                         ?>
 
-                        <div id="form">
-                            <label>Cambiar estado</label>
-                            <form method="post" action="tablaincidenciasV2.php">
-                                <select name="estado">
-                                    <option value="" selected disabled>Seleccionar estado</option>
-                                    <option value ="Creada" >Creada</option>
-                                    <option value ="En_proceso">En proceso</option>
-                                    <option value ="Solucionado">Solucionado</option>
-                                <select>
-                             <br>
-                                <label>Asignar Prioridad</label>
-                                <select name="urgencia">
-                                    <option value="" selected disabled>Seleccionar urgencia</option>
-                                    <option value ="1">Baja</option>
-                                    <option value ="2">Media</option>
-                                    <option value ="3">Alta</option>
-                                <select>
+                                <div id="form">
+                                    
+                                    <label>Cambiar estado</label>
+                                    <form method="post" action="tablaincidenciasV2.php">
+                                        <select name="estado">
+                                            <option value="" selected disabled>Seleccionar estado</option>
+                                            <option value ="Creada" >Creada</option>
+                                            <option value ="En_proceso">En proceso</option>
+                                            <option value ="Solucionado">Solucionado</option>
+                                        <select>
+                                    <br>
+                                        <label>Asignar Prioridad</label>
+                                        <select name="urgencia">
+                                            <option value="" selected disabled>Seleccionar urgencia</option>
+                                            <option value ="1">Baja</option>
+                                            <option value ="2">Media</option>
+                                            <option value ="3">Alta</option>
+                                        <select>
 
-                                <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>">
-                                <input type=submit name="submit" value="Actualizar">
-                            </form>
-                        </div>
+                                        <input type="hidden" name="id" value="<?php echo $laincidencia["id_incidencia"]; ?>">
+                                        <input type=submit name="submit" value="Actualizar">
+                                    </form>
+
+                                    <br><br>
+ 
+
+                                </div>
 
                             <?php
                             }
                             ?>
 
+                                <div id="borrado">
+                                    <form method="post" action="tablaincidenciasV2.php">
+                                        <input type="hidden" name="id2" value="<?php echo $laincidencia["id_incidencia"]; ?>">
+                                        <input type=submit name="submitborrado" value="Borrar">
+                                    </form>
+                                </div>  
                                 
                         
 
