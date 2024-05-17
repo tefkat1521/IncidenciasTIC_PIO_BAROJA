@@ -1,21 +1,22 @@
+#incidencias {
+    display: flex; /* Hace que los divs hijos se comporten como flex items */
+    flex-wrap: wrap; /* Permite que los flex items se envuelvan a la siguiente línea cuando no hay suficiente espacio */
+}
 
-#incidencias{
-width: 100%;
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-between;
-align-items: center;
+#incidencias > div {
+    width: calc(25% - 20px); /* Ancho del 25% menos el margen */
+    margin: 10px; /* Margen entre los divs */
 }
 
 
-#incidencias > div  
-{
-    width: 300px;
-    margin-bottom: 20px; /* Espacio entre las incidencias y la siguiente fila */
-    padding: 20px;
-    box-sizing: border-box;
-}
+
+
+
+
+
+
+
+
 div.incEn_proceso
 {
     margin: 0.4em;
