@@ -46,32 +46,32 @@ Author URI: https://cemreworks.com
 
 /* Cambiar el color de fondo de la barra de navegación */
 .navbar-inverse {
-    background-color: #4b924b ; /* Cambia el color de fondo a negro */
+    background-color: #4b924b ; 
     border:none;
     border-radius: 0%;
   }
   
   /* Cambiar el estilo del texto en los elementos de la barra de navegación */
   .navbar-inverse .navbar-nav > li > a {
-    color: #fff; /* Cambia el color del texto a blanco */
-    font-size: 1.15em; /* Cambia el tamaño de la fuente */
+    color: #fff; 
+    font-size: 1.15em; 
   
   }
   
   /* Opcional: Cambiar el estilo del texto en los enlaces al pasar el mouse */
   .navbar-inverse .navbar-nav > li > a:hover {
-    color: #ccc; /* Cambia el color del texto a un tono más claro cuando se pasa el mouse */
+    color: #ccc; 
   }
 
 /* Estilo normal del elemento <li> */
-.navbar-inverse .navbar-nav > li.uno > a {
-    color: #fff !important;  }
+/* .navbar-inverse .navbar-nav > li.uno > a {
+    color: #fff !important;  } */
   
   /* Eliminar efecto hover del elemento <li> */
-  .navbar-inverse .navbar-nav > li.uno > a:hover {
+  /* .navbar-inverse .navbar-nav > li.uno > a:hover {
     color: inherit;
   }
-  
+   */
 
 /* Cambiar el color de fondo del botón de hamburguesa */
 .navbar-inverse .navbar-toggle {
