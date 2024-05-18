@@ -59,10 +59,10 @@ function comprobarCredenciales()
     if ($bool) {
         // Usuario y contraseña válidos
         if ($user ==  "maite" || $user == "maite@educa.madrid.org") {
+            $_SESSION['usuario'] = $user;
+            $_SESSION['pass'] = $pass;
             echo "admin";
         } else {
-            // Iniciar sesión
-            session_start();
             $_SESSION['usuario'] = $user;
             $_SESSION['pass'] = $pass;
             echo "true";
