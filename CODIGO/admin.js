@@ -17,13 +17,11 @@ function consultarIncidencias() {
     xhttp.send("PaginaAdmin=" + PaginaAdmin);
 }
 
-
-
-function editar_incidencia()
-{
-    let boton =  document.getElementById("form");
+function editar_incidencia() {
+    let boton = document.getElementById("form");
     boton.style.display = "block";
 }
+
 function SesionUser() {
     var sesion = "";
 
@@ -31,13 +29,11 @@ function SesionUser() {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-
             var logueado = this.responseText; // Obtener la respuesta del servidor
             if (logueado != "exit") {
             } else {
                 noLogueado();
             }
-
         }
     };
 
@@ -45,11 +41,35 @@ function SesionUser() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("sesion=" + sesion);
 }
+
 function noLogueado() {
     window.location.href = "login.html";
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
-
 });
+
+$(document).ready(function() {
+    $('#toggle-pencil').click(function() {
+        var form1 = $('#form1');
+        if (form1.css('visibility') === 'hidden') {
+            form1.css('visibility', 'visible');
+        } else {
+            form1.css('visibility', 'hidden');
+        }
+    });
+
+    $('#toggle-sort').click(function() {
+        var form2 = $('#form2');
+        if (form2.css('visibility') === 'hidden') {
+            form2.css('visibility', 'visible');
+        } else {
+            form2.css('visibility', 'hidden');
+        }
+    });
+});
+
+
+

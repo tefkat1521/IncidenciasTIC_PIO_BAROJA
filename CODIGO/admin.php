@@ -33,6 +33,8 @@ if(isset($_POST["submit"])) {
 if(isset($_POST["submitborrado"]))
     {
         $id_incidencia = $_POST['id2'];
+        $incidencias = new Incidencias();
+        $incidencias->borrar_incidencias($id_incidencia);
         $incidencias->borrar_incidencia($id_incidencia);
     }
 
@@ -47,46 +49,58 @@ function mostrarIncidencias(){
     
     // Almacena la parte HTML en una variable
     
-    
-  
-    $array_incidencias = $incidencias->get_incidencias_datos();
-    
-    if (count($array_incidencias) > 0) 
-    {
-        $html_output = '<div id=incidencias>';
+$array_incidencias = $incidencias->get_incidencias_datos();
 
-        foreach($array_incidencias as $laincidencia)
-        {
-            if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
-            elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
-            elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
-            else{$prioridad = "Alta";}
-            
+if (count($array_incidencias) > 0) {
+    $html_output = '<div id="incidencias">';
+
+    foreach($array_incidencias as $index => $laincidencia) {
+        $prioridad = 'Sin asignar';
+        if($laincidencia["niveldeprioridad"] == 1) {
+            $prioridad = "Baja";
+        } elseif($laincidencia["niveldeprioridad"] == 2) {
+            $prioridad = "Media";
+        } elseif($laincidencia["niveldeprioridad"] == 3) {
+            $prioridad = "Alta";
+        }
+
+        $html_output .= '
+        <div class="inc'. $laincidencia["estado"] .'">
+            <ul>
+                <li>Fecha: '. $laincidencia["fecha"] .'</li>
+                <li>Aula: '. $laincidencia["Nombre_aula"] .'</li>
+                <li>Ciclo: '. $laincidencia["ciclo"] .'</li>
+                <li>Tipo: '. $laincidencia["tipo_incidencia"] .'</li>
+                <li>'. $laincidencia["descripcion"] .'</li>
+                <li>Estado: '. $laincidencia["estado"] .'</li>
+                <li>Nivel de urgencia: '. $prioridad .'</li>
+            </ul>';
+
+        if($laincidencia["estado"] != "Solucionado") {
             $html_output .= '
-            <div class="inc'. $laincidencia["estado"] .'">
-                <ul>
-                    <li>Fecha: '. $laincidencia["fecha"] .'</li>
-                    <li>Aula: '. $laincidencia["Nombre_aula"] .'</li>
-                    <li>Ciclo: '. $laincidencia["ciclo"] .'</li>
-                    <li>Tipo: '. $laincidencia["tipo_incidencia"] .'</li>
-                    <li>'. $laincidencia["descripcion"] .'</li>
-                    <li>Estado: '. $laincidencia["estado"] .'</li>
-                    <li>Nivel de urgencia: '. $prioridad .'</li>
-                </ul>';
-    
-            if($laincidencia["estado"]!="Solucionado")
-            {
-                $html_output .= '
-                <div id="form">
+                <button id="toggle-pencil-' . $index . '" class="btn btn-default">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                
+                <button id="toggle-sort-' . $index . '" class="btn btn-default">
+                    <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                </button>
+        
+                <div id="form1-' . $index . '" style="visibility: hidden;">
                     <form method="post" action="admin.php">
-                    <label>Cambiar estado</label><br>
+                        <label>Cambiar estado</label><br>
                         <select name="estado">
                             <option value="" selected disabled>Seleccionar estado</option>
                             <option value="Creada">Creada</option>
                             <option value="En_proceso">En proceso</option>
                             <option value="Solucionado">Solucionado</option>
                         </select>
-                        <br>
+                    </form>
+                </div>
+                <br>
+                
+                <div id="form2-' . $index . '" style="visibility: hidden;">
+                    <form method="post" action="admin.php">
                         <label>Asignar Prioridad</label><br>
                         <select name="urgencia">
                             <option value="" selected disabled>Seleccionar urgencia</option>
@@ -94,34 +108,29 @@ function mostrarIncidencias(){
                             <option value="2">Media</option>
                             <option value="3">Alta</option>
                         </select>
-                        <input type="hidden" name="id" value="'. $laincidencia["id_incidencia"].'"><br>
+                        <input type="hidden" name="id" value="1"><br>
                         <input type="submit" name="submit" value="Actualizar">
                     </form>
-                </div> <br>';
-                
-            }
-            
-            $html_output .= '
-                <div id="borrado">
-                    <form method="post" action="admin.php">
-                        <input type="hidden" name="id2" value="<?php echo $laincidencia["id_incidencia"]; ?>
-                        <input type=submit name="submitborrado" value="Borrar">
-                    </form>
                 </div>
-            
-            </div>';
+            ';
         }
-    
-        $html_output .= '</div>';
 
+        $html_output .= '
+            <div id="borrado">
+                <form method="post" action="admin.php">
+                    <input type="hidden" name="id2" value="'.$laincidencia["id_incidencia"] . '"?>
+                    <input type="submit" name="submitborrado" value="Borrar">
+                </form>
+            </div>
+        </div>';
     }
-    else
-    {
-        $html_output .= '<div>No existen incidencias</div>';
-    }
-    
-    // Devuelve la salida HTML
-    echo $html_output;
+
+    $html_output .= '</div>';
+} else {
+    $html_output .= '<div>No existen incidencias</div>';
 }
 
+// Devuelve la salida HTML
+echo $html_output;
+}
 ?>

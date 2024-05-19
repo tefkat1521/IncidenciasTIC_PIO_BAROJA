@@ -39,3 +39,25 @@ $(document).ready(function() {
     
     
 });
+
+
+$(document).ready(function() {
+    $('#toggle-pencil').click(function() {
+        var form1 = $('#form1');
+        if (form1.css('visibility') === 'hidden') {
+            form1.css('visibility', 'visible');
+        } else {
+            form1.css('visibility', 'hidden');
+        }
+    });
+
+    $('#toggle-sort').click(function() {
+        var form2 = $('#form2');
+        if (form2.css('visibility') === 'hidden') {
+            form2.css('visibility', 'visible');
+        } else {
+            form2.css('visibility', 'hidden');
+        }
+    });
+});
+
