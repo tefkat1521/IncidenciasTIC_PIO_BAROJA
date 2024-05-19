@@ -161,6 +161,7 @@ function insertarIncidencia()
 
         // Insertar la incidencia
         $incidencias = new Incidencias();
+        
         $incidencias->insertar_incidencia($fecha, $aula, $descripcion, $tipo, $id_profesor, $ciclo, $estado);
         header("Location: index.html");
         exit; // Asegura que el script se detenga después de la redirección
@@ -220,8 +221,5 @@ function mostrarFormularioIncidencia()
     
     
 }
-function cambiarContraseña(){
-    //AQUÍ EL CAMBIO DE LA CONTRASEÑA TU PUEDES CHECHU ☺☻☺♥♥♥♥☻
-    //TIENES QUE DEVOLVER TRUE O FALSE SI SE HACE O NO PARA QUE EN EL HTML LO MUESTRE
-}
+
 ?>
