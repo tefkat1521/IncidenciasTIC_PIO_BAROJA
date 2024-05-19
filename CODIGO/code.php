@@ -35,6 +35,9 @@ if (isset($_POST['cerrarSesion'])) {
     header("Location: login.html");
     exit; // Asegura que el script se detenga después de la redirección
 }
+if (isset($_POST['newPass'])) {
+    cambiarContraseña();
+}
 
 /*****************************FUNCIONES*********************************************** */
 // Definir la función comprobarCredenciales
@@ -217,5 +220,8 @@ function mostrarFormularioIncidencia()
     
     
 }
-
+function cambiarContraseña(){
+    //AQUÍ EL CAMBIO DE LA CONTRASEÑA TU PUEDES CHECHU ☺☻☺♥♥♥♥☻
+    //TIENES QUE DEVOLVER TRUE O FALSE SI SE HACE O NO PARA QUE EN EL HTML LO MUESTRE
+}
 ?>

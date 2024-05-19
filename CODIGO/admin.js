@@ -31,6 +31,31 @@ function consultarIncidencias() {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("PaginaAdmin=" + PaginaAdmin);
 }
+function insertarProfesor() {
+    // var nombre = document.getElementById("nombre").value;
+    // var correo = document.getElementById("correo").value;
+    // var pass = document.getElementById("pass").value;
+    // var dept = document.getElementById("dept").value;
+
+    var xhttp = new XMLHttpRequest();
+    var newProfesor = 0;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            // Aquí puedes hacer algo con la respuesta del servidor, si es necesario
+            var insertarProfesor = this.response; // Obtener la respuesta del servidor
+            var DivProfesor = document.getElementById("insertarProfesor");
+
+            DivProfesor.innerHTML = insertarProfesor;
+        }
+    };
+
+    xhttp.open("POST", "admin.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("newProfesor=" + newProfesor);
+
+    // xhttp.send("nombre=" + nombre + "&correo=" + correo + "&pass=" + pass + "&dept=" + dept + "&newProfesor=1");
+}
 
 function SesionUser() {
     var sesion = "";
@@ -60,4 +85,5 @@ function noLogueado() {
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
+    insertarProfesor();
 });

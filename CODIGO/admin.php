@@ -1,6 +1,17 @@
 <?php
 require "clases/incidencias.php";
+require "clases/profesor.php";
+require "clases/departamento.php";
+$deps = new departamento();
+$array_deps = $deps->get_departamento();
 
+if(isset($_POST["newProfesor"])){
+    generarFormulario($array_deps);
+} 
+if(isset($_POST["hecho"])){
+    
+    procesarFormulario();
+}
 
 if (isset($_POST['PaginaAdmin'])) {
     mostrarIncidencias();
@@ -133,4 +144,49 @@ if (count($array_incidencias) > 0) {
 echo $html_output;
 
 }
+
+
+
+
+
+
+function procesarFormulario() {
+    if(isset($_POST["hecho"])) { 
+        $prof = new profesor();
+        $prof->insertar_profesor($_POST["nombre"], $_POST["correo"], $_POST["pass"], $_POST["dept"]);
+        if($prof) {
+            echo "Insertado profesor: " . $_POST["nombre"];
+            echo " Redirigiendo...";
+            header("Location: admin.html"); // Redirige a admin.html
+            exit; // Asegura que el script se detenga después de la redirección
+        }
+    }
+}
+function generarFormulario($array_deps) {
+    $out = '';
+    $out .= '<form id="loginform" action="admin.php" method="post">';
+    $out .= '<label>Nombre Completo</label>';
+    $out .= '<input type="text" name="nombre" required/><br>';
+    $out .= '<label>Correo</label>';
+    $out .= '<input type="text" name="correo" required/><br>';
+    $out .= '<label>Departamento</label>';
+    $out .= '<select name="dept" required>';
+    foreach($array_deps as $depart) {
+        $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
+    }
+    $out .= '</select><br><br>';
+    $out .= '<label>Contraseña</label>';
+    $out .= '<input type="password" name="pass" required/><br>';
+    $out .= '<label>Repita la contraseña</label>';
+    $out .= '<input type="password" required/><br>';
+    $out .= '<input type="submit" name="hecho" value="CREAR">';
+    $out .= '</form>';
+    echo $out;
+}
+
+
+
+
+
+
 ?>
