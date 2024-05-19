@@ -77,11 +77,11 @@ if (count($array_incidencias) > 0) {
 
         if($laincidencia["estado"] != "Solucionado") {
             $html_output .= '
-                <button id="toggle-pencil-' . $index . '" class="btn btn-default">
+                <button id="toggle-pencil-' . $index . '" class="btn btn-default">Estado
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
                 
-                <button id="toggle-sort-' . $index . '" class="btn btn-default">
+                <button id="toggle-sort-' . $index . '" class="btn btn-default">Prioridad
                     <span class="glyphicon glyphicon-sort-by-attributes"></span>
                 </button>
         
