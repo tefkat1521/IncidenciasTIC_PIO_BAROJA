@@ -4,6 +4,7 @@ $(document).ready(function() {
     });
 
     $('#loginForm').submit(function (event) {
+        
         event.preventDefault();
         comprobarCredenciales(); // Llamada a la función para comprobar credenciales
     });
@@ -25,10 +26,11 @@ $(document).ready(function() {
             var confirmacion = confirm("¿Seguro que desea cambiar la contraseña?");
             if (confirmacion) {
                 // Mostrar mensaje de contraseña cambiada correctamente
+                cambiarcontraseña(password1);
                 alert("Contraseña cambiada correctamente");
                 // Redirigir a la página index.html después de 2 segundos
                 // setTimeout(function() {
-                    window.location.href = "index.html";
+                    // window.location.href = "index.html";
                 // }, 1000);
             } else {
                 // Si el usuario cancela, no hacer nada
@@ -36,6 +38,47 @@ $(document).ready(function() {
             }
         }
     });
-    
+    function cambiarcontraseña(newPass) {  //AQUÍ LA FUNCIÓN QUE CAMBIARÁ LA CONTRASEÑA DESDE EL PHP EN LA BASE DE DATOS
+        $.ajax({
+            type: 'POST',
+            url: 'code.php',
+            data: {
+                newPass: newPass
+            },
+            success: function (response) {
+                if (response === 'true') {
+                    alert('contraseña cambaida correctamente');
+                } else {
+                    alert('error');
+                }
+            },
+            error: function () {
+                // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
+                alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
+            }
+        });
+    }
     
 });
+
+
+$(document).ready(function() {
+    $('#toggle-pencil').click(function() {
+        var form1 = $('#form1');
+        if (form1.css('visibility') === 'hidden') {
+            form1.css('visibility', 'visible');
+        } else {
+            form1.css('visibility', 'hidden');
+        }
+    });
+
+    $('#toggle-sort').click(function() {
+        var form2 = $('#form2');
+        if (form2.css('visibility') === 'hidden') {
+            form2.css('visibility', 'visible');
+        } else {
+            form2.css('visibility', 'hidden');
+        }
+    });
+});
+
