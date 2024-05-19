@@ -21,23 +21,19 @@ if(isset($_POST["submit"])) {
     $id_incidencia = $_POST['id'];
 
     // Verificar si se completó el campo de estado
-    if(isset($_POST['estado']) && !empty($_POST['estado'])) {
+    if(isset($_POST['estado'])) 
+    {
         $estado = $_POST['estado'];
         $incidencias = new Incidencias();
         $incidencias->update_incidencia_estado($id_incidencia, $estado);
     }
-
-    // Verificar si se completó el campo de urgencia
-    if(isset($_POST['urgencia']) && !empty($_POST['urgencia'])) {
+    elseif(isset($_POST['urgencia']))
+    {
         $urgencia = $_POST['urgencia'];
         $incidencias = new Incidencias();
         $incidencias->update_incidencia_prioridad($id_incidencia, $urgencia);
     }
 
-    // Si no se completó ningún campo, mostrar un mensaje de error
-    if(empty($_POST['estado']) && empty($_POST['urgencia'])) {
-        echo "Por favor complete al menos uno de los campos.";
-    }
     header("Location: admin.html");
     exit;
 }
@@ -65,15 +61,14 @@ $array_incidencias = $incidencias->get_incidencias_datos();
 if (count($array_incidencias) > 0) {
     $html_output = '<div id="incidencias">';
 
+    
+
     foreach($array_incidencias as $index => $laincidencia) {
-        $prioridad = 'Sin asignar';
-        if($laincidencia["niveldeprioridad"] == 1) {
-            $prioridad = "Baja";
-        } elseif($laincidencia["niveldeprioridad"] == 2) {
-            $prioridad = "Media";
-        } elseif($laincidencia["niveldeprioridad"] == 3) {
-            $prioridad = "Alta";
-        }
+        
+        if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
+        elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
+        elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
+        else{$prioridad = "Alta";}
 
         $html_output .= '
         <div class="inc'. $laincidencia["estado"] .'">
@@ -96,7 +91,7 @@ if (count($array_incidencias) > 0) {
                 <button id="toggle-sort-' . $index . '" class="btn btn-default">Prioridad
                     <span class="glyphicon glyphicon-sort-by-attributes"></span>
                 </button>
-        
+                <br><br>
                 <div id="form1-' . $index . '" style="visibility: hidden;">
                     <form method="post" action="admin.php">
                         <label>Cambiar estado</label><br>
@@ -106,6 +101,8 @@ if (count($array_incidencias) > 0) {
                             <option value="En_proceso">En proceso</option>
                             <option value="Solucionado">Solucionado</option>
                         </select>
+                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
+                        <input type="submit" name="submit" value="Actualizar">
                     </form>
                 </div>
                 <br>
@@ -119,10 +116,11 @@ if (count($array_incidencias) > 0) {
                             <option value="2">Media</option>
                             <option value="3">Alta</option>
                         </select>
-                        <input type="hidden" name="id" value="1"><br>
+                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
                         <input type="submit" name="submit" value="Actualizar">
                     </form>
                 </div>
+                <br>
             ';
         }
 
@@ -134,6 +132,8 @@ if (count($array_incidencias) > 0) {
                 </form>
             </div>
         </div>';
+
+       
     }
 
     $html_output .= '</div>';

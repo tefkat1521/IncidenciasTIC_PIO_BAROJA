@@ -38,4 +38,8 @@ Hacer expresiones regulares
 
 Preguntar a maite, poner una opcion de Cambiar contraseña y Has olvidado la contraseña
 
+////////////////////////////////////////////////////////
 
+cada seccion del filtro, tiene un id
+cuando se pulsa una seccion manda al js ese id, el js mediante ajax hace ub traspaso metodo post al php,    
+en el php si existe ese post, recoge el id del botton, lo manda a la funcion del php de mostrar incidencias, y segun  el id recibido se crea un switch que seleccionara el metodo de la clase correspondiente.

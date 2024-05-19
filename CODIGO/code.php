@@ -149,7 +149,7 @@ function returnUser()
 function insertarIncidencia()
 {
      // Obtener datos del formulario
-        $fecha = date("d-m-Y");
+        $fecha = date("Y-m-d");
         $aula = $_POST["aula"];
         $descripcion = $_POST["descripcion"];
         $tipo = $_POST["tipo"];
