@@ -33,7 +33,10 @@ if(isset($_POST["submit"])) {
 if(isset($_POST["submitborrado"]))
     {
         $id_incidencia = $_POST['id2'];
+        $incidencias = new Incidencias();
         $incidencias->borrar_incidencia($id_incidencia);
+        header("Location: admin.html");
+        exit;
     }
 
 
@@ -104,7 +107,7 @@ function mostrarIncidencias(){
             $html_output .= '
                 <div id="borrado">
                     <form method="post" action="admin.php">
-                        <input type="hidden" name="id2" value="<?php echo $laincidencia["id_incidencia"]; ?>
+                        <input type="hidden" name="id2" value="'.$laincidencia["id_incidencia"].'"?>
                         <input type=submit name="submitborrado" value="Borrar">
                     </form>
                 </div>
