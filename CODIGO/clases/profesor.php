@@ -155,6 +155,28 @@ class profesor extends conexion
             return false;
         }
     }
+
+
+
+    /***************************** */
+
+    public function updatecontraseña($pass, $user)
+    {
+        // Prepara la sentencia SQL para actualizar la contraseña
+        $sql = "UPDATE profesor SET clave_acceso = ? WHERE correo LIKE ?";
+        $stmt = $this->conect->prepare($sql);
+
+        // Asocia los parámetros a la sentencia
+        $user = $user . '%';
+        $stmt->bind_param("ss", $pass, $user);
+
+        // Ejecuta la sentencia y retorna true si tuvo éxito, false en caso contrario
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
 }
 ?>

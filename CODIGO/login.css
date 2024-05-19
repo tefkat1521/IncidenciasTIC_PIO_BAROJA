@@ -92,3 +92,21 @@ button:hover {
     height: 10em;
     width: 10em;
 }
+
+
+#pswdButton {
+    width: 100%;
+    padding: 12px; /* Aumentado el padding */
+    border: none;
+    /* border-radius: 5px; */
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Aumenta el tamaño del texto */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#pswdButton:hover {
+    background-color: #45a049;
+}

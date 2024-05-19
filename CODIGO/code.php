@@ -36,7 +36,8 @@ if (isset($_POST['cerrarSesion'])) {
     exit; // Asegura que el script se detenga después de la redirección
 }
 if (isset($_POST['newPass'])) {
-    cambiarContraseña();
+    $newpass = $_POST['newPass'];
+    cambiarContraseña($newpass, $_SESSION['usuario']);
 }
 
 /*****************************FUNCIONES*********************************************** */
@@ -220,6 +221,12 @@ function mostrarFormularioIncidencia()
     echo $htmlOutput;
     
     
+}
+
+function cambiarcontraseña($pass, $usu)
+{
+    $Profe = new Profesor();
+    echo $Profe->updatecontraseña($pass, $usu);    
 }
 
 ?>
