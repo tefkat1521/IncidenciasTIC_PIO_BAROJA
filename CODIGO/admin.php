@@ -48,7 +48,6 @@ function mostrarIncidencias(){
 
     
     // Almacena la parte HTML en una variable
-    
 $array_incidencias = $incidencias->get_incidencias_datos();
 
 if (count($array_incidencias) > 0) {
@@ -118,7 +117,7 @@ if (count($array_incidencias) > 0) {
         $html_output .= '
             <div id="borrado">
                 <form method="post" action="admin.php">
-                    <input type="hidden" name="id2" value="'.$laincidencia["id_incidencia"] . '"?>
+                    <input type="hidden" name="id2" value="' . $laincidencia["id_incidencia"] . '">
                     <input type="submit" name="submitborrado" value="Borrar">
                 </form>
             </div>
@@ -132,5 +131,6 @@ if (count($array_incidencias) > 0) {
 
 // Devuelve la salida HTML
 echo $html_output;
+
 }
 ?>

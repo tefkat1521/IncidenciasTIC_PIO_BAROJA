@@ -9,17 +9,27 @@ function consultarIncidencias() {
             var DivIncidencias = document.getElementById("incidenciasAdmin");
 
             DivIncidencias.innerHTML = TablaIncidencias;
+
+            // Añadir manejadores de eventos después de que el contenido se haya cargado
+            $(document).ready(function() {
+                $('[id^=toggle-pencil]').click(function() {
+                    var index = this.id.split('-')[2];
+                    var form1 = $('#form1-' + index);
+                    form1.css('visibility', form1.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+                });
+
+                $('[id^=toggle-sort]').click(function() {
+                    var index = this.id.split('-')[2];
+                    var form2 = $('#form2-' + index);
+                    form2.css('visibility', form2.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+                });
+            });
         }
     };
 
     xhttp.open("POST", "admin.php", true); // true indica una solicitud asíncrona
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("PaginaAdmin=" + PaginaAdmin);
-}
-
-function editar_incidencia() {
-    let boton = document.getElementById("form");
-    boton.style.display = "block";
 }
 
 function SesionUser() {
@@ -31,6 +41,7 @@ function SesionUser() {
         if (this.readyState == 4 && this.status == 200) {
             var logueado = this.responseText; // Obtener la respuesta del servidor
             if (logueado != "exit") {
+                // Usuario logueado
             } else {
                 noLogueado();
             }
@@ -50,26 +61,3 @@ document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
 });
-
-$(document).ready(function() {
-    $('#toggle-pencil').click(function() {
-        var form1 = $('#form1');
-        if (form1.css('visibility') === 'hidden') {
-            form1.css('visibility', 'visible');
-        } else {
-            form1.css('visibility', 'hidden');
-        }
-    });
-
-    $('#toggle-sort').click(function() {
-        var form2 = $('#form2');
-        if (form2.css('visibility') === 'hidden') {
-            form2.css('visibility', 'visible');
-        } else {
-            form2.css('visibility', 'hidden');
-        }
-    });
-});
-
-
-
