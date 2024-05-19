@@ -146,10 +146,6 @@ echo $html_output;
 }
 
 
-
-
-
-
 function procesarFormulario() {
     if(isset($_POST["hecho"])) { 
         $prof = new profesor();
@@ -183,9 +179,6 @@ function generarFormulario($array_deps) {
     $out .= '</form>';
     echo $out;
 }
-
-
-
 
 
 
