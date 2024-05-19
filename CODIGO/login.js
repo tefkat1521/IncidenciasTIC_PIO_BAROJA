@@ -31,9 +31,9 @@ function comprobarCredenciales() {
             } else {
                 // Si las credenciales son incorrectas, mostrar un mensaje de alerta
                 alert('Usuario y/o contraseña incorrectos');
-                console.log(user);
-                console.log(pass);
-                console.log(response);
+                // console.log(user);
+                // console.log(pass);
+                // console.log(response);
             }
         },
         error: function () {
