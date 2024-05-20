@@ -29,8 +29,10 @@ class incidencias extends conexion
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
         FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia AND c.id_ciclo = i.id_ciclo 
-        ORDER BY i.niveldeprioridad DESC");
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND c.id_ciclo = i.id_ciclo
+        ORDER BY i.niveldeprioridad DESC, i.fecha DESC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -44,7 +46,10 @@ class incidencias extends conexion
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
         FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia AND c.id_ciclo = i.id_ciclo 
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         ORDER BY i.fecha DESC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -59,7 +64,10 @@ class incidencias extends conexion
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
         FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula AND t.id_tipo_incidencia = i.id_tipo_incidencia AND c.id_ciclo = i.id_ciclo 
+        WHERE a.ID_Aula = i.ID_Aula 
+        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         ORDER BY i.fecha ASC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -97,7 +105,8 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         AND i.niveldeprioridad IS NULL;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -115,7 +124,8 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         AND i.niveldeprioridad = 1;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -133,7 +143,8 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         AND i.niveldeprioridad = 2;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -151,7 +162,8 @@ class incidencias extends conexion
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
+        AND c.id_ciclo = i.id_ciclo
+        AND i.estado != 'Solucionado' 
         AND i.niveldeprioridad = 3;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -170,7 +182,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Creada';");
+        AND i.estado IS 'En_proceso';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -197,7 +209,7 @@ class incidencias extends conexion
 
 
     /**
-     *  Datos por incidencia en pediente
+     *  Datos por incidencia en pediente ,creada,
      */
     public function get_incidencias_en_pediente()
     {
@@ -207,7 +219,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Pendiente';");
+        AND i.estado IS 'Creada';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
