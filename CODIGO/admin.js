@@ -82,8 +82,36 @@ function noLogueado() {
     window.location.href = "login.html";
 }
 
+
+function initializeButtons() {
+    $('.ajax-button').on('click', function () {
+        // Eliminar la clase 'active' de todos los botones
+        $('.ajax-button').removeClass('active');
+
+        // Añadir la clase 'active' al botón pulsado
+        $(this).addClass('active');
+
+        // Obtener el valor del botón pulsado
+        var value = $(this).data('value');
+        console.log(value);
+
+        // Realizar la solicitud AJAX
+        $.ajax({
+            url: 'admin.php',
+            type: 'GET',
+            data: { value: value },
+            success: function (response) {
+                // Actualizar el contenido de la división de resultados
+                $('#result').text(response);
+
+            }
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
     insertarProfesor();
+    initializeButtons();
 });
