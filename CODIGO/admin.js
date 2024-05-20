@@ -1,42 +1,80 @@
+// function consultarIncidencias() {
+//     var PaginaAdmin = 0;
+
+//     var xhttp = new XMLHttpRequest();
+
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             var TablaIncidencias = this.response; // Obtener la respuesta del servidor
+//             var DivIncidencias = document.getElementById("incidenciasAdmin");
+
+//             DivIncidencias.innerHTML = TablaIncidencias;
+
+//             // Añadir manejadores de eventos después de que el contenido se haya cargado
+//             $(document).ready(function() {
+//                 $('[id^=toggle-pencil]').click(function() {
+//                     var index = this.id.split('-')[2];
+//                     var form1 = $('#form1-' + index);
+//                     form1.css('visibility', form1.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+//                 });
+
+//                 $('[id^=toggle-sort]').click(function() {
+//                     var index = this.id.split('-')[2];
+//                     var form2 = $('#form2-' + index);
+//                     form2.css('visibility', form2.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+//                 });
+//             });
+//         }
+//     };
+
+//     xhttp.open("POST", "admin.php", true); // true indica una solicitud asíncrona
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send("PaginaAdmin=" + PaginaAdmin);
+// }
 function consultarIncidencias() {
-    var PaginaAdmin = 0;
+    var value = 0; // Inicializar value a 0
 
-    var xhttp = new XMLHttpRequest();
+    $('.filtro_incidencia').on('click', function () {
+        // Eliminar la clase 'active' de todos los botones
+        $('.filtro_incidencia').removeClass('active');
 
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var TablaIncidencias = this.response; // Obtener la respuesta del servidor
-            var DivIncidencias = document.getElementById("incidenciasAdmin");
+        // Añadir la clase 'active' al botón pulsado
+        $(this).addClass('active');
 
-            DivIncidencias.innerHTML = TablaIncidencias;
+        // Obtener el valor del botón pulsado
+        value = $(this).data('value');
+        console.log(value);
 
-            // Añadir manejadores de eventos después de que el contenido se haya cargado
-            $(document).ready(function() {
-                $('[id^=toggle-pencil]').click(function() {
+        // Realizar la solicitud AJAX
+        $.ajax({
+            url: 'admin.php',
+            type: 'POST',
+            data: { value: value },
+            success: function (response) {
+                // Actualizar el contenido del div con la respuesta
+                $('#result').html(response);
+
+                // Añadir manejadores de eventos después de que el contenido se haya cargado
+                $('[id^=toggle-pencil]').click(function () {
                     var index = this.id.split('-')[2];
                     var form1 = $('#form1-' + index);
-                    form1.css('visibility', form1.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+                    form1.css('display', form1.css('display') === 'none' ? 'block' : 'none');
                 });
 
-                $('[id^=toggle-sort]').click(function() {
+                $('[id^=toggle-sort]').click(function () {
                     var index = this.id.split('-')[2];
                     var form2 = $('#form2-' + index);
-                    form2.css('visibility', form2.css('visibility') === 'hidden' ? 'visible' : 'hidden');
+                    form2.css('display', form2.css('display') === 'none' ? 'block' : 'none');
                 });
-            });
-        }
-    };
 
-    xhttp.open("POST", "admin.php", true); // true indica una solicitud asíncrona
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("PaginaAdmin=" + PaginaAdmin);
+            }
+        });
+    });
 }
-function insertarProfesor() {
-    // var nombre = document.getElementById("nombre").value;
-    // var correo = document.getElementById("correo").value;
-    // var pass = document.getElementById("pass").value;
-    // var dept = document.getElementById("dept").value;
 
+
+
+function insertarProfesor() {
     var xhttp = new XMLHttpRequest();
     var newProfesor = 0;
     xhttp.onreadystatechange = function () {
@@ -82,36 +120,8 @@ function noLogueado() {
     window.location.href = "login.html";
 }
 
-
-function initializeButtons() {
-    $('.ajax-button').on('click', function () {
-        // Eliminar la clase 'active' de todos los botones
-        $('.ajax-button').removeClass('active');
-
-        // Añadir la clase 'active' al botón pulsado
-        $(this).addClass('active');
-
-        // Obtener el valor del botón pulsado
-        var value = $(this).data('value');
-        console.log(value);
-
-        // Realizar la solicitud AJAX
-        $.ajax({
-            url: 'admin.php',
-            type: 'GET',
-            data: { value: value },
-            success: function (response) {
-                // Actualizar el contenido de la división de resultados
-                $('#result').text(response);
-
-            }
-        });
-    });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
     insertarProfesor();
-    initializeButtons();
 });

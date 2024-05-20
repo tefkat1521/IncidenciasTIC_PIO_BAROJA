@@ -1,4 +1,7 @@
 <?php
+ini_set("SMTP", "smtp.gmail.com");
+ini_set("smtp_port", "465");
+
 require "clases/incidencias.php";
 require "clases/profesor.php";
 require "clases/departamento.php";
@@ -13,9 +16,9 @@ if(isset($_POST["hecho"])){
     procesarFormulario();
 }
 
-if (isset($_POST['PaginaAdmin'])) {
-    mostrarIncidencias();
-}
+// if (isset($_POST['PaginaAdmin'])) {
+//     mostrarIncidencias("0");
+// }
 if(isset($_POST["submit"])) {
 
     $id_incidencia = $_POST['id'];
@@ -46,17 +49,49 @@ if(isset($_POST["submitborrado"]))
         exit;
     }
 
+if(isset($_POST["value"])){
+    mostrarIncidencias($_POST["value"]);
+}
 
-function mostrarIncidencias(){
+function mostrarIncidencias($filtro){
     ob_start(); // Inicia el búfer de salida
 
     // require "clases/incidencias.php";
     // $incidencias = new Incidencias();
+
+
     $incidencias = new Incidencias();
 
+    switch ($filtro) {
+        case '0':
+            $array_incidencias = $incidencias->get_incidencias_datos();
+            break;
+
+            case 'Solucionado':
+            $array_incidencias = $incidencias->get_incidencias_en_solucionado();
+            break;
+
+            case 'Creada':
+            $array_incidencias = $incidencias->get_incidencias_en_pediente();
+            break;
+
+            case 'proceso':
+            $array_incidencias = $incidencias->get_incidencias_en_proceso();
+            break;
+        
+        default:
+            # code...
+            break;
+    }
+    //     if ($filtro == "0") {
+    //     $array_incidencias = $incidencias->get_incidencias_datos();
+    // }else {
+    //     $array_incidencias = $incidencias->get_incidencias_en_solucionado();
+    // }
+
     
-    // Almacena la parte HTML en una variable
-$array_incidencias = $incidencias->get_incidencias_datos();
+    // Almacena la parte HTML en una variableiç
+
 
 if (count($array_incidencias) > 0) {
     $html_output = '<div id="incidencias">';
@@ -65,10 +100,26 @@ if (count($array_incidencias) > 0) {
 
     foreach($array_incidencias as $index => $laincidencia) {
         
-        if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
-        elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
-        elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
-        else{$prioridad = "Alta";}
+        // if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
+        // elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
+        // elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
+        // else{$prioridad = "Alta";}
+        if (isset($laincidencia["niveldeprioridad"])) {
+                $nivelDePrioridad = $laincidencia["niveldeprioridad"];
+            } else {
+                $nivelDePrioridad = NULL;
+            }
+
+            // Asignar el valor de prioridad basado en el nivel de prioridad
+            if($nivelDePrioridad == 1) {
+                $prioridad = "Baja";
+            } elseif($nivelDePrioridad == 2) {
+                $prioridad = "Media";
+            } elseif($nivelDePrioridad === NULL) {
+                $prioridad = "Sin asignar";
+            } else {
+                $prioridad = "Alta";
+            }
 
         $html_output .= '
         <div class="inc'. $laincidencia["estado"] .'">
@@ -92,7 +143,7 @@ if (count($array_incidencias) > 0) {
                     <span class="glyphicon glyphicon-sort-by-attributes"></span>
                 </button>
                 <br><br>
-                <div id="form1-' . $index . '" style="visibility: hidden;">
+                <div id="form1-' . $index . '" style="display: none">
                     <form method="post" action="admin.php">
                         <label>Cambiar estado</label><br>
                         <select name="estado">
@@ -107,7 +158,7 @@ if (count($array_incidencias) > 0) {
                 </div>
                 <br>
                 
-                <div id="form2-' . $index . '" style="visibility: hidden;">
+                <div id="form2-' . $index . '" style="display: none">
                     <form method="post" action="admin.php">
                         <label>Asignar Prioridad</label><br>
                         <select name="urgencia">
@@ -138,7 +189,7 @@ if (count($array_incidencias) > 0) {
 
     $html_output .= '</div>';
 } else {
-    $html_output .= '<div>No existen incidencias</div>';
+    $html_output = '<div>No existen incidencias</div>';
 }
 
 // Devuelve la salida HTML
@@ -183,6 +234,23 @@ function generarFormulario($array_deps) {
     $out .= '<input type="submit" name="hecho" value="CREAR">';
     $out .= '</form>';
     echo $out;
+
+
+// ini_set("SMTP", "smtp.gmail.com");
+// ini_set("smtp_port", "587"); // Utiliza el puerto 587 para TLS
+
+// $to = "dmarchenad123@gmail.com";
+// $subject = "Ola";
+// $message = "Hola, este es un correo de prueba enviado desde PHP.com";
+// $headers = "From: dmarchenad123@gmail.com";
+
+// // Envío del correo
+// if (mail($to, $subject, $message, $headers)) {
+//     echo $out;
+// } else {
+//     echo "Error al enviar el correo.";
+// }
+    
 }
 
 

@@ -182,7 +182,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'En_proceso';");
+        AND i.estado = 'En_proceso';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -200,7 +200,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Solucionado';");
+        AND i.estado = 'Solucionado';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -219,7 +219,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Creada';");
+        AND i.estado = 'Creada';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
 
@@ -237,7 +237,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Pendiente'
+        AND i.estado = 'Pendiente'
         AND a.Nombre_aula = '$aula';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -256,7 +256,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Pendiente'
+        AND i.estado = 'Pendiente'
         AND t.tipo_incidencia = '$tipo';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -276,7 +276,7 @@ class incidencias extends conexion
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
         AND p.ID_Profe = i.ID_Profe 
         AND c.id_ciclo = i.id_ciclo 
-        AND i.estado IS 'Pendiente'
+        AND i.estado = 'Pendiente'
         AND p.ID_Profe = '$profe';");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
