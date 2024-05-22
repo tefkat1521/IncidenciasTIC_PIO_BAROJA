@@ -123,14 +123,15 @@ if (count($array_incidencias) > 0) {
 
         $html_output .= '
         <div class="inc'. $laincidencia["estado"] .'">
+        <div class="chincheta"></div>
             <ul>
-                <li>Fecha: '. $laincidencia["fecha"] .'</li>
-                <li>Aula: '. $laincidencia["Nombre_aula"] .'</li>
-                <li>Ciclo: '. $laincidencia["ciclo"] .'</li>
-                <li>Tipo: '. $laincidencia["tipo_incidencia"] .'</li>
+                <li><b>Fecha: </b>'. $laincidencia["fecha"] .'</li>
+                <li><b>Aula: </b>'. $laincidencia["Nombre_aula"] .'</li>
+                <li><b>Ciclo: </b>'. $laincidencia["ciclo"] .'</li>
+                <li><b>Tipo: </b>'. $laincidencia["tipo_incidencia"] .'</li>
                 <li>'. $laincidencia["descripcion"] .'</li>
-                <li>Estado: '. $laincidencia["estado"] .'</li>
-                <li>Nivel de urgencia: '. $prioridad .'</li>
+                <li><b>Estado: </b>'. $laincidencia["estado"] .'</li>
+                <li><b>Nivel de urgencia: </b>'. $prioridad .'</li>
             </ul>';
 
         if($laincidencia["estado"] != "Solucionado") {
@@ -153,7 +154,7 @@ if (count($array_incidencias) > 0) {
                             <option value="Solucionado">Solucionado</option>
                         </select>
                         <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
-                        <input type="submit" name="submit" value="Actualizar">
+                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
                     </form>
                 </div>
                 <br>
@@ -168,7 +169,7 @@ if (count($array_incidencias) > 0) {
                             <option value="3">Alta</option>
                         </select>
                         <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
-                        <input type="submit" name="submit" value="Actualizar">
+                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
                     </form>
                 </div>
                 <br>
@@ -179,7 +180,9 @@ if (count($array_incidencias) > 0) {
             <div id="borrado">
                 <form method="post" action="admin.php">
                     <input type="hidden" name="id2" value="' . $laincidencia["id_incidencia"] . '">
-                    <input type="submit" name="submitborrado" value="Borrar">
+                    <span class="glyphicon glyphicon-trash" type="submit" name="submitborrado"></span>
+                    <input class="botonborrar" type="submit" name="submitborrado" value="Borrar">
+                    
                 </form>
             </div>
         </div>';
