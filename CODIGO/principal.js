@@ -71,5 +71,6 @@ function noLogueado() {
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
-    insertarIncidencia();
+    insertarIncidencia();   
 });
+

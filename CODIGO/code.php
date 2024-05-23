@@ -188,21 +188,23 @@ function mostrarFormularioIncidencia()
 
     $htmlOutput .= '<form method="post" action="code.php">';
     
+
+    // Selector para aula
+    $htmlOutput .= '<select id="aula" name="aula" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un Aula</option>'; // Placeholder
+    foreach ($array_aula as $aula) {
+        $htmlOutput .= "<option value='" . $aula['ID_Aula'] . "'>" . $aula['Nombre_aula'] . "</option>";
+    }
+    $htmlOutput .= '</select><br><br>';
+    
     // Selector para ciclo
-    $htmlOutput .= '<select name="ciclo" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<select id="elciclo" name="ciclo" class="form-control myInputFooter required" required disabled>';
     $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un ciclo</option>'; // Placeholder
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
     
-    // Selector para aula
-    $htmlOutput .= '<select name="aula" class="form-control myInputFooter required" required>';
-    $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un Aula</option>'; // Placeholder
-    foreach ($array_aula as $aula) {
-        $htmlOutput .= "<option value='" . $aula['ID_Aula'] . "'>" . $aula['Nombre_aula'] . "</option>";
-    }
-    $htmlOutput .= '</select><br><br>';
     
     // Selector para tipo de incidencia
     $htmlOutput .= '<select name="tipo" class="form-control myInputFooter required" required>';
@@ -215,7 +217,14 @@ function mostrarFormularioIncidencia()
     $htmlOutput .= '<textarea id="descripcion" name="descripcion" required class="myInputFooter" placeholder="   Descripción"  style="width: 100%; height: 15em; resize: none;"></textarea><br>';
     $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $htmlOutput .= '</form>';
+
+ 
+
     $htmlOutput .= '</div>';
+
+    
+// Script de JavaScript para habilitar/deshabilitar el selector de ciclo según el rango de aula específico
+    
     
     // Imprimir la cadena HTML completa
     echo $htmlOutput;
