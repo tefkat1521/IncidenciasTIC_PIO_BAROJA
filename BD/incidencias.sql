@@ -93,50 +93,168 @@ VALUES ('OTROS','Otros');
 
 -- Inserta varias aulas en la tabla Aula
 INSERT INTO Aula (ID_Aula, Nombre_aula) VALUES
-(1, 'Salon de actos'),
-(2, 'Despacho');
+(1, 'DEP Servicion a la Comunidad'),
+(2, 'DEP Administración y gestión'),
+(3, 'DEP Comercio y Marketing'),
+(4, 'DEP Informática y Comunicaciones'),
+(5, 'DEP Inglés'),
+(6, 'DEP Formación y Orientación Laboral'),
+(7, 'DEP Orientación'),
+(8, 'DEP ACE'),
+(9, 'DEP Actividades Físicas y Deportivas'),
+(10, 'Despacho Jefatura'),
+(11, 'Despacho Dirección'),
+(12, 'Despacho Secretaría'),
+(13, 'Sala de Profesores'),
+(14, 'Biblioteca'),
+(15, 'Secretaria'),
+(16, 'Conserjería'),
+(17, 'Salón de actos'),
+(18, 'Gimnasio'),
+(19, 'Sala de emprendimiento'),
+(20, 'Sala de convivencia');
 
 
 INSERT INTO Aula (ID_Aula, Nombre_aula, Num_Aula) VALUES
-(3, '2.1', 2.1),
-(4, '2.2', 2.2),
-(5, '2.3', 2.3);
+(21, 'B.1', 1),
+(22, 'B.2', 2),
+(23, 'B.3', 3),
+(24, 'B.4', 4),
+(25, 'B.5', 5),
+(26, 'B.7', 7),
+(27, 'B.9', 9),
+(28, 'B.11', 11),
+(29, 'B.13', 13),
+(30, '1.1', 1.1),
+(31, '1.2', 1.2),
+(32, '1.3', 1.3),
+(33, '1.4', 1.4),
+(34, '1.5', 1.5),
+(35, '1.6', 1.6),
+(36, '1.7', 1.7),
+(37, '1.8', 1.8),
+(38, '1.9', 1.9),
+(39, '1.10', 1.10),
+(40, '1.11', 1.11),
+(41, '1.12', 1.12),
+(42, '1.13', 1.13),
+(43, '1.14', 1.14),
+(44, '1.15', 1.15),
+(45, '1.16', 1.16),
+(46, '1.17', 1.17),
+(47, '1.18', 1.18),
+(48, '1.19', 1.19),
+(49, '1.20', 1.20),
+(50, '1.21', 1.21),
+(51, '1.22', 1.22),
+(52, '1.23', 1.23),
+(53, '2.1', 2.1),
+(54, '2.2', 2.2),
+(55, '2.3', 2.3),
+(56, '2.4', 2.4),
+(57, '2.5', 2.5),
+(58, '2.6', 2.6),
+(59, '2.7', 2.7),
+(60, '2.8', 2.8),
+(61, '2.9', 2.9),
+(62, '2.11', 2.11),
+(63, '2.13', 2.13);
 
 -- Inserta varias ciclos 
 INSERT INTO ciclo (id_ciclo, ciclo, turno) VALUES
-(1, 'DAW','Matutino'),
-(2, 'DAM','Matutino'),
-(3, 'TSEAS','Matutino'),
-(5, 'Horario De Mañana','Matutino'),
-(6, 'Horario De Tarde','Vespertino'),
-(4, 'ASIR', 'Vespertino');
+(1, '1º COMERCIO INTERNACIONAL-DUAL','Matutino'),
+(2, '1º ASIR-DUAL','Matutino'),
+(3, '1º DAW-DUAL','Matutino'),
+(5, '1º APD','Matutino'),
+(6, '1º AEI','Matutino'),
+(7, '1º GB ACCESO', 'Matutino'),
+(8, '2º GB ACCESO','Matutino'),
+(9, '1º TYL M','Matutino'),
+(10, '1º TYL V','Vespertino'),
+(11, '1º CI','Matutino'),
+(12, '2ºCI-DISTANCIA','Matutino'),
+(13, '1º GB COM','Matutino'),
+(14, '2º GB COM','Matutino'),
+(15, '1º COM M','Matutino'),
+(16, '1º COM V','Vespertino'),
+(17, '2º COM M','Matutino'),
+(18, '2º COM V','Vespertino'),
+(19, '1º AFD A','Matutino'),
+(20, '1º AFD B','Matutino'),
+(21, '2º AFD A','Matutino'),
+(22, '2º AFD B','Matutino'),
+(23, '1º IS A','Matutino'),
+(24, '2º IS A','Matutino'),
+(25, '1º IS V','Vespertino'),
+(26, '2º IS V','Vespertino'),
+(27, '1º IS B','Matutino'),
+(28, '2º IS B','Matutino'),
+(29, '1º GUIA','Matutino'),
+(30, '2º GUIA','Matutino'),
+(31, '2º EI A','Matutino'),
+(32, '2º EI B','Matutino'),
+(33, '1º JARD','Matutino'),
+(34, '2º JARD','Matutino'),
+(35, 'ACEPELU','Matutino'),
+(36, 'ACE MBE','Matutino'),
+(37, '1º EI B','Matutino'),
+(38, '1º DAW','Matutino'),
+(39, '1º DAM','Vespertino'),
+(40, '2º DAM','Vespertino'),
+(41, '1º SMR','Vespertino'),
+(42, '2º SMR','Vespertino'),
+(43, '2º DAW','Matutino'),
+(44, '1º AF','Matutino'),
+(45, '2º AF','Matutino'),
+(46, '1º ASDI','Vespertino'),
+(47, '1º GA','Matutino'),
+(48, '2º GA','Matutino'),
+(49, '2º MC A','Matutino'),
+(50, '1º MC A','Matutino'),
+(51, '2º APSD','Matutino'),
+(52, '1º MC V','Vespertino'),
+(53, '2º MC V','Vespertino');
 
 /*/////////////////////////////////////////////////////////////-*/
 
 
 INSERT INTO Departamento (dep, Nombre_dep) VALUES
-(1, 'Departamento A'),
-(2, 'Departamento B'),
-(3, 'Departamento C');
+(1, 'Servicios a la Comunidad'),
+(2, 'Administración y Gestión'),
+(3, 'Comercio y Marketing'),
+(4, 'Actividades Físicas y Deportivas'),
+(5, 'Informática y Comunicaciones'),
+(6, 'Inglés'),
+(7, 'Formación y Orientación Laboral'),
+(8, 'Orientación'),
+(9, 'ACE');
 
 /*admin*/
 INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) 
-VALUES ( 12345, 'maite', 'maite@educa.madrid.org', 'admin', 1);
+VALUES ( 12345, 'maite', 'maite@educa.madrid.org', 'admin', 5);
 
 INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES
-(11111, 'user1', 'user1@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
-(22222, 'user2', 'user2@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 1),
-(33333, 'user3', 'user3@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
-(44444, 'user4', 'user4@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 2),
-(55555, 'user5', 'user5@educa.madrid.org', SUBSTRING(MD5(RAND()) FROM 1 FOR 8), 3);
+(11111, 'user user1', 'user.user1@educa.madrid.org', '1111111', 1),
+(22222, 'user user2', 'user.user2@educa.madrid.org', '2222222', 2),
+(33333, 'user user3', 'user.user3@educa.madrid.org', '3333333', 4),
+(44444, 'user user4', 'user.user4@educa.madrid.org', '4444444', 6),
+(55555, 'user user5', 'user.user5@educa.madrid.org', '5555555', 7);
 
 
 /*INCIDENCIAS*************************/
 
 INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe, id_tipo_incidencia, niveldeprioridad, Estado) VALUES
-('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 2, 12345, 'SFTW_', 2, 'Creada'),
-('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 2, 22222, 'CNTVD', 1, 'Creada'),
-('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 3, 5, 33333, 'RREDM', 1, 'Creada'),
-('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 2, 3, 22222, 'PDI__', 3, 'Creada'),
-('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba5', 4, 1, 44444, 'HRDW_', 2, 'Creada');
+('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 2, 12345, 'SFTW_', null, 'Creada'),
+('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 2, 22222, 'CNTVD', null, 'Creada'),
+('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 3, 5, 33333, 'RREDM', 1, 'En_proceso'),
+('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('IMPRS87445', CURRENT_TIMESTAMP(), 'prueba5', 2, 3, 22222, 'PDI__', 3, 'En_proceso'),
+('PDI__35741', CURRENT_TIMESTAMP(), 'prueba6', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('OTROS95147', CURRENT_TIMESTAMP(), 'prueba7', 2, 3, 22222, 'PDI__', 2, 'En_proceso'),
+('CNTVD15467', CURRENT_TIMESTAMP(), 'prueba8', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('SFTW_64825', CURRENT_TIMESTAMP(), 'prueba9', 2, 3, 22222, 'PDI__', 3, 'En_proceso'),
+('OF36578231', CURRENT_TIMESTAMP(), 'prueba10', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('HRDW_36847', CURRENT_TIMESTAMP(), 'prueba11', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('RREDM23168', CURRENT_TIMESTAMP(), 'prueba12', 2, 3, 22222, 'PDI__', null, 'Creada'),
+('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba13', 4, 1, 44444, 'HRDW_', null, 'Creada');
 
