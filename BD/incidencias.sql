@@ -244,17 +244,17 @@ INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES
 /*INCIDENCIAS*************************/
 
 INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe, id_tipo_incidencia, niveldeprioridad, Estado) VALUES
-('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 2, 12345, 'SFTW_', null, 'Creada'),
-('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 2, 22222, 'CNTVD', null, 'Creada'),
-('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 3, 5, 33333, 'RREDM', 1, 'En_proceso'),
-('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('IMPRS87445', CURRENT_TIMESTAMP(), 'prueba5', 2, 3, 22222, 'PDI__', 3, 'En_proceso'),
-('PDI__35741', CURRENT_TIMESTAMP(), 'prueba6', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('OTROS95147', CURRENT_TIMESTAMP(), 'prueba7', 2, 3, 22222, 'PDI__', 2, 'En_proceso'),
-('CNTVD15467', CURRENT_TIMESTAMP(), 'prueba8', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('SFTW_64825', CURRENT_TIMESTAMP(), 'prueba9', 2, 3, 22222, 'PDI__', 3, 'En_proceso'),
-('OF36578231', CURRENT_TIMESTAMP(), 'prueba10', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('HRDW_36847', CURRENT_TIMESTAMP(), 'prueba11', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('RREDM23168', CURRENT_TIMESTAMP(), 'prueba12', 2, 3, 22222, 'PDI__', null, 'Creada'),
-('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba13', 4, 1, 44444, 'HRDW_', null, 'Creada');
+('SFTW_12345', CURRENT_TIMESTAMP(), 'prueba1', 1, 23, 12345, 'SFTW_', null, 'Creada'),
+('CNTVD45677', CURRENT_TIMESTAMP(), 'prueba2', 3, 25, 11111, 'CNTVD', null, 'Creada'),
+('RREDM32234', CURRENT_TIMESTAMP(), 'prueba3', 45, 40, 33333, 'RREDM', 1, 'En_proceso'),
+('PDI__87655', CURRENT_TIMESTAMP(), 'prueba4', 50, 35, 12345, 'PDI__', null, 'Creada'),
+('IMPRS87445', CURRENT_TIMESTAMP(), 'prueba5', 42, 33, 22222, 'IMPRS', 3, 'En_proceso'),
+('PDI__35741', CURRENT_TIMESTAMP(), 'prueba6', 23, 29, 55555, 'PDI__', null, 'Creada'),
+('OTROS95147', CURRENT_TIMESTAMP(), 'prueba7', 26, 60, 12345, 'OTROS', 2, 'En_proceso'),
+('CNTVD15467', CURRENT_TIMESTAMP(), 'prueba8', 36, 57, 55555, 'CNTVD', null, 'Creada'),
+('SFTW_64825', CURRENT_TIMESTAMP(), 'prueba9', 43, 54, 44444, 'SFTW_64825', 3, 'En_proceso'),
+('OF36578231', CURRENT_TIMESTAMP(), 'prueba10', 14, 42, 22222, 'OF365', null, 'Creada'),
+('HRDW_36847', CURRENT_TIMESTAMP(), 'prueba11', 17, 45, 33333, 'HRDW_', null, 'Creada'),
+('RREDM23168', CURRENT_TIMESTAMP(), 'prueba12', 7, 31, 11111, 'RREDM', null, 'Creada'),
+('HRDW_12313', CURRENT_TIMESTAMP(), 'prueba13', 29, 14, 44444, 'HRDW_', null, 'Creada');
 
