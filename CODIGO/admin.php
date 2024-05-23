@@ -78,6 +78,22 @@ function mostrarIncidencias($filtro){
             case 'proceso':
             $array_incidencias = $incidencias->get_incidencias_en_proceso();
             break;
+
+            case 'Alta':
+            $array_incidencias = $incidencias->get_incidencias_prioridad_alta();
+            break;
+
+            case 'Media':
+            $array_incidencias = $incidencias->get_incidencias_prioridad_media();
+            break;
+
+            case 'Baja':
+            $array_incidencias = $incidencias->get_incidencias_prioridad_baja();
+            break;
+
+            case 'Nulo':
+            $array_incidencias = $incidencias->get_incidencias_sin_asignar();
+            break;
         
         default:
             # code...
@@ -163,6 +179,28 @@ if (count($array_incidencias) > 0) {
                     <form method="post" action="admin.php">
                         <label>Asignar Prioridad</label><br>
                         <select name="urgencia">
+                            <option value="" selected disabled>Seleccionar urgencia</option>
+                            <option value="1">Baja</option>
+                            <option value="2">Media</option>
+                            <option value="3">Alta</option>
+                        </select>
+                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
+                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
+                    </form>
+                </div>
+
+                <div id="form3-' . $index . '" style="display: none">
+                    <form method="post" action="admin.php">
+                        <label>Cambiar estado</label><br>
+                        <select name="estado2">
+                            <option value="" selected disabled>Seleccionar estado</option>
+                            <option value="Creada">Creada</option>
+                            <option value="En_proceso">En proceso</option>
+                            <option value="Solucionado">Solucionado</option>
+                        </select>
+                        <br>
+                        <label>Asignar Prioridad</label><br>
+                        <select name="urgencia2">
                             <option value="" selected disabled>Seleccionar urgencia</option>
                             <option value="1">Baja</option>
                             <option value="2">Media</option>

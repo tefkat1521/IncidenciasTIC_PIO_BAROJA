@@ -316,6 +316,21 @@ class incidencias extends conexion
             return false;
         }
     }
+
+    public function update_incidencia_estado_y_prioridad($id_incidencia, $nuevo_estado, $nueva_prioridad)
+    {
+        $sql = "UPDATE Incidencias SET estado = ?, niveldeprioridad = ? WHERE id_incidencia = ?";
+
+        $stmt = $this->conect->prepare($sql);
+
+        $stmt->bind_param("sis", $nuevo_estado, $nueva_prioridad, $id_incidencia);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 /******************************************************************************************* */
 
 
@@ -381,19 +396,19 @@ class incidencias extends conexion
 
     /****************************************CORREO*********************************************/
 
-    public function enviarCorreo($remitente, $destinatario, $asunto, $mensaje) {
-        // Cabeceras del correo
-        $cabeceras = 'From: ' . $remitente . "\r\n" .
-                     'Reply-To: ' . $remitente . "\r\n" .
-                     'X-Mailer: PHP/' . phpversion();
+    // public function enviarCorreo($remitente, $destinatario, $asunto, $mensaje) {
+    //     // Cabeceras del correo
+    //     $cabeceras = 'From: ' . $remitente . "\r\n" .
+    //                  'Reply-To: ' . $remitente . "\r\n" .
+    //                  'X-Mailer: PHP/' . phpversion();
         
-        // Envío del correo
-        if (mail($destinatario, $asunto, $mensaje, $cabeceras)) {
-            return true; // Correo enviado correctamente
-        } else {
-            return false; // Error al enviar el correo
-        }
-    }
+    //     // Envío del correo
+    //     if (mail($destinatario, $asunto, $mensaje, $cabeceras)) {
+    //         return true; // Correo enviado correctamente
+    //     } else {
+    //         return false; // Error al enviar el correo
+    //     }
+    // }
 
 
 }
