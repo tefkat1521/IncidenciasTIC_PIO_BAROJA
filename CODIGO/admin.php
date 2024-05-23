@@ -100,26 +100,26 @@ if (count($array_incidencias) > 0) {
 
     foreach($array_incidencias as $index => $laincidencia) {
         
-        // if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
-        // elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
-        // elseif($laincidencia["niveldeprioridad"]==NULL){$prioridad = "Sin asignar";}
-        // else{$prioridad = "Alta";}
-        if (isset($laincidencia["niveldeprioridad"])) {
-                $nivelDePrioridad = $laincidencia["niveldeprioridad"];
-            } else {
-                $nivelDePrioridad = NULL;
-            }
+        if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
+        elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
+        elseif($laincidencia["niveldeprioridad"]==3){$prioridad = "Alta";}
+        else{$prioridad = "Sin asignar";}
+        // if (isset($laincidencia["niveldeprioridad"])) {
+        //         $nivelDePrioridad = $laincidencia["niveldeprioridad"];
+        //     } else {
+        //         $nivelDePrioridad = NULL;
+        //     }
 
-            // Asignar el valor de prioridad basado en el nivel de prioridad
-            if($nivelDePrioridad == 1) {
-                $prioridad = "Baja";
-            } elseif($nivelDePrioridad == 2) {
-                $prioridad = "Media";
-            } elseif($nivelDePrioridad === NULL) {
-                $prioridad = "Sin asignar";
-            } else {
-                $prioridad = "Alta";
-            }
+        //     // Asignar el valor de prioridad basado en el nivel de prioridad
+        //     if($nivelDePrioridad == 1) {
+        //         $prioridad = "Baja";
+        //     } elseif($nivelDePrioridad == 2) {
+        //         $prioridad = "Media";
+        //     } elseif($nivelDePrioridad == NULL) {
+        //         $prioridad = "Sin asignar";
+        //     } else {
+        //         $prioridad = "Alta";
+        //     }
 
         $html_output .= '
         <div class="inc'. $laincidencia["estado"] .'">

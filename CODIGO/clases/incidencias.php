@@ -80,7 +80,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_profesor($profe)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -100,7 +100,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_sin_asignar()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -119,7 +119,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_baja()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -138,7 +138,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_media()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -157,7 +157,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_alta()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -176,7 +176,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_proceso()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -194,7 +194,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_solucionado()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -213,7 +213,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_pediente()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -231,7 +231,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_aula($aula)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -250,7 +250,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_tipo($tipo)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
@@ -270,7 +270,7 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_profe_fil($profe)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
         FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
         WHERE a.ID_Aula = i.ID_Aula 
         AND t.id_tipo_incidencia = i.id_tipo_incidencia 
