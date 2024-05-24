@@ -120,34 +120,21 @@ if (count($array_incidencias) > 0) {
         elseif($laincidencia["niveldeprioridad"]==2){$prioridad = "Media";}
         elseif($laincidencia["niveldeprioridad"]==3){$prioridad = "Alta";}
         else{$prioridad = "Sin asignar";}
-        // if (isset($laincidencia["niveldeprioridad"])) {
-        //         $nivelDePrioridad = $laincidencia["niveldeprioridad"];
-        //     } else {
-        //         $nivelDePrioridad = NULL;
-        //     }
 
-        //     // Asignar el valor de prioridad basado en el nivel de prioridad
-        //     if($nivelDePrioridad == 1) {
-        //         $prioridad = "Baja";
-        //     } elseif($nivelDePrioridad == 2) {
-        //         $prioridad = "Media";
-        //     } elseif($nivelDePrioridad == NULL) {
-        //         $prioridad = "Sin asignar";
-        //     } else {
-        //         $prioridad = "Alta";
-        //     }
+        $fecha = new DateTime($laincidencia["fecha"]);
+        $fechaFormateada = $fecha->format('d-m-Y');
 
         $html_output .= '
         <div class="inc'. $laincidencia["estado"] .'">
         <div class="chincheta"></div>
             <ul>
-                <li><b>Fecha: </b>'. $laincidencia["fecha"] .'</li>
+                <li><b>Fecha: </b>'. $fechaFormateada .'</li>
                 <li><b>Aula: </b>'. $laincidencia["Nombre_aula"] .'</li>
                 <li><b>Ciclo: </b>'. $laincidencia["ciclo"] .'</li>
                 <li><b>Tipo: </b>'. $laincidencia["tipo_incidencia"] .'</li>
-                <li>'. $laincidencia["descripcion"] .'</li>
                 <li><b>Estado: </b>'. $laincidencia["estado"] .'</li>
                 <li><b>Nivel de urgencia: </b>'. $prioridad .'</li>
+                <li>'. $laincidencia["descripcion"] .'</li>
             </ul>';
 
         if($laincidencia["estado"] != "Solucionado") {

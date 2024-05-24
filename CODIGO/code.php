@@ -89,16 +89,18 @@ function mostrarIncidencias()
 
     if ($resultado) {
         $out .= "<table>";
-        $out .= "<tr><th>ID</th><th>Descripción</th><th>Tipo</th><th>Fecha</th><th>Aula</th><th>Ciclo</th><th>Estado</th></tr>";
+        $out .= "<tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr>";
 
         foreach ($resultado as $incidencia) {
+            $fecha = new DateTime($incidencia["fecha"]);
+            $fechaFormateada = $fecha->format('d-m-Y');
             $out .= "<tr>";
             $out .= "<td>" . $incidencia['id_incidencia'] . "</td>";
-            $out .= "<td>" . $incidencia['descripcion'] . "</td>";
+            $out .= "<td>" . $fechaFormateada . "</td>";
             $out .= "<td>" . $incidencia['tipo_incidencia'] . "</td>";
-            $out .= "<td>" . $incidencia['fecha'] . "</td>";
             $out .= "<td>" . $incidencia['Nombre_aula'] . "</td>";
             $out .= "<td>" . $incidencia['ciclo'] . "</td>";
+            $out .= "<td>" . $incidencia['descripcion'] . "</td>";
             $out .= "<td>" . $incidencia['estado'] . "</td>";
             $out .= "</tr>";
         }
@@ -198,7 +200,7 @@ function mostrarFormularioIncidencia()
     $htmlOutput .= '</select><br><br>';
     
     // Selector para ciclo
-    $htmlOutput .= '<select id="elciclo" name="ciclo" class="form-control myInputFooter required" required disabled>';
+    $htmlOutput .= '<select id="elciclo" name="ciclo" class="form-control myInputFooter required" required>';
     $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un ciclo</option>'; // Placeholder
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";
