@@ -31,6 +31,50 @@
 //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 //     xhttp.send("PaginaAdmin=" + PaginaAdmin);
 // }
+
+
+// function consultarIncidencias() {
+//     var value = 0; // Inicializar value a 0
+
+//     $('.filtro_incidencia').on('click', function () {
+//         // Eliminar la clase 'active' de todos los botones
+//         $('.filtro_incidencia').removeClass('active');
+
+//         // Añadir la clase 'active' al botón pulsado
+//         $(this).addClass('active');
+
+//         // Obtener el valor del botón pulsado
+//         value = $(this).data('value');
+//         console.log(value);
+
+//         // Realizar la solicitud AJAX
+//         $.ajax({
+//             url: 'admin.php',
+//             type: 'POST',
+//             data: { value: value },
+//             success: function (response) {
+//                 // Actualizar el contenido del div con la respuesta
+//                 $('#result').html(response);
+
+//                 // Añadir manejadores de eventos después de que el contenido se haya cargado
+//                 $('[id^=toggle-pencil]').click(function () {
+//                     var index = this.id.split('-')[2];
+//                     var form1 = $('#form1-' + index);
+//                     form1.css('display', form1.css('display') === 'none' ? 'block' : 'none');
+//                 });
+
+//                 $('[id^=toggle-sort]').click(function () {
+//                     var index = this.id.split('-')[2];
+//                     var form2 = $('#form2-' + index);
+//                     form2.css('display', form2.css('display') === 'none' ? 'block' : 'none');
+//                 });
+
+//             }
+//         });
+//     });
+// }
+
+
 function consultarIncidencias() {
     var value = 0; // Inicializar value a 0
 
@@ -57,20 +101,39 @@ function consultarIncidencias() {
                 // Añadir manejadores de eventos después de que el contenido se haya cargado
                 $('[id^=toggle-pencil]').click(function () {
                     var index = this.id.split('-')[2];
-                    var form1 = $('#form1-' + index);
-                    form1.css('display', form1.css('display') === 'none' ? 'block' : 'none');
+                    toggleForms(index, 'form1');
                 });
 
                 $('[id^=toggle-sort]').click(function () {
                     var index = this.id.split('-')[2];
-                    var form2 = $('#form2-' + index);
-                    form2.css('display', form2.css('display') === 'none' ? 'block' : 'none');
+                    toggleForms(index, 'form2');
                 });
 
             }
         });
     });
 }
+
+function toggleForms(index, formType) {
+    var form1 = $('#form1-' + index);
+    var form2 = $('#form2-' + index);
+    var form3 = $('#form3-' + index);
+
+    if (formType === 'form1') {
+        form1.toggle();
+    } else if (formType === 'form2') {
+        form2.toggle();
+    }
+
+    if (form1.is(':visible') && form2.is(':visible')) {
+        form3.show();
+        form1.hide();
+        form2.hide();
+    } else {
+        form3.hide();
+    }
+}
+
 
 
 

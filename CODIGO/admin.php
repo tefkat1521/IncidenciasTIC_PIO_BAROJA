@@ -40,6 +40,20 @@ if(isset($_POST["submit"])) {
     header("Location: admin.html");
     exit;
 }
+
+if(isset($_POST["submit2"])) {
+
+    $id_incidencia = $_POST['id'];
+    $estado = $_POST['estado2'];
+    $urgencia = $_POST['urgencia2'];
+    $incidencias = new Incidencias();
+    $incidencias->update_incidencia_estado_y_prioridad($id_incidencia, $estado, $urgencia);
+    header("Location: admin.html");
+    exit;
+
+}
+
+
 if(isset($_POST["submitborrado"]))
     {
         $id_incidencia = $_POST['id2'];
@@ -139,66 +153,64 @@ if (count($array_incidencias) > 0) {
 
         if($laincidencia["estado"] != "Solucionado") {
             $html_output .= '
-                <button id="toggle-pencil-' . $index . '" class="btn btn-default">Estado
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-                
-                <button id="toggle-sort-' . $index . '" class="btn btn-default">Prioridad
-                    <span class="glyphicon glyphicon-sort-by-attributes"></span>
-                </button>
-                <br><br>
-                <div id="form1-' . $index . '" style="display: none">
-                    <form method="post" action="admin.php">
-                        <label>Cambiar estado</label><br>
-                        <select name="estado">
-                            <option value="" selected disabled>Seleccionar estado</option>
-                            <option value="Creada">Creada</option>
-                            <option value="En_proceso">En proceso</option>
-                            <option value="Solucionado">Solucionado</option>
-                        </select>
-                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
-                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
-                    </form>
-                </div>
-                <br>
-                
-                <div id="form2-' . $index . '" style="display: none">
-                    <form method="post" action="admin.php">
-                        <label>Asignar Prioridad</label><br>
-                        <select name="urgencia">
-                            <option value="" selected disabled>Seleccionar urgencia</option>
-                            <option value="1">Baja</option>
-                            <option value="2">Media</option>
-                            <option value="3">Alta</option>
-                        </select>
-                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
-                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
-                    </form>
-                </div>
-
-                <div id="form3-' . $index . '" style="display: none">
-                    <form method="post" action="admin.php">
-                        <label>Cambiar estado</label><br>
-                        <select name="estado2">
-                            <option value="" selected disabled>Seleccionar estado</option>
-                            <option value="Creada">Creada</option>
-                            <option value="En_proceso">En proceso</option>
-                            <option value="Solucionado">Solucionado</option>
-                        </select>
-                        <br>
-                        <label>Asignar Prioridad</label><br>
-                        <select name="urgencia2">
-                            <option value="" selected disabled>Seleccionar urgencia</option>
-                            <option value="1">Baja</option>
-                            <option value="2">Media</option>
-                            <option value="3">Alta</option>
-                        </select>
-                        <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
-                        <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
-                    </form>
-                </div>
-                <br>
-            ';
+            <button id="toggle-pencil-' . $index . '" class="btn btn-default toggle-pencil">Estado
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button id="toggle-sort-' . $index . '" class="btn btn-default toggle-sort">Prioridad
+                <span class="glyphicon glyphicon-sort-by-attributes"></span>
+            </button>
+            <br><br>
+            <div id="form1-' . $index . '" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Cambiar estado</label><br>
+                    <select name="estado">
+                        <option value="" selected disabled>Seleccionar estado</option>
+                        <option value="Creada">Creada</option>
+                        <option value="En_proceso">En proceso</option>
+                        <option value="Solucionado">Solucionado</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
+                </form>
+            </div>
+            <br>
+            <div id="form2-' . $index . '" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Asignar Prioridad</label><br>
+                    <select name="urgencia">
+                        <option value="" selected disabled>Seleccionar urgencia</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
+                </form>
+            </div>
+            <div id="form3-' . $index . '" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Cambiar estado</label><br>
+                    <select name="estado2" required>
+                        <option value="" selected disabled>Seleccionar estado</option>
+                        <option value="Creada">Creada</option>
+                        <option value="En_proceso">En proceso</option>
+                        <option value="Solucionado">Solucionado</option>
+                    </select>
+                    <br>
+                    <label>Asignar Prioridad</label><br>
+                    <select name="urgencia2" required>
+                        <option value="" selected disabled>Seleccionar urgencia</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit2" value="Actualizar">
+                </form>
+            </div>
+            <br>
+        ';
+        
         }
 
         $html_output .= '
