@@ -125,3 +125,36 @@ document.addEventListener("DOMContentLoaded", function () {
     SesionUser();
     insertarProfesor();
 });
+
+
+
+// NO FUNCIONA
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    
+
+
+        var incidenciasAdmin = document.getElementById('incidenciasAdmin');
+        var primerDivHijo = incidenciasAdmin.querySelector('div');
+        console.log(primerDivHijo); // Muestra el primer div dentro de #incidenciasAdmin
+  
+
+
+    const incidencias = document.querySelectorAll("#incidencias > div");
+    const grande = document.getElementById("grande");
+
+    incidencias.forEach((incidencia) => {
+        incidencia.addEventListener("click", function () {
+            // Obtener el contenido de la incidencia clicada
+            const contenido = this.innerHTML;
+            console.log(contenido);
+
+            // Llenar el div #grande con el contenido de la incidencia clicada
+            grande.innerHTML = contenido;
+            // Mostrar el div #grande
+            grande.style.display = "block";
+        });
+    });
+});
+

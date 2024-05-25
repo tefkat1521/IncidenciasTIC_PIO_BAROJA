@@ -186,7 +186,7 @@ function mostrarFormularioIncidencia()
 
     // Agregar el formulario HTML a la cadena
 
-    $htmlOutput .= '<div class="col-md-8" style="margin: 5em;">';
+    $htmlOutput .= '<div class="col-md-8 mx-auto" style="margin: 5em;">';
 
     $htmlOutput .= '<form method="post" action="code.php">';
     

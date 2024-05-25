@@ -133,7 +133,7 @@ if (count($array_incidencias) > 0) {
                 <li><b>Ciclo: </b>'. $laincidencia["ciclo"] .'</li>
                 <li><b>Tipo: </b>'. $laincidencia["tipo_incidencia"] .'</li>
                 <li><b>Estado: </b>'. $laincidencia["estado"] .'</li>
-                <li><b>Nivel de urgencia: </b>'. $prioridad .'</li>
+                <li><b>Urgencia: </b>'. $prioridad .'</li>
                 <li>'. $laincidencia["descripcion"] .'</li>
             </ul>';
 
@@ -243,24 +243,34 @@ function procesarFormulario() {
     }
 }
 function generarFormulario($array_deps) {
-    $out = '';
+    $out = '<div class="col-md-8" style="margin: 5em;">';
+    // $out .= '<form method="post" action="code.php">';
+    $out .= '';
     $out .= '<form id="loginform" action="admin.php" method="post">';
-    $out .= '<label>Nombre Completo</label>';
-    $out .= '<input type="text" name="nombre" required/><br>';
-    $out .= '<label>Correo</label>';
-    $out .= '<input type="text" name="correo" required/><br>';
-    $out .= '<label>Departamento</label>';
-    $out .= '<select name="dept" required>';
+
+    // $out .= '<label>Nombre Completo</label>';
+    $out .= '<input type="text" name="nombre" class="form-control myInputFooter required" required placeholder="Nombre completo"/><br>';
+    
+
+    // $out .= '<label>Correo</label>';
+    $out .= '<input type="text" name="correo" class="form-control myInputFooter required" required placeholder="Correo"/><br>';
+
+    // $out .= '<label>Departamento</label>';
+    $out .= '<select name="dept" class="form-control myInputFooter required" required>';
+    $out .= '<option value="" selected disabled hidden>Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }
     $out .= '</select><br><br>';
-    $out .= '<label>Contraseña</label>';
-    $out .= '<input type="password" name="pass" required/><br>';
-    $out .= '<label>Repita la contraseña</label>';
-    $out .= '<input type="password" required/><br>';
-    $out .= '<input type="submit" name="hecho" value="CREAR">';
+
+
+    // $out .= '<label>Contraseña</label>';
+    $out .= '<input type="password" name="pass" class="form-control myInputFooter required" required  placeholder="Contraseña"/><br>';
+    // $out .= '<label>Repita la contraseña</label>';
+    $out .= '<input type="password" class="form-control myInputFooter required" required  placeholder="Repita la Contraseña"/><br>';
+    $out .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $out .= '</form>';
+    $out .= '</div>';
     echo $out;
 
 

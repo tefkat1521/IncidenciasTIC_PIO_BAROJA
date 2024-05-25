@@ -2,21 +2,45 @@
     display: none; /* Ocultar formularios inicialmente */
 }
 
+#grande {
+    width: 15em;
+    height: 15em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    z-index: 9999;
+    display: none; 
+    padding: 1em; /* Añadido para el contenido */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
 
 #incidencias {
     display: flex; /* Hace que los divs hijos se comporten como flex items */
     flex-wrap: wrap; /* Permite que los flex items se envuelvan a la siguiente línea cuando no hay suficiente espacio */
     justify-content:space-around;
     width: 100%;
+    
+
 }
 
 #incidencias > div {
     box-sizing: border-box;
-    width: calc(33.333% - 40px); /* Ancho del 33.333% menos el margen */
+    width: calc(25% - 40px); /* Ancho del 25% menos el margen */
     margin: 20px; 
     min-width: 20em;
     max-width: 30em;
     position: relative;
+    box-shadow: #272727 0px 0px 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el agrandamiento */
+    cursor: pointer;
+}
+
+#incidencias > div:hover {
+    transform: scale(1.05); /* Aumentar el tamaño al 105% */
+    box-shadow: #272727 0px 0px 20px; /* Intensificar la sombra */
 }
 
 .chincheta{
@@ -110,19 +134,22 @@ div.incCreada ul {
     line-height: 1.1;
     font-size: 16px;
     position: relative;
-    /* margin-top: 1em; */
+    margin-top: 1em;
     line-height: 1.5;
     /* margin: 2em; */
 }
 
 
 #result{
-    background-image: url("images/depositphotos_117695666-stock-photo-texture-of-cork-close-up.jpg");
+    /* background-image: url("images/depositphotos_117695666-stock-photo-texture-of-cork-close-up.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-/* 
-    background-color: bisque; */
+    background-repeat: no-repeat; */
+
+    /* background-color: bisque; */
+    /* border-color: black;
+    border-width: 5px;
+    border-style: double; */
 }
 
 .filtro_incidencia,
@@ -158,11 +185,43 @@ width: 100%;
 
 
 
+.text-center {
+    text-align: center;
+}
 
+.myInputFooter{
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-color: #dddddd40;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    width: 100%;
+}
 
+.myInputFooter:focus{
+    outline: 0px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
 
+.backNewsletter{
 
+    padding: 40px;
+    background: #f6f6f6;
 
+}
+
+.myButton{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
 
 
 
