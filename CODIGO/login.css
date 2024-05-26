@@ -27,15 +27,17 @@ body {
     /* border-radius: 10px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-right: 40px; /* Espacio entre los contenedores */
+    box-shadow: #141414 0px 0px 15px;
+
 }
 
 .login-box:last-child {
     margin-right: 0; /* Elimina el margen derecho del último contenedor */
-    margin-left: 40px;
+    /* margin-left: 40px; */
 }
 
 .login-box h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
     color: #4CAF50;
 }
@@ -109,4 +111,55 @@ button:hover {
 
 #pswdButton:hover {
     background-color: #45a049;
+}
+
+.olvido{
+    margin-top: 3em;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+   
+}
+    
+.olvidocontraseña{
+font-size: small;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+color: #555;
+}
+
+
+/* Media Query para Móviles */
+@media (max-width: 767px) {
+    .login-box {
+        width: 100% !important;
+        height: 100% !important;
+        position: fixed; /* Asegúrate de que se quede fijo en la pantalla */
+        top: 0;
+        left: 0;
+        margin: 0; /* Elimina cualquier margen */
+        padding: 0; /* Elimina cualquier relleno */
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centra el contenido verticalmente */
+        align-items: center; /* Centra el contenido horizontalmente */
+    }
+
+    #loginForm{
+        margin: 2em;
+    }
+
+    #contenedor{
+        width: 80%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra el contenido horizontalmente */
+        justify-content: center; /* Centra el contenido verticalmente */
+    }
+
+    .input-group {
+        width: 100%; /* Asegúrate de que los inputs ocupen todo el ancho del contenedor */
+    }
 }

@@ -398,11 +398,12 @@ function generarFormulario($array_deps) {
 
     // $out .= '<label>Departamento</label>';
     $out .= '<select name="dept" class="form-control myInputFooter required" required>';
-    $out .= '<option value="" selected disabled hidden>Departamento</option>'; // Placeholder
+    $out .= '<option value="" selected disabled hidden style="color: #a29f9f;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }
     $out .= '</select><br><br>';
+    
 
 
     // $out .= '<label>Contraseña</label>';

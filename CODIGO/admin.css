@@ -183,7 +183,9 @@ button[id^="toggle-sort-"]{
 width: 100%;
 } */
 
-
+/* select.myInputFooter option:disabled {
+    color: #555; 
+} */
 
 .text-center {
     text-align: center;
@@ -225,5 +227,22 @@ width: 100%;
 
 
 
+#textofooter{
+
+}
 
 
+/* Cambiar el color de fondo de la barra de navegación */
+/* .navbar-inverse,
+.backFooter{
+    background-color: #0c4514 ; 
+  
+  }
+
+  @media only screen and (max-width: 768px) {
+    .backFooter {
+        height: fit-content;
+    }
+}
+
+ */

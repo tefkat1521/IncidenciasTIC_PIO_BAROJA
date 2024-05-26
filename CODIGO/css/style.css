@@ -354,7 +354,8 @@ height: 8em;
 .backFooter{
     padding: 40px;
     background-color:#4b924b;
-
+    /* height: fit-content; */
+    height: 500px;
 }
 
 .footertext,  .footertext > a{
@@ -429,5 +430,25 @@ height: 8em;
 
 /* *********************************************************** RESPONSIVE *********************************************************** */
 
+.recuperarcontraseñacontenedor{
+/* box-shadow: #000000 0px 0px 10px; */
 
+ /* filter: drop-shadow(0px 0px 15px rgb(255, 255, 255)); */
+
+}
+
+.logo {
+  border: 1px solid rgb(95, 97, 96); /* Ajusta el tamaño y el color del borde según tus necesidades */
+  border-radius: 50%; /* Hace que el borde sea circular */
+}
+
+.botoncambiarcontraseña{
+background-color:#34a834;
+color: white;
+}
+
+.botoncambiarcontraseña:hover{
+  background-color:#5bb15b;
+  color: white;
+  }
 
