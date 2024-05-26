@@ -27,7 +27,7 @@ if (isset($_POST["insertar"])) {
     mostrarFormularioIncidencia();
     
 }
-if (isset($_POST["aula"])) {
+if (isset($_POST["hecho"])) {
        insertarIncidencia();
     }
 if (isset($_POST['cerrarSesion'])) {
@@ -92,6 +92,10 @@ function mostrarIncidencias()
         $out .= "<tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr>";
 
         foreach ($resultado as $incidencia) {
+
+            if($incidencia['ciclo']==null){$ciclo = "------";}
+            else{$ciclo = $incidencia['ciclo'];}
+
             $fecha = new DateTime($incidencia["fecha"]);
             $fechaFormateada = $fecha->format('d-m-Y');
             $out .= "<tr>";
@@ -99,7 +103,7 @@ function mostrarIncidencias()
             $out .= "<td>" . $fechaFormateada . "</td>";
             $out .= "<td>" . $incidencia['tipo_incidencia'] . "</td>";
             $out .= "<td>" . $incidencia['Nombre_aula'] . "</td>";
-            $out .= "<td>" . $incidencia['ciclo'] . "</td>";
+            $out .= "<td>" . $ciclo . "</td>";
             $out .= "<td>" . $incidencia['descripcion'] . "</td>";
             $out .= "<td>" . $incidencia['estado'] . "</td>";
             $out .= "</tr>";
@@ -151,11 +155,10 @@ function returnUser()
 function insertarIncidencia()
 {
      // Obtener datos del formulario
-        $fecha = date("Y-m-d");
         $aula = $_POST["aula"];
+        $fecha = date("Y-m-d");
         $descripcion = $_POST["descripcion"];
         $tipo = $_POST["tipo"];
-        $ciclo = $_POST["ciclo"];
         $estado = "Creada";
 
         // Obtener el ID del profesor
@@ -165,7 +168,16 @@ function insertarIncidencia()
         // Insertar la incidencia
         $incidencias = new Incidencias();
         
-        $incidencias->insertar_incidencia($fecha, $aula, $descripcion, $tipo, $id_profesor, $ciclo, $estado);
+        if (isset($_POST["ciclo"]))
+        {
+            $ciclo = $_POST["ciclo"];
+            $incidencias->insertar_incidencia($fecha, $aula, $descripcion, $tipo, $id_profesor, $ciclo, $estado);
+        }
+        else
+        {
+            $incidencias->insertar_incidencia2($fecha, $aula, $descripcion, $tipo, $id_profesor, $estado);
+        }
+       
         header("Location: index.html");
         exit; // Asegura que el script se detenga después de la redirección
 }
@@ -192,7 +204,7 @@ function mostrarFormularioIncidencia()
     
 
     // Selector para aula
-    $htmlOutput .= '<select id="aula" name="aula" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<select id="elaula" name="aula" class="form-control myInputFooter required" required onchange="habilitarSegundoSelect()">';
     $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un Aula</option>'; // Placeholder
     foreach ($array_aula as $aula) {
         $htmlOutput .= "<option value='" . $aula['ID_Aula'] . "'>" . $aula['Nombre_aula'] . "</option>";
@@ -200,7 +212,7 @@ function mostrarFormularioIncidencia()
     $htmlOutput .= '</select><br><br>';
     
     // Selector para ciclo
-    $htmlOutput .= '<select id="elciclo" name="ciclo" class="form-control myInputFooter required" required>';
+    $htmlOutput .= '<select id="elciclo" name="ciclo" class="form-control myInputFooter required" required disabled>';
     $htmlOutput .= '<option value="" selected disabled hidden>Selecciona un ciclo</option>'; // Placeholder
     foreach ($array_ciclo as $ciclo) {
         $htmlOutput .= "<option value='" . $ciclo['id_ciclo'] . "'>" . $ciclo['ciclo'] . "</option>";

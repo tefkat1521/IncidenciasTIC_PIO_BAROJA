@@ -65,6 +65,20 @@ function noLogueado() {
 }
 
 
+function habilitarSegundoSelect() {
+    const primerSelect = document.getElementById("elaula");
+    const segundoSelect = document.getElementById("elciclo");
+    const opcionesHabilitar = Array.from({length: 20}, (_, i) => (i + 1).toString());
+
+    if (opcionesHabilitar.includes(primerSelect.value)) {
+        segundoSelect.disabled = true;
+    } else {
+        segundoSelect.disabled = false;
+    }
+}
+
+
+
 ////////////////////////////////////////LLAMADAS FUNCIONES///////////////////////////////////////////////////
 
 // Llama a la función consultarIncidencias al cargar el DOM

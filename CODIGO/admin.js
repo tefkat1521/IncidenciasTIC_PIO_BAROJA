@@ -137,6 +137,7 @@ function toggleForms(index, formType) {
 
 
 
+
 function insertarProfesor() {
     var xhttp = new XMLHttpRequest();
     var newProfesor = 0;

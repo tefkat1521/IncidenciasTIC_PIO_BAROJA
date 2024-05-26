@@ -28,10 +28,10 @@ class incidencias extends conexion
     public function get_incidencias_datos()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
-        FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND c.id_ciclo = i.id_ciclo
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        LEFT JOIN ciclo c ON c.id_ciclo = i.id_ciclo
         ORDER BY i.niveldeprioridad DESC, i.fecha DESC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -45,11 +45,11 @@ class incidencias extends conexion
     public function get_incidencias_datos_recientes()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
-        FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        LEFT JOIN ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         ORDER BY i.fecha DESC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -63,11 +63,11 @@ class incidencias extends conexion
     public function get_incidencias_datos_antiguas()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, c.ciclo, i.niveldeprioridad, i.estado, t.tipo_incidencia 
-        FROM Incidencias i, Aula a , Tipo_Incidencia t, ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        LEFT JOIN ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         ORDER BY i.fecha ASC");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -79,21 +79,27 @@ class incidencias extends conexion
      * Datos por profesor
      */
     public function get_incidencias_por_profesor($profe)
-    {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado != 'Solucionado'
-        AND p.ID_Profe = (SELECT ID_profe FROM profesor WHERE correo LIKE '%".$profe."%')
-        ORDER BY i.fecha DESC;");
+{
+    $stmt = $this->conect->prepare("
+        SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula 
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia 
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
+        WHERE i.estado != 'Solucionado' 
+        AND p.ID_Profe = (SELECT ID_profe FROM Profesor WHERE correo LIKE ?)
+        ORDER BY i.fecha DESC");
 
-        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+    $like_profe = "%$profe%";
+    $stmt->bind_param("s", $like_profe);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $incidencias = $result->fetch_all(MYSQLI_ASSOC);
 
-        return $incidencias;
-    }
+    return $incidencias;
+}
+
 
     /**
      *  Datos por incidencia sin ansignar (sin nivel de prioridad)
@@ -101,12 +107,12 @@ class incidencias extends conexion
     public function get_incidencias_sin_asignar()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad IS NULL
         ORDER BY i.fecha ASC;");
 
@@ -121,12 +127,12 @@ class incidencias extends conexion
     public function get_incidencias_prioridad_baja()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 1
         ORDER BY i.fecha ASC;");
 
@@ -141,12 +147,12 @@ class incidencias extends conexion
     public function get_incidencias_prioridad_media()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 2
         ORDER BY i.fecha ASC;");
 
@@ -161,12 +167,12 @@ class incidencias extends conexion
     public function get_incidencias_prioridad_alta()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo
-        AND i.estado != 'Solucionado' 
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 3
         ORDER BY i.fecha ASC;");
 
@@ -181,12 +187,12 @@ class incidencias extends conexion
     public function get_incidencias_en_proceso()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'En_proceso'
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado = 'En_proceso'
         ORDER BY i.niveldeprioridad DESC;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -200,12 +206,12 @@ class incidencias extends conexion
     public function get_incidencias_en_solucionado()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'Solucionado'
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado = 'Solucionado'
         ORDER BY i.fecha ASC;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -220,12 +226,12 @@ class incidencias extends conexion
     public function get_incidencias_en_pediente()
     {
         $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'Creada'
+        FROM Incidencias i
+        JOIN Aula a ON a.ID_Aula = i.ID_Aula
+        JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+        WHERE i.estado = 'Creada'
         ORDER BY i.fecha ASC;");
 
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
@@ -238,67 +244,66 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_aula($aula)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'Pendiente'
-        AND a.Nombre_aula = '$aula';");
-
-        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+        $stmt = $this->conect->prepare("
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            FROM Incidencias i
+            JOIN Aula a ON a.ID_Aula = i.ID_Aula
+            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+            JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+            LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+            WHERE i.estado = 'Pendiente'
+            AND a.Nombre_aula = ?");
+        $stmt->bind_param("s", $aula);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $incidencias = $result->fetch_all(MYSQLI_ASSOC);
 
         return $incidencias;
     }
+
 
     /**
      *  Datos por incidencia por tipo incidencia
      */
     public function get_incidencias_por_tipo($tipo)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'Pendiente'
-        AND t.tipo_incidencia = '$tipo';");
-
-        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
+        $stmt = $this->conect->prepare("
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            FROM Incidencias i
+            JOIN Aula a ON a.ID_Aula = i.ID_Aula
+            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+            JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+            LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+            WHERE i.estado = 'Pendiente'
+            AND t.tipo_incidencia = ?");
+        $stmt->bind_param("s", $tipo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $incidencias = $result->fetch_all(MYSQLI_ASSOC);
 
         return $incidencias;
     }
 
+
     public function get_incidencia_por_id($id_incidencia)
-{
-    // Prepara la consulta SQL para evitar inyecciones SQL
-    $stmt = $this->conect->prepare("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-                                    FROM Incidencias i
-                                    JOIN Aula a ON a.ID_Aula = i.ID_Aula 
-                                    JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia 
-                                    JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
-                                    JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
-                                    WHERE i.id_incidencia = ?");
+    {
+        $stmt = $this->conect->prepare("
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            FROM Incidencias i
+            JOIN Aula a ON a.ID_Aula = i.ID_Aula 
+            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia 
+            JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
+            JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
+            WHERE i.id_incidencia = ?");
 
-    // Vincula el parámetro id_incidencia a la consulta preparada
-    $stmt->bind_param("i", $id_incidencia);
+        $stmt->bind_param("i", $id_incidencia);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $incidencia = $result->fetch_assoc();
+        $stmt->close();
+        return $incidencia;
+    }
 
-    // Ejecuta la consulta
-    $stmt->execute();
-
-    // Obtiene el resultado de la consulta
-    $result = $stmt->get_result();
-
-    // Obtiene la incidencia como un array asociativo
-    $incidencia = $result->fetch_assoc();
-
-    // Cierra la declaración
-    $stmt->close();
-
-    return $incidencia;
-}
 
 
     /**
@@ -306,19 +311,23 @@ class incidencias extends conexion
      */
     public function get_incidencias_por_profe_fil($profe)
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
-        FROM Incidencias i, Aula a, Tipo_Incidencia t, Profesor p, Ciclo c
-        WHERE a.ID_Aula = i.ID_Aula 
-        AND t.id_tipo_incidencia = i.id_tipo_incidencia 
-        AND p.ID_Profe = i.ID_Profe 
-        AND c.id_ciclo = i.id_ciclo 
-        AND i.estado = 'Pendiente'
-        AND p.ID_Profe = '$profe';");
-
-        $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
-
+        $stmt = $this->conect->prepare("
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            FROM Incidencias i
+            JOIN Aula a ON a.ID_Aula = i.ID_Aula
+            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
+            JOIN Profesor p ON p.ID_Profe = i.ID_Profe
+            LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
+            WHERE i.estado = 'Pendiente'
+            AND p.ID_Profe = ?");
+        $stmt->bind_param("s", $profe);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $incidencias = $result->fetch_all(MYSQLI_ASSOC);
+    
         return $incidencias;
     }
+    
 
 
 /****************************UPDATES******************************************* */
@@ -403,7 +412,28 @@ class incidencias extends conexion
 
             $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, id_ciclo, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->conect->prepare($sql);
-            $stmt->bind_param("sssisiss",$IDaleatorio, $fecha, $descripcion, $id_ciclo, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
+            $stmt->bind_param("sssiiiss",$IDaleatorio, $fecha, $descripcion, $id_ciclo, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        
+    }
+
+    public function insertar_incidencia2($fecha ,$id_aula, $descripcion, $id_tipo_incidencia, $id_profe, $estado)
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        do 
+        {
+            $IDaleatorio = $id_tipo_incidencia . substr(str_shuffle($caracteres), 0, 5);
+        } 
+        while ($this->comprobar_id_incidencia($IDaleatorio));
+
+            $sql = "INSERT INTO Incidencias (id_incidencia, fecha, descripcion, ID_Aula, ID_Profe,  id_tipo_incidencia, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->conect->prepare($sql);
+            $stmt->bind_param("sssiiss",$IDaleatorio, $fecha, $descripcion, $id_aula, $id_profe, $id_tipo_incidencia, $estado);
 
             if ($stmt->execute()) {
                 return true;
