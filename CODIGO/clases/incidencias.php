@@ -271,6 +271,35 @@ class incidencias extends conexion
         return $incidencias;
     }
 
+    public function get_incidencia_por_id($id_incidencia)
+{
+    // Prepara la consulta SQL para evitar inyecciones SQL
+    $stmt = $this->conect->prepare("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+                                    FROM Incidencias i
+                                    JOIN Aula a ON a.ID_Aula = i.ID_Aula 
+                                    JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia 
+                                    JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
+                                    JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
+                                    WHERE i.id_incidencia = ?");
+
+    // Vincula el parámetro id_incidencia a la consulta preparada
+    $stmt->bind_param("i", $id_incidencia);
+
+    // Ejecuta la consulta
+    $stmt->execute();
+
+    // Obtiene el resultado de la consulta
+    $result = $stmt->get_result();
+
+    // Obtiene la incidencia como un array asociativo
+    $incidencia = $result->fetch_assoc();
+
+    // Cierra la declaración
+    $stmt->close();
+
+    return $incidencia;
+}
+
 
     /**
      *  Datos por incidencia por profe

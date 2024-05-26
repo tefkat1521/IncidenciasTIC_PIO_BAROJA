@@ -8,6 +8,10 @@ require "clases/departamento.php";
 $deps = new departamento();
 $array_deps = $deps->get_departamento();
 
+global $arrContIncidencias;
+$arrContIncidencias[] = array();
+
+
 if(isset($_POST["newProfesor"])){
     generarFormulario($array_deps);
 } 
@@ -67,6 +71,125 @@ if(isset($_POST["value"])){
     mostrarIncidencias($_POST["value"]);
 }
 
+if(isset($_POST["numIncidencia"])){
+    mostrarEditarIncidencia($arrContIncidencias);
+}
+
+function mostrarEditarIncidencia($arrContIncidencias){
+
+    $incidencias = new Incidencias();
+    $array_incidencias = $incidencias->get_incidencia_por_id($arrContIncidencias[$_POST["numIncidencia"]]);
+
+    $MostrarIncidencia = '<div id="incidencias">';
+
+    // Desglosa la incidencia en variables individuales
+    if($array_incidencias["niveldeprioridad"]==1){
+        $prioridad = "Baja";
+    } elseif($array_incidencias["niveldeprioridad"]==2){
+        $prioridad = "Media";
+    } elseif($array_incidencias["niveldeprioridad"]==3){
+        $prioridad = "Alta";
+    } else {
+        $prioridad = "Sin asignar";
+    }
+
+    $fecha = new DateTime($array_incidencias["fecha"]);
+    $fechaFormateada = $fecha->format('d-m-Y');
+
+    // Construye el HTML de la incidencia
+    $MostrarIncidencia .= '
+        <div class="inc' . htmlspecialchars($array_incidencias["estado"]) . '">
+            <div class="chincheta"></div>
+            <ul>
+                <li><b>Fecha: </b>'. $fechaFormateada .'</li>
+                <li><b>Aula: </b>'. $array_incidencias["Nombre_aula"] .'</li>
+                <li><b>Ciclo: </b>'. $array_incidencias["ciclo"] .'</li>
+                <li><b>Tipo: </b>'. $array_incidencias["tipo_incidencia"] .'</li>
+                <li><b>Estado: </b>'. $array_incidencias["estado"] .'</li>
+                <li><b>Urgencia: </b>'. $prioridad .'</li>
+                <li>'. $array_incidencias["descripcion"] .'</li>
+            </ul>';
+
+    if($array_incidencias["estado"] != "Solucionado") {
+        $MostrarIncidencia .= '
+            <button id="toggle-pencil" class="btn btn-default toggle-pencil">Estado
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button id="toggle-sort" class="btn btn-default toggle-sort">Prioridad
+                <span class="glyphicon glyphicon-sort-by-attributes"></span>
+            </button>
+            <br><br>
+            <div id="form1" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Cambiar estado</label><br>
+                    <select name="estado">
+                        <option value="" selected disabled>Seleccionar estado</option>
+                        <option value="Creada">Creada</option>
+                        <option value="En_proceso">En proceso</option>
+                        <option value="Solucionado">Solucionado</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $array_incidencias["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
+                </form>
+            </div>
+            <br>
+            <div id="form2" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Asignar Prioridad</label><br>
+                    <select name="urgencia">
+                        <option value="" selected disabled>Seleccionar urgencia</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $array_incidencias["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
+                </form>
+            </div>
+            <div id="form3" style="display: none">
+                <form method="post" action="admin.php">
+                    <label>Cambiar estado</label><br>
+                    <select name="estado2" required>
+                        <option value="" selected disabled>Seleccionar estado</option>
+                        <option value="Creada">Creada</option>
+                        <option value="En_proceso">En proceso</option>
+                        <option value="Solucionado">Solucionado</option>
+                    </select>
+                    <br>
+                    <label>Asignar Prioridad</label><br>
+                    <select name="urgencia2" required>
+                        <option value="" selected disabled>Seleccionar urgencia</option>
+                        <option value="1">Baja</option>
+                        <option value="2">Media</option>
+                        <option value="3">Alta</option>
+                    </select>
+                    <input type="hidden" name="id" value="' . $array_incidencias["id_incidencia"] . '"><br>
+                    <input class="botonactualizar" type="submit" name="submit2" value="Actualizar">
+                </form>
+            </div>
+            <br>
+        ';
+
+    $MostrarIncidencia .= '
+            <div id="borrado">
+                <form method="post" action="admin.php">
+                    <input type="hidden" name="id2" value="' . $array_incidencias["id_incidencia"] . '">
+                    <span class="glyphicon glyphicon-trash" type="submit" name="submitborrado"></span>
+                    <input class="botonborrar" type="submit" name="submitborrado" value="Borrar">
+                    
+                </form>
+            </div>
+        </div>';
+
+    $MostrarIncidencia .= '</div>';
+
+    // Imprime los detalles de la incidencia
+    echo $MostrarIncidencia+"hola";
+
+    // Captura la salida y devuelve como una variable
+    return ob_get_clean();
+}
+}
 function mostrarIncidencias($filtro){
     ob_start(); // Inicia el búfer de salida
 
@@ -126,8 +249,8 @@ function mostrarIncidencias($filtro){
 if (count($array_incidencias) > 0) {
     $html_output = '<div id="incidencias">';
 
+     $contador = 1;
     
-
     foreach($array_incidencias as $index => $laincidencia) {
         
         if($laincidencia["niveldeprioridad"]==1){$prioridad = "Baja";}
@@ -139,7 +262,7 @@ if (count($array_incidencias) > 0) {
         $fechaFormateada = $fecha->format('d-m-Y');
 
         $html_output .= '
-        <div class="inc'. $laincidencia["estado"] .'">
+        <div id="holaa" class="inc' . htmlspecialchars($laincidencia["estado"]) . '" onclick="editarIncidencia(' . htmlspecialchars($contador) . ')" data-numIncidencia="' . htmlspecialchars($contador) . '">
         <div class="chincheta"></div>
             <ul>
                 <li><b>Fecha: </b>'. $fechaFormateada .'</li>
@@ -224,6 +347,9 @@ if (count($array_incidencias) > 0) {
             </div>
         </div>';
 
+        // array_push($arrContIncidencias, $laincidencia["id_incidencia"]);
+        $arrContIncidencias[] = $laincidencia["id_incidencia"];
+        $contador++;
        
     }
 
@@ -232,10 +358,12 @@ if (count($array_incidencias) > 0) {
     $html_output = '<div>No existen incidencias</div>';
 }
 
+// unset($arrContIncidencias);
 // Devuelve la salida HTML
 echo $html_output;
 
 }
+
 
 
 
@@ -302,10 +430,5 @@ function generarFormulario($array_deps) {
 // }
     
 }
-
-
-
-
-
 
 ?>

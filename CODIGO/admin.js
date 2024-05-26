@@ -183,6 +183,29 @@ function noLogueado() {
     window.location.href = "login.html";
 }
 
+
+
+function editarIncidencia(numIncidencia){
+    
+
+    $.ajax({
+        type: 'POST',
+        url: 'admin.php',
+        data: {
+            numIncidencia: numIncidencia,
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function () {
+            // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
+            alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
+        }
+    });
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
@@ -200,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var incidenciasAdmin = document.getElementById('incidenciasAdmin');
         var primerDivHijo = incidenciasAdmin.querySelector('div');
-        console.log(primerDivHijo); // Muestra el primer div dentro de #incidenciasAdmin
   
 
 
