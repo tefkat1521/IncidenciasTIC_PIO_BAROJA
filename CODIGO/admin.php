@@ -73,6 +73,7 @@ if(isset($_POST["value"])){
 
 if(isset($_POST["numIncidencia"])){
     mostrarEditarIncidencia($arrContIncidencias);
+    // echo $_POST["numIncidencia"];
 }
 
 function mostrarEditarIncidencia($arrContIncidencias){
@@ -262,7 +263,7 @@ if (count($array_incidencias) > 0) {
         $fechaFormateada = $fecha->format('d-m-Y');
 
         $html_output .= '
-        <div id="holaa" class="inc' . htmlspecialchars($laincidencia["estado"]) . '" onclick="editarIncidencia(' . htmlspecialchars($contador) . ')" data-numIncidencia="' . htmlspecialchars($contador) . '">
+        <div class="inc' . htmlspecialchars($laincidencia["estado"]) . '" onclick="editarIncidencia(' . htmlspecialchars($contador) . ')" data-numIncidencia="' . htmlspecialchars($contador) . '">
         <div class="chincheta"></div>
             <ul>
                 <li><b>Fecha: </b>'. $fechaFormateada .'</li>

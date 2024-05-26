@@ -186,7 +186,8 @@ function noLogueado() {
 
 
 function editarIncidencia(numIncidencia){
-    
+    // prueba = this.innerHTML;
+    // console.log(prueba);
 
     $.ajax({
         type: 'POST',
