@@ -97,19 +97,58 @@ function mostrarEditarIncidencia($arrContIncidencias){
     $fecha = new DateTime($array_incidencias["fecha"]);
     $fechaFormateada = $fecha->format('d-m-Y');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Construye el HTML de la incidencia
     $MostrarIncidencia .= '
         <div class="inc' . htmlspecialchars($array_incidencias["estado"]) . '">
-            <div class="chincheta"></div>
-            <ul>
-                <li><b>Fecha: </b>'. $fechaFormateada .'</li>
-                <li><b>Aula: </b>'. $array_incidencias["Nombre_aula"] .'</li>
-                <li><b>Ciclo: </b>'. $array_incidencias["ciclo"] .'</li>
-                <li><b>Tipo: </b>'. $array_incidencias["tipo_incidencia"] .'</li>
-                <li><b>Estado: </b>'. $array_incidencias["estado"] .'</li>
-                <li><b>Urgencia: </b>'. $prioridad .'</li>
-                <li>'. $array_incidencias["descripcion"] .'</li>
-            </ul>';
+
+        <div class="container pricePadd">
+        <div class="col-md-3">
+        <div  class="panel panel-default">
+            <div id="orange" class="panel-heading">
+                <h3 class="panel-title">Incidencia</h3>
+            </div>
+            <div class="panel-body">
+           
+    
+    
+                <ul class="list-group">
+                    <li class="list-group-item"><b>Fecha: </b>'. $fechaFormateada .'</li>
+                    <li class="list-group-item"><b>Aula: </b>'. $array_incidencias["Nombre_aula"] .'</li>
+                    <li class="list-group-item"><b>Ciclo: </b>'. $array_incidencias["ciclo"] .'</li>
+                    <li class="list-group-item"><b>Tipo: </b>'. $array_incidencias["tipo_incidencia"] .'</li>
+                    <li class="list-group-item"><b>Estado: </b>'. $array_incidencias["estado"] .'</li>
+                    <li class="list-group-item">'. $array_incidencias["descripcion"] .'</li>
+                </ul>
+    
+    
+            </div>
+        </div>
+    </div>';
+
+
+
+
+
+
+
+
+      
 
     if($array_incidencias["estado"] != "Solucionado") {
         $MostrarIncidencia .= '
@@ -180,6 +219,7 @@ function mostrarEditarIncidencia($arrContIncidencias){
                     
                 </form>
             </div>
+        </div>
         </div>';
 
     $MostrarIncidencia .= '</div>';
@@ -259,6 +299,9 @@ if (count($array_incidencias) > 0) {
         elseif($laincidencia["niveldeprioridad"]==3){$prioridad = "Alta";}
         else{$prioridad = "Sin asignar";}
 
+        if($laincidencia["ciclo"]==null){$ciclo = "-----";}
+        else{$ciclo = $laincidencia["ciclo"];}
+
         $fecha = new DateTime($laincidencia["fecha"]);
         $fechaFormateada = $fecha->format('d-m-Y');
 
@@ -268,7 +311,7 @@ if (count($array_incidencias) > 0) {
             <ul>
                 <li><b>Fecha: </b>'. $fechaFormateada .'</li>
                 <li><b>Aula: </b>'. $laincidencia["Nombre_aula"] .'</li>
-                <li><b>Ciclo: </b>'. $laincidencia["ciclo"] .'</li>
+                <li><b>Ciclo: </b>'. $ciclo .'</li>
                 <li><b>Tipo: </b>'. $laincidencia["tipo_incidencia"] .'</li>
                 <li><b>Estado: </b>'. $laincidencia["estado"] .'</li>
                 <li><b>Urgencia: </b>'. $prioridad .'</li>
@@ -398,7 +441,7 @@ function generarFormulario($array_deps) {
 
     // $out .= '<label>Departamento</label>';
     $out .= '<select name="dept" class="form-control myInputFooter required" required>';
-    $out .= '<option value="" selected disabled hidden style="color: #999;">Departamento</option>'; // Placeholder
+    $out .= '<option value="" selected disabled hidden style="color: #a29f9f;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }

@@ -227,9 +227,9 @@ width: 100%;
 
 
 
-/* #textofooter{
+#textofooter{
 
-} */
+}
 
 
 /* Cambiar el color de fondo de la barra de navegación */
@@ -246,25 +246,3 @@ width: 100%;
 }
 
  */
-
-
-
-
-
-
- #orange{
-    background-color: #ec945e;
-    padding: 40px;
-
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-
-}
-
-
-.list-group-item {
-    border-left: 0px;
-    border-right: 0px;
-}
-

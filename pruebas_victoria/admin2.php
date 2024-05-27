@@ -259,6 +259,9 @@ if (count($array_incidencias) > 0) {
         elseif($laincidencia["niveldeprioridad"]==3){$prioridad = "Alta";}
         else{$prioridad = "Sin asignar";}
 
+        if($laincidencia["ciclo"]==null){$ciclo = "-----";}
+        else{$ciclo = $laincidencia["ciclo"];}
+
         $fecha = new DateTime($laincidencia["fecha"]);
         $fechaFormateada = $fecha->format('d-m-Y');
 
@@ -268,7 +271,7 @@ if (count($array_incidencias) > 0) {
             <ul>
                 <li><b>Fecha: </b>'. $fechaFormateada .'</li>
                 <li><b>Aula: </b>'. $laincidencia["Nombre_aula"] .'</li>
-                <li><b>Ciclo: </b>'. $laincidencia["ciclo"] .'</li>
+                <li><b>Ciclo: </b>'. $ciclo .'</li>
                 <li><b>Tipo: </b>'. $laincidencia["tipo_incidencia"] .'</li>
                 <li><b>Estado: </b>'. $laincidencia["estado"] .'</li>
                 <li><b>Urgencia: </b>'. $prioridad .'</li>
@@ -398,7 +401,7 @@ function generarFormulario($array_deps) {
 
     // $out .= '<label>Departamento</label>';
     $out .= '<select name="dept" class="form-control myInputFooter required" required>';
-    $out .= '<option value="" selected disabled hidden style="color: #999;">Departamento</option>'; // Placeholder
+    $out .= '<option value="" selected disabled hidden style="color: #a29f9f;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }
