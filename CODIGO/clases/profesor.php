@@ -106,14 +106,16 @@ class profesor extends conexion
         do {
             $id = rand(10000, 99999);
         } while ($this->comprobar_id_profe($id));
-    
+        
+        // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("isssi", $id, $nombre, $correo, $password, $dep);
-    
+
         if ($stmt->execute()) {
             return true;
         } else {
+            echo "Error al ejecutar la declaración preparada: " . $stmt->error . "\n"; // Registro del error
             return false;
         }
     }

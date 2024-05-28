@@ -33,7 +33,7 @@ function comprobarCredenciales() {
                 alert('Usuario y/o contraseña incorrectos');
                 // console.log(user);
                 // console.log(pass);
-                // console.log(response);
+                console.log(response);
             }
         },
         error: function () {
