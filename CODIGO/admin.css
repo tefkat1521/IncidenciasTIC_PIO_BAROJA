@@ -17,46 +17,6 @@
 }
 
 
-#incidencias {
-    display: flex; /* Hace que los divs hijos se comporten como flex items */
-    flex-wrap: wrap; /* Permite que los flex items se envuelvan a la siguiente línea cuando no hay suficiente espacio */
-    justify-content:space-around;
-    width: 100%;
-    
-
-}
-
-#incidencias > div {
-    box-sizing: border-box;
-    width: calc(25% - 40px); /* Ancho del 25% menos el margen */
-    margin: 20px; 
-    min-width: 20em;
-    max-width: 30em;
-    position: relative;
-    box-shadow: #272727 0px 0px 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el agrandamiento */
-    cursor: pointer;
-}
-
-#incidencias > div:hover {
-    transform: scale(1.05); /* Aumentar el tamaño al 105% */
-    box-shadow: #272727 0px 0px 20px; /* Intensificar la sombra */
-}
-
-.chincheta{
-    background-image: url("images/plastic-pushpin-pin-with-shadow-isolated-free-vector.png");
-    background-size: contain;
-    background-position: center; 
-    background-repeat: no-repeat;
-    width: 2em;
-    height: 2em;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    /* filter: drop-shadow(0px 0px 15px rgb(255, 255, 255)); */
- 
-
-}
 
 
 #botonlapiz
@@ -87,77 +47,11 @@ div[id^="form2-"] form {
 }
 
 
-div.incEn_proceso
-{
-    /* margin: 3em; */
-    padding: 0.4em;
-    /* border: 1px solid  rgb(255, 38, 0)  ; */
-    /* background-image: url("images/desordenado_rojo.png");
-    background-size: contain;
-    background-position: center; 
-    background-repeat: no-repeat;  */
-    background-color:rgb(230, 104, 104);
-
-    
-}
-
-div.incCreada
-{
-    /* margin: 3em; */
-    padding: 0.4em;
-    /* border: 1px solid  rgb(255, 251, 0)  ; */
-    /* background-image: url("images/47529amarillo.png");
-    background-size: contain; 
-    background-position: center; 
-    background-repeat: no-repeat;  */
-    background-color:rgb(250, 245, 179);
-}
-
-div.incSolucionado
-{
-    /* margin: 3em; */
-    padding: 0.4em;
-    /* border: 1px solid  rgb(60, 255, 0) ; */
-    background-color:rgb(168, 230, 152);
-
-}
-
-div.incEn_proceso ul,
-div.incSolucionado ul,
-div.incCreada ul {
-    list-style-type: none; /* Quitar el guion de los elementos de lista */
-    padding: 1em 2em;
-    font-size: 12pt;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    color: #272727;
-    line-height: 1.1;
-    font-size: 16px;
-    position: relative;
-    margin-top: 1em;
-    line-height: 1.5;
-    /* margin: 2em; */
-}
-
-
-#result{
-    /* background-image: url("images/depositphotos_117695666-stock-photo-texture-of-cork-close-up.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
-
-    /* background-color: bisque; */
-    /* border-color: black;
-    border-width: 5px;
-    border-style: double; */
-}
-
 .filtro_incidencia,
 .botonborrar,
 .botonactualizar,
-.botonprioridad,
-button[id^="toggle-pencil-"],
-button[id^="toggle-sort-"]{
+.botonprioridad
+{
     background: #4b924b;
     border: 0px;
     border-radius: 0px;
@@ -168,6 +62,16 @@ button[id^="toggle-sort-"]{
     /* margin-bottom: 3em; */
     /* margin: 0.25em; */
 }
+
+/* .myButton{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+} */
 
 .filtro_incidencia,
 .botonborrar,
@@ -215,16 +119,12 @@ width: 100%;
 
 }
 
-.myButton{
-    background: #4b924b;
-    border: 0px;
-    border-radius: 0px;
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-}
 
+
+/* .panel-body > ul{
+
+    margin-left: 0;
+} */
 
 
 /* #textofooter{
@@ -268,3 +168,172 @@ width: 100%;
     border-right: 0px;
 }
 
+#green{
+    background-color: #4b924b;
+    padding: 40px;
+
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+
+}
+
+#blue{
+    
+    background-color: #003056;
+    padding: 40px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+#light-blue{
+    background-color: #00a1d9; 
+    padding: 40px;
+
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+}
+
+.list-group-item {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.priceBackground {
+    background: #f6f6f6;
+}
+
+.noPadding{
+    padding: 0px;
+
+}
+
+.pricePadd span{
+    font-size: 30px;
+}
+
+.pricePadd p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.pricePadd{
+    padding: 0;
+    /* margin: 0; */
+
+}
+
+section#section3 {
+    float: left;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Asegurar que el padding no afecte el tamaño total */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Estilos generales para los botones */
+.btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Estilos específicos para los botones de 'toggle-pencil' y 'toggle-sort' */
+.toggle-pencil,
+.toggle-sort {
+    margin-right: 5px;
+}
+
+.glyphicon {
+    font-size: 12px; /* Tamaño de los íconos */
+}
+
+/* Estilo para el ícono del lápiz */
+.glyphicon-pencil {
+    color: #007bff;
+}
+
+/* Estilo para el ícono de prioridad */
+.glyphicon-sort-by-attributes {
+    color: #28a745;
+}
+
+/* Estilo para el botón de borrar */
+.botonborrar {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Hacer que el botón sea un elemento de posición relativa */
+}
+
+/* Estilo para el ícono de la papelera dentro del botón de borrar */
+.botonborrar:before {
+    font-family: 'Glyphicons Halflings'; /* Fuente de los íconos Glyphicons */
+    font-size: 16px; /* Tamaño del ícono */
+    color: #dc3545; /* Color del ícono */
+    position: absolute; /* Posición absoluta para el ícono */
+    left: 8px; /* Ajustar a la izquierda del botón */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar verticalmente */
+}
+
+/* Estilo para el texto del botón de borrar */
+.botonborrar span {
+    margin-left: 20px; /* Ajuste del espacio entre el ícono y el texto */
+}
+
+.botoncicos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+    margin: 1em;
+}

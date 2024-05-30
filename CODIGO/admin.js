@@ -9,7 +9,7 @@ function consultarIncidencias() {
             data: { value: value },
             success: function (response) {
                 // Actualizar el contenido del div con la respuesta
-                $('#result').html(response);
+                $('#section3').html(response);
 
                 // Añadir manejadores de eventos después de que el contenido se haya cargado
                 $('[id^=toggle-pencil]').click(function () {
@@ -130,23 +130,20 @@ document.addEventListener("DOMContentLoaded", function () {
     insertarProfesor();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    var incidenciasAdmin = document.getElementById('incidenciasAdmin');
-    var primerDivHijo = incidenciasAdmin.querySelector('div');
+// document.addEventListener("DOMContentLoaded", function () {
+//     var incidenciasAdmin = document.getElementById('incidenciasAdmin');
+//     var primerDivHijo = incidenciasAdmin.querySelector('div');
 
-    const incidencias = document.querySelectorAll("#incidencias > div");
-    const grande = document.getElementById("grande");
+//     const incidencias = document.querySelectorAll("#incidencias > div");
+//     const grande = document.getElementById("grande");
 
-    incidencias.forEach((incidencia) => {
-        incidencia.addEventListener("click", function () {
-            // Obtener el contenido de la incidencia clicada
-            const contenido = this.innerHTML;
-            console.log(contenido);
+//     incidencias.forEach((incidencia) => {
+//         incidencia.addEventListener("click", function () {
+//             const contenido = this.innerHTML;
+//             console.log(contenido);
 
-            // Llenar el div #grande con el contenido de la incidencia clicada
-            grande.innerHTML = contenido;
-            // Mostrar el div #grande
-            grande.style.display = "block";
-        });
-    });
-});
+//             grande.innerHTML = contenido;
+//             grande.style.display = "block";
+//         });
+//     });
+// });
