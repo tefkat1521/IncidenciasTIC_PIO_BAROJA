@@ -79,8 +79,8 @@ class incidencias extends conexion
      * Datos por profesor
      */
     public function get_incidencias_por_profesor($profe)
-{
-    $stmt = $this->conect->prepare("
+    {
+        $stmt = $this->conect->prepare("
         SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo 
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula 
@@ -88,17 +88,17 @@ class incidencias extends conexion
         JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
         WHERE i.estado != 'Solucionado' 
-        AND p.ID_Profe = (SELECT ID_profe FROM Profesor WHERE correo LIKE ?)
+        AND p.correo LIKE ?
         ORDER BY i.fecha DESC");
 
-    $like_profe = "%$profe%";
-    $stmt->bind_param("s", $like_profe);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $incidencias = $result->fetch_all(MYSQLI_ASSOC);
+        $like_profe = "%$profe%";
+        $stmt->bind_param("s", $like_profe);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $incidencias = $result->fetch_all(MYSQLI_ASSOC);
 
-    return $incidencias;
-}
+        return $incidencias;
+    }
 
 
     /**
