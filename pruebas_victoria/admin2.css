@@ -1,0 +1,248 @@
+#form1, #form2 {
+    display: none; /* Ocultar formularios inicialmente */
+}
+
+#grande {
+    width: 15em;
+    height: 15em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    z-index: 9999;
+    display: none; 
+    padding: 1em; /* Añadido para el contenido */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
+#incidencias {
+    display: flex; /* Hace que los divs hijos se comporten como flex items */
+    flex-wrap: wrap; /* Permite que los flex items se envuelvan a la siguiente línea cuando no hay suficiente espacio */
+    justify-content:space-around;
+    width: 100%;
+    
+
+}
+
+#incidencias > div {
+    box-sizing: border-box;
+    width: calc(25% - 40px); /* Ancho del 25% menos el margen */
+    margin: 20px; 
+    min-width: 20em;
+    max-width: 30em;
+    position: relative;
+    box-shadow: #272727 0px 0px 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el agrandamiento */
+    cursor: pointer;
+}
+
+#incidencias > div:hover {
+    transform: scale(1.05); /* Aumentar el tamaño al 105% */
+    box-shadow: #272727 0px 0px 20px; /* Intensificar la sombra */
+}
+
+.chincheta{
+    background-image: url("images/plastic-pushpin-pin-with-shadow-isolated-free-vector.png");
+    background-size: contain;
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* filter: drop-shadow(0px 0px 15px rgb(255, 255, 255)); */
+ 
+
+}
+
+
+#botonlapiz
+{
+    width: 1.8em;
+}
+
+/* div[id^="form1-"] form {
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;   
+    padding: 10px;        
+    margin: 10px 0;           
+}
+
+
+div[id^="form2-"] form {
+
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;    
+    padding: 10px;          
+    margin: 10px 0;            
+} */
+
+
+#botonlapiz:hover
+{
+    filter: drop-shadow(0px 0px 5px rgb(0, 68, 255));
+}
+
+
+div.incEn_proceso
+{
+    /* margin: 3em; */
+    padding: 0.4em;
+    /* border: 1px solid  rgb(255, 38, 0)  ; */
+    /* background-image: url("images/desordenado_rojo.png");
+    background-size: contain;
+    background-position: center; 
+    background-repeat: no-repeat;  */
+    background-color:rgb(230, 104, 104);
+
+    
+}
+
+div.incCreada
+{
+    /* margin: 3em; */
+    padding: 0.4em;
+    /* border: 1px solid  rgb(255, 251, 0)  ; */
+    /* background-image: url("images/47529amarillo.png");
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat;  */
+    background-color:rgb(250, 245, 179);
+}
+
+div.incSolucionado
+{
+    /* margin: 3em; */
+    padding: 0.4em;
+    /* border: 1px solid  rgb(60, 255, 0) ; */
+    background-color:rgb(168, 230, 152);
+
+}
+
+div.incEn_proceso ul,
+div.incSolucionado ul,
+div.incCreada ul {
+    list-style-type: none; /* Quitar el guion de los elementos de lista */
+    padding: 1em 2em;
+    font-size: 12pt;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #272727;
+    line-height: 1.1;
+    font-size: 16px;
+    position: relative;
+    margin-top: 1em;
+    line-height: 1.5;
+    /* margin: 2em; */
+}
+
+
+#result{
+    /* background-image: url("images/depositphotos_117695666-stock-photo-texture-of-cork-close-up.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+
+    /* background-color: bisque; */
+    /* border-color: black;
+    border-width: 5px;
+    border-style: double; */
+}
+
+.filtro_incidencia,
+.botonborrar,
+.botonactualizar,
+.botonprioridad,
+button[id^="toggle-pencil-"],
+button[id^="toggle-sort-"]{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    /* margin-bottom: 3em; */
+    /* margin: 0.25em; */
+}
+
+.filtro_incidencia,
+.botonborrar,
+.botonactualizar,
+.botonprioridad
+{
+ 
+    margin-bottom: 3em;
+}
+
+
+/* .backsnewsletter{
+width: 100%;
+} */
+
+/* select.myInputFooter option:disabled {
+    color: #555; 
+} */
+
+.text-center {
+    text-align: center;
+}
+
+.myInputFooter{
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-color: #dddddd40;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.myInputFooter:focus{
+    outline: 0px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.backNewsletter{
+
+    padding: 40px;
+    background: #f6f6f6;
+
+}
+
+.myButton{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+#textofooter{
+
+}
+
+
+/* Cambiar el color de fondo de la barra de navegación */
+/* .navbar-inverse,
+.backFooter{
+    background-color: #0c4514 ; 
+  
+  }
+
+  @media only screen and (max-width: 768px) {
+    .backFooter {
+        height: fit-content;
+    }
+}
+
+ */

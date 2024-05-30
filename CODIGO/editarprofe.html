@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="editarprofe.js"></script>
+</head>
+<body>
+    <div id="login-container">
+        <div id="mens">
+            <p id="mensText"></p>
+        </div>
+        <div id="aaa">
+            <div id="texto"></div> <!-- Contenedor para el texto -->
+            <div id="botones"></div> <!-- Contenedor para los botones -->
+        </div>
+        <div class="login-box">
+            <h2>CAMBIAR CONTRASEÑA</h2>
+            <form action="index.html" method="POST" id="pswdForm">
+                <div class="input-group">
+                    <label for="password">Nueva Contraseña</label>
+                    <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\w\d\s:])([^\s]){8,}$" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Repita Nueva Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\w\d\s:])([^\s]){8,}$" required>
+                </div>
+                
+                <input type="button" id="pswdButton" value="Cambiar Contraseña"></input>
+            </form>
+            <p class="condiciones">Debe tener al menos 8 caracteres de longitud, una letra mayúscula (A-Z), una letra minúscula (a-z), un dígito (0-9)
+                 un carácter especial entre @#$%^&+=!, un carácter que no sea alfanumérico, dígito, espacio ni dos puntos. No debe contener espacios en blanco.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
