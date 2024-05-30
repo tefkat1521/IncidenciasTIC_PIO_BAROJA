@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incidencias Pío Baroja</title>
+    <meta name="description" content="">
+	<meta name="author" content="Cemre Tellioğlu Tunçay">
+	<link rel="icon" type="image/png" href="logo pio baroja circular.png" sizes="32x32" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=latin-ext" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="admin.css">
+
+    <link href="css/responsive.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="admin.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style>
+			.active {
+				background-color: #4CAF50;
+				color: white;
+			}
+		</style>
+
+  </head>
+  <body>
+
+
+
+
+	<!-- -------------------------------------------------------------HEADER------------------------------------------------------------------- -->
+
+	<nav class="navbar navbar-inverse menunavegacion navbar-fixed-top">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="hamburguesa">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span> 
+			</button>
+			
+			<div class="logo-container navbar-brand mx-auto">
+			  <img src="img/logo pio baroja circular.png" alt="Logo" class="logo">  
+			</div>
+		  </div>
+		  
+		  <div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-nav-scroll" style="margin-left: 10px;">
+			  <li><a href="#section0" class="nav-link text-uppercase font-weight-bold">INICIO</a></li>
+			  <li><a href="#section1" class="nav-link text-uppercase font-weight-bold">Incidencias</a></li>
+			  <li><a href="#section2" class="nav-link text-uppercase font-weight-bold">Profesores</a></li>
+
+			  <!-- <li class="dropdown">
+				<a class="dropdown-toggle text-uppercase" data-toggle="dropdown" href="#">Incidencias <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				<li><a href="#">Todas</a></li>
+				  <li><a href="#">Filtrar</a></li>
+				  <li><a href="#">Editar</a></li>
+				  <li><a href="#">Borrar</a></li>
+				</ul>
+			  </li> -->
+
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right" style="margin-left: 10px;">
+			  
+		
+							  
+			  <li>
+				<a href="code.php" onclick="document.getElementById('formCerrarSesion').submit(); return false;">
+					<form id="formCerrarSesion" method="post" action="code.php">
+						<input type="hidden" name="cerrarSesion">
+						<span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión
+				  </form>
+				</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+
+				
+		</div>
+
+		<div id="section0" class="col-md-12 noPadding">
+			<div class="filterBack"></div>
+			<div class="abs text-center">
+				<h2 class="absTitle">Gestor de Incidencias TIC</h2>
+				<img src="img/shape.png">
+				<p class="absText">Modo Administrador</p>
+			</div>
+		</div>
+
+
+
+
+
+<!-- ------------------------------------------------------------- FILTRAR INCIDENCIAS ------------------------------------------------------------------- -->
+
+<!-- FALTA POR TERMINAR -->
+
+
+
+<div id="section1" class="col-md-12 noPadding text-center priceBackground">
+	<br>
+    <h2>INCIDENCIAS</h2>
+    <div class="col-md-12 noPadding text-center backNewsletter">
+		
+		<div id="buttons-container">
+
+			<button class="filtro_incidencia" data-value="0">Todas</button>
+			<button class="filtro_incidencia" data-value="Creada">Creada</button>
+			<button class="filtro_incidencia" data-value="proceso">En proceso</button>
+			<button class="filtro_incidencia" data-value="Solucionado">Solucionado</button>
+			<br>
+			<button class="filtro_incidencia" data-value="Nulo">Sin Asignar</button>
+			<button class="filtro_incidencia" data-value="Alta">M&aacute;xima prioridad</button>
+			<button class="filtro_incidencia" data-value="Media">Prioridad Media</button>
+			<button class="filtro_incidencia" data-value="Baja">Prioridad Baja</button>
+			
+
+		</div>
+
+		<!-- <div id="grande"></div> -->
+
+		<!-- <div id="result"></div> -->
+
+		<div id="section3" class="col-md-12 noPadding text-center priceBackground"></div>
+
+
+	    <!-- <div id="incidenciasAdmin"></div> -->
+
+        
+    </div>
+</div>
+
+
+<!-- ------------------------------------------------------------- INCIDENCIAS VISUALES ------------------------------------------------------------------- -->
+
+<!-- 
+
+
+<div id="section3" class="col-md-12 noPadding text-center priceBackground">
+
+
+	<div class="container pricePadd">
+
+
+
+
+
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="blue" class="panel-heading">
+					<h3 class="panel-title">Basic</h3>
+				</div>
+				<div class="panel-body">
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div id="light-blue" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$40</span>
+
+				</div>
+				<div class="panel-body">
+					<h4>Monthly Membership</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="orange" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$60</span>
+				</div>
+				<div class="panel-body">
+					<h4>Monthly Membership</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="green" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$80</span>
+
+				</div>
+				<div class="panel-body">
+					<h4>Free Account</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="blue" class="panel-heading">
+					<h3 class="panel-title">Basic</h3>
+					<span>$20</span>
+				</div>
+				<div class="panel-body">
+					<h4>Yearly Membership</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div id="light-blue" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$40</span>
+
+				</div>
+				<div class="panel-body">
+					<h4>Monthly Membership</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="orange" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$60</span>
+				</div>
+				<div class="panel-body">
+					<h4>Monthly Membership</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div  class="panel panel-default">
+				<div id="green" class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+					<span>$80</span>
+
+				</div>
+				<div class="panel-body">
+					<h4>Free Account</h4>
+					<ul class="list-group">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Morbi leo risus</li>
+						<li class="list-group-item">Porta ac consectetur ac</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ------------------------------------------------------------- REGISTRAR PROFESORES (modificar, crear y borrar) ------------------------------------------------------------------- -->
+
+<!-- InsertarPROprueba1.php -- > admin.php y admin.js -->
+<br>
+
+<div id="section2" class="col-md-12 noPadding text-center priceBackground">
+	<br>
+    <h2>CREAR PROFESOR</h2>
+    <div class="col-md-12 noPadding text-center backNewsletter">
+		<div class="container">
+			<div class="col-md-12 col-md-offset-1">
+				<div id="insertarProfesor"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- -------------------------------------------------------------FOOTER------------------------------------------------------------------- -->
+
+
+<div class="col-md-12 noPadding text-center backFooter">
+
+            <div class="col-md-6 col-xs-12 marginTop" id="textofooter">
+                <h3 class="footertext">IES Pío Baroja</h3>
+                <h3 class="footertext">C/ Tolosa nº4</h3>
+                <h3 class="footertext"><a href="https://www.educa2.madrid.org/web/centro.ies.piobaroja.madrid">www.educa2.madrid.org</a></h3>
+            </div>
+
+            <div class="col-md-6 col-xs-12 col-lg-2 marginTop" id="logofooter">
+                <img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 80px; height: auto;">
+            </div>
+</div>
+
+
+	<!-- <script src="js/jquery.min.js"></script> -->
+	<!-- <script src="js/jquery-easing/jquery.easing.min.js"></script> -->
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<!-- <script src="js/ajax-mail.js"></script> -->
+	<!-- <script src="js/jquery.nicescroll.min.js"></script> -->
+    <!-- <script src="js/scripts.js"></script> -->
+
+	
+  </body>
+</html>

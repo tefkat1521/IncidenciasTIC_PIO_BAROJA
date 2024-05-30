@@ -1,0 +1,229 @@
+#form1, #form2 {
+    display: none; /* Ocultar formularios inicialmente */
+}
+
+#grande {
+    width: 15em;
+    height: 15em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    z-index: 9999;
+    display: none; 
+    padding: 1em; /* Añadido para el contenido */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+#botonlapiz
+{
+    width: 1.8em;
+}
+
+/* div[id^="form1-"] form {
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;   
+    padding: 10px;        
+    margin: 10px 0;           
+}
+
+
+div[id^="form2-"] form {
+
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;    
+    padding: 10px;          
+    margin: 10px 0;            
+} */
+
+
+#botonlapiz:hover
+{
+    filter: drop-shadow(0px 0px 5px rgb(0, 68, 255));
+}
+
+
+.filtro_incidencia,
+.botonborrar,
+.botonactualizar,
+.botonprioridad,
+button[id^="toggle-pencil-"],
+button[id^="toggle-sort-"]{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    /* margin-bottom: 3em; */
+    /* margin: 0.25em; */
+}
+
+.filtro_incidencia,
+.botonborrar,
+.botonactualizar,
+.botonprioridad
+{
+ 
+    margin-bottom: 3em;
+}
+
+
+/* .backsnewsletter{
+width: 100%;
+} */
+
+/* select.myInputFooter option:disabled {
+    color: #555; 
+} */
+
+.text-center {
+    text-align: center;
+}
+
+.myInputFooter{
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-color: #dddddd40;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.myInputFooter:focus{
+    outline: 0px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.backNewsletter{
+
+    padding: 40px;
+    background: #f6f6f6;
+
+}
+
+.myButton{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/* #textofooter{
+
+} */
+
+
+/* Cambiar el color de fondo de la barra de navegación */
+/* .navbar-inverse,
+.backFooter{
+    background-color: #0c4514 ; 
+  
+  }
+
+  @media only screen and (max-width: 768px) {
+    .backFooter {
+        height: fit-content;
+    }
+}
+
+ */
+
+
+
+
+
+
+ #orange{
+    background-color: #ec945e;
+    padding: 40px;
+
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+}
+
+
+.list-group-item {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#green{
+    background-color: #4b924b;
+    padding: 40px;
+
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+
+}
+
+#blue{
+    
+    background-color: #003056;
+    padding: 40px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+#light-blue{
+    background-color: #00a1d9; 
+    padding: 40px;
+
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+}
+
+.list-group-item {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.priceBackground {
+    background: #f6f6f6;
+}
+
+.noPadding{
+    padding: 0px;
+
+}
+
+.pricePadd span{
+    font-size: 30px;
+}
+
+.pricePadd p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.pricePadd{
+    padding: 50px;
+
+}
+
+section#section3 {
+    float: left;
+    display: block;
+    position: relative;
+    width: 100%;
+}
