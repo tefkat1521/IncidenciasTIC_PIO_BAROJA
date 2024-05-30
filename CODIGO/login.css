@@ -13,25 +13,9 @@ body {
     background-position: center;
 }
 
-#login-container {
-    position: relative;
+.login-container {
     display: flex; /* Utiliza flexbox para colocar los contenedores en línea */
-    flex-direction: column; /* Asegúrate de que los elementos estén en columna */
-    justify-content: center; /* Centra verticalmente los elementos */
-    align-items: center; /* Centra horizontalmente los elementos */
-    width: 100%; /* Asegúrate de que ocupe todo el ancho */
-    height: 100%; /* Asegúrate de que ocupe toda la altura */
-}
-
-#mens {
-    position: absolute;
-    background-color: red;
-    width: 20em;
-    height: 20em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; /* Asegúrate de que esté encima del formulario */
+    margin-top: 20px; 
 }
 
 .login-box {
@@ -39,15 +23,17 @@ body {
     width: 30em;
     height: fit-content;
     background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
-    padding: 2.5em; /* Aumentado el padding para más espacio */
+    padding: 30px; /* Aumentado el padding para más espacio */
+    /* border-radius: 10px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-right: 40px; /* Espacio entre los contenedores */
     box-shadow: #141414 0px 0px 15px;
-    z-index: 0; /* Asegúrate de que el formulario esté debajo del cuadrado rojo */
+
 }
 
 .login-box:last-child {
     margin-right: 0; /* Elimina el margen derecho del último contenedor */
+    /* margin-left: 40px; */
 }
 
 .login-box h2 {
@@ -77,6 +63,7 @@ button {
     width: 100%;
     padding: 12px; /* Aumentado el padding */
     border: none;
+    /* border-radius: 5px; */
     background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
@@ -103,15 +90,17 @@ button:hover {
     color: #4CAF50;
 }
 
-#logo {
+#logo{
     height: 10em;
     width: 10em;
 }
+
 
 #pswdButton {
     width: 100%;
     padding: 12px; /* Aumentado el padding */
     border: none;
+    /* border-radius: 5px; */
     background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
@@ -140,133 +129,26 @@ color: #555;
 }
 
 
-/* html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-#login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-} */
-
-#mens {
-    position: fixed;
-    background-color: #2f7633;
-    box-shadow: #ffffff 0px 0px 10px 5px;
-    visibility: hidden;
-    width: 47em;
-    height: fit-content; /* Altura ajustada */
-    top: 3%;
-    left: 50%;
-    transform: translateX(-50%); /* Solo desplaza horizontalmente */
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 0.75em;
-    text-align: center;
-    padding: 1em;
-    box-sizing: border-box;
-}
-
-
-
-#aaa {
-    position: fixed;
-    background-color: #2f7633;
-    box-shadow: #ffffff 0px 0px 10px 5px;
-    visibility: hidden;
-    width: 47em;
-    height: fit-content; /* Altura ajustada */
-    top: 3%;
-    left: 50%;
-    transform: translateX(-50%); /* Solo desplaza horizontalmente */
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 0.75em;
-    text-align: center;
-    padding: 1em;
-    box-sizing: border-box;
-}
-
-#aaa {
-    /* Estilos para el contenedor */
-    display: flex;
-    flex-direction: column; /* Alinea los elementos en columna */
-    align-items: center; /* Centra horizontalmente los elementos */
-    justify-content: center; /* Centra verticalmente los elementos */
-}
-
-#texto {
-    /* Estilos para el contenedor de texto */
-    margin-bottom: 1em; /* Espacio entre el texto y los botones */
-    width: 100%;
-
-}
-
-#botones {
-    /* Estilos para el contenedor de botones */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width: 100%;
-  
-
-}
-
-#mensAceptar,
-#mensCancelar{
-margin-right: 1.5em;
-width: 35%;
-font-size: 0.75em;
-padding: 0.5em;
-}
-
-.condiciones{
-    font-size: 0.5em;
-    color: #2d2c2c;
-    margin: 1.5em;
-}
-
-
 /* Media Query para Móviles */
 @media (max-width: 767px) {
     .login-box {
         width: 100% !important;
         height: 100% !important;
-        position: fixed; 
+        position: fixed; /* Asegúrate de que se quede fijo en la pantalla */
         top: 0;
         left: 0;
-        margin: 0; 
-        padding: 0; 
+        margin: 0; /* Elimina cualquier margen */
+        padding: 0; /* Elimina cualquier relleno */
         
         display: flex;
         flex-direction: column;
         justify-content: center; /* Centra el contenido verticalmente */
         align-items: center; /* Centra el contenido horizontalmente */
     }
-    .login-container{
-        width: 100%;
-        height: 100%;
-    }
 
-    #loginForm,
-    #pswdForm{
+    #loginForm{
         margin: 2em;
-        top: 50%;
     }
-
 
     #contenedor{
         width: 80%;
@@ -280,37 +162,4 @@ padding: 0.5em;
     .input-group {
         width: 100%; /* Asegúrate de que los inputs ocupen todo el ancho del contenedor */
     }
-
-
-    #mens {
-        width: 100%; /* Hacer que el mensaje ocupe todo el ancho */
-        text-align: center; /* Centrar el texto en dispositivos móviles */
-        top: 75%;
-    }
-
-    #aaa {
-        width: 100%; /* Hacer que el contenedor AAA ocupe todo el ancho */
-        top: 75%;
-        padding: 0.5em;
-    }
-
-    #texto,
-    #botones {
-        width: 100%; /* Hacer que los contenedores internos ocupen todo el ancho */
-        text-align: center; /* Centrar el contenido en dispositivos móviles */
-    }
-
-    #mensAceptar,
-    #mensCancelar{
-    margin-right: 0.5em;
-    width: 50%;
-    font-size: 0.75em;
-    padding: 0.6em;
-    }
-
-    .condiciones{
-      
-        margin: 4em;
-    }
-
 }
