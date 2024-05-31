@@ -325,7 +325,6 @@ if (count($array_incidencias) > 0) {
                <span class="glyphicon glyphicon-sort-by-attributes"></span>
            </button>
            </div>
-           <br><br>
            <div id="form1-' . $index . '" style="display: none">
                <form method="post" action="admin.php">
                    <label>Cambiar estado</label><br>
@@ -373,9 +372,7 @@ if (count($array_incidencias) > 0) {
                    <input type="hidden" name="id" value="' . $laincidencia["id_incidencia"] . '"><br>
                    <input class="botonactualizar" type="submit" name="submit2" value="Actualizar">
                </form>
-           </div>
-           <br>
-       ';
+           </div>';
        
        }
 

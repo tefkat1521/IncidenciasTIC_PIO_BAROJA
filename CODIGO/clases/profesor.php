@@ -64,7 +64,7 @@ class profesor extends conexion
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row['clave_acceso'];
