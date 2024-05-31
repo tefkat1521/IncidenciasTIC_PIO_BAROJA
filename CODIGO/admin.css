@@ -48,7 +48,6 @@ div[id^="form2-"] form {
 
 
 .filtro_incidencia,
-.botonborrar,
 .botonactualizar,
 .botonprioridad
 {
@@ -74,7 +73,6 @@ div[id^="form2-"] form {
 } */
 
 .filtro_incidencia,
-.botonborrar,
 .botonactualizar,
 .botonprioridad
 {
@@ -249,12 +247,7 @@ section#section3 {
 
 
 
-
-
-
-
-
-
+/* BOTONES */
 
 /* Asegurar que el padding no afecte el tamaño total */
 *,
@@ -265,7 +258,7 @@ section#section3 {
 
 /* Estilos generales para los botones */
 .btn {
-    padding: 5px 10px;
+    padding: 10px 20px; /* Aumentar el padding para que los botones sean más anchos */
     font-size: 14px;
     border-radius: 3px;
     border: 1px solid #ccc;
@@ -276,32 +269,40 @@ section#section3 {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin: 0; /* Eliminar el margen por defecto */
+}
+
+/* Clase personalizada para ajustar el ancho del botón */
+.custom-btn-width {
+    flex: 1; /* Permitir que los botones se ajusten al tamaño del contenedor */
+    min-width: 0; /* Permitir que los botones se encojan si es necesario */
 }
 
 /* Estilos específicos para los botones de 'toggle-pencil' y 'toggle-sort' */
 .toggle-pencil,
 .toggle-sort {
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
-.glyphicon {
-    font-size: 12px; /* Tamaño de los íconos */
+/* Ajustar el margen para el último botón */
+.toggle-sort {
+    margin-right: 0;
 }
 
-/* Estilo para el ícono del lápiz */
-.glyphicon-pencil {
-    color: #007bff;
+.botoncicos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between; /* Espaciar los botones uniformemente */
+    box-sizing: border-box;
+    margin: 1em 0; /* Ajustar el margen para controlarlo verticalmente */
+    width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho disponible */
 }
 
-/* Estilo para el ícono de prioridad */
-.glyphicon-sort-by-attributes {
-    color: #28a745;
-}
 
-/* Estilo para el botón de borrar */
-.botonborrar {
-    padding: 5px 10px;
-    font-size: 14px;
+/* Estilo para el botón de la basura */
+.btn-trash {
+    padding: 5px 10px; /* Reducir el padding para hacer el botón más pequeño */
     border-radius: 3px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
@@ -310,30 +311,103 @@ section#section3 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Hacer que el botón sea un elemento de posición relativa */
 }
 
-/* Estilo para el ícono de la papelera dentro del botón de borrar */
-.botonborrar:before {
-    font-family: 'Glyphicons Halflings'; /* Fuente de los íconos Glyphicons */
-    font-size: 16px; /* Tamaño del ícono */
-    color: #dc3545; /* Color del ícono */
-    position: absolute; /* Posición absoluta para el ícono */
-    left: 8px; /* Ajustar a la izquierda del botón */
-    top: 50%; /* Centrar verticalmente */
-    transform: translateY(-50%); /* Ajustar verticalmente */
+.btn-trash .glyphicon-trash {
+    font-size: 1.75em; /* Ajustar el tamaño del icono */
 }
 
-/* Estilo para el texto del botón de borrar */
-.botonborrar span {
-    margin-left: 20px; /* Ajuste del espacio entre el ícono y el texto */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FORMULARIO */
+
+/* Seleccionar formularios específicos dentro de los divs con ids que comienzan con 'form1', 'form2', o 'form3' */
+div[id^="form1"] form,
+div[id^="form2"] form,
+div[id^="form3"] form {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
 }
 
-.botoncicos{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+/* Estilos para los select dentro de esos formularios */
+div[id^="form1"] form select,
+div[id^="form2"] form select,
+div[id^="form3"] form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
     box-sizing: border-box;
-    margin: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Estilos para los botones de submit dentro de esos formularios */
+div[id^="form1"] form .botonactualizar,
+div[id^="form2"] form .botonactualizar,
+div[id^="form3"] form .botonactualizar {
+    width: 100%;
+    padding: 10px;
+    background-color: #56a556;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover state for buttons */
+div[id^="form1"] form .botonactualizar:hover,
+div[id^="form2"] form .botonactualizar:hover,
+div[id^="form3"] form .botonactualizar:hover {
+    background-color:#4b924b;
+}
+
+/* Ajustes de layout */
+div[id^="form1"] form br,
+div[id^="form2"] form br,
+div[id^="form3"] form br {
+    display: none; /* Ocultar los <br> para mejorar el layout */
+}
+
+div[id^="form1"] form input[type="hidden"],
+div[id^="form2"] form input[type="hidden"],
+div[id^="form3"] form input[type="hidden"] {
+    display: none; /* Ocultar los input hidden */
+}
+
+
+/* Ajustes de layout */
+form br {
+    display: none; /* Ocultar los <br> para mejorar el layout */
+}
+
+form input[type="hidden"] {
+    display: none; /* Ocultar los input hidden */
 }

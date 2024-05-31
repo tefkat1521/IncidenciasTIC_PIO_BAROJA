@@ -187,18 +187,17 @@ if (count($array_incidencias) > 0) {
        if($laincidencia["estado"] != "Solucionado") {
            $html_output .= '
            <div class="botoncicos">
-           <button id="toggle-pencil-' . $index . '" class="btn btn-default toggle-pencil">Estado
-               <span class="glyphicon glyphicon-pencil"></span>
+           <button id="toggle-pencil-' . $index . '" class="btn btn-default toggle-pencil custom-btn-width">Estado
            </button>
-           <button id="toggle-sort-' . $index . '" class="btn btn-default toggle-sort">Prioridad
-               <span class="glyphicon glyphicon-sort-by-attributes"></span>
+           <button id="toggle-sort-' . $index . '" class="btn btn-default toggle-sort custom-btn-width">Prioridad
            </button>
            </div>
+
            <div id="form1-' . $index . '" style="display: none">
                <form method="post" action="admin.php">
-                   <label>Cambiar estado</label><br>
+                   
                    <select name="estado">
-                       <option value="" selected disabled>Seleccionar estado</option>
+                       <option value="" selected disabled>Cambiar estado</option>
                        <option value="Creada">Creada</option>
                        <option value="En_proceso">En proceso</option>
                        <option value="Solucionado">Solucionado</option>
@@ -210,9 +209,9 @@ if (count($array_incidencias) > 0) {
            <br>
            <div id="form2-' . $index . '" style="display: none">
                <form method="post" action="admin.php">
-                   <label>Asignar Prioridad</label><br>
+                
                    <select name="urgencia">
-                       <option value="" selected disabled>Seleccionar urgencia</option>
+                       <option value="" selected disabled>Asignar Prioridad</option>
                        <option value="1">Baja</option>
                        <option value="2">Media</option>
                        <option value="3">Alta</option>
@@ -223,17 +222,15 @@ if (count($array_incidencias) > 0) {
            </div>
            <div id="form3-' . $index . '" style="display: none">
                <form method="post" action="admin.php">
-                   <label>Cambiar estado</label><br>
                    <select name="estado2" required>
-                       <option value="" selected disabled>Seleccionar estado</option>
+                       <option value="" selected disabled>Cambiar estado</option>
                        <option value="Creada">Creada</option>
                        <option value="En_proceso">En proceso</option>
                        <option value="Solucionado">Solucionado</option>
                    </select>
                    <br>
-                   <label>Asignar Prioridad</label><br>
                    <select name="urgencia2" required>
-                       <option value="" selected disabled>Seleccionar urgencia</option>
+                       <option value="" selected disabled>Asignar Prioridad</option>
                        <option value="1">Baja</option>
                        <option value="2">Media</option>
                        <option value="3">Alta</option>
@@ -252,8 +249,7 @@ if (count($array_incidencias) > 0) {
            <div id="borrado">
             <form method="post" action="admin.php">
                 <input type="hidden" name="id2" value="' . $laincidencia["id_incidencia"] . '">
-                <button class="botonborrar" type="submit" name="submitborrado">
-                    Borrar
+                <button class="btn btn-default btn-trash" type="submit" name="submitborrado">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
             </form>
@@ -345,6 +341,7 @@ function generarFormulario($array_deps) {
     $out .= '<input type="password" name="confirmPass" class="form-control myInputFooter required" required  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$" placeholder="Repita la Contraseña"/><br>';
     $out .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $out .= '</form>';
+    $out .= '<br><p><b>Nota:</b> la contraseña debe tener 3 dígitos, un número y una mayúscula.</p>';
     $out .= '</div>';
     echo $out;
 }
