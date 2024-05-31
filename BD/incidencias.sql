@@ -17,7 +17,7 @@ CREATE TABLE Profesor (
     ID_Profe INT PRIMARY KEY,
     nombre VARCHAR(50),
     correo VARCHAR(100),
-    clave_acceso VARCHAR(8),
+    clave_acceso VARCHAR(255),
     dep INT,
     FOREIGN KEY (dep) REFERENCES Departamento(dep) ON DELETE CASCADE
 );

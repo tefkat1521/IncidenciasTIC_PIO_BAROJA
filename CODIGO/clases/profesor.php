@@ -59,40 +59,48 @@ class profesor extends conexion
     /***********COMPROBAR si existe PROFESOR************* */
     public function comprobar_correo_contrasena_con_arroba($correo, $password)
     {
-        $sql = "SELECT COUNT(*) AS count FROM profesor WHERE correo = ? AND clave_acceso = ?";
+        $sql = "SELECT clave_acceso FROM profesor WHERE correo = ?";
         $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("ss", $correo, $password);
+        $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $count = $row['count'];
-
-        if ($count > 0) 
-        {
-            return true; 
-        } 
-        else 
-        {
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stored_password = $row['clave_acceso'];
+ 
+            if (password_verify($password, $stored_password)) {
+                return true; 
+            } elseif ($password === $stored_password) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } else {
             return false; 
         }
     }
 
     public function comprobar_correo_contrasena_sin_arroba($correo, $password)
     {
-        $sql = "SELECT COUNT(*) AS count FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? AND clave_acceso = ?";
+        $sql = "SELECT clave_acceso FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
         $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("ss", $correo, $password);
+        $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $count = $row['count'];
-
-        if ($count > 0) 
-        {
-            return true; 
-        } 
-        else 
-        {
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stored_password = $row['clave_acceso'];
+ 
+            if (password_verify($password, $stored_password)) {
+                return true; 
+            } elseif ($password === $stored_password) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } else {
             return false; 
         }
     }
@@ -106,11 +114,11 @@ class profesor extends conexion
         do {
             $id = rand(10000, 99999);
         } while ($this->comprobar_id_profe($id));
-        
-        // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("isssi", $id, $nombre, $correo, $password, $dep);
+        $stmt->bind_param("isssi", $id, $nombre, $correo, $hashed_password, $dep);
 
         if ($stmt->execute()) {
             return true;
