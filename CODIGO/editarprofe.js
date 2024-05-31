@@ -1,129 +1,118 @@
-$(document).ready(function() {
+const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$/;
 
+function validatePasswords() {
+    const password = $('#password').val();
+    const confirmPassword = $('#confirmPassword').val();
+
+    // Validar la contraseña
+    if (!passwordPattern.test(password)) {
+        alert('La nueva contraseña no cumple');
+        return false;
+    }
+
+    // Verificar que ambas contraseñas coincidan
+    if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden.');
+        return false;
+    }
+
+    return true;
+}
+
+$(document).ready(function () {
     $(".login-box").fadeIn(1500, function () {
         $(this).css("display", "block");
     });
 
-    $('#pswdButton').click(function() {
-        var password = $('#password').val();
-        var confirmPassword = $('#confirmPassword').val();
+    $('#pswdButton').on('click', function () {
+        if (validatePasswords()) {
+            var password1 = $('#password').val();
+            var password2 = $('#confirmPassword').val();
 
-        // Validar longitud mínima
-        // if (password.length < 8) {
-        //     alert("La contraseña debe tener al menos 8 caracteres.");
-        //     return;
-        // }
+            if (password1 !== password2) {
+                // Mostrar mensaje en el div #mens y hacerlo visible
+                $('#mens').text("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                $('#mens').css('visibility', 'visible');
 
-        // Validar letras mayúsculas, minúsculas y dígitos
-        // var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
-        // if (!regex.test(password)) {
-        //     alert("La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un dígito.");
-        //     return;
-        // }
+                // Limpiar los campos de contraseña
+                $('#password').val('');
+                $('#confirmPassword').val('');
 
-        // Validar que las contraseñas coincidan
-        // if (password !== confirmPassword) {
-        //     alert("Las contraseñas no coinciden.");
-        //     return;
-        // }
+                // Ocultar el mensaje después de 8 segundos
+                setTimeout(function () {
+                    $('#mens').css('visibility', 'hidden');
+                }, 8000);
 
-        // Si pasa todas las validaciones, continuar con el proceso
-    });
+                return false; // Detener el envío del formulario
 
-    $('#loginForm').submit(function (event) {
-        event.preventDefault();
-        comprobarCredenciales(); // Llamada a la función para comprobar credenciales
-    });
-
-    $('#pswdButton').click(function(e) {
-        //e.preventDefault(); // Evita que el formulario se envíe automáticamente
-
-        var password1 = $('#password').val();
-        var password2 = $('#confirmPassword').val();
-    
-        if (password1 !== password2) {
-            // Mostrar mensaje en el div #mens y hacerlo visible
-            $('#mens').text("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
-            $('#mens').css('visibility', 'visible');
-            
-            // Limpiar los campos de contraseña
-            $('#password').val('');
-            $('#confirmPassword').val('');
-            
-            // Ocultar el mensaje después de 8 segundos
-            setTimeout(function() {
-                $('#mens').css('visibility', 'hidden');
-            }, 8000);
-            
-            return false; // Detener el envío del formulario
-        
-        } else if(password1 == "" || password2 == "") {
-            $('#mens').text("Hay campos sin rellenar.");
-            $('#mens').css('visibility', 'visible');
-
-            // Ocultar el mensaje después de 8 segundos
-            setTimeout(function() {
-                $('#mens').css('visibility', 'hidden');
-            }, 8000);
-        }
-        else {
-            // Desactivar el botón de Aceptar para evitar clics adicionales
-            $('#pswdButton').prop('disabled', true);
-
-            // Crear los elementos de botón
-            var btnAceptar = $('<button>').attr('id', 'mensAceptar').text('Aceptar');
-            var btnCancelar = $('<button>').attr('id', 'mensCancelar').text('Cancelar');
-
-            // Agregar los botones al contenedor de botones
-            $('#botones').append(btnAceptar);
-            $('#botones').append(btnCancelar);
-
-            // Agregar texto al contenedor de texto
-            $('#texto').text("¿Seguro que desea cambiar la contraseña?");
-
-            // Hacer visible el contenedor #aaa
-            $('#aaa').css('visibility', 'visible');
-
-            // Agregar event listener para el botón Aceptar
-            btnAceptar.on('click', function() {
-                // Lógica para el botón Aceptar
-                console.log('Se ha pulsado el botón Aceptar');
-                // Llama a la función correspondiente
-                funcionAceptar();
-            });
-
-            // Agregar event listener para el botón Cancelar
-            btnCancelar.on('click', function() {
-                // Lógica para el botón Cancelar
-                console.log('Se ha pulsado el botón Cancelar');
-                // Llama a la función correspondiente
-                funcionCancelar();
-            });
-
-            // Definir funciones correspondientes a cada botón
-            function funcionAceptar() {
-                // Cambiar la contraseña (aquí debes implementar la función cambiarcontraseña)
-                cambiarcontraseña(password1);
-                
-                // Mostrar mensaje de contraseña cambiada correctamente
-                $('#aaa').css('visibility', 'hidden');
-                $('#mens').text("Contraseña cambiada correctamente");
+            } else if (password1 == "" || password2 == "") {
+                $('#mens').text("Hay campos sin rellenar.");
                 $('#mens').css('visibility', 'visible');
 
                 // Ocultar el mensaje después de 8 segundos
-                setTimeout(function() {
-                    // Redirigir al usuario a la página de inicio
-                    window.location.href = "index.html"; 
-                }, 2000);
+                setTimeout(function () {
+                    $('#mens').css('visibility', 'hidden');
+                }, 8000);
             }
+            else {
+                // Desactivar el botón de Aceptar para evitar clics adicionales
+                $('#pswdButton').prop('disabled', true);
 
-            function funcionCancelar() {
-                // Si el usuario cancela, no hacer nada
-                $('#mens').css('visibility', 'hidden');
-                $('#aaa').css('visibility', 'hidden');
-                // Redirigir al usuario a la página de inicio
-                window.location.href = "index.html";
-                return false;
+                // Crear los elementos de botón
+                var btnAceptar = $('<button>').attr('id', 'mensAceptar').text('Aceptar');
+                var btnCancelar = $('<button>').attr('id', 'mensCancelar').text('Cancelar');
+
+                // Agregar los botones al contenedor de botones
+                $('#botones').append(btnAceptar);
+                $('#botones').append(btnCancelar);
+
+                // Agregar texto al contenedor de texto
+                $('#texto').text("¿Seguro que desea cambiar la contraseña?");
+
+                // Hacer visible el contenedor #aaa
+                $('#aaa').css('visibility', 'visible');
+
+                // Agregar event listener para el botón Aceptar
+                btnAceptar.on('click', function () {
+                    // Lógica para el botón Aceptar
+                    console.log('Se ha pulsado el botón Aceptar');
+                    // Llama a la función correspondiente
+                    funcionAceptar();
+                });
+
+                // Agregar event listener para el botón Cancelar
+                btnCancelar.on('click', function () {
+                    // Lógica para el botón Cancelar
+                    console.log('Se ha pulsado el botón Cancelar');
+                    // Llama a la función correspondiente
+                    funcionCancelar();
+                });
+
+                // Definir funciones correspondientes a cada botón
+                function funcionAceptar() {
+                    // Cambiar la contraseña (aquí debes implementar la función cambiarcontraseña)
+                    cambiarcontraseña(password1);
+
+                    // Mostrar mensaje de contraseña cambiada correctamente
+                    $('#aaa').css('visibility', 'hidden');
+                    $('#mens').text("Contraseña cambiada correctamente");
+                    $('#mens').css('visibility', 'visible');
+
+                    // Ocultar el mensaje después de 8 segundos
+                    setTimeout(function () {
+                        // Redirigir al usuario a la página de inicio
+                        window.location.href = "index.html";
+                    }, 2000);
+                }
+
+                function funcionCancelar() {
+                    // Si el usuario cancela, no hacer nada
+                    $('#mens').css('visibility', 'hidden');
+                    $('#aaa').css('visibility', 'hidden');
+                    // Redirigir al usuario a la página de inicio
+                    window.location.href = "index.html";
+                    return false;
+                }
             }
         }
     });
@@ -149,11 +138,8 @@ $(document).ready(function() {
             }
         });
     }
-});
 
-$(document).ready(function() {
-    
-    $('#toggle-pencil').click(function() {
+    $('#toggle-pencil').click(function () {
         var form1 = $('#form1');
         if (form1.css('visibility') === 'hidden') {
             form1.css('visibility', 'visible');
@@ -162,7 +148,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#toggle-sort').click(function() {
+    $('#toggle-sort').click(function () {
         var form2 = $('#form2');
         if (form2.css('visibility') === 'hidden') {
             form2.css('visibility', 'visible');
@@ -170,5 +156,4 @@ $(document).ready(function() {
             form2.css('visibility', 'hidden');
         }
     });
-
 });
