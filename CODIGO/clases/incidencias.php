@@ -470,25 +470,23 @@ class incidencias extends conexion
     /****************************************CORREO*********************************************/
 
     public function enviarCorreo($id) {
-   
         $mail = new PHPMailer(true);
-
+    
         $stmt = $this->conect->prepare("
         SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.descripcion, p.ID_Profe, p.correo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
-        WHERE i.id_incidencia = ?");
-
-        $stmt->bind_param("i", $id);
+        WHERE i.id_incidencia = ? LIMIT 1");
+    
+        $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $incidencia = $result->fetch_assoc();
+    
         $fecha = new DateTime($incidencia["fecha"]);
         $fechaFormateada = $fecha->format('d-m-Y');
         $correo = $incidencia["correo"];
-        echo "<script>console.log(".$correo.");</script>";
-        
 
         try {
             // Configuración del servidor SMTP
@@ -499,11 +497,11 @@ class incidencias extends conexion
             $mail->Password = 'sgft xhvl cdir ygwd'; // Tu contraseña de Gmail o App Password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
-
+    
             // Remitente y destinatarios
             $mail->setFrom('incidenciasticpb@gmail.com', 'IncidenciasTIC');
             $mail->addAddress($correo, 'Profesor'); // Correo y nombre del destinatario
-
+    
             // Contenido del correo
             $mail->isHTML(true);
             $mail->Subject = 'Incidencia Resuelta';
@@ -515,7 +513,7 @@ class incidencias extends conexion
             <body> 
             
             <p> 
-            La incidencia con id <b>"'.$id.'"</b> registrada el dia <b>"'.$fechaFormateada.'"</b> en el aula <b>'.$incidencia["Nombre_aula"].'</b> y descripción:<br><br>
+            La incidencia con id <b>"'.$id.'"</b> registrada el dia <b>"'.$fechaFormateada.'"</b> en el aula <b>'.$incidencia["Nombre_aula"].'</b> y descripci&oacute;n:<br><br>
             <b>'.$incidencia["descripcion"].'</b>.<br><br>
             Ha sido resuelta.
             </p> 
@@ -523,14 +521,15 @@ class incidencias extends conexion
             </html>
             ';
             $mail->AltBody = 'Incidencia Resuelta';
-
+    
             $mail->send();
             
         } catch (Exception $e) {
-            echo "<script>console.log(Error al enviar el correo: {$mail->ErrorInfo})</script>";
+            error_log("Error al enviar el correo: {$mail->ErrorInfo}");
         }
         $stmt->close();
     }
+    
 
 
 }

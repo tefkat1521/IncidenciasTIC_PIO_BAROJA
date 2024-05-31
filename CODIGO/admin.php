@@ -33,7 +33,6 @@ if(isset($_POST["submit"])) {
         $estado = $_POST['estado'];
         $incidencias = new Incidencias();
         $incidencias->update_incidencia_estado($id_incidencia, $estado);
-        $incidencias->update_incidencia_estado_y_prioridad($id_incidencia, $estado, $urgencia);
         if($estado == "Solucionado")
         {
             $incidencias->enviarCorreo($id_incidencia);
