@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/src/SMTP.php';
+
 require_once  "conexion.php";
 
 
@@ -462,19 +469,48 @@ class incidencias extends conexion
 
     /****************************************CORREO*********************************************/
 
-    // public function enviarCorreo($remitente, $destinatario, $asunto, $mensaje) {
-    //     // Cabeceras del correo
-    //     $cabeceras = 'From: ' . $remitente . "\r\n" .
-    //                  'Reply-To: ' . $remitente . "\r\n" .
-    //                  'X-Mailer: PHP/' . phpversion();
-        
-    //     // Envío del correo
-    //     if (mail($destinatario, $asunto, $mensaje, $cabeceras)) {
-    //         return true; // Correo enviado correctamente
-    //     } else {
-    //         return false; // Error al enviar el correo
-    //     }
-    // }
+    public function enviarCorreo($id) {
+   
+        $mail = new PHPMailer(true);
+
+        try {
+            // Configuración del servidor SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'jesusutrillagonzalez@gmail.com'; // Tu correo de Gmail
+            $mail->Password = 'holaquehay'; // Tu contraseña de Gmail o App Password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            // Remitente y destinatarios
+            $mail->setFrom('jesusutrillagonzalez@gmail.com', 'IncidenciasTIC');
+            $mail->addAddress('jesusutrillagonzalez@gmail.com', 'Profesor'); // Correo y nombre del destinatario
+
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Incidencia Resuelta';
+            $mail->Body    = '
+            <html> 
+            <head> 
+            <title>Prueba de correo</title> 
+            </head> 
+            <body> 
+            
+            <p> 
+            La incidencia con id "$id" ha sido resuelta.
+            </p> 
+            </body> 
+            </html>
+            ';
+            $mail->AltBody = 'Incidencia Resuelta';
+
+            $mail->send();
+            
+        } catch (Exception $e) {
+            echo "Error al enviar el correo: {$mail->ErrorInfo}";
+        }
+    }
 
 
 }
