@@ -2,20 +2,6 @@
     display: none; /* Ocultar formularios inicialmente */
 }
 
-#grande {
-    width: 15em;
-    height: 15em;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: red;
-    z-index: 9999;
-    display: none; 
-    padding: 1em; /* Añadido para el contenido */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
 
 
 
@@ -24,21 +10,6 @@
     width: 1.8em;
 }
 
-/* div[id^="form1-"] form {
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc;   
-    padding: 10px;        
-    margin: 10px 0;           
-}
-
-
-div[id^="form2-"] form {
-
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc;    
-    padding: 10px;          
-    margin: 10px 0;            
-} */
 
 
 #botonlapiz:hover
@@ -62,15 +33,7 @@ div[id^="form2-"] form {
     /* margin: 0.25em; */
 }
 
-/* .myButton{
-    background: #4b924b;
-    border: 0px;
-    border-radius: 0px;
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-} */
+
 
 .filtro_incidencia,
 .botonactualizar,
@@ -80,14 +43,6 @@ div[id^="form2-"] form {
     margin-bottom: 3em;
 }
 
-
-/* .backsnewsletter{
-width: 100%;
-} */
-
-/* select.myInputFooter option:disabled {
-    color: #555; 
-} */
 
 .text-center {
     text-align: center;
@@ -116,37 +71,6 @@ width: 100%;
     background: #f6f6f6;
 
 }
-
-
-
-/* .panel-body > ul{
-
-    margin-left: 0;
-} */
-
-
-/* #textofooter{
-
-} */
-
-
-/* Cambiar el color de fondo de la barra de navegación */
-/* .navbar-inverse,
-.backFooter{
-    background-color: #0c4514 ; 
-  
-  }
-
-  @media only screen and (max-width: 768px) {
-    .backFooter {
-        height: fit-content;
-    }
-}
-
- */
-
-
-
 
 
 
@@ -196,10 +120,7 @@ width: 100%;
 
 }
 
-.list-group-item {
-    border-left: 0px;
-    border-right: 0px;
-}
+
 
 .priceBackground {
     background: #f6f6f6;
@@ -318,9 +239,9 @@ section#section3 {
 }
 
 
-
-
-
+#buttons-container{
+margin-top: 3em;
+}
 
 
 
@@ -342,11 +263,15 @@ section#section3 {
 div[id^="form1"] form,
 div[id^="form2"] form,
 div[id^="form3"] form {
-    margin: 10px 0;
-    padding: 15px;
+    /* margin: 10px 0; */
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
+    position: absolute; /* Hacer que el formulario esté en posición absoluta */
+    /* width: 100%;  */
+    z-index: 10; /* Asegurar que el formulario esté por encima de otros elementos */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para visibilidad */
 }
 
 /* Estilos para los select dentro de esos formularios */
@@ -386,7 +311,7 @@ div[id^="form3"] form .botonactualizar {
 div[id^="form1"] form .botonactualizar:hover,
 div[id^="form2"] form .botonactualizar:hover,
 div[id^="form3"] form .botonactualizar:hover {
-    background-color:#4b924b;
+    background-color: #4b924b;
 }
 
 /* Ajustes de layout */
@@ -402,12 +327,97 @@ div[id^="form3"] form input[type="hidden"] {
     display: none; /* Ocultar los input hidden */
 }
 
-
-/* Ajustes de layout */
-form br {
-    display: none; /* Ocultar los <br> para mejorar el layout */
+/* Ocultar formularios inicialmente con visibilidad */
+div[id^="form1"],
+div[id^="form2"],
+div[id^="form3"] {
+    visibility: hidden; /* Usar visibilidad en lugar de display */
+    height: 0; /* Ajustar altura a 0 para no afectar el diseño */
 }
 
-form input[type="hidden"] {
-    display: none; /* Ocultar los input hidden */
+/* Mostrar formularios cuando se necesita */
+div[id^="form1"].show,
+div[id^="form2"].show,
+div[id^="form3"].show {
+    visibility: visible; /* Mostrar el formulario */
+    height: auto; /* Ajustar la altura automáticamente */
+}
+
+/* Botones de Estado y Prioridad */
+.botoncicos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin: 1em 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin: 0;
+}
+
+.custom-btn-width {
+    flex: 1; /* Hacer que el botón ocupe todo el ancho disponible */
+}
+
+/* Botón de borrar */
+.btn-trash {
+    width: 40px; /* Ajustar el ancho del botón de la basura */
+    height: 40px; /* Ajustar la altura del botón de la basura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-trash .glyphicon-trash {
+    font-size: 16px; /* Ajustar el tamaño del ícono de la basura */
+}
+
+
+
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos de manera uniforme */
+}
+
+#borrado {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    margin-top: 10px;
+}
+
+.botonactualizar {
+    width: 100%;
+}
+
+
+
+.botoncicos {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.panel-default{
+    min-height: 580px;
 }

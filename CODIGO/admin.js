@@ -47,25 +47,51 @@ function consultarIncidencias() {
     });
 }
 
+// function toggleForms(index, formType) {
+//     var form1 = $('#form1-' + index);
+//     var form2 = $('#form2-' + index);
+//     var form3 = $('#form3-' + index);
+
+//     if (formType === 'form1') {
+//         form1.toggle();
+//     } else if (formType === 'form2') {
+//         form2.toggle();
+//     }
+
+//     if (form1.is(':visible') && form2.is(':visible')) {
+//         form3.show();
+//         form1.hide();
+//         form2.hide();
+//     } else {
+//         form3.hide();
+//     }
+// }
+
+
 function toggleForms(index, formType) {
-    var form1 = $('#form1-' + index);
-    var form2 = $('#form2-' + index);
-    var form3 = $('#form3-' + index);
+    const form1 = document.getElementById(`form1-${index}`);
+    const form2 = document.getElementById(`form2-${index}`);
+    const form3 = document.getElementById(`form3-${index}`);
 
     if (formType === 'form1') {
-        form1.toggle();
+        if (form1) form1.classList.toggle('show');
     } else if (formType === 'form2') {
-        form2.toggle();
+        if (form2) form2.classList.toggle('show');
     }
 
-    if (form1.is(':visible') && form2.is(':visible')) {
-        form3.show();
-        form1.hide();
-        form2.hide();
+    // Check visibility and toggle form3 accordingly
+    const isForm1Visible = form1 && form1.classList.contains('show');
+    const isForm2Visible = form2 && form2.classList.contains('show');
+
+    if (isForm1Visible && isForm2Visible) {
+        if (form3) form3.classList.add('show');
+        if (form1) form1.classList.remove('show');
+        if (form2) form2.classList.remove('show');
     } else {
-        form3.hide();
+        if (form3) form3.classList.remove('show');
     }
 }
+
 
 function insertarProfesor() {
     var xhttp = new XMLHttpRequest();
@@ -130,20 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
     insertarProfesor();
 });
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     var incidenciasAdmin = document.getElementById('incidenciasAdmin');
-//     var primerDivHijo = incidenciasAdmin.querySelector('div');
 
-//     const incidencias = document.querySelectorAll("#incidencias > div");
-//     const grande = document.getElementById("grande");
 
-//     incidencias.forEach((incidencia) => {
-//         incidencia.addEventListener("click", function () {
-//             const contenido = this.innerHTML;
-//             console.log(contenido);
 
-//             grande.innerHTML = contenido;
-//             grande.style.display = "block";
-//         });
-//     });
-// });
