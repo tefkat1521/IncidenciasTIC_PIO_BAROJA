@@ -524,3 +524,20 @@ float: right;
 }
 
 
+
+
+
+/* Estilos para el cuadro de mensaje */
+.message-box {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #f44336; /* Borde rojo para el mensaje de error */
+    background-color: #fdd;
+    color: #f44336;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+}

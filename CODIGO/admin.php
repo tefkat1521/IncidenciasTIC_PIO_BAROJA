@@ -298,18 +298,17 @@ echo $html_output;
 function procesarFormulario() {
     if(isset($_POST["hecho"])) { 
         if ($_POST['pass'] != $_POST['confirmPass']) {
-            echo"Usuario no insertado, las contraseñas no coinciden <br>";
-            echo " Redirigiendo...";
+            // echo '<div class="message-box">Usuario no insertado, las contraseñas no coinciden. Redirigiendo...</div>';
 
-              echo "<script>
+            echo "<script>
                 setTimeout(function() {
                     window.location.href = 'admin.html';
-                }, 2000); // Redirige después de 5 segundos
-              </script>";
+                }, 3000); // Redirige después de 3 segundos
+            </script>";
 
-        // Asegurarse de que el script se detenga
-        exit();
-
+            // Asegurarse de que el script se detenga
+            exit();
+        
         }else {
             $prof = new profesor();
             $prof->insertar_profesor($_POST["nombre"], $_POST["correo"], $_POST["pass"], $_POST["dept"]);
