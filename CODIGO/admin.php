@@ -210,7 +210,7 @@ if (count($array_incidencias) > 0) {
                    <input class="botonactualizar" type="submit" name="submit" value="Actualizar">
                </form>
            </div>
-           <br>
+           
            <div id="form2-' . $index . '" style="display: none">
                <form method="post" action="admin.php">
                 
@@ -232,7 +232,7 @@ if (count($array_incidencias) > 0) {
                        <option value="En_proceso">En proceso</option>
                        <option value="Solucionado">Solucionado</option>
                    </select>
-                   <br>
+                   
                    <select name="urgencia2" required>
                        <option value="" selected disabled>Asignar Prioridad</option>
                        <option value="1">Baja</option>
