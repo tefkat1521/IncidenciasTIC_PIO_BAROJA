@@ -357,40 +357,7 @@ height: 8em;
 
 }
 /* ************************************************************* FOOTER ************************************************************* */
-.backFooter{
-    padding: 40px;
-    background-color:#4b924b;
-    /* height: fit-content; */
-    height: 500px;
-}
-
-.footertext,  .footertext > a{
-    text-align: start;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
-    margin-top: 0px;
-    font-weight: bold;
-    line-height: 1.1;
-    font-size: 16px;
-    color: #fff;
-}
-
-#textofooter {
-    float: left;
-}
-
-#logofooter {
-    float: right;
-}
-
-
-.marginBottom{
-    margin-bottom: 30px;
-}
-
-.marginTop{
-    margin-top: 10px;
-}
+/* Estilos generales */
 
 
 /* *********************************************************** OTRO HEADER *********************************************************** */
