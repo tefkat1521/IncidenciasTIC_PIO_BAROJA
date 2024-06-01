@@ -357,7 +357,86 @@ height: 8em;
 
 }
 /* ************************************************************* FOOTER ************************************************************* */
+
+
 /* Estilos generales */
+.noPadding {
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.backFooter {
+  background-color:#4b924b; /* Color de fondo del footer */
+  padding: 20px 0 3em; /* Espaciado vertical del footer */
+}
+
+.marginTop {
+  margin-top: 20px;
+}
+
+.footertext,  .footertext > a{
+  margin: 5px 0; /* Margen entre los textos del footer */
+  text-align: start;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 0px;
+  font-weight: bold;
+  line-height: 1.1;
+  font-size: 16px;
+  color: #fff;
+}
+
+#logofooter>img{
+margin-right: 1em;
+float: right;
+}
+
+#textofooter > h3{
+  margin-left: 3em;
+
+}
+
+.footertext, .footertext > a {
+  margin-left: 0; /* Eliminar el margen izquierdo */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 992px) {
+  #textofooter > h3{
+      text-align: center; /* Centrar el contenido */
+      width: 100%; /* Asegurarse de que los elementos ocupen todo el ancho disponible */
+      margin-left: 0;
+    
+  }
+
+  #logofooter {
+      margin-top: 20px; /* Espaciado adicional para separar del texto */
+  }
+
+  #logofooter>img{
+      margin-right: 0;
+      float: none;
+      }
+
+  .backFooter {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrar los elementos en el eje vertical */
+  }
+
+ 
+}
+
+.marginBottom{
+  margin-bottom: 30px;
+}
+
+.marginTop{
+  margin-top: 10px;
+}
 
 
 /* *********************************************************** OTRO HEADER *********************************************************** */

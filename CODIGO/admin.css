@@ -1,12 +1,12 @@
 
 
 /* Cambiar el color de fondo de la barra de navegación */
-/* .navbar-inverse {
-    background-color: #183b18 ; 
+.navbar-inverse {
+    background-color: #2d642d ; 
     border:none;
     border-radius: 0%;
   }
-   */
+  
 
 #form1, #form2 {
     display: none; /* Ocultar formularios inicialmente */
@@ -454,7 +454,7 @@ div[id^="form3"].show {
 }
 
 .backFooter {
-    background-color:#4b924b; /* Color de fondo del footer */
+    background-color:#2d642d; /* Color de fondo del footer */
     padding: 20px 0 3em; /* Espaciado vertical del footer */
 }
 
