@@ -1,3 +1,13 @@
+
+
+/* Cambiar el color de fondo de la barra de navegación */
+/* .navbar-inverse {
+    background-color: #183b18 ; 
+    border:none;
+    border-radius: 0%;
+  }
+   */
+
 #form1, #form2 {
     display: none; /* Ocultar formularios inicialmente */
 }
@@ -89,7 +99,7 @@
 
 #blue{
     
-    background-color: #003056;
+    background-color: #033e6f;
     padding: 40px;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
@@ -410,5 +420,24 @@ div[id^="form3"].show {
 
 
 .panel-default{
-    min-height: 580px;
+    height:40em ;
 }
+
+
+
+/* Estilos para dispositivos de escritorio */
+@media (min-width: 768px) {
+    #descrip {
+        overflow-y: auto; /* Solo desbordamiento vertical */
+        max-height: 6.75em; /* Altura máxima para dispositivos de escritorio */
+    }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+    #descrip {
+        overflow: hidden; /* Deshabilita el desbordamiento en dispositivos móviles */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+}
+

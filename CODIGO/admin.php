@@ -175,8 +175,11 @@ if (count($array_incidencias) > 0) {
    <div id="'.$panel_color.'" class="panel-heading">
        <h3 class="panel-title">'.$laincidencia["estado"].'</h3>
    </div>
-   <div class="panel-body">
-  
+
+   <div class="panel-body d-flex flex-column">
+
+ 
+
 
 
 <ul class="list-group" style="margin-bottom: 10px;">
@@ -185,7 +188,11 @@ if (count($array_incidencias) > 0) {
     <li class="list-group-item"><b>' . $ciclo . '</b></li>
     <li class="list-group-item"><b>' . $laincidencia["tipo_incidencia"] . '</b></li>
     <li class="list-group-item"><b>Urgencia: </b>' . $prioridad . '</li>
-    <li class="list-group-item">' . $laincidencia["descripcion"] . '</li>
+
+    <li id="descrip" class="list-group-item">' . $laincidencia["descripcion"] . '  
+  
+    </li>
+  
 </ul>';
 
        if($laincidencia["estado"] != "Solucionado") {

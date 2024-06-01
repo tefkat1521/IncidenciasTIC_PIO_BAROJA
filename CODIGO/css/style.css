@@ -336,7 +336,13 @@ height: 8em;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 10px;
     width: 100%;
+   
 }
+
+/* #descripcion {
+  height: 10em;
+} */
+
 
 .myInputFooter:focus{
     outline: 0px;

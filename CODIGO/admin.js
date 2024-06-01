@@ -157,5 +157,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener todas las incidencias
+    var incidencias = document.querySelectorAll('.panel-body');
+
+    // Inicializar la altura máxima como cero
+    var maxHeight = 0;
+
+    // Iterar sobre todas las incidencias para encontrar la más alta
+    incidencias.forEach(function(incidencia) {
+        // Obtener la altura actual de la incidencia
+        var height = incidencia.offsetHeight;
+        
+        // Actualizar la altura máxima si la altura actual es mayor
+        maxHeight = Math.max(maxHeight, height);
+    });
+
+    // Establecer la altura máxima a todas las incidencias
+    incidencias.forEach(function(incidencia) {
+        incidencia.style.height = maxHeight + 'px';
+    });
+});
 
 
