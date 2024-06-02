@@ -488,6 +488,10 @@ float: right;
     margin-left: 0; /* Eliminar el margen izquierdo */
 }
 
+.crearprofe{
+    margin: 5em;
+}
+
 /* Media query para dispositivos móviles */
 @media (max-width: 992px) {
     #textofooter > h3{
@@ -512,8 +516,15 @@ float: right;
         align-items: center; /* Centrar los elementos en el eje vertical */
     }
 
+    .crearprofe{
+        margin: 0;
+    }
    
 }
+
+
+
+
 
 .marginBottom{
     margin-bottom: 30px;
@@ -522,8 +533,6 @@ float: right;
 .marginTop{
     margin-top: 10px;
 }
-
-
 
 
 
@@ -541,3 +550,5 @@ float: right;
     border-radius: 4px;
     text-align: center;
 }
+
+

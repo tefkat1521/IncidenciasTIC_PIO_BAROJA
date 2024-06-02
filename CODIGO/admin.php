@@ -323,7 +323,7 @@ function procesarFormulario() {
     }
 }
 function generarFormulario($array_deps) {
-    $out = '<div class="col-md-8" style="margin: 5em;">';
+    $out = '<div class="col-md-8 crearprofe">';
     // $out .= '<form method="post" action="code.php">';
     $out .= '';
     $out .= '<form id="loginform" action="admin.php" method="post">';

@@ -84,31 +84,45 @@ function mostrarIncidencias()
 {
     $out = ""; // Inicializamos la variable fuera del bloque if
 
+$incidencia = new incidencias();
+$resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
+
+if ($resultado) {
+    $out = ""; // Inicializamos la variable fuera del bloque if
+
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-
+    
     if ($resultado) {
         $out .= "<table>";
-        $out .= "<tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr>";
-
+        $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
+        $out .= "<tbody>";
+    
         foreach ($resultado as $incidencia) {
-
-            if($incidencia['ciclo']==null){$ciclo = "------";}
-            else{$ciclo = $incidencia['ciclo'];}
-
+            if($incidencia['ciclo'] == null) {
+                $ciclo = "------";
+            } else {
+                $ciclo = $incidencia['ciclo'];
+            }
+    
             $fecha = new DateTime($incidencia["fecha"]);
             $fechaFormateada = $fecha->format('d-m-Y');
+    
             $out .= "<tr>";
-            $out .= "<td>" . $incidencia['id_incidencia'] . "</td>";
-            $out .= "<td>" . $fechaFormateada . "</td>";
-            $out .= "<td>" . $incidencia['tipo_incidencia'] . "</td>";
-            $out .= "<td>" . $incidencia['Nombre_aula'] . "</td>";
-            $out .= "<td>" . $ciclo . "</td>";
-            $out .= "<td>" . $incidencia['descripcion'] . "</td>";
-            $out .= "<td>" . $incidencia['estado'] . "</td>";
+            $out .= "<td data-label='ID'>" . $incidencia['id_incidencia'] . "</td>";
+            $out .= "<td data-label='Fecha'>" . $fechaFormateada . "</td>";
+            $out .= "<td data-label='Tipo'>" . $incidencia['tipo_incidencia'] . "</td>";
+            $out .= "<td data-label='Aula'>" . $incidencia['Nombre_aula'] . "</td>";
+            $out .= "<td data-label='Ciclo'>" . $ciclo . "</td>";
+            $out .= "<td data-label='Descripci&oacute;n'>" . $incidencia['descripcion'] . "</td>";
+            $out .= "<td data-label='Estado'>" . $incidencia['estado'] . "</td>";
             $out .= "</tr>";
         }
+    
+        $out .= "</tbody>";
         $out .= "</table>";
+    }
+
     } else {
         // Si no hay resultados, podrías mostrar un mensaje indicando que no hay incidencias
         $out .= "No se encontraron incidencias.";
@@ -198,7 +212,7 @@ function mostrarFormularioIncidencia()
 
     // Agregar el formulario HTML a la cadena
 
-    $htmlOutput .= '<div class="col-md-8 mx-auto" style="margin: 5em;">';
+    $htmlOutput .= '<div class="col-md-8 formulariocrearincidencia mx-auto">';
 
     $htmlOutput .= '<form method="post" action="code.php">';
     
