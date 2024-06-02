@@ -298,7 +298,7 @@ echo $html_output;
 function procesarFormulario() {
     if(isset($_POST["hecho"])) { 
         if ($_POST['pass'] != $_POST['confirmPass']) {
-            // echo '<div class="message-box">Usuario no insertado, las contraseñas no coinciden. Redirigiendo...</div>';
+            echo '<div class="message-box">Usuario no insertado, las contraseñas no coinciden. Redirigiendo...</div>';
 
             echo "<script>
                 setTimeout(function() {

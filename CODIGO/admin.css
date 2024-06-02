@@ -426,17 +426,19 @@ div[id^="form3"].show {
 
 
 /* Estilos para dispositivos de escritorio */
-@media (min-width: 768px) {
+@media (min-width: 993px) {
     #descrip {
-        overflow-y: auto; /* Solo desbordamiento vertical */
+        overflow-y: auto; 
+        overflow-x: hidden;
         max-height: 6.75em; /* Altura máxima para dispositivos de escritorio */
     }
 }
 
 /* Estilos para dispositivos móviles */
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     #descrip {
-        overflow: hidden; /* Deshabilita el desbordamiento en dispositivos móviles */
+        overflow-y: hidden; /* Deshabilita el desbordamiento en dispositivos móviles */
+        overflow-x: hidden;
         height: auto; /* Permite que la altura se ajuste automáticamente */
     }
 }

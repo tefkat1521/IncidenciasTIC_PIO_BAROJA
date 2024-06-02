@@ -1,0 +1,654 @@
+/*
+Theme Name: Speak Down Theme
+Theme URI: https://kloof.cemreworks.com
+Author: Cemre Tellioğlu Tunçay
+Author URI: https://cemreworks.com
+*/
+
+
+
+
+#myNavbar {
+    padding: 15px 0; /* Espaciado interior similar al de .navbar-brand */
+  }
+  
+  #myNavbar img {
+    max-height: 50px; /* Altura máxima similar al tamaño típico de un logotipo en la barra de navegación */
+  }
+  
+#hamburguesa{
+    margin-top: 20px;
+}
+
+
+
+  
+
+
+
+
+
+
+
+
+
+/* Cambiar el color de fondo de la barra de navegación */
+.navbar-inverse {
+    background-color: #4b924b ; 
+    border:none;
+    border-radius: 0%;
+  }
+  
+  /* Cambiar el estilo del texto en los elementos de la barra de navegación */
+  .navbar-inverse .navbar-nav > li > a {
+    color: #fff; 
+    font-size: 1.15em; 
+  
+  }
+  
+  /* Opcional: Cambiar el estilo del texto en los enlaces al pasar el mouse */
+  .navbar-inverse .navbar-nav > li > a:hover {
+    color: #ccc; 
+  }
+
+/* Estilo normal del elemento <li> */
+/* .navbar-inverse .navbar-nav > li.uno > a {
+    color: #fff !important;  } */
+  
+  /* Eliminar efecto hover del elemento <li> */
+  /* .navbar-inverse .navbar-nav > li.uno > a:hover {
+    color: inherit;
+  }
+   */
+
+/* Cambiar el color de fondo del botón de hamburguesa */
+.navbar-inverse .navbar-toggle {
+  background-color:  #376937; /* Cambia "your_color" por el color deseado */
+  border-color: transparent; /* Opcional: para eliminar el borde del botón */
+}
+
+/* Cambiar el color de fondo del botón de hamburguesa */
+.navbar-inverse .navbar-toggle:hover {
+    background-color:  #2a4f2a; /* Cambia "your_color" por el color deseado */
+    border-color: transparent; /* Opcional: para eliminar el borde del botón */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* margin-top: 0px; */
+  }
+  
+  .logo {
+    height: 80%;
+
+  }
+  
+
+
+#saludo{
+    font-size: 12pt; 
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+ 
+
+}
+
+.cerrarSesion{
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    float: right;
+    text-decoration: none;
+}
+
+.cerrarSesion:hover {
+    color: #d3dbd3;
+    text-decoration: none;
+}
+
+
+/* Estilo para enlaces activos */
+.cerrarSesion:active {
+    color: #396439;
+    text-decoration: none;
+}
+
+
+
+/* #contenedor_incidencias {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  #contenedor_incidencias table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #contenedor_incidencias th,
+  #contenedor_incidencias td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #contenedor_incidencias th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  #contenedor_incidencias tr:nth-child(even) {
+    background-color: #f2f2f2;
+    
+  } */
+
+/* Estilos generales para la tabla */
+#contenedor_incidencias table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* Estilos para las celdas de la tabla */
+#contenedor_incidencias th, #contenedor_incidencias td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para la cabecera de la tabla */
+#contenedor_incidencias th {
+  background-color: #f4f4f4;
+}
+
+/* Estilos para las filas alternas */
+#contenedor_incidencias tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#contenedor_incidencias{
+  margin: 2em;
+}
+
+#section2 > h2{
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+}
+
+
+
+
+/* Estilos para hacer la tabla responsive */
+@media screen and (max-width: 992px) {
+  #contenedor_incidencias {
+      margin: 2em;
+  }
+
+  #contenedor_incidencias table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+
+  #contenedor_incidencias thead {
+      display: none; /* Oculta el encabezado de la tabla */
+  }
+
+  #contenedor_incidencias tbody {
+      display: block;
+  }
+
+  #contenedor_incidencias tr {
+      display: block;
+      margin-bottom: 15px;
+  }
+
+  #contenedor_incidencias td {
+      display: block;
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+  }
+
+  #contenedor_incidencias td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+  }
+
+  #contenedor_incidencias table {
+      padding-bottom: 2em;
+  }
+
+  #ContenedorInsertarIncidencia{
+padding-top: 2em;
+padding-bottom: 2em;
+  }
+
+  .formulariocrearincidencia{
+    margin: 0;
+    }
+
+    #textofooter > h3{
+      text-align: center; /* Centrar el contenido */
+      width: 100%; /* Asegurarse de que los elementos ocupen todo el ancho disponible */
+      margin-left: 0;
+    
+  }
+
+  #logofooter {
+      margin-top: 20px; /* Espaciado adicional para separar del texto */
+  }
+
+  #logofooter>img{
+      margin-right: 0;
+      float: none;
+      }
+
+  .backFooter {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrar los elementos en el eje vertical */
+  }
+
+ 
+
+}
+
+@media (max-width: 1000px) {
+  .navbar-collapse.in {
+    /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
+    .nav li {
+      width: 50%; /* Establece el ancho al 100% */
+    }
+    
+    /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
+    .navbar-nav {
+      width: 50%; /* Establece el ancho al 100% */
+    }
+  }
+}
+
+
+/* 
+@media (max-width: 1000px) { 
+  .navbar-header .navbar-toggle {
+      display: block; 
+  }
+
+  .navbar-collapse {
+      display: none !important; 
+  }
+
+  .navbar-collapse.collapse {
+      display: block !important;
+  }
+
+  .navbar-collapse.in {
+      display: block !important;
+  }
+
+  .navbar-collapse.collapse.in {
+      display: block !important;
+  }
+}
+
+@media (min-width: 1001px) { 
+  .navbar-header .navbar-toggle {
+      display: none; 
+  }
+
+  .navbar-collapse {
+      display: block !important; 
+  }
+
+  .navbar-collapse.collapse {
+      display: block !important;
+  }
+
+  .navbar-collapse.in {
+      display: block !important;
+  }
+
+  .navbar-collapse.collapse.in {
+      display: block !important;
+  }
+} */
+
+
+  
+  .hi{
+height: 8em;
+
+  }
+
+
+  .fixedArea {
+   
+    background: #4b924b;
+    border-bottom: 1px solid #ddd;
+    padding: 1em;
+    /* height: 8em; */
+    z-index: 1000;
+   
+    
+}
+.hola {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos del encabezado */
+    /* height: 8em; */
+    /* position: sticky;
+    top: 0; */
+}
+
+.myNavUl {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row; /* Mantiene la dirección del flexbox como fila */
+    align-items: center; /* Centra los elementos verticalmente en la fila */
+    height: 100%; /* Utiliza toda la altura del contenedor */
+    justify-content:left; /* Centra los elementos horizontalmente */
+}
+
+.myNavUl > li {
+    margin-right: 10px; /* Espacio entre los elementos li */
+}
+
+.myNavUl > li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento li */
+}
+
+.myNavUl > li > a {
+    padding: 10px 20px;
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    line-height: 1.1;
+    font-size: 16px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.paddTop{
+    padding-top: 10px;
+}
+
+
+.myButton{
+    background: #4b924b;
+    border: 0px;
+    border-radius: 0px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* NO QUITAR */
+.noPadding{
+    padding: 0px;
+
+}
+
+/* NO QUITAR */
+/* Imagen de taquillas */
+.filterBack{
+    background: url(../img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);
+    background-position: top;
+    background-size: cover;
+    min-height: 550px;
+    background-attachment: fixed;
+
+}
+
+/* Filtro de la Imagen de taquillas */
+.abs{
+    position: absolute;
+    top: 0px;
+    min-height: 550px;
+    background-color: #000;
+    position: absolute;
+    top: 0px;
+    background-color: #0000008a;
+    width: 100%;
+    color: #fff;
+
+}
+
+.absTitle{
+    margin-top: 300px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.absText{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* NO QUITAR */
+.priceBackground {
+    background: #f6f6f6;
+    padding-top: 5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+}
+
+.noTop{
+    margin-top: 0px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+.myInputFooter{
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-color: #dddddd40;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    width: 100%;
+   
+}
+
+/* #descripcion {
+  height: 10em;
+} */
+
+
+.myInputFooter:focus{
+    outline: 0px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.backNewsletter{
+
+    padding: 40px;
+    background: #f6f6f6;
+
+}
+
+.formulariocrearincidencia{
+margin: 5em;
+}
+
+
+/* ************************************************************* FOOTER ************************************************************* */
+
+
+/* Estilos generales */
+.noPadding {
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.backFooter {
+  background-color:#4b924b; /* Color de fondo del footer */
+  padding: 20px 0 3em; /* Espaciado vertical del footer */
+}
+
+.marginTop {
+  margin-top: 20px;
+}
+
+.footertext,  .footertext > a{
+  margin: 5px 0; /* Margen entre los textos del footer */
+  text-align: start;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 0px;
+  font-weight: bold;
+  line-height: 1.1;
+  font-size: 16px;
+  color: #fff;
+}
+
+#logofooter>img{
+margin-right: 1em;
+float: right;
+}
+
+#textofooter > h3{
+  margin-left: 3em;
+
+}
+
+.footertext, .footertext > a {
+  margin-left: 0; /* Eliminar el margen izquierdo */
+}
+
+
+
+.marginBottom{
+  margin-bottom: 30px;
+}
+
+.marginTop{
+  margin-top: 10px;
+}
+
+
+/* *********************************************************** OTRO HEADER *********************************************************** */
+
+/* Estilos para el logo */
+.navbar-brand img {
+    max-height: 50px; /* Ajusta el tamaño del logo según tus necesidades */
+}
+
+/* Estilos para el botón de hamburguesa */
+.navbar-toggler {
+    border: none;
+}
+
+/* Estilos para el contenido del menú */
+.navbar-nav .nav-item {
+    margin-left: 10px; /* Espacio entre elementos del menú */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *********************************************************** RESPONSIVE *********************************************************** */
+
+.recuperarcontraseñacontenedor{
+/* box-shadow: #000000 0px 0px 10px; */
+
+ /* filter: drop-shadow(0px 0px 15px rgb(255, 255, 255)); */
+
+}
+
+.logo {
+  border: 1px solid rgb(95, 97, 96); /* Ajusta el tamaño y el color del borde según tus necesidades */
+  border-radius: 50%; /* Hace que el borde sea circular */
+}
+
+.botoncambiarcontraseña{
+background-color:#34a834;
+color: white;
+}
+
+.botoncambiarcontraseña:hover{
+  background-color:#5bb15b;
+  color: white;
+  }
+
