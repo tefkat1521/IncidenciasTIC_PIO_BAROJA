@@ -262,6 +262,7 @@ body{
       text-align: right;
       padding-left: 50%;
       position: relative;
+    
   }
 
   #contenedor_incidencias td::before {
@@ -279,8 +280,8 @@ body{
   }
 
   #ContenedorInsertarIncidencia{
-padding-top: 2em;
-padding-bottom: 2em;
+      padding-top: 2em;
+      padding-bottom: 2em;
   }
 
 }

@@ -78,50 +78,58 @@ function comprobarCredenciales()
 
 }
 
-
-
 function mostrarIncidencias()
 {
     $out = ""; // Inicializamos la variable fuera del bloque if
 
-$incidencia = new incidencias();
-$resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-
-if ($resultado) {
-    $out = ""; // Inicializamos la variable fuera del bloque if
-
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-    
+
     if ($resultado) {
-        $out .= "<table>";
-        $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
-        $out .= "<tbody>";
-    
-        foreach ($resultado as $incidencia) {
-            if($incidencia['ciclo'] == null) {
-                $ciclo = "------";
-            } else {
-                $ciclo = $incidencia['ciclo'];
+        $out = ""; // Inicializamos la variable fuera del bloque if
+
+        $incidencia = new incidencias();
+        $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
+        
+        if ($resultado) {
+            $out .= "<table>";
+            $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
+            $out .= "<tbody>";
+        
+            foreach ($resultado as $incidencia) {
+                if($incidencia['ciclo'] == null) {
+                    $ciclo = "------";
+                } else {
+                    $ciclo = $incidencia['ciclo'];
+                }
+        
+                $fecha = new DateTime($incidencia["fecha"]);
+                $fechaFormateada = $fecha->format('d-m-Y');
+
+                // Determinamos el color de fondo según el estado
+                $estado = $incidencia['estado'];
+                $colorFondo = '';
+                if ($estado == 'Creada') {
+                    $colorFondo = 'background-color: #D6EAF8;';
+                } elseif ($estado == 'En_proceso') {
+                    $colorFondo = 'background-color: #FDEBD0;';
+                }
+
+                $out .= "<tr>";
+                $out .= "<td data-label='ID'>" . $incidencia['id_incidencia'] . "</td>";
+                $out .= "<td data-label='Fecha'>" . $fechaFormateada . "</td>";
+                $out .= "<td data-label='Tipo'>" . $incidencia['tipo_incidencia'] . "</td>";
+                $out .= "<td data-label='Aula'>" . $incidencia['Nombre_aula'] . "</td>";
+                $out .= "<td data-label='Ciclo'>" . $ciclo . "</td>";
+                $out .= "<td data-label='Descripci&oacute;n'>" . $incidencia['descripcion'] . "</td>";
+                // Añadimos el estilo en línea para la celda del estado
+                $out .= "<td data-label='Estado' style='" . $colorFondo . "'>" . $estado . "</td>";
+                $out .= "</tr>";
             }
-    
-            $fecha = new DateTime($incidencia["fecha"]);
-            $fechaFormateada = $fecha->format('d-m-Y');
-    
-            $out .= "<tr>";
-            $out .= "<td data-label='ID'>" . $incidencia['id_incidencia'] . "</td>";
-            $out .= "<td data-label='Fecha'>" . $fechaFormateada . "</td>";
-            $out .= "<td data-label='Tipo'>" . $incidencia['tipo_incidencia'] . "</td>";
-            $out .= "<td data-label='Aula'>" . $incidencia['Nombre_aula'] . "</td>";
-            $out .= "<td data-label='Ciclo'>" . $ciclo . "</td>";
-            $out .= "<td data-label='Descripci&oacute;n'>" . $incidencia['descripcion'] . "</td>";
-            $out .= "<td data-label='Estado'>" . $incidencia['estado'] . "</td>";
-            $out .= "</tr>";
+        
+            $out .= "</tbody>";
+            $out .= "</table>";
         }
-    
-        $out .= "</tbody>";
-        $out .= "</table>";
-    }
 
     } else {
         // Si no hay resultados, podrías mostrar un mensaje indicando que no hay incidencias
