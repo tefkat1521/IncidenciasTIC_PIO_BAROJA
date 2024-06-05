@@ -15,10 +15,16 @@ $arrContIncidencias[] = array();
 if(isset($_POST["newProfesor"])){
     generarFormulario($array_deps);
 } 
+
+if(isset($_POST["borrarProfesor"])){
+    borrarProfesor();
+} 
+
 if(isset($_POST["hecho"])){
     
     procesarFormulario();
 }
+
 
 if(isset($_POST["borrado"])){
     $usu = $_POST["usua"];
@@ -352,8 +358,6 @@ function generarFormulario($array_deps) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }
     $out .= '</select><br><br>';
-    
-
 
     // $out .= '<label>Contraseña</label>';
     $out .= '<input type="password" name="pass" class="form-control myInputFooter required" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$" placeholder="Contraseña"/><br>';
@@ -362,13 +366,22 @@ function generarFormulario($array_deps) {
     $out .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $out .= '</form>';
     $out .= '<br><p><b>Nota:</b> la contraseña debe tener 3 dígitos, un número y una mayúscula.</p><br><br><br>';
-
-    $out .='<h2>BORRAR PROFESOR</h2>';
+    
+    $out .= '</div>';
+    echo $out;
+}
+    
+    function borrarProfesor() {
+    $out = '<div class="col-md-8 borrarprofe">';
+    $out .= '';
+  
     $out .= '<form id="loginform" action="admin.php" method="post">';
     $out .= '<input type="text" name="usua" class="form-control myInputFooter required" required placeholder="Nombre de usuario"/><br>';
     $out .= '<input type="submit" name="borrado" value="BORRAR" class="form-control myButton">';
     $out .= '</form>';
 
+
+   
 
 
     $out .= '</div>';

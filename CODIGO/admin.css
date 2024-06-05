@@ -142,7 +142,7 @@
 
 }
 
-section#section3 {
+section#section4 {
     float: left;
     display: block;
     position: relative;
@@ -490,7 +490,7 @@ float: right;
     margin-left: 0; /* Eliminar el margen izquierdo */
 }
 
-.crearprofe{
+.crearprofe, .borrarprofe{
     margin: 5em;
 }
 
@@ -518,7 +518,7 @@ float: right;
         align-items: center; /* Centrar los elementos en el eje vertical */
     }
 
-    .crearprofe{
+    .crearprofe, .borrarprofe{
         margin: 0;
     }
    

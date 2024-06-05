@@ -9,7 +9,7 @@ function consultarIncidencias() {
             data: { value: value },
             success: function (response) {
                 // Actualizar el contenido del div con la respuesta
-                $('#section3').html(response);
+                $('#section4').html(response);
 
                 // Añadir manejadores de eventos después de que el contenido se haya cargado
                 $('[id^=toggle-pencil]').click(function () {
@@ -109,6 +109,22 @@ function insertarProfesor() {
     xhttp.send("newProfesor=" + newProfesor);
 }
 
+function borrarProfesor() {
+    var xhttp = new XMLHttpRequest();
+    var borrarProfesor = 0;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var borrarProfesor = this.response; // Obtener la respuesta del servidor
+            var DivProfesor = document.getElementById("borrarProfesor");
+            DivProfesor.innerHTML = borrarProfesor;
+        }
+    };
+
+    xhttp.open("POST", "admin.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("borrarProfesor=" + borrarProfesor);
+}
+
 function SesionUser() {
     var sesion = "";
 
@@ -154,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
     insertarProfesor();
+    borrarProfesor();
 
     
 });
