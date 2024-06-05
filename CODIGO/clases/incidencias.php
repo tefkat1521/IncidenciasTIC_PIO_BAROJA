@@ -113,11 +113,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_sin_asignar()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad IS NULL
@@ -133,11 +132,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_baja()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 1
@@ -153,11 +151,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_media()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 2
@@ -173,11 +170,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_prioridad_alta()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado != 'Solucionado'
         AND i.niveldeprioridad = 3
@@ -193,11 +189,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_proceso()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado = 'En_proceso'
         ORDER BY i.niveldeprioridad DESC;");
@@ -212,11 +207,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_solucionado()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado = 'Solucionado'
         ORDER BY i.fecha ASC;");
@@ -232,11 +226,10 @@ class incidencias extends conexion
      */
     public function get_incidencias_en_pediente()
     {
-        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+        $lista = $this->conect->query("SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        JOIN Profesor p ON p.ID_Profe = i.ID_Profe
         LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado = 'Creada'
         ORDER BY i.fecha ASC;");
@@ -252,11 +245,10 @@ class incidencias extends conexion
     public function get_incidencias_por_aula($aula)
     {
         $stmt = $this->conect->prepare("
-            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
             FROM Incidencias i
             JOIN Aula a ON a.ID_Aula = i.ID_Aula
             JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-            JOIN Profesor p ON p.ID_Profe = i.ID_Profe
             LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
             WHERE i.estado = 'Pendiente'
             AND a.Nombre_aula = ?");
@@ -275,11 +267,10 @@ class incidencias extends conexion
     public function get_incidencias_por_tipo($tipo)
     {
         $stmt = $this->conect->prepare("
-            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
             FROM Incidencias i
             JOIN Aula a ON a.ID_Aula = i.ID_Aula
             JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-            JOIN Profesor p ON p.ID_Profe = i.ID_Profe
             LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
             WHERE i.estado = 'Pendiente'
             AND t.tipo_incidencia = ?");
@@ -295,11 +286,10 @@ class incidencias extends conexion
     public function get_incidencia_por_id($id_incidencia)
     {
         $stmt = $this->conect->prepare("
-            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
             FROM Incidencias i
             JOIN Aula a ON a.ID_Aula = i.ID_Aula 
-            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia 
-            JOIN Profesor p ON p.ID_Profe = i.ID_Profe 
+            JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
             JOIN Ciclo c ON c.id_ciclo = i.id_ciclo 
             WHERE i.id_incidencia = ?");
 
@@ -319,7 +309,7 @@ class incidencias extends conexion
     public function get_incidencias_por_profe_fil($profe)
     {
         $stmt = $this->conect->prepare("
-            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, p.ID_Profe, c.ciclo
+            SELECT i.id_incidencia, i.fecha, a.Nombre_aula, i.niveldeprioridad, i.descripcion, i.estado, t.tipo_incidencia, c.ciclo
             FROM Incidencias i
             JOIN Aula a ON a.ID_Aula = i.ID_Aula
             JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
