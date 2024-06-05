@@ -40,7 +40,7 @@ class profesor extends conexion
     {
         $sql = "SELECT nombre FROM Profesor WHERE correo = ? OR SUBSTRING_INDEX(correo, '@', 1) = ?";
         $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("sS", $correo, $correo);
+        $stmt->bind_param("ss", $correo, $correo);
         $stmt->execute();
         $result = $stmt->get_result();
 
