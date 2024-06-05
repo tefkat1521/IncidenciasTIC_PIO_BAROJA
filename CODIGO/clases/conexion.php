@@ -7,7 +7,7 @@ class Conexion
 
     public function __construct()
     {
-        $this->conect = new mysqli("localhost","root",'',"incidencias_tic");
+        $this->conect = new mysqli("localhost","id_22275574_root","incidenciasPB1.","id_22275574_incidencias_tic");
 
         if($this->conect->connect_errno)
         {
@@ -19,9 +19,5 @@ class Conexion
     }
     
 }
-
-
-
-
 
 ?>
