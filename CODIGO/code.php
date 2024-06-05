@@ -6,7 +6,7 @@ require "clases/incidencias.php";
     require "clases/tipo_incidencia.php";
 
 // Inicializamos la base de datos.
-$conexion = mysqli_connect("localhost", "root", "", "incidencias_tic");
+$conexion = mysqli_connect("localhost", "root", "incidenciasPB1.", "incidencias_tic");
 mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
 
 session_start(); // Inicializamos variables de sesión
