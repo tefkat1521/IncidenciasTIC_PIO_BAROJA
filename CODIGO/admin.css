@@ -13,6 +13,47 @@
 }
 
 
+/* Estilos para cuando el dropdown está abierto */
+li.dropdown.open .dropdown-toggle {
+    color: #e9ecef !important;
+    background-color: #3e883e !important;
+}
+
+/* Estilos para todos los elementos con clases que comienzan con "dropdown" */
+[class^="dropdown"] {
+    color: #e9ecef;
+    background-color: #2d642d;
+}
+
+[class^="dropdown"]:hover {
+    color: #2d642d;
+    background-color: #e9ecef;
+}
+
+/* Estilos para cuando cualquier elemento con clases que comienzan con "dropdown" está pulsado o enfocado */
+[class^="dropdown"]:focus, [class^="dropdown"]:active {
+    background-color: #28a745;  /* Verde para el estado activo */
+    color: #fff;  /* Blanco para el texto */
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border-radius: 0;
+    border: 1px solid #dee2e6;
+}
+
+/* Estilos para los enlaces dentro del menú desplegable */
+.dropdown-menu li a {
+    color: #343a40;
+    padding: 10px 20px;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #e9ecef;
+    color: #2d642d;
+}
 
 
 #botonlapiz
