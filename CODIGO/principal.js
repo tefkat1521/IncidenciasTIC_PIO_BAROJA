@@ -68,7 +68,7 @@ function noLogueado() {
 function habilitarSegundoSelect() {
     const primerSelect = document.getElementById("elaula");
     const segundoSelect = document.getElementById("elciclo");
-    const opcionesHabilitar = Array.from({length: 20}, (_, i) => (i + 1).toString());
+    const opcionesHabilitar = Array.from({length: 19}, (_, i) => (i + 1).toString());
 
     if (opcionesHabilitar.includes(primerSelect.value)) {
         segundoSelect.disabled = true;

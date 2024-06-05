@@ -147,23 +147,18 @@ class profesor extends conexion
         }
     }
 
-    public function borrar_profesor($id)
+    public function borrar_profesor($usu)
     {
         
-        if ($this->comprobar_id_profesor($id)) 
-        {
-            $sql = "DELETE FROM profesor WHERE ID_Profe = ?";
+            $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
             $stmt = $this->conect->prepare($sql);
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("s", $usu);
             if ($stmt->execute()) {
                 return true; // Borrado exitoso
             } else {
                 return false; // Error al borrar el profesor
             }
-        } else {
-            // El profesor con el ID dado no existe
-            return false;
-        }
+       
     }
 
 

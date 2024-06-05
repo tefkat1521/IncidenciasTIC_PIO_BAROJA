@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Select Filtrable</title>
+    <!-- Incluir CSS de Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form>
+        <label for="mi-select">Selecciona una opción:</label>
+        <select id="mi-select" style="width: 200px;">
+            <option value="opcion1">Opción 1</option>
+            <option value="opcion2">Opción 2</option>
+            <option value="opcion3">Opción 3</option>
+            <option value="opcion4">Opción 4</option>
+        </select>
+    </form>
+
+    <!-- Incluir JS de jQuery (requerido por Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluir JS de Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Inicializar Select2 -->
+    <script>
+        $(document).ready(function() {
+            $('#mi-select').select2();
+        });
+    </script>
+</body>
+</html>

@@ -110,9 +110,9 @@ INSERT INTO Aula (ID_Aula, Nombre_aula) VALUES
 (15, 'Secretaria'),
 (16, 'Conserjería'),
 (17, 'Salón de actos'),
-(18, 'Gimnasio'),
-(19, 'Sala de emprendimiento'),
-(20, 'Sala de convivencia');
+(18, 'Sala de emprendimiento'),
+(19, 'Sala de convivencia'),
+(20, 'Gimnasio');
 
 
 INSERT INTO Aula (ID_Aula, Nombre_aula, Num_Aula) VALUES
@@ -169,7 +169,7 @@ INSERT INTO ciclo (id_ciclo, ciclo, turno) VALUES
 (6, '1º AEI','Matutino'),
 (7, '1º GB ACCESO', 'Matutino'),
 (8, '2º GB ACCESO','Matutino'),
-(9, '1º TYL M','Matutino'),
+(9, '2º TYL V','Matutino'),
 (10, '1º TYL V','Vespertino'),
 (11, '1º CI','Matutino'),
 (12, '2ºCI-DISTANCIA','Matutino'),

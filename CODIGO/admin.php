@@ -20,6 +20,16 @@ if(isset($_POST["hecho"])){
     procesarFormulario();
 }
 
+if(isset($_POST["borrado"])){
+    $usu = $_POST["usua"];
+    $prof = new profesor();
+    if($prof->borrar_profesor($usu));
+    {
+        header("Location: admin.html");
+        exit;
+    }
+}
+
 // if (isset($_POST['PaginaAdmin'])) {
 //     mostrarIncidencias("0");
 // }
@@ -336,7 +346,7 @@ function generarFormulario($array_deps) {
     $out .= '<input type="text" name="correo" class="form-control myInputFooter required" required placeholder="Correo"/><br>';
 
     // $out .= '<label>Departamento</label>';
-    $out .= '<select name="dept" class="form-control myInputFooter required" required>';
+    $out .= '<select id="mi-select" name="dept" class="form-control myInputFooter required" required>';
     $out .= '<option value="" selected disabled hidden style="color: #999;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
@@ -351,7 +361,16 @@ function generarFormulario($array_deps) {
     $out .= '<input type="password" name="confirmPass" class="form-control myInputFooter required" required  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$" placeholder="Repita la Contraseña"/><br>';
     $out .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $out .= '</form>';
-    $out .= '<br><p><b>Nota:</b> la contraseña debe tener 3 dígitos, un número y una mayúscula.</p>';
+    $out .= '<br><p><b>Nota:</b> la contraseña debe tener 3 dígitos, un número y una mayúscula.</p><br><br><br>';
+
+    $out .='<h2>BORRAR PROFESOR</h2>';
+    $out .= '<form id="loginform" action="admin.php" method="post">';
+    $out .= '<input type="text" name="usua" class="form-control myInputFooter required" required placeholder="Nombre de usuario"/><br>';
+    $out .= '<input type="submit" name="borrado" value="BORRAR" class="form-control myButton">';
+    $out .= '</form>';
+
+
+
     $out .= '</div>';
     echo $out;
 }

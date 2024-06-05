@@ -154,6 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
     insertarProfesor();
+
+    
 });
 
 
