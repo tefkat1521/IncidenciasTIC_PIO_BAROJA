@@ -1,3 +1,29 @@
+#hamburguesa {
+    background-color: #295d29; /* Cambia a tu color preferido */
+    border: none; /* Elimina el borde si lo deseas */
+}
+
+#hamburguesa .icon-bar {
+    background-color: #ffffff; /* Cambia el color de las líneas del icono */
+}
+
+/* Cambiar el color de fondo cuando el botón está activo (se hace clic en él) */
+#hamburguesa.collapsed {
+    background-color: #2f6b2f; /* El mismo color que el estado normal */
+}
+
+#hamburguesa:hover {
+    background-color: #3c813c; /* Color de fondo al pasar el ratón por encima */
+}
+
+#hamburguesa:focus {
+    background-color: #295d29; /* Color de fondo cuando el botón tiene el foco */
+}
+
+
+
+
+
 
 
 /* Cambiar el color de fondo de la barra de navegación */
@@ -461,13 +487,14 @@ div[id^="form3"].show {
 
 
 .panel-default{
-    height:40em ;
+    height:42em ;
+    
 }
 
 
 
 /* Estilos para dispositivos de escritorio */
-@media (min-width: 993px) {
+@media (min-width: 992px) {
     #descrip {
         overflow-y: auto; 
         overflow-x: hidden;
@@ -476,11 +503,21 @@ div[id^="form3"].show {
 }
 
 /* Estilos para dispositivos móviles */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     #descrip {
         overflow-y: hidden; /* Deshabilita el desbordamiento en dispositivos móviles */
         overflow-x: hidden;
         height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+
+    .panel-body{
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+
+    }
+
+    .panel-default{
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+
     }
 }
 

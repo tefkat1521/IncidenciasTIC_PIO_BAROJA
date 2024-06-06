@@ -20,6 +20,28 @@ Author URI: https://cemreworks.com
     margin-top: 20px;
 }
 
+#hamburguesa {
+  background-color: #468746; /* Cambia a tu color preferido */
+  border: none; /* Elimina el borde si lo deseas */
+}
+
+#hamburguesa .icon-bar {
+  background-color: #ffffff; /* Cambia el color de las líneas del icono */
+}
+
+/* Cambiar el color de fondo cuando el botón está activo (se hace clic en él) */
+#hamburguesa.collapsed {
+  background-color: #4b924b; /* El mismo color que el estado normal */
+}
+
+#hamburguesa:hover {
+  background-color: #55a455; /* Color de fondo al pasar el ratón por encima */
+}
+
+#hamburguesa:focus {
+  background-color: #468746; /* Color de fondo cuando el botón tiene el foco */
+}
+
 
 @media (max-width: 767px) {
     .navbar-collapse.in {
