@@ -270,3 +270,27 @@
     }
 
 }
+
+
+
+
+/* NO FUNCIONA AÚN */
+/* Menú de hamburguesa para pantallas más pequeñas */
+@media (max-width: 1100px) {
+    .navbar-toggle {
+        display: block; /* Mostrar el botón de hamburguesa */
+    }
+    .navbar-collapse {
+        display: none; /* Ocultar el contenido del menú */
+    }
+}
+
+/* Menú normal para pantallas más grandes */
+@media (min-width: 1101px) {
+    .navbar-toggle {
+        display: none; /* Ocultar el botón de hamburguesa */
+    }
+    .navbar-collapse {
+        display: block; /* Mostrar el contenido del menú */
+    }
+}
