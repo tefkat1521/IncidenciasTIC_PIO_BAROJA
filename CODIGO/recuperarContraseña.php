@@ -1,29 +1,22 @@
-
 <?php
-    require "clases/profesor.php";
+require "clases/profesor.php";
 
-    if (isset($_POST['user'])) {
-        comprobarCredenciales();
-    }
+if (isset($_POST['email'])) {
+    comprobarCredenciales();
+}
 
-    function comprobarCredenciales()
-    {
-        
-        // Obtener las credenciales del formulario
-        $user = $_POST['user'];
+function comprobarCredenciales()
+{
+    // Obtener las credenciales del formulario
+    $user = $_POST['email'];
     
-        $prof = new profesor();
+    $prof = new profesor();
 
-        
-        if ($prof->comprobar_correo_contrasena_con_arroba($user,$pass)) 
-        {
-            echo "true";
-            $prof->enviarCorreo($user);
-        } 
-        else 
-        {
-            echo "false";
-        }
-
+    if ($prof->comprobar_correo_contrasena_con_arroba($user, "asdfsdf")) {
+        $prof->enviarCorreo($user);
+        echo "true";
+    } else {
+        echo "false";
     }
+}
 ?>

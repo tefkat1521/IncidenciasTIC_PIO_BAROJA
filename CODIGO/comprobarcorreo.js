@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $(".login-box").fadeIn(1500, function () {
         $(this).css("display", "block");
@@ -6,30 +5,23 @@ $(document).ready(function () {
     $('#loginForm').submit(function (event) {
         event.preventDefault();
         comprobarCredenciales(); // Llamada a la función para comprobar credenciales
-        
     });
 });
 
 function comprobarCredenciales() {
-
-    var user = $('#email').val();
+    var email = $('#email').val();
     $.ajax({
         type: 'POST',
         url: 'recuperarContraseña.php',
         data: {
-            user: user,
+            email: email,
         },
-
         success: function (response) {
-            if (response === 'true') 
-            {
-                alert("Se ha enviado un mensaje al correo con un link para cambiar contraseña");
-            } 
-            else
-            {
+            if (response === 'true') {
+                window.location.href = 'login.html';
+            } else {
                 alert("Correo invalido");
             }
-             
         },
         error: function () {
             // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
@@ -37,4 +29,3 @@ function comprobarCredenciales() {
         }
     });
 }
-
