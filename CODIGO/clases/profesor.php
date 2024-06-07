@@ -1,7 +1,7 @@
 <?php
+
+
 require_once  "conexion.php";
-
-
 
 class profesor extends conexion
 {
@@ -182,6 +182,9 @@ class profesor extends conexion
             return false;
         }
     }
+
+
+   
     
 }
 ?>

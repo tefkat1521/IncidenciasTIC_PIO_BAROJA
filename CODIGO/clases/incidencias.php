@@ -498,7 +498,7 @@ class incidencias extends conexion
             $mail->Body    = '
             <html> 
             <head> 
-            <title>Prueba de correo</title> 
+            <title>Incidencia resuela</title> 
             </head> 
             <body> 
             
@@ -521,5 +521,48 @@ class incidencias extends conexion
     }
     
 
+    public function enviarCorreoContraseña($correo) {
+        $mail = new PHPMailer(true);
+    
+        try {
+            // Configuración del servidor SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'incidenciasticpb@gmail.com'; // Tu correo de Gmail
+            $mail->Password = 'sgft xhvl cdir ygwd'; // Tu contraseña de Gmail o App Password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+    
+            // Remitente y destinatarios
+            $mail->setFrom('incidenciasticpb@gmail.com', 'IncidenciasTIC');
+            $mail->addAddress($correo, 'Profesor'); // Correo y nombre del destinatario
+    
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Cambio de contraseña';
+            $mail->Body    = '
+            <html> 
+            <head> 
+            <titleCambio de contraseña</title> 
+            </head> 
+            <body> 
+            
+            <p> 
+                Para cambiar su contraseña pulse el siguiente enlace
+            </p> 
+            <a href="http://localhost:8081/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">
+            </body> 
+            </html>
+            ';
+            $mail->AltBody = 'Cambio de contraseña';
+    
+            $mail->send();
+            
+        } catch (Exception $e) {
+            error_log("Error al enviar el correo: {$mail->ErrorInfo}");
+        }
+        $stmt->close();
+    }
 
 }
