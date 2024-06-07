@@ -1,13 +1,4 @@
 
-<?php
-session_start();
-$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
-if(!empty($sessData['status']['msg'])){
-    $statusMsg = $sessData['status']['msg'];
-    $statusMsgType = $sessData['status']['type'];
-    unset($_SESSION['sessData']['status']);
-}
-?>
 
 
 <!DOCTYPE html>
@@ -18,11 +9,8 @@ if(!empty($sessData['status']['msg'])){
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
-    
-<!-- Password Reset 8 - Bootstrap Brain Component -->
 <section class="bg-light p-3 p-md-4 p-xl-5">
     <div class="container">
       <div class="row justify-content-center">
@@ -38,20 +26,18 @@ if(!empty($sessData['status']['msg'])){
                     <div class="row">
                       <div class="col-12">
                         <div class="mb-5">
-
                             <div class="text-center mb-4 logorecuperarcontraseña">
                                 <a href="login.html">
                                     <img class="logo" src="images/logo pio baroja circular.png" alt="Logo Ies Pio Baroja" width="65" height="65">
                                 </a>
                             </div>
-                            
                           <h2 class="h4 text-center">Recuperar Contraseña</h2>
                           <h3 class="fs-6 fw-normal text-secondary text-center m-0">Proporciona el email asociado a tu cuenta para recuperar tu contraseña.</h3>
                           <?php echo !empty($statusMsg)?'<p class="'.$statusMsgType.'">'.$statusMsg.'</p>':''; ?>
                         </div>
                       </div>
                     </div>
-                    <form action="userAccount.php" method="post">
+                    <form action="recuperarContraseña.php" method="post">
                       <div class="row gy-3 overflow-hidden">
                         <div class="col-12">
                           <div class="form-floating mb-3">
@@ -70,7 +56,6 @@ if(!empty($sessData['status']['msg'])){
                       <div class="col-12">
                         <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-5">
                           <a href="login.html" class="link-secondary text-center text-decoration-none">Login</a>
-                          <!-- <a href="#!" class="link-secondary text-decoration-none">Register</a> -->
                         </div>
                       </div>
                     </div>
