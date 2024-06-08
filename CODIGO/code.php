@@ -44,8 +44,6 @@ if (isset($_POST['newPass'])) {
 // Definir la función comprobarCredenciales
 function comprobarCredenciales()
 {
-    
-
     // Obtener las credenciales del formulario
     $user = $_POST['user'];
     $pass = $_POST['pass'];

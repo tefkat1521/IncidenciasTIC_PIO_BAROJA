@@ -104,6 +104,23 @@ class profesor extends conexion
             return false; 
         }
     }
+
+    public function comprobar_correo_existe($correo)
+    {
+        $sql = "SELECT correo FROM profesor WHERE correo = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            return "true"; // El correo existe
+        } else {
+            return "false"; // El correo no existe
+        }
+    }
+    
+
 /******************************************************************************************/ 
 
 

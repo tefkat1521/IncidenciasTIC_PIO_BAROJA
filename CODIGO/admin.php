@@ -16,9 +16,10 @@ if(isset($_POST["newProfesor"])){
     generarFormulario($array_deps);
 } 
 
-if(isset($_POST["borrarProfesor"])){
+if(isset($_POST["profBorrar"])){
+    echo "hola";
     borrarProfesor();
-} 
+}
 
 if(isset($_POST["hecho"])){
     
@@ -94,6 +95,7 @@ if(isset($_POST["submitborrado"]))
 if(isset($_POST["value"])){
     mostrarIncidencias($_POST["value"]);
 }
+
 
 
 function mostrarIncidencias($filtro){
@@ -371,21 +373,28 @@ function generarFormulario($array_deps) {
     echo $out;
 }
     
-    function borrarProfesor() {
-    $out = '<div class="col-md-8 borrarprofe">';
-    $out .= '';
+//     function borrarProfesor() {
+//     $out = '<div class="col-md-8 borrarprofe">';
+//     $out .= '';
   
-    $out .= '<form id="loginform" action="admin.php" method="post">';
-    $out .= '<input type="text" name="usua" class="form-control myInputFooter required" required placeholder="Nombre de usuario"/><br>';
-    $out .= '<input type="submit" name="borrado" value="BORRAR" class="form-control myButton">';
-    $out .= '</form>';
+//     $out .= '<form id="loginform" action="admin.php" method="post">';
+//     $out .= '<input type="text" name="usua" class="form-control myInputFooter required" required placeholder="Nombre de usuario"/><br>';
+//     $out .= '<input type="submit" name="borrado" value="BORRAR" class="form-control myButton">';
+//     $out .= '</form>';
 
 
    
 
 
-    $out .= '</div>';
-    echo $out;
+//     $out .= '</div>';
+//     echo $out;
+// }
+
+function borrarProfesor(){
+    $user = $_POST['profBorrar'];
+    $prof = new profesor();
+    $response = $prof->comprobar_correo_existe($user);
+    echo "hola" . $response;
 }
 
 ?>

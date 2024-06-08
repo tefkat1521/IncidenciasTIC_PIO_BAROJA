@@ -109,21 +109,21 @@ function insertarProfesor() {
     xhttp.send("newProfesor=" + newProfesor);
 }
 
-function borrarProfesor() {
-    var xhttp = new XMLHttpRequest();
-    var borrarProfesor = 0;
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var borrarProfesor = this.response; // Obtener la respuesta del servidor
-            var DivProfesor = document.getElementById("borrarProfesor");
-            DivProfesor.innerHTML = borrarProfesor;
-        }
-    };
+// function borrarProfesor() {
+//     var xhttp = new XMLHttpRequest();
+//     var borrarProfesor = 0;
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             var borrarProfesor = this.response; // Obtener la respuesta del servidor
+//             var DivProfesor = document.getElementById("borrarProfesor");
+//             DivProfesor.innerHTML = borrarProfesor;
+//         }
+//     };
 
-    xhttp.open("POST", "admin.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("borrarProfesor=" + borrarProfesor);
-}
+//     xhttp.open("POST", "admin.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send("borrarProfesor=" + borrarProfesor);
+// }
 
 function SesionUser() {
     var sesion = "";
@@ -166,11 +166,38 @@ function editarIncidencia(numIncidencia) {
     });
 }
 
+function verificarProfesor() {
+        $('#comprobarprofForm').submit(function(e) {
+            e.preventDefault(); // Evita que el formulario se envíe normalmente
+            
+            var profBorrar = $('#usua').val();
+            
+            $.ajax({
+                type: 'POST',
+                url: 'admin.php',
+                data: { profBorrar: profBorrar },
+                success: function(response) {
+                    console.log(response);
+                    if (response === "true") {
+                        $('#comprobarprofForm').unbind('submit').submit(); // Envía el formulario si el profesor existe
+                    } else {
+                        alert("El profesor no existe.");
+                    }
+                }
+            });
+        });
+}
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();
     SesionUser();
     insertarProfesor();
-    borrarProfesor();
+    verificarProfesor();
+    
 
     
 });
