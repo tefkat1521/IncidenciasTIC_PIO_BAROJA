@@ -175,11 +175,11 @@ function verificarProfesor() {
             $.ajax({
                 type: 'POST',
                 url: 'admin.php',
-                data: { profBorrar: profBorrar },
+                data: {profBorrar: profBorrar},
                 success: function(response) {
                     console.log(response);
-                    if (response === "true") {
-                        $('#comprobarprofForm').unbind('submit').submit(); // Envía el formulario si el profesor existe
+                    if (response === 'true') {
+                        $('#comprobarprofForm').unbind('submit'); // Envía el formulario si el profesor existe
                     } else {
                         alert("El profesor no existe.");
                     }

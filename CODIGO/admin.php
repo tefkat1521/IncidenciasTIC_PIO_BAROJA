@@ -17,7 +17,6 @@ if(isset($_POST["newProfesor"])){
 } 
 
 if(isset($_POST["profBorrar"])){
-    echo "hola";
     borrarProfesor();
 }
 
@@ -30,10 +29,10 @@ if(isset($_POST["hecho"])){
 if(isset($_POST["borrado"])){
     $usu = $_POST["usua"];
     $prof = new profesor();
-    if($prof->borrar_profesor($usu));
-    {
+    if($prof->borrar_profesor($usu)){
         header("Location: admin.html");
-        exit;
+    }else {
+        echo"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     }
 }
 
@@ -394,7 +393,7 @@ function borrarProfesor(){
     $user = $_POST['profBorrar'];
     $prof = new profesor();
     $response = $prof->comprobar_correo_existe($user);
-    echo "hola" . $response;
+    echo $response;
 }
 
 ?>
