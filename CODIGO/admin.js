@@ -168,7 +168,7 @@ function editarIncidencia(numIncidencia) {
 
 function verificarProfesor() {
         $('#comprobarprofForm').submit(function(e) {
-            e.preventDefault(); // Evita que el formulario se envíe normalmente
+            // e.preventDefault(); // Evita que el formulario se envíe normalmente
             
             var profBorrar = $('#usua').val();
             
@@ -179,13 +179,26 @@ function verificarProfesor() {
                 success: function(response) {
                     console.log(response);
                     if (response === 'true') {
-                        $('#comprobarprofForm').unbind('submit'); // Envía el formulario si el profesor existe
+                        enviardatos();
                     } else {
                         alert("El profesor no existe.");
                     }
                 }
             });
         });
+}
+function enviardatos(){
+    var profB = $('#usua').val();
+    $.ajax({
+        type: 'POST',
+        url: 'admin.php',
+        data: { profB: profB },
+        success: function (response) {
+            console.log(response);
+            alert(response);
+            }
+        
+    });
 }
 
 

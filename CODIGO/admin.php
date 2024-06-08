@@ -26,11 +26,13 @@ if(isset($_POST["hecho"])){
 }
 
 
-if(isset($_POST["borrado"])){
-    $usu = $_POST["usua"];
+if(isset($_POST["profB"])){
+    $usu = $_POST['profB'];
+    echo $usu;
     $prof = new profesor();
     if($prof->borrar_profesor($usu)){
-        header("Location: admin.html");
+        // header("Location: admin.html");
+        echo "yes";
     }else {
         echo"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     }
