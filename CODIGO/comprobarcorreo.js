@@ -20,7 +20,6 @@ function comprobarCredenciales() {
             if (response === 'true') {
                 window.location.href = 'login.html';
             } else {
-                alert(response);
                 alert("Correo invalido o no existe");
             }
         },
