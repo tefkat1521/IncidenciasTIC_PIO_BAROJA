@@ -1,11 +1,8 @@
 <?php
-
-
 require_once  "conexion.php";
 
 class profesor extends conexion
 {
-
     public function profesor()
     {
         parent::__construct();
@@ -15,14 +12,10 @@ class profesor extends conexion
     {
         $sql = "SELECT ID_Profe FROM Profesor WHERE correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
-    
-        // Crear el patrón de coincidencia
         $profe_like = "%$profe%";
-    
         $stmt->bind_param("s", $profe_like);
         $stmt->execute();
         $result = $stmt->get_result();
-    
         if ($result->num_rows > 0) 
         {
             $row = $result->fetch_assoc();
@@ -34,8 +27,6 @@ class profesor extends conexion
         }
     }
     
-
-
     public function get_nombre_profesor($correo)
     {
         $sql = "SELECT nombre FROM Profesor WHERE correo = ? OR SUBSTRING_INDEX(correo, '@', 1) = ?";
@@ -43,7 +34,6 @@ class profesor extends conexion
         $stmt->bind_param("ss", $correo, $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) 
         {
             $row = $result->fetch_assoc();
@@ -55,7 +45,6 @@ class profesor extends conexion
         }
     }
 
-
     /***********COMPROBAR si existe PROFESOR************* */
     public function comprobar_correo_contrasena_con_arroba($correo, $password)
     {
@@ -64,11 +53,9 @@ class profesor extends conexion
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row['clave_acceso'];
- 
             if (password_verify($password, $stored_password)) {
                 return true; 
             } elseif ($password === $stored_password) {
@@ -88,11 +75,9 @@ class profesor extends conexion
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
-    
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row['clave_acceso'];
- 
             if (password_verify($password, $stored_password)) {
                 return true; 
             } elseif ($password === $stored_password) {
@@ -112,32 +97,23 @@ public function comprobar_correo_o_usuario_existe($correo)
     $stmt->bind_param("ss", $correo, $correo);
     $stmt->execute();
     $result = $stmt->get_result();
-
     if ($result->num_rows > 0) {
         return 'true'; // El correo existe
     } else {
         return 'false'; // El correo no existe
     }
 }
-
-    
-
 /******************************************************************************************/ 
-
-
-
 
     public function insertar_profesor($nombre, $correo, $password, $dep)
     {
         do {
             $id = rand(10000, 99999);
         } while ($this->comprobar_id_profe($id));
-
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("isssi", $id, $nombre, $correo, $hashed_password, $dep);
-
         if ($stmt->execute()) {
             return true;
         } else {
@@ -146,7 +122,6 @@ public function comprobar_correo_o_usuario_existe($correo)
         }
     }
     
-
     public function comprobar_id_profe($id)
     {
         $sql = "SELECT COUNT(*) AS count FROM Profesor WHERE ID_Profe = ?";
@@ -156,64 +131,37 @@ public function comprobar_correo_o_usuario_existe($correo)
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         $count = $row['count'];
-        if ($count > 0) 
-        {
+        if ($count > 0){
             return true; 
-        } else 
-        {
+        } else{
             return false; 
         }
     }
 
-    // public function borrar_profesor($usu)
-    // {
-        
-    //         $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
-    //         $stmt = $this->conect->prepare($sql);
-    //         $stmt->bind_param("s", $usu);
-    //         if ($stmt->execute()) {
-    //             return true; // Borrado exitoso
-    //         } else {
-    //             return false; // Error al borrar el profesor
-    //         }
-       
-    // }
 public function borrar_profesor($usu)
 {
     $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
     $stmt = $this->conect->prepare($sql);
     $stmt->bind_param("ss", $usu, $usu);
     if ($stmt->execute()) {
-        return true; // Borrado exitoso
+        return true;
     } else {
-        return false; // Error al borrar el profesor
+        return false;
     }
 }
-
-
-
-    /***************************** */
+    /******************************/
 
     public function updatecontraseña($pass, $user)
     {
-        // Prepara la sentencia SQL para actualizar la contraseña
         $sql = "UPDATE profesor SET clave_acceso = ? WHERE correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
-
-        // Asocia los parámetros a la sentencia
         $user = $user . '%';
         $stmt->bind_param("ss", $pass, $user);
-
-        // Ejecuta la sentencia y retorna true si tuvo éxito, false en caso contrario
         if ($stmt->execute()) {
             return true;
         } else {
             return false;
         }
     }
-
-
-   
-    
 }
 ?>

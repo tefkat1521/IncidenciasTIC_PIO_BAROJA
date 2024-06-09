@@ -1,11 +1,8 @@
 <?php
 require_once  "conexion.php";
 
-
-
 class ciclo extends conexion
 {
-
     public function ciclo()
     {
         parent::__construct();
@@ -14,32 +11,25 @@ class ciclo extends conexion
     public function get_ciclo()
     {
         $lista = $this->conect->query("SELECT * FROM ciclo");
-
         $ciclo = $lista->fetch_all(MYSQLI_ASSOC);
-
         return $ciclo;
     }
 
-
     public function insertar_ciclo($ciclo, $turno)
     {
-
         $id = rand(0, 99);
         while(comprobar_id_ciclo($id))
         {
             $id = rand(0, 99);
             $sql = "INSERT INTO ciclo (id_ciclo, ciclo, turno) VALUES (?, ?, ?)";
-    
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("iss", $id, $ciclo, $turno);
-    
             if ($stmt->execute()) {
                 return true;
             } else {
                 return false;
             }
         }
-
     }
 
     public function comprobar_id_ciclo($id)
@@ -52,27 +42,24 @@ class ciclo extends conexion
         $row = $result->fetch_assoc();
         $count = $row['count'];
         if ($count > 0) {
-            return true; // El aula existe
+            return true; 
         } else {
-            return false; // El aula no existe
+            return false; 
         }
     }
 
     public function borrar_ciclo($id)
     {
-        // Comprobar si el aula con el ID dado existe antes de borrarla
         if ($this->comprobar_id_aula($id)) {
-            // El aula existe, proceder con el borrado
             $sql = "DELETE FROM aula WHERE ID_Aula = ?";
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("i", $id);
             if ($stmt->execute()) {
-                return true; // Borrado exitoso
+                return true; 
             } else {
-                return false; // Error al borrar el aula
+                return false; 
             }
         } else {
-            // El aula con el ID dado no existe
             return false;
         }
     }
