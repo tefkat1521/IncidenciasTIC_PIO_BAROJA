@@ -178,27 +178,11 @@ function verificarProfesor() {
                 data: {profBorrar: profBorrar},
                 success: function(response) {
                     alert(response);
+                    $('#usua').val('');
                 }
             });
         });
 }
-// function enviardatos(){
-//     var profB = $('#usua').val();
-//     $.ajax({
-//         type: 'POST',
-//         url: 'admin.php',
-//         data: { profB: profB },
-//         success: function (response) {
-//             console.log(response);
-//             alert(response);
-//             }
-        
-//     });
-// }
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     consultarIncidencias();

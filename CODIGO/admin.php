@@ -29,6 +29,7 @@ if(isset($_POST["hecho"])){
 if(isset($_POST["profBorrar"])){
 
     $usu = $_POST['profBorrar'];
+
     $existe = comprobarProfe($usu);
     if ($existe == 'true'){
         $prof = new profesor();
@@ -37,19 +38,15 @@ if(isset($_POST["profBorrar"])){
             {
                 echo"PROFESOR BORRADO";
             }else{
-                echo"erhor";
+                echo"error";
             }
             
         }else{
             echo "EL PROFESOR NO EXISTE, INTRODUCE EL CORREO";
         }
-        // header("Location: admin.html");
-        // exit;
+
 }
 
-// if (isset($_POST['PaginaAdmin'])) {
-//     mostrarIncidencias("0");
-// }
 if(isset($_POST["submit"])) {
 
     $id_incidencia = $_POST['id'];
@@ -402,7 +399,7 @@ function generarFormulario($array_deps) {
 
 function comprobarProfe($profesor){
     $prof = new profesor();
-    $response = $prof->comprobar_correo_existe($profesor);
+    $response = $prof->comprobar_correo_o_usuario_existe($profesor);
     return $response;
 }
 

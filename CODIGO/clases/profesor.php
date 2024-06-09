@@ -105,20 +105,21 @@ class profesor extends conexion
         }
     }
 
-    public function comprobar_correo_existe($correo)
-    {
-        $sql = "SELECT correo FROM profesor WHERE correo = ?";
-        $stmt = $this->conect->prepare($sql);
-        $stmt->bind_param("s", $correo);
-        $stmt->execute();
-        $result = $stmt->get_result();
-    
-        if ($result->num_rows > 0) {
-            return 'true'; // El correo existe
-        } else {
-            return 'false'; // El correo no existe
-        }
+public function comprobar_correo_o_usuario_existe($correo)
+{
+    $sql = "SELECT correo FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
+    $stmt = $this->conect->prepare($sql);
+    $stmt->bind_param("ss", $correo, $correo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return 'true'; // El correo existe
+    } else {
+        return 'false'; // El correo no existe
     }
+}
+
     
 
 /******************************************************************************************/ 
@@ -177,24 +178,17 @@ class profesor extends conexion
     //         }
        
     // }
-     public function borrar_profesor($usu)
-    {
-        
-            $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
-
-
-            $stmt = $this->conect->prepare($sql);
-            $stmt->bind_param("s", $usu);
-            if ($stmt->execute()) {
-                return true; // Borrado exitoso
-            } else {
-                return false; // Error al borrar el profesor
-            }
-       
-
-
-
+public function borrar_profesor($usu)
+{
+    $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
+    $stmt = $this->conect->prepare($sql);
+    $stmt->bind_param("ss", $usu, $usu);
+    if ($stmt->execute()) {
+        return true; // Borrado exitoso
+    } else {
+        return false; // Error al borrar el profesor
     }
+}
 
 
 
