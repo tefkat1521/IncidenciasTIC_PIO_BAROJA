@@ -16,9 +16,9 @@ if(isset($_POST["newProfesor"])){
     generarFormulario($array_deps);
 } 
 
-if(isset($_POST["profBorrar"])){
-    borrarProfesor();
-}
+// if(isset($_POST["profBorrar"])){
+//     borrarProfesor();
+// }
 
 if(isset($_POST["hecho"])){
     
@@ -26,16 +26,25 @@ if(isset($_POST["hecho"])){
 }
 
 
-if(isset($_POST["profB"])){
-    $usu = $_POST['profB'];
-    echo $usu;
-    $prof = new profesor();
-    if($prof->borrar_profesor($usu)){
+if(isset($_POST["profBorrar"])){
+
+    $usu = $_POST['profBorrar'];
+    $existe = comprobarProfe($usu);
+    if ($existe == 'true'){
+        $prof = new profesor();
+        $prof->borrar_profesor($usu);
+        if($prof->borrar_profesor($usu))
+            {
+                echo"PROFESOR BORRADO";
+            }else{
+                echo"erhor";
+            }
+            
+        }else{
+            echo "EL PROFESOR NO EXISTE, INTRODUCE EL CORREO";
+        }
         // header("Location: admin.html");
-        echo "yes";
-    }else {
-        echo"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-    }
+        // exit;
 }
 
 // if (isset($_POST['PaginaAdmin'])) {
@@ -391,11 +400,10 @@ function generarFormulario($array_deps) {
 //     echo $out;
 // }
 
-function borrarProfesor(){
-    $user = $_POST['profBorrar'];
+function comprobarProfe($profesor){
     $prof = new profesor();
-    $response = $prof->comprobar_correo_existe($user);
-    echo $response;
+    $response = $prof->comprobar_correo_existe($profesor);
+    return $response;
 }
 
 ?>

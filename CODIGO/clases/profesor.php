@@ -114,9 +114,9 @@ class profesor extends conexion
         $result = $stmt->get_result();
     
         if ($result->num_rows > 0) {
-            return "true"; // El correo existe
+            return 'true'; // El correo existe
         } else {
-            return "false"; // El correo no existe
+            return 'false'; // El correo no existe
         }
     }
     
@@ -164,10 +164,25 @@ class profesor extends conexion
         }
     }
 
-    public function borrar_profesor($usu)
+    // public function borrar_profesor($usu)
+    // {
+        
+    //         $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
+    //         $stmt = $this->conect->prepare($sql);
+    //         $stmt->bind_param("s", $usu);
+    //         if ($stmt->execute()) {
+    //             return true; // Borrado exitoso
+    //         } else {
+    //             return false; // Error al borrar el profesor
+    //         }
+       
+    // }
+     public function borrar_profesor($usu)
     {
         
             $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
+
+
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("s", $usu);
             if ($stmt->execute()) {
@@ -176,6 +191,9 @@ class profesor extends conexion
                 return false; // Error al borrar el profesor
             }
        
+
+
+
     }
 
 
