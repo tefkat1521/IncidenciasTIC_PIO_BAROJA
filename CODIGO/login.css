@@ -7,7 +7,7 @@ body {
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     min-height: 100vh;
-    background-image: url(images/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);
+    background-image: url(img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);
     background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
     background-repeat: no-repeat;
     background-position: center;
