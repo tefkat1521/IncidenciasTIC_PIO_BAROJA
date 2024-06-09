@@ -1,5 +1,5 @@
 #myNavbar {
-    padding: 15px 0; /* Espaciado interior similar al de .navbar-brand */
+    padding: 15px 0; 
   }
   
 #myNavbar img {
@@ -71,6 +71,16 @@
   .navbar-inverse .navbar-nav > li.uno > a:hover {
     color: inherit;
   }
+
+/* Estilos para el logo */
+.navbar-brand img {
+  max-height: 50px;
+}
+
+/* Estilos para el contenido del menú */
+.navbar-nav .nav-item {
+  margin-left: 10px; /* Espacio entre elementos del menú */
+}
   
 /* Cambiar el color de fondo del botón de hamburguesa */
 .navbar-inverse .navbar-toggle {
@@ -244,40 +254,35 @@ body{
 }
 
 .myInputFooter:focus{
-    outline: 0px;
-    border: 1px solid #ddd;
-    box-shadow: none;
+  outline: 0px;
+  border: 1px solid #ddd;
+  box-shadow: none;
 }
 
 .backNewsletter{
-
-    padding: 40px;
-    background: #f6f6f6;
-
+  padding: 40px;
+  background: #f6f6f6;
 }
 
 .formulariocrearincidencia{
-margin: 5em;
+  margin: 5em;
 }
 
+/* .botoncambiarcontraseña{
+  background-color:#34a834;
+  color: white;
+}
+  
+.botoncambiarcontraseña:hover{
+  background-color:#5bb15b;
+  color: white;
+} */
 
 /* ************************************************************* FOOTER ************************************************************* */
-
-
-/* Estilos generales */
-.noPadding {
-  padding: 0;
-}
-
-
 
 .backFooter {
   background-color:#4b924b; /* Color de fondo del footer */
   padding: 20px 0 3em; /* Espaciado vertical del footer */
-}
-
-.marginTop {
-  margin-top: 20px;
 }
 
 .footertext,  .footertext > a{
@@ -293,44 +298,16 @@ margin: 5em;
 }
 
 #logofooter>img{
-margin-right: 1em;
-float: right;
+  margin-right: 1em;
+  float: right;
 }
 
 #textofooter > h3{
   margin-left: 3em;
-
 }
 
 .footertext, .footertext > a {
   margin-left: 0; /* Eliminar el margen izquierdo */
-}
-
-/* Media query para dispositivos móviles */
-@media (max-width: 992px) {
-  #textofooter > h3{
-      text-align: center; /* Centrar el contenido */
-      width: 100%; /* Asegurarse de que los elementos ocupen todo el ancho disponible */
-      margin-left: 0;
-    
-  }
-
-  #logofooter {
-      margin-top: 20px; /* Espaciado adicional para separar del texto */
-  }
-
-  #logofooter>img{
-      margin-right: 0;
-      float: none;
-      }
-
-  .backFooter {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Centrar los elementos en el eje vertical */
-  }
-
- 
 }
 
 .marginBottom{
@@ -341,91 +318,8 @@ float: right;
   margin-top: 10px;
 }
 
-
-/* *********************************************************** OTRO HEADER *********************************************************** */
-
-/* Estilos para el logo */
-.navbar-brand img {
-    max-height: 50px; /* Ajusta el tamaño del logo según tus necesidades */
-}
-
-/* Estilos para el botón de hamburguesa */
-.navbar-toggler {
-    border: none;
-}
-
-/* Estilos para el contenido del menú */
-.navbar-nav .nav-item {
-    margin-left: 10px; /* Espacio entre elementos del menú */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* *********************************************************** RESPONSIVE *********************************************************** */
 
-.recuperarcontraseñacontenedor{
-/* box-shadow: #000000 0px 0px 10px; */
-
- /* filter: drop-shadow(0px 0px 15px rgb(255, 255, 255)); */
-
-}
-
-.logo {
-  border: 1px solid rgb(95, 97, 96); /* Ajusta el tamaño y el color del borde según tus necesidades */
-  border-radius: 50%; /* Hace que el borde sea circular */
-}
-
-.botoncambiarcontraseña{
-background-color:#34a834;
-color: white;
-}
-
-.botoncambiarcontraseña:hover{
-  background-color:#5bb15b;
-  color: white;
-  }
-
-
-
-  @media (max-width: 1100px) {
-    .navbar-collapse.in {
-      /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
-      .nav li {
-        width: 50%; /* Establece el ancho al 100% */
-      }
-      
-      /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
-      .navbar-nav {
-        width: 50%; /* Establece el ancho al 100% */
-      }
-    }
-  }
-  
-
-
-/* Estilos para hacer la tabla responsive */
 @media screen and (max-width: 992px) {
   #contenedor_incidencias {
       margin: 2em;
@@ -476,13 +370,43 @@ color: white;
       padding-bottom: 2em;
   }
 
-}
-
-/* Media query para dispositivos móviles */
-@media (max-width: 992px) {
   .formulariocrearincidencia{
     margin: 0;
     }
+
+    #textofooter > h3{
+      text-align: center; /* Centrar el contenido */
+      width: 100%; /* Asegurarse de que los elementos ocupen todo el ancho disponible */
+      margin-left: 0;
     
- 
+  }
+
+  #logofooter {
+      margin-top: 20px; /* Espaciado adicional para separar del texto */
+  }
+
+  #logofooter>img{
+      margin-right: 0;
+      float: none;
+      }
+
+  .backFooter {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centrar los elementos en el eje vertical */
+  }
+
+  .navbar-collapse.in {
+    /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
+    .nav li {
+      width: 50%; /* Establece el ancho al 100% */
+    }
+    
+    /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
+    .navbar-nav {
+      width: 50%; /* Establece el ancho al 100% */
+    }
+  }
+
 }
+

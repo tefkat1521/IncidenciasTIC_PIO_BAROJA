@@ -399,26 +399,24 @@ margin-top: 3em;
 }
 
 
-/* FORMULARIO */
+/* FORMULARIOS */
 
 /* Seleccionar formularios específicos dentro de los divs con ids que comienzan con 'form1', 'form2', o 'form3' */
 div[id^="form1"] form,
 div[id^="form2"] form,
 div[id^="form3"] form {
-    /* margin: 10px 0; */
     padding: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
     position: absolute;
     z-index: 10; /* Asegurar que el formulario esté por encima de otros elementos */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para visibilidad */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra */
     width: 75%;
     margin-top: 0;
-
     left: 50%; /* Posicionar en el centro horizontal */
     transform: translateX(-50%); /* Ajustar para centrar horizontalmente */
-    margin-top: 10px; /* Añadir margen superior para separación */
+    margin-top: 10px; 
 }
 
 /* Estilos para los select dentro de esos formularios */
@@ -454,7 +452,7 @@ div[id^="form3"] form .botonactualizar {
     transition: background-color 0.3s ease;
 }
 
-/* Hover state for buttons */
+/* Hover*/
 div[id^="form1"] form .botonactualizar:hover,
 div[id^="form2"] form .botonactualizar:hover,
 div[id^="form3"] form .botonactualizar:hover {
@@ -478,7 +476,7 @@ div[id^="form3"] form input[type="hidden"] {
 div[id^="form1"],
 div[id^="form2"],
 div[id^="form3"] {
-    visibility: hidden; /* Usar visibilidad en lugar de display */
+    visibility: hidden; 
     height: 0; /* Ajustar altura a 0 para no afectar el diseño */
 }
 
