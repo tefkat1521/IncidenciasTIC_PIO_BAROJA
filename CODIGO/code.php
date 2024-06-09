@@ -245,7 +245,7 @@ function mostrarFormularioIncidencia()
     }
     $htmlOutput .= '</select><br><br>';
     $htmlOutput .= '<textarea id="descripcion" name="descripcion" required class="myInputFooter" placeholder="Descripción" style="width: 100%; height: 15em; resize: none;" maxlength="255"></textarea><br>';
-    $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control s">';
+    $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $htmlOutput .= '</form>';
     $htmlOutput .= '</div>';
 
