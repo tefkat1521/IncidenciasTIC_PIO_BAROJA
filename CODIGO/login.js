@@ -1,8 +1,10 @@
 
 $(document).ready(function () {
+
     $(".login-box").fadeIn(1500, function () {
         $(this).css("display", "block");
     });
+
     $('#loginForm').submit(function (event) {
         event.preventDefault();
         comprobarCredenciales(); // Llamada a la función para comprobar credenciales

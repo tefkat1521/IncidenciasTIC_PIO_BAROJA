@@ -523,46 +523,46 @@ class incidencias extends conexion
 
     public function enviarCorreoContraseña($correo) {
         $mail = new PHPMailer(true);
-    
+        $sql = "SELECT correo FROM Profesor WHERE correo = ? OR SUBSTRING_INDEX(correo, '@', 1) = ?";
+        $stmt = $this->conect->prepare($sql);
+        $stmt->bind_param("ss", $correo, $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        
         try {
-            // Configuración del servidor SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'incidenciasticpb@gmail.com'; // Tu correo de Gmail
-            $mail->Password = 'sgft xhvl cdir ygwd'; // Tu contraseña de Gmail o App Password
+            $mail->Username = 'incidenciasticpb@gmail.com'; 
+            $mail->Password = 'sgft xhvl cdir ygwd';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
     
-            // Remitente y destinatarios
             $mail->setFrom('incidenciasticpb@gmail.com', 'IncidenciasTIC');
-            $mail->addAddress($correo, 'Profesor'); // Correo y nombre del destinatario
+            $mail->addAddress($row['correo'], 'Profesor');
     
-            // Contenido del correo
             $mail->isHTML(true);
             $mail->Subject = 'Cambio de contraseña';
             $mail->Body    = '
             <html> 
             <head> 
+            <meta charset="utf-8">
             <titleCambio de contraseña</title> 
             </head> 
             <body> 
-            
             <p> 
                 Para cambiar su contraseña pulse el siguiente enlace
             </p> 
-            <a href="http://localhost:8081/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">
+            <a href="http://localhost:8081/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">Cambiar Contraseña</a>
             </body> 
-            </html>
-            ';
+            </html>';
             $mail->AltBody = 'Cambio de contraseña';
-    
-            $mail->send();
-            
+
+            $mail->send();  
         } catch (Exception $e) {
             error_log("Error al enviar el correo: {$mail->ErrorInfo}");
         }
-        // $stmt->close();
     }
 
 }
