@@ -1,18 +1,8 @@
-/*
-Theme Name: Speak Down Theme
-Theme URI: https://kloof.cemreworks.com
-Author: Cemre Tellioğlu Tunçay
-Author URI: https://cemreworks.com
-*/
-
-
-
-
 #myNavbar {
     padding: 15px 0; /* Espaciado interior similar al de .navbar-brand */
   }
   
-  #myNavbar img {
+#myNavbar img {
     max-height: 50px; /* Altura máxima similar al tamaño típico de un logotipo en la barra de navegación */
   }
   
@@ -43,29 +33,6 @@ Author URI: https://cemreworks.com
 }
 
 
-@media (max-width: 1100px) {
-    .navbar-collapse.in {
-      /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
-      .nav li {
-        width: 50%; /* Establece el ancho al 100% */
-      }
-      
-      /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
-      .navbar-nav {
-        width: 50%; /* Establece el ancho al 100% */
-      }
-    }
-  }
-  
-
-
-
-
-
-
-
-
-
 /* Cambiar el color de fondo de la barra de navegación */
 .navbar-inverse {
     background-color: #4b924b ; 
@@ -73,8 +40,6 @@ Author URI: https://cemreworks.com
     border-radius: 0%;
   }
 
-
-  
   /* Cambiar el estilo del texto en los elementos de la barra de navegación */
   .navbar-inverse .navbar-nav > li > a {
     color: #fff; 
@@ -82,7 +47,7 @@ Author URI: https://cemreworks.com
   
   }
   
-  /* Opcional: Cambiar el estilo del texto en los enlaces al pasar el mouse */
+  /*Cambiar el estilo del texto en los enlaces al pasar el mouse */
   .navbar-inverse .navbar-nav > li > a:hover {
     color: #ccc; 
   }
@@ -98,9 +63,6 @@ Author URI: https://cemreworks.com
   font-size: 0.75em; /* Ajusta el tamaño según tus necesidades */
 }
 
-
-
-
 /* Estilo normal del elemento <li> */
 .navbar-inverse .navbar-nav > li.uno > a {
     color: #fff !important;  }
@@ -110,7 +72,6 @@ Author URI: https://cemreworks.com
     color: inherit;
   }
   
-
 /* Cambiar el color de fondo del botón de hamburguesa */
 .navbar-inverse .navbar-toggle {
   background-color:  #376937; /* Cambia "your_color" por el color deseado */
@@ -122,66 +83,27 @@ Author URI: https://cemreworks.com
     background-color:  #2a4f2a; /* Cambia "your_color" por el color deseado */
     border-color: transparent; /* Opcional: para eliminar el borde del botón */
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 body{
-
     font-family: 'Montserrat', sans-serif;
-
 }
-
-
-
 
 .logo-container {
     height: 100%;
     display: flex;
     align-items: center;
-    /* margin-top: 0px; */
   }
-  
+
   .logo {
     height: 80%;
 
   }
   
-
-
 #saludo{
-    font-size: 12pt; 
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
- 
-
-}
+ }
 
 .cerrarSesion{
     font-size: 12pt;
@@ -198,41 +120,11 @@ body{
     text-decoration: none;
 }
 
-
 /* Estilo para enlaces activos */
 .cerrarSesion:active {
     color: #396439;
     text-decoration: none;
 }
-
-
-
-/* #contenedor_incidencias {
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  #contenedor_incidencias table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #contenedor_incidencias th,
-  #contenedor_incidencias td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  #contenedor_incidencias th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  #contenedor_incidencias tr:nth-child(even) {
-    background-color: #f2f2f2;
-    
-  } */
 
 /* Estilos generales para la tabla */
 #contenedor_incidencias table {
@@ -268,119 +160,6 @@ body{
   padding-bottom: 1em;
 }
 
-
-
-
-/* Estilos para hacer la tabla responsive */
-@media screen and (max-width: 992px) {
-  #contenedor_incidencias {
-      margin: 2em;
-  }
-
-  #contenedor_incidencias table {
-      width: 100%;
-      border-collapse: collapse;
-  }
-
-  #contenedor_incidencias thead {
-      display: none; /* Oculta el encabezado de la tabla */
-  }
-
-  #contenedor_incidencias tbody {
-      display: block;
-  }
-
-  #contenedor_incidencias tr {
-      display: block;
-      margin-bottom: 15px;
-  }
-
-  #contenedor_incidencias td {
-      display: block;
-      text-align: right;
-      padding-left: 50%;
-      position: relative;
-    
-  }
-
-  #contenedor_incidencias td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 15px;
-      font-weight: bold;
-      text-align: left;
-  }
-
-  #contenedor_incidencias table {
-      padding-bottom: 2em;
-  }
-
-  #ContenedorInsertarIncidencia{
-      padding-top: 2em;
-      padding-bottom: 2em;
-  }
-
-}
-
-
-
-  
-  .hi{
-height: 8em;
-
-  }
-
-
-  .fixedArea {
-   
-    background: #4b924b;
-    border-bottom: 1px solid #ddd;
-    padding: 1em;
-    /* height: 8em; */
-    z-index: 1000;
-   
-    
-}
-.hola {
-    display: flex;
-    align-items: center; /* Centra verticalmente los elementos del encabezado */
-    /* height: 8em; */
-    /* position: sticky;
-    top: 0; */
-}
-
-.myNavUl {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: row; /* Mantiene la dirección del flexbox como fila */
-    align-items: center; /* Centra los elementos verticalmente en la fila */
-    height: 100%; /* Utiliza toda la altura del contenedor */
-    justify-content:left; /* Centra los elementos horizontalmente */
-}
-
-.myNavUl > li {
-    margin-right: 10px; /* Espacio entre los elementos li */
-}
-
-.myNavUl > li:last-child {
-    margin-right: 0; /* Elimina el margen derecho del último elemento li */
-}
-
-.myNavUl > li > a {
-    padding: 10px 20px;
-    font-size: 12pt;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
-    line-height: 1.1;
-    font-size: 16px;
-}
-
 .text-center {
     text-align: center;
 }
@@ -388,7 +167,6 @@ height: 8em;
 .paddTop{
     padding-top: 10px;
 }
-
 
 .myButton{
     background: #4b924b;
@@ -400,11 +178,9 @@ height: 8em;
     font-family: 'Montserrat', sans-serif;
 }
 
-
 /* NO QUITAR */
 .noPadding{
     padding: 0px;
-
 }
 
 /* NO QUITAR */
@@ -415,7 +191,6 @@ height: 8em;
     background-size: cover;
     min-height: 550px;
     background-attachment: fixed;
-
 }
 
 /* Filtro de la Imagen de taquillas */
@@ -429,7 +204,6 @@ height: 8em;
     background-color: #0000008a;
     width: 100%;
     color: #fff;
-
 }
 
 .absTitle{
@@ -467,13 +241,7 @@ height: 8em;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 10px;
     width: 100%;
-   
 }
-
-/* #descripcion {
-  height: 10em;
-} */
-
 
 .myInputFooter:focus{
     outline: 0px;
@@ -492,14 +260,7 @@ height: 8em;
 margin: 5em;
 }
 
-/* Media query para dispositivos móviles */
-@media (max-width: 992px) {
-  .formulariocrearincidencia{
-    margin: 0;
-    }
-    
- 
-}
+
 /* ************************************************************* FOOTER ************************************************************* */
 
 
@@ -508,9 +269,7 @@ margin: 5em;
   padding: 0;
 }
 
-.text-center {
-  text-align: center;
-}
+
 
 .backFooter {
   background-color:#4b924b; /* Color de fondo del footer */
@@ -648,3 +407,82 @@ color: white;
   color: white;
   }
 
+
+
+  @media (max-width: 1100px) {
+    .navbar-collapse.in {
+      /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
+      .nav li {
+        width: 50%; /* Establece el ancho al 100% */
+      }
+      
+      /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
+      .navbar-nav {
+        width: 50%; /* Establece el ancho al 100% */
+      }
+    }
+  }
+  
+
+
+/* Estilos para hacer la tabla responsive */
+@media screen and (max-width: 992px) {
+  #contenedor_incidencias {
+      margin: 2em;
+  }
+
+  #contenedor_incidencias table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+
+  #contenedor_incidencias thead {
+      display: none; /* Oculta el encabezado de la tabla */
+  }
+
+  #contenedor_incidencias tbody {
+      display: block;
+  }
+
+  #contenedor_incidencias tr {
+      display: block;
+      margin-bottom: 15px;
+  }
+
+  #contenedor_incidencias td {
+      display: block;
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    
+  }
+
+  #contenedor_incidencias td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+  }
+
+  #contenedor_incidencias table {
+      padding-bottom: 2em;
+  }
+
+  #ContenedorInsertarIncidencia{
+      padding-top: 2em;
+      padding-bottom: 2em;
+  }
+
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 992px) {
+  .formulariocrearincidencia{
+    margin: 0;
+    }
+    
+ 
+}

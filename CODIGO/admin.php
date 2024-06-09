@@ -16,10 +16,6 @@ if(isset($_POST["newProfesor"])){
     generarFormulario($array_deps);
 } 
 
-// if(isset($_POST["profBorrar"])){
-//     borrarProfesor();
-// }
-
 if(isset($_POST["hecho"])){
     
     procesarFormulario();
@@ -144,17 +140,9 @@ function mostrarIncidencias($filtro){
             break;
         
         default:
-            # code...
             break;
     }
-    //     if ($filtro == "0") {
-    //     $array_incidencias = $incidencias->get_incidencias_datos();
-    // }else {
-    //     $array_incidencias = $incidencias->get_incidencias_en_solucionado();
-    // }
 
-    
-    // Almacena la parte HTML en una variableiç
 
 
 if (count($array_incidencias) > 0) {
@@ -202,22 +190,14 @@ if (count($array_incidencias) > 0) {
    </div>
 
    <div class="panel-body d-flex flex-column">
-
- 
-
-
-
 <ul class="list-group" style="margin-bottom: 10px;">
     <li class="list-group-item"><b>Fecha: </b>' . $fechaFormateada . '</li>
     <li class="list-group-item"><b>Aula: </b>' . $laincidencia["Nombre_aula"] . '</li>
     <li class="list-group-item"><b>' . $ciclo . '</b></li>
     <li class="list-group-item"><b>' . $laincidencia["tipo_incidencia"] . '</b></li>
     <li class="list-group-item"><b>Urgencia: </b>' . $prioridad . '</li>
-
     <li id="descrip" class="list-group-item">' . $laincidencia["descripcion"] . '  
-  
     </li>
-  
 </ul>';
 
        if($laincidencia["estado"] != "Solucionado") {
@@ -279,9 +259,6 @@ if (count($array_incidencias) > 0) {
        }
 
        $html_output .= '
-         
-
-
            <div id="borrado">
             <form method="post" action="admin.php">
                 <input type="hidden" name="id2" value="' . $laincidencia["id_incidencia"] . '">
@@ -290,34 +267,19 @@ if (count($array_incidencias) > 0) {
                 </button>
             </form>
         </div>
-
-
-
-
            </div>
            </div>
-       </div>';
-
-       // array_push($arrContIncidencias, $laincidencia["id_incidencia"]);
-    //    $arrContIncidencias[] = $laincidencia["id_incidencia"];
-    //    $contador++;
-      
+       </div>';      
    }
 
    $html_output .= '</div>';
 } else {
    $html_output = '<div>No existen incidencias</div>';
 }
-// unset($arrContIncidencias);
-// Devuelve la salida HTML
+
 echo $html_output;
 
 }
-
-
-
-
-
 
 
 function procesarFormulario() {
@@ -349,28 +311,17 @@ function procesarFormulario() {
 }
 function generarFormulario($array_deps) {
     $out = '<div class="col-md-8 crearprofe">';
-    // $out .= '<form method="post" action="code.php">';
     $out .= '';
     $out .= '<form id="loginform" action="admin.php" method="post">';
-
-    // $out .= '<label>Nombre Completo</label>';
     $out .= '<input type="text" name="nombre" class="form-control myInputFooter required" required placeholder="Nombre completo"/><br>';
-    
-
-    // $out .= '<label>Correo</label>';
     $out .= '<input type="text" name="correo" class="form-control myInputFooter required" required placeholder="Correo"/><br>';
-
-    // $out .= '<label>Departamento</label>';
     $out .= '<select id="mi-select" name="dept" class="form-control myInputFooter required" required>';
     $out .= '<option value="" selected disabled hidden style="color: #999;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";
     }
     $out .= '</select><br><br>';
-
-    // $out .= '<label>Contraseña</label>';
     $out .= '<input type="password" name="pass" class="form-control myInputFooter required" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$" placeholder="Contraseña"/><br>';
-    // $out .= '<label>Repita la contraseña</label>';
     $out .= '<input type="password" name="confirmPass" class="form-control myInputFooter required" required  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])([^\s]){3,}$" placeholder="Repita la Contraseña"/><br>';
     $out .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
     $out .= '</form>';

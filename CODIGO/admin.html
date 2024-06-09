@@ -5,26 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Incidencias Pío Baroja</title>
-    <meta name="description" content="">
-	<meta name="author" content="Cemre Tellioğlu Tunçay">
-	<link rel="icon" type="image/png" href="images/logo pio baroja circular.png" sizes="32x32" />
+	<meta name="author" content="Victoria, Jesús y Leonel">
+	<link rel="icon" type="image/png" href="img/logo pio baroja circular.png" sizes="32x32" />
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=latin-ext" rel="stylesheet">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+	<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
     <link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="admin.css">
-
     <link href="css/responsive.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="admin.js"></script>
 
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 		<!-- <style>
 			.active {
 				background-color: #4CAF50;
@@ -66,14 +62,8 @@
 				  <li><a href="#section3">Borrar profesor</a></li>
 				</ul>
 			  </li>
-		
-
-
 			</ul>
 			<ul class="nav navbar-nav navbar-right" style="margin-left: 10px;">
-			  
-		
-							  
 			  <li>
 				<a href="code.php" onclick="document.getElementById('formCerrarSesion').submit(); return false;">
 					<form id="formCerrarSesion" method="post" action="code.php">
@@ -85,12 +75,10 @@
 			</ul>
 		  </div>
 		</div>
-	  </nav>
-
-<!-- --------------------------------------------------------------------------------------------------------------------------- -->
-
-				
-		</div>
+	</nav>
+		
+	<!-- </div> -->
+<!-- --------------------------------------------------------------------- SECCIÓN DECORATIVA ------------------------------------------------------ -->
 
 		<div id="section0" class="col-md-12 noPadding">
 			<div class="filterBack"></div>
@@ -102,106 +90,74 @@
 		</div>
 
 
-
-
-
 <!-- ------------------------------------------------------------- FILTRAR INCIDENCIAS ------------------------------------------------------------------- -->
+	<div id="section1" class="col-md-12 noPadding text-center priceBackground">
+		<br><br>
+		<h2>INCIDENCIAS</h2>
+		<div class="col-md-12 noPadding text-center backNewsletter">
+			<div id="buttons-container">
 
-<!-- FALTA POR TERMINAR -->
-
-
-
-<div id="section1" class="col-md-12 noPadding text-center priceBackground">
-	<br><br>
-    <h2>INCIDENCIAS</h2>
-    <div class="col-md-12 noPadding text-center backNewsletter">
+				<button class="filtro_incidencia" data-value="0">Todas</button>
+				<button class="filtro_incidencia" data-value="Creada">Creada</button>
+				<button class="filtro_incidencia" data-value="proceso">En proceso</button>
+				<button class="filtro_incidencia" data-value="Solucionado">Solucionado</button>
+				<br>
+				<button class="filtro_incidencia" data-value="Nulo">Sin Asignar</button>
+				<button class="filtro_incidencia" data-value="Alta">M&aacute;xima prioridad</button>
+				<button class="filtro_incidencia" data-value="Media">Prioridad Media</button>
+				<button class="filtro_incidencia" data-value="Baja">Prioridad Baja</button>
 		
-		<div id="buttons-container">
-
-			<button class="filtro_incidencia" data-value="0">Todas</button>
-			<button class="filtro_incidencia" data-value="Creada">Creada</button>
-			<button class="filtro_incidencia" data-value="proceso">En proceso</button>
-			<button class="filtro_incidencia" data-value="Solucionado">Solucionado</button>
-			<br>
-			<button class="filtro_incidencia" data-value="Nulo">Sin Asignar</button>
-			<button class="filtro_incidencia" data-value="Alta">M&aacute;xima prioridad</button>
-			<button class="filtro_incidencia" data-value="Media">Prioridad Media</button>
-			<button class="filtro_incidencia" data-value="Baja">Prioridad Baja</button>
-			
-
+			</div>
+			<div id="section4" class="col-md-12 noPadding text-center priceBackground"></div>     
 		</div>
-
-	
-
-		<div id="section4" class="col-md-12 noPadding text-center priceBackground"></div>
-
-
-
-        
-    </div>
-</div>
+	</div>
 
 
 <!-- ------------------------------------------------------------- REGISTRAR PROFESORES (modificar, crear y borrar) ------------------------------------------------------------------- -->
 
-<!-- InsertarPROprueba1.php -- > admin.php y admin.js -->
-<br>
-
-<div id="section2" class="col-md-12 noPadding text-center priceBackground">
-	<br><br>
-    <h2>AÑADIR PROFESOR</h2>
-    <div class="col-md-12 noPadding text-center backNewsletter">
-		<div class="container">
-			<div class="col-md-12 col-md-offset-1">
-				<div id="insertarProfesor"></div>
-			</div>
-			<!-- <div id="messageBox" class="message-box">Usuario no insertado, las contraseñas no coinciden</div> -->
-		</div>
-	</div>
-</div>
-
-
-
-
-<br>
-
-<div id="section3" class="col-md-12 noPadding text-center priceBackground">
-	<br><br>
-    <h2>BORRAR PROFESOR</h2>
-    <div class="col-md-12 noPadding text-center backNewsletter">
-		<div class="container">
-			<div class="col-md-12 col-md-offset-1">
-				<div id="borrarProfesor">
-					<div class="col-md-8 borrarprofe">
-						<form id="comprobarprofForm" action="admin.php" method="POST">
-							<input type="text" id="usua" name="usua" class="form-control myInputFooter required" required placeholder="correo o usuario del profesor"/><br>
-							<input type="submit" name="borrado" id="borrado" value="BORRAR" class="form-control myButton">
-						</form>
-					</div>
-					
+	<br>
+	<div id="section2" class="col-md-12 noPadding text-center priceBackground">
+		<br><br>
+		<h2>AÑADIR PROFESOR</h2>
+		<div class="col-md-12 noPadding text-center backNewsletter">
+			<div class="container">
+				<div class="col-md-12 col-md-offset-1">
+					<div id="insertarProfesor"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-
+	<br>
+	<div id="section3" class="col-md-12 noPadding text-center priceBackground">
+		<br><br>
+		<h2>BORRAR PROFESOR</h2>
+		<div class="col-md-12 noPadding text-center backNewsletter">
+			<div class="container">
+				<div class="col-md-12 col-md-offset-1">
+					<div id="borrarProfesor">
+						<div class="col-md-8 borrarprofe">
+							<form id="comprobarprofForm" action="admin.php" method="POST">
+								<input type="text" id="usua" name="usua" class="form-control myInputFooter required" required placeholder="correo o usuario del profesor"/><br>
+								<input type="submit" name="borrado" id="borrado" value="BORRAR" class="form-control myButton">
+							</form>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- -------------------------------------------------------------FOOTER------------------------------------------------------------------- -->
+	<div class="col-md-12 noPadding text-center backFooter">
+				<div class="col-md-6 marginTop" id="textofooter">
+					<h3 class="footertext">IES Pío Baroja</h3>
+					<h3 class="footertext">C/ Tolosa nº4</h3>
+					<h3 class="footertext"><a href="https://www.educa2.madrid.org/web/centro.ies.piobaroja.madrid"> Web P&iacute;o Baroja</a></h3>
+				</div>
 
-
-<div class="col-md-12 noPadding text-center backFooter">
-
-            <div class="col-md-6 marginTop" id="textofooter">
-                <h3 class="footertext">IES Pío Baroja</h3>
-                <h3 class="footertext">C/ Tolosa nº4</h3>
-                <h3 class="footertext"><a href="https://www.educa2.madrid.org/web/centro.ies.piobaroja.madrid"> Web P&iacute;o Baroja</a></h3>
-            </div>
-
-            <div class="col-md-6 marginTop" id="logofooter">
-                <img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 80px; height: auto;">
-            </div>
-</div>
-
+				<div class="col-md-6 marginTop" id="logofooter">
+					<img alt="Logo IES PIO BAROJA" src="img/logo pio baroja circular.png" style="max-width: 80px; height: auto;">
+				</div>
+	</div>
   </body>
 </html>

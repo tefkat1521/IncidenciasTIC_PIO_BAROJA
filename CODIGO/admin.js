@@ -47,26 +47,6 @@ function consultarIncidencias() {
     });
 }
 
-// function toggleForms(index, formType) {
-//     var form1 = $('#form1-' + index);
-//     var form2 = $('#form2-' + index);
-//     var form3 = $('#form3-' + index);
-
-//     if (formType === 'form1') {
-//         form1.toggle();
-//     } else if (formType === 'form2') {
-//         form2.toggle();
-//     }
-
-//     if (form1.is(':visible') && form2.is(':visible')) {
-//         form3.show();
-//         form1.hide();
-//         form2.hide();
-//     } else {
-//         form3.hide();
-//     }
-// }
-
 
 function toggleForms(index, formType) {
     const form1 = document.getElementById(`form1-${index}`);
@@ -174,11 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     SesionUser();
     insertarProfesor();
     verificarProfesor();
-    
-
-    
 });
-
 
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener todas las incidencias

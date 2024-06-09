@@ -73,7 +73,6 @@ function comprobarCredenciales()
         // Usuario y/o contraseña incorrectos
         echo "false";
     }
-
 }
 
 function mostrarIncidencias()
@@ -130,7 +129,6 @@ function mostrarIncidencias()
         }
 
     } else {
-        // Si no hay resultados, podrías mostrar un mensaje indicando que no hay incidencias
         $out .= "No se encontraron incidencias.";
     }
     echo $out;
@@ -219,7 +217,6 @@ function mostrarFormularioIncidencia()
     // Agregar el formulario HTML a la cadena
 
     $htmlOutput .= '<div class="col-md-8 formulariocrearincidencia mx-auto">';
-
     $htmlOutput .= '<form method="post" action="code.php">';
     
 
@@ -247,20 +244,12 @@ function mostrarFormularioIncidencia()
         $htmlOutput .= "<option value='" . $tipo['id_tipo_incidencia'] . "'>" . $tipo['tipo_incidencia'] . "</option>";
     }
     $htmlOutput .= '</select><br><br>';
-    
     $htmlOutput .= '<textarea id="descripcion" name="descripcion" required class="myInputFooter" placeholder="Descripción" style="width: 100%; height: 15em; resize: none;" maxlength="255"></textarea><br>';
     $htmlOutput .= '<input type="submit" name="hecho" value="CREAR" class="form-control myButton">';
-    
     $htmlOutput .= '</form>';
-
- 
-
     $htmlOutput .= '</div>';
 
-    
-// Script de JavaScript para habilitar/deshabilitar el selector de ciclo según el rango de aula específico
-    
-    
+ 
     // Imprimir la cadena HTML completa
     echo $htmlOutput;
     
