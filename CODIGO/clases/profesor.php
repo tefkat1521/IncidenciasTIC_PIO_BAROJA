@@ -156,7 +156,8 @@ public function borrar_profesor($usu)
         $sql = "UPDATE profesor SET clave_acceso = ? WHERE correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
         $user = $user . '%';
-        $stmt->bind_param("ss", $pass, $user);
+        $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+        $stmt->bind_param("ss", $hashed_password, $user);
         if ($stmt->execute()) {
             return true;
         } else {
