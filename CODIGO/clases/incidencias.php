@@ -562,7 +562,7 @@ class incidencias extends conexion
         } catch (Exception $e) {
             error_log("Error al enviar el correo: {$mail->ErrorInfo}");
         }
-        $stmt->close();
+        // $stmt->close();
     }
 
 }

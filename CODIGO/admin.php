@@ -380,22 +380,6 @@ function generarFormulario($array_deps) {
     echo $out;
 }
     
-//     function borrarProfesor() {
-//     $out = '<div class="col-md-8 borrarprofe">';
-//     $out .= '';
-  
-//     $out .= '<form id="loginform" action="admin.php" method="post">';
-//     $out .= '<input type="text" name="usua" class="form-control myInputFooter required" required placeholder="Nombre de usuario"/><br>';
-//     $out .= '<input type="submit" name="borrado" value="BORRAR" class="form-control myButton">';
-//     $out .= '</form>';
-
-
-   
-
-
-//     $out .= '</div>';
-//     echo $out;
-// }
 
 function comprobarProfe($profesor){
     $prof = new profesor();

@@ -109,21 +109,6 @@ function insertarProfesor() {
     xhttp.send("newProfesor=" + newProfesor);
 }
 
-// function borrarProfesor() {
-//     var xhttp = new XMLHttpRequest();
-//     var borrarProfesor = 0;
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             var borrarProfesor = this.response; // Obtener la respuesta del servidor
-//             var DivProfesor = document.getElementById("borrarProfesor");
-//             DivProfesor.innerHTML = borrarProfesor;
-//         }
-//     };
-
-//     xhttp.open("POST", "admin.php", true);
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xhttp.send("borrarProfesor=" + borrarProfesor);
-// }
 
 function SesionUser() {
     var sesion = "";

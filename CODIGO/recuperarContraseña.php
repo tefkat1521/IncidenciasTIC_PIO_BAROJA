@@ -1,5 +1,6 @@
 <?php
 require "clases/profesor.php";
+require "clases/incidencias.php";
 
 if (isset($_POST['email'])) {
     comprobarCredenciales();
@@ -11,12 +12,14 @@ function comprobarCredenciales()
     $user = $_POST['email'];
     
     $prof = new profesor();
+    $incidencia = new Incidencias();
 
-    if ($prof->comprobar_correo_contrasena_con_arroba($user, "asdfsdf")) {
-        $prof->enviarCorreo($user);
-        echo "true";
+    $response = $prof->comprobar_correo_o_usuario_existe($user);
+    if ($response == 'true') {
+        $incidencia->enviarCorreoContraseña($user);
+        echo 'true';
     } else {
-        echo "false";
+        echo 'false';
     }
 }
 ?>
