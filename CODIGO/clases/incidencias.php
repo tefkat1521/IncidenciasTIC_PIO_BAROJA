@@ -470,7 +470,7 @@ class incidencias extends conexion
             <p> 
                 Para cambiar su contraseña pulse el siguiente enlace
             </p> 
-            <a href="http://localhost:8080/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">Cambiar Contraseña</a>
+            <a href="http://localhost:8080/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.html">Cambiar Contraseña</a>
             </body> 
             </html>';
             $mail->AltBody = 'Cambio de contraseña';

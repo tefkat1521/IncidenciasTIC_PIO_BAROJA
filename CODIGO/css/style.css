@@ -40,7 +40,7 @@
   /* Cambiar el estilo del texto en los elementos de la barra de navegación */
   .navbar-inverse .navbar-nav > li > a {
     color: #fff; 
-    font-size: 1.15em; 
+    font-size: 1em; 
   
   }
   
@@ -81,14 +81,14 @@
   
 /* Cambiar el color de fondo del botón de hamburguesa */
 .navbar-inverse .navbar-toggle {
-  background-color:  #376937; /* Cambia "your_color" por el color deseado */
-  border-color: transparent; /* Opcional: para eliminar el borde del botón */
+  background-color:  #376937;
+  border-color: transparent; 
 }
 
 /* Cambiar el color de fondo del botón de hamburguesa */
 .navbar-inverse .navbar-toggle:hover {
-    background-color:  #2a4f2a; /* Cambia "your_color" por el color deseado */
-    border-color: transparent; /* Opcional: para eliminar el borde del botón */
+    background-color:  #2a4f2a; 
+    border-color: transparent; 
   }
 
 .logo-container {
@@ -99,10 +99,6 @@
 
 .logo {
   height: 80%;
-}
-
-body{
-    font-family: 'Montserrat', sans-serif;
 }
 
 #saludo{
@@ -130,6 +126,54 @@ body{
 .cerrarSesion:active {
     color: #396439;
     text-decoration: none;
+}
+
+
+
+
+/* Cambia el color de fondo del menú desplegable en todos sus estados */
+.dropdown-menu {
+  background-color:#376937; 
+}
+
+
+/* Cambia el color de fondo del menú desplegable en estado hover */
+.dropdown-menu li a:hover {
+  background-color:#5bb15b; 
+  color: #ffffff; 
+
+}
+
+
+/* Cambiar el color del texto del menú desplegable */
+.dropdown-menu li a {
+  color: #ffffff; 
+}
+
+.fonfo:active{
+  background-color: #6ed36e; 
+
+}
+
+/* Estilos para cuando el dropdown está abierto */
+li.dropdown.open .dropdown-toggle {
+  color: #e9ecef !important;
+  background-color: #3e883e !important;
+}
+
+
+/* Estilos para cuando cualquier elemento con clases que comienzan con "dropdown" está pulsado o enfocado */
+[class^="dropdown"]:focus, [class^="dropdown"]:active {
+  background-color: rgb(10, 75, 10); 
+  color: #ffffff; 
+}
+
+
+
+/* ***************************************************** BODY *************************************************** */
+
+body{
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Estilos generales para la tabla */
