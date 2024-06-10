@@ -58,9 +58,7 @@ class profesor extends conexion
             $stored_password = $row['clave_acceso'];
             if (password_verify($password, $stored_password)) {
                 return true; 
-            } elseif ($password === $stored_password) {
-                return true; 
-            } else {
+            }else {
                 return false; 
             }
         } else {
@@ -79,8 +77,6 @@ class profesor extends conexion
             $row = $result->fetch_assoc();
             $stored_password = $row['clave_acceso'];
             if (password_verify($password, $stored_password)) {
-                return true; 
-            } elseif ($password === $stored_password) {
                 return true; 
             } else {
                 return false; 
