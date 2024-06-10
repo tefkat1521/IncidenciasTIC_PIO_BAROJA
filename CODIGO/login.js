@@ -38,10 +38,6 @@ function comprobarCredenciales() {
                 console.log(response);
             }
         },
-        error: function () {
-            // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
-            alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
-        }
     });
 }
 
