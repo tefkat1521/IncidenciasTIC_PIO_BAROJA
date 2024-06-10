@@ -455,6 +455,7 @@ class incidencias extends conexion
             $mail->Password = 'sgft xhvl cdir ygwd';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
+            $mail->CharSet = 'UTF-8';
             $mail->setFrom('incidenciasticpb@gmail.com', 'IncidenciasTIC');
             $mail->addAddress($row['correo'], 'Profesor');
             $mail->isHTML(true);
@@ -469,7 +470,7 @@ class incidencias extends conexion
             <p> 
                 Para cambiar su contraseña pulse el siguiente enlace
             </p> 
-            <a href="http://localhost:8081/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">Cambiar Contraseña</a>
+            <a href="http://localhost:8080/TFG/IncidenciasTIC_PIO_BAROJA/CODIGO/recuperarContraseña3.php">Cambiar Contraseña</a>
             </body> 
             </html>';
             $mail->AltBody = 'Cambio de contraseña';
