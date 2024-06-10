@@ -7,12 +7,29 @@
 
 session_start(); // Inicializamos variables de sesión
 echo("uno");
-if (isset($_POST['user'])) {
-    echo("dos");
-    comprobarCredenciales();
-}else {
-    comprobarCredenciales();
+
+// Habilitar la visualización de errores para depuración
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Comprobar si la solicitud es POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verificar si los datos necesarios están presentes en la solicitud POST
+    if (isset($_POST['user']) && isset($_POST['pass'])) {
+        $user = $_POST['user'];
+        echo $user;
+        comprobarCredenciales();
+    } else {
+        // Manejar el caso en que los datos POST no estén presentes
+        http_response_code(400); // Bad Request
+        echo "Faltan parámetros.";
+    }
+} else {
+    // Manejar el caso en que la solicitud no sea POST
+    http_response_code(405); // Method Not Allowed
+    echo "Método no permitido.";
 }
+
 
 if (isset($_POST['PaginaPrincipal'])) {
     mostrarIncidencias();
@@ -31,7 +48,7 @@ if (isset($_POST["hecho"])) {
     }
 if (isset($_POST['cerrarSesion'])) {
     session_destroy();
-    // header("Location: login.html");
+    header("Location: login.html");
     exit; // Asegura que el script se detenga después de la redirección
 }
 if (isset($_POST['newPass'])) {
@@ -174,7 +191,7 @@ function insertarIncidencia()
             $incidencias->insertar_incidencia2($fecha, $aula, $descripcion, $tipo, $id_profesor, $estado);
         }
        
-        // header("Location: index.html");
+        header("Location: index.html");
         exit; // Asegura que el script se detenga después de la redirección
 }
 
