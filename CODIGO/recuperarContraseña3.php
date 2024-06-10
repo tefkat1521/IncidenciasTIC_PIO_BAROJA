@@ -20,7 +20,7 @@
           <div class="card border-light-subtle shadow-sm">
             <div class="row g-0 recuperarcontraseñacontenedor">
               <div class="col-12 col-md-6">
-                <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="images/moren-hsu-VLaKsTkmVhk-unsplash4.jpg" alt="Welcome back you've been missed!">
+                <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg" alt="Welcome back you've been missed!">
               </div>
               <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
                 <div class="col-12 col-lg-11 col-xl-10">
@@ -31,7 +31,7 @@
 
                             <div class="text-center mb-4 logorecuperarcontraseña">
                                 <a href="login.html">
-                                    <img class="logo" src="images/logo pio baroja circular.png" alt="Logo Ies Pio Baroja" width="65" height="65">
+                                    <img class="logo" src="img/logo pio baroja circular.png" alt="Logo Ies Pio Baroja" width="65" height="65">
                                 </a>
                             </div>
                             

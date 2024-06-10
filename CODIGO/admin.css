@@ -61,6 +61,17 @@
   font-size: 0.75em; /* Ajusta el tamaño según tus necesidades */
 }
 
+
+/* Estilos para el logo */
+.navbar-brand img {
+    max-height: 50px;
+  }
+  
+  /* Estilos para el contenido del menú */
+  .navbar-nav .nav-item {
+    margin-left: 10px; /* Espacio entre elementos del menú */
+  }
+
 .logo-container {
     height: 100%;
     display: flex;
@@ -72,20 +83,18 @@
   }
 
 /* Estilo normal del elemento <li> */
-.navbar-inverse .navbar-nav > li.uno > a {
-    color: #fff !important;  }
+/* .navbar-inverse .navbar-nav > li.uno > a {
+    color: #fff !important;  } */
   
   /* Eliminar efecto hover del elemento <li> */
-  .navbar-inverse .navbar-nav > li.uno > a:hover {
+  /* .navbar-inverse .navbar-nav > li.uno > a:hover {
     color: inherit;
   }
-  
-
+   */
 
 #form1, #form2 {
     display: none; /* Ocultar formularios inicialmente */
 }
-
 
 /* Estilos para cuando el dropdown está abierto */
 li.dropdown.open .dropdown-toggle {
@@ -144,7 +153,6 @@ li.dropdown.open .dropdown-toggle {
     color: #d3dbd3;
     text-decoration: none;
 }
-
 
 /* Estilo para enlaces activos */
 .cerrarSesion:active {
@@ -349,12 +357,10 @@ section#section4 {
 margin-top: 3em;
 }
 
-/* NO QUITAR */
 .noPadding{
     padding: 0px;
 }
 
-/* NO QUITAR */
 /* Imagen de taquillas */
 .filterBack{
     background: url(img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);

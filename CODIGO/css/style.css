@@ -8,11 +8,8 @@
   
 #hamburguesa{
     margin-top: 20px;
-}
-
-#hamburguesa {
-  background-color: #468746; /* Cambia a tu color preferido */
-  border: none; /* Elimina el borde si lo deseas */
+    background-color: #468746; /* Cambia a tu color preferido */
+    border: none; /* Elimina el borde si lo deseas */
 }
 
 #hamburguesa .icon-bar {
@@ -94,21 +91,20 @@
     border-color: transparent; /* Opcional: para eliminar el borde del botón */
   }
 
+.logo-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 80%;
+}
+
 body{
     font-family: 'Montserrat', sans-serif;
 }
 
-.logo-container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .logo {
-    height: 80%;
-
-  }
-  
 #saludo{
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
@@ -188,12 +184,10 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-/* NO QUITAR */
 .noPadding{
     padding: 0px;
 }
 
-/* NO QUITAR */
 /* Imagen de taquillas */
 .filterBack{
     background: url(../img/moren-hsu-VLaKsTkmVhk-unsplash4.jpg);
@@ -227,7 +221,6 @@ body{
     font-weight: bold;
 }
 
-/* NO QUITAR */
 .priceBackground {
     background: #f6f6f6;
     padding-top: 5em;
@@ -268,7 +261,8 @@ body{
   margin: 5em;
 }
 
-/* .botoncambiarcontraseña{
+/* ESTILOS DE RECUPERARCONTRASEÑA2.HTML */
+.botoncambiarcontraseña{
   background-color:#34a834;
   color: white;
 }
@@ -276,7 +270,13 @@ body{
 .botoncambiarcontraseña:hover{
   background-color:#5bb15b;
   color: white;
-} */
+}
+
+.circular-border {
+  border-radius: 50%;
+  border: 2px solid #777676;
+}
+
 
 /* ************************************************************* FOOTER ************************************************************* */
 
@@ -399,12 +399,11 @@ body{
   .navbar-collapse.in {
     /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
     .nav li {
-      width: 50%; /* Establece el ancho al 100% */
+      width: 50%; /* Establece el ancho al 50% */
     }
     
-    /* Estilos para los elementos ul cuando el menú de hamburguesa está desplegado */
     .navbar-nav {
-      width: 50%; /* Establece el ancho al 100% */
+      width: 50%; /* Establece el ancho al 50% */
     }
   }
 

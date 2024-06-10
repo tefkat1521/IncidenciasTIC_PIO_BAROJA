@@ -6,7 +6,7 @@ function validatePasswords() {
 
     // Validar la contraseña
     if (!passwordPattern.test(password)) {
-        alert('La nueva contraseña no cumple');
+        alert('La nueva contraseña no cumple los requisitos establecidos');
         return false;
     }
 
