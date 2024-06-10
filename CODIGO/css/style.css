@@ -57,7 +57,7 @@
 
 /* Cambiar el estilo del texto del saludo */
 .navbar-inverse .navbar-nav > li > a#enlace_usuario .textopequeño {
-  font-size: 0.75em; /* Ajusta el tamaño según tus necesidades */
+  font-size: 0.75em; 
 }
 
 /* Estilo normal del elemento <li> */
@@ -133,7 +133,8 @@
 
 /* Cambia el color de fondo del menú desplegable en todos sus estados */
 .dropdown-menu {
-  background-color:#376937; 
+  background-color:#376937;
+  color: #ffffff;  
 }
 
 
@@ -150,10 +151,6 @@
   color: #ffffff; 
 }
 
-.fonfo:active{
-  background-color: #6ed36e; 
-
-}
 
 /* Estilos para cuando el dropdown está abierto */
 li.dropdown.open .dropdown-toggle {
@@ -451,5 +448,14 @@ body{
     }
   }
 
+  .backNewsletter{
+    padding: 0px;
+  }
+.formulariocrearincidencia{
+  padding: 0px;
 }
+}
+
+
+
 
