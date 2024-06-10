@@ -13,15 +13,18 @@ $(document).ready(function () {
 });
 
 function comprobarCredenciales() {
-    var user = $('#username').val();
-    var pass = $('#password').val();
+    var user = $("#username").val();
+    var pass = $("#password").val();
 
     $.ajax({
         type: 'POST',
         url: 'code.php',
+        cache: false,
+        processData: false,
+        contentType: false,
         data: {
             user: user,
-            pass: pass
+            pass: pass,
         },
         success: function (response) {
             if (response === 'admin') {
@@ -35,9 +38,13 @@ function comprobarCredenciales() {
                 alert('Usuario y/o contraseña incorrectos');
                 // console.log(user);
                 // console.log(pass);
-                console.log(response);
+                // console.log(response);
             }
         },
+        error: function () {
+            // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
+            alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
+        }
     });
 }
 

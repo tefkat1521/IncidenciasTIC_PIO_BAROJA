@@ -5,13 +5,12 @@
     require "clases/profesor.php";
     require "clases/tipo_incidencia.php";
 
-// Inicializamos la base de datos.
-// $conexion = mysqli_connect('127.0.0.1', 'admindb', 'admin', 'incidencias_tic');
-// mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
-
 session_start(); // Inicializamos variables de sesión
-
+echo("uno");
 if (isset($_POST['user'])) {
+    echo("dos");
+    comprobarCredenciales();
+}else {
     comprobarCredenciales();
 }
 
@@ -32,7 +31,7 @@ if (isset($_POST["hecho"])) {
     }
 if (isset($_POST['cerrarSesion'])) {
     session_destroy();
-    header("Location: login.html");
+    // header("Location: login.html");
     exit; // Asegura que el script se detenga después de la redirección
 }
 if (isset($_POST['newPass'])) {
@@ -56,9 +55,7 @@ function comprobarCredenciales()
     } else {
         // Si no contiene un símbolo "@", buscar coincidencias con la primera parte del correo electrónico
         $bool = $prof->comprobar_correo_contrasena_sin_arroba($user,$pass);
-
     }
-    // error.log($user ." ". $pass);
 
     if ($bool) {
         // Usuario y contraseña válidos
@@ -79,16 +76,13 @@ function comprobarCredenciales()
 
 function mostrarIncidencias()
 {
-    $out = ""; // Inicializamos la variable fuera del bloque if
-
+    $out = ""; 
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-
     if ($resultado) {
-
         $incidencia = new incidencias();
         $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-        
+
         if ($resultado) {
             $out .= "<table>";
             $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
@@ -124,7 +118,6 @@ function mostrarIncidencias()
                 $out .= "<td data-label='Estado' style='" . $colorFondo . "'>" . $estado . "</td>";
                 $out .= "</tr>";
             }
-        
             $out .= "</tbody>";
             $out .= "</table>";
         }
@@ -147,15 +140,11 @@ function returnUser()
         else
         {
             echo "exit";
-        }
+        }      
     } else {
         echo "exit";
     }
 }
-
-
-
-
 
 
 
@@ -185,7 +174,7 @@ function insertarIncidencia()
             $incidencias->insertar_incidencia2($fecha, $aula, $descripcion, $tipo, $id_profesor, $estado);
         }
        
-        header("Location: index.html");
+        // header("Location: index.html");
         exit; // Asegura que el script se detenga después de la redirección
 }
 
