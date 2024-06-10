@@ -1,12 +1,12 @@
 <?php
-require "clases/incidencias.php";
+    require "clases/incidencias.php";
     require "clases/aulas.php";
     require "clases/ciclo.php";
     require "clases/profesor.php";
     require "clases/tipo_incidencia.php";
 
 // Inicializamos la base de datos.
-$conexion = mysqli_connect("localhost", "admindb", "admin", "incidencias_tic");
+$conexion = mysqli_connect('127.0.0.1', 'admindb', 'admin', 'incidencias_tic');
 mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
 
 session_start(); // Inicializamos variables de sesión
