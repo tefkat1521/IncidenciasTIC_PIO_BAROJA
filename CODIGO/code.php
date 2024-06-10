@@ -5,10 +5,6 @@ require "clases/incidencias.php";
     require "clases/profesor.php";
     require "clases/tipo_incidencia.php";
 
-// Inicializamos la base de datos.
-$conexion = mysqli_connect("localhost", "root", "", "incidencias_tic");
-mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
-
 session_start(); // Inicializamos variables de sesión
 
 if (isset($_POST['user'])) {
@@ -77,17 +73,13 @@ function comprobarCredenciales()
 
 function mostrarIncidencias()
 {
-    $out = ""; // Inicializamos la variable fuera del bloque if
-
+    $out = ""; 
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-
     if ($resultado) {
-        $out = ""; // Inicializamos la variable fuera del bloque if
-
         $incidencia = new incidencias();
         $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-        
+
         if ($resultado) {
             $out .= "<table>";
             $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
@@ -123,7 +115,6 @@ function mostrarIncidencias()
                 $out .= "<td data-label='Estado' style='" . $colorFondo . "'>" . $estado . "</td>";
                 $out .= "</tr>";
             }
-        
             $out .= "</tbody>";
             $out .= "</table>";
         }
@@ -136,34 +127,18 @@ function mostrarIncidencias()
 
 function returnUser()
 {
-    // Importar la variable de conexión global
-    global $conexion;
-
-    // Verificar si existe una sesión de usuario
     if (isset($_SESSION['usuario'])) {
-        // Obtener el valor de la variable de sesión
         $user = $_SESSION['usuario'];
-
-        // Consultar la base de datos para obtener el nombre asociado al correo electrónico
-        $consulta = "SELECT nombre FROM profesor WHERE correo = '$user' OR correo LIKE '%$user%'";
-
-        // Ejecutar la consulta
-        $resultado = mysqli_query($conexion, $consulta);
-
-        // Verificar si se encontró algún registro que coincida
-        if (mysqli_num_rows($resultado) > 0) {
-            // Obtener el nombre del primer registro encontrado
-            $row = mysqli_fetch_assoc($resultado);
-            $nombre = $row['nombre'];
-            
-            // Devolver el nombre obtenido
-            echo $nombre;
-        } else {
-            // Si no se encontró ningún registro, devolver "exit"
-            echo "exit";
+        $profe = new profesor();
+        if($profe->get_nombre_profesor($user) != null)
+        {
+            echo $profe->get_nombre_profesor($user);
         }
+        else
+        {
+            echo "exit";
+        }      
     } else {
-        // Si no existe una sesión de usuario, devolver "exit"
         echo "exit";
     }
 }
