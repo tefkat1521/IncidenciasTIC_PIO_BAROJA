@@ -102,30 +102,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const navbarToggle = document.querySelector('.navbar-toggle');
-//     const tuercaItems = document.querySelectorAll('.tuerca-item');
-//     const navbarNav = document.querySelector('.nav.navbar-nav');
-//     const tuercaMenu = document.getElementById('tuerca-menu');
-  
-//     function moveItems() {
-//       if (window.innerWidth <= 767) {
-//         tuercaItems.forEach(item => {
-//           navbarNav.appendChild(item);
-//         });
-//       } else {
-//         tuercaItems.forEach(item => {
-//           tuercaMenu.appendChild(item);
-//         });
-//       }
-//     }
-  
-//     // Inicializa los elementos en la posición correcta
-//     moveItems();
-  
-//     // Reajusta cuando la ventana cambia de tamaño
-//     window.addEventListener('resize', moveItems);
-//   });
-  
-  
