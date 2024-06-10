@@ -106,11 +106,12 @@ li.dropdown.open .dropdown-toggle {
 [class^="dropdown"] {
     color: #e9ecef;
     background-color: #2d642d;
+    width: fit-content;
 }
 
 [class^="dropdown"]:hover {
     color: #2d642d;
-    background-color: #e9ecef;
+    /* background-color: #e9ecef; */
 }
 
 /* Estilos para cuando cualquier elemento con clases que comienzan con "dropdown" está pulsado o enfocado */
@@ -686,5 +687,6 @@ float: right;
         margin: 0;
     }
    
+    
 }
 
