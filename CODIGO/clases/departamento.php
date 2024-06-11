@@ -10,7 +10,7 @@ class departamento extends conexion
 
     public function get_departamento()
     {
-        $lista = $this->conect->query("SELECT * FROM departamento");
+        $lista = $this->conect->query("SELECT * FROM Departamento");
 
         $departamento = $lista->fetch_all(MYSQLI_ASSOC);
 

@@ -10,7 +10,7 @@ class profesor extends conexion
 
     public function get_id_profesor($profe)
     {
-        $sql = "SELECT ID_Profe FROM Profesor WHERE correo LIKE ?";
+        $sql = "SELECT ID_Profe FROM Profesor WHERE Correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
         $profe_like = "%$profe%";
         $stmt->bind_param("s", $profe_like);
@@ -48,7 +48,7 @@ class profesor extends conexion
     /***********COMPROBAR si existe PROFESOR************* */
     public function comprobar_correo_contrasena_con_arroba($correo, $password)
     {
-        $sql = "SELECT clave_acceso FROM profesor WHERE correo = ?";
+        $sql = "SELECT clave_acceso FROM Profesor WHERE correo = ?";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("s", $correo);
         $stmt->execute();
@@ -68,7 +68,7 @@ class profesor extends conexion
 
     public function comprobar_correo_contrasena_sin_arroba($correo, $password)
     {
-        $sql = "SELECT clave_acceso FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
+        $sql = "SELECT clave_acceso FROM Profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ?";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("s", $correo);
         $stmt->execute();
@@ -88,7 +88,7 @@ class profesor extends conexion
 
 public function comprobar_correo_o_usuario_existe($correo)
 {
-    $sql = "SELECT correo FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
+    $sql = "SELECT Correo FROM Profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
     $stmt = $this->conect->prepare($sql);
     $stmt->bind_param("ss", $correo, $correo);
     $stmt->execute();
@@ -107,7 +107,7 @@ public function comprobar_correo_o_usuario_existe($correo)
             $id = rand(10000, 99999);
         } while ($this->comprobar_id_profe($id));
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Profesor (ID_Profe, nombre, correo, clave_acceso, dep) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("isssi", $id, $nombre, $correo, $hashed_password, $dep);
         if ($stmt->execute()) {
@@ -136,7 +136,7 @@ public function comprobar_correo_o_usuario_existe($correo)
 
 public function borrar_profesor($usu)
 {
-    $sql = "DELETE FROM profesor WHERE SUBSTRING_INDEX(correo, '@', 1) = ? OR correo = ?";
+    $sql = "DELETE FROM Profesor WHERE SUBSTRING_INDEX(Correo, '@', 1) = ? OR Correo = ?";
     $stmt = $this->conect->prepare($sql);
     $stmt->bind_param("ss", $usu, $usu);
     if ($stmt->execute()) {
@@ -149,7 +149,7 @@ public function borrar_profesor($usu)
 
     public function updatecontraseña($pass, $user)
     {
-        $sql = "UPDATE profesor SET clave_acceso = ? WHERE correo LIKE ?";
+        $sql = "UPDATE Profesor SET clave_acceso = ? WHERE Correo LIKE ?";
         $stmt = $this->conect->prepare($sql);
         $user = $user . '%';
         $hashed_password = password_hash($pass, PASSWORD_DEFAULT);

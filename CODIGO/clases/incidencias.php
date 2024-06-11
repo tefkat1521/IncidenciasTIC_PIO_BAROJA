@@ -32,7 +32,7 @@ class incidencias extends conexion
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        LEFT JOIN ciclo c ON c.id_ciclo = i.id_ciclo
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         ORDER BY i.niveldeprioridad DESC, i.fecha DESC");
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);
         return $incidencias;
@@ -63,7 +63,7 @@ class incidencias extends conexion
         FROM Incidencias i
         JOIN Aula a ON a.ID_Aula = i.ID_Aula
         JOIN Tipo_Incidencia t ON t.id_tipo_incidencia = i.id_tipo_incidencia
-        LEFT JOIN ciclo c ON c.id_ciclo = i.id_ciclo
+        LEFT JOIN Ciclo c ON c.id_ciclo = i.id_ciclo
         WHERE i.estado != 'Solucionado'
         ORDER BY i.fecha ASC");
         $incidencias = $lista->fetch_all(MYSQLI_ASSOC);

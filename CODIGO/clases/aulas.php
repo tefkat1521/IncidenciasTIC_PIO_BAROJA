@@ -10,7 +10,7 @@ class aula extends conexion
 
     public function get_aula()
     {
-        $lista = $this->conect->query("SELECT * FROM aula");
+        $lista = $this->conect->query("SELECT * FROM Aula");
         $aula = $lista->fetch_all(MYSQLI_ASSOC);
         return $aula;
     }
@@ -21,7 +21,7 @@ class aula extends conexion
         while(comprobar_id_aula($id))
         {
             $id = rand(0, 99);
-            $sql = "INSERT INTO aula (ID_Aula, Nombre_aula, Num_Aula) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO Aula (ID_Aula, Nombre_aula, Num_Aula) VALUES (?, ?, ?)";
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("isd", $id, $nombre, $num_aula);
             if ($stmt->execute()) {
@@ -34,7 +34,7 @@ class aula extends conexion
 
     public function comprobar_id_aula($id)
     {
-        $sql = "SELECT COUNT(*) AS count FROM aula WHERE ID_Aula = ?";
+        $sql = "SELECT COUNT(*) AS count FROM Aula WHERE ID_Aula = ?";
         $stmt = $this->conect->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -51,7 +51,7 @@ class aula extends conexion
     public function borrar_aula($id)
     {
         if ($this->comprobar_id_aula($id)) { 
-            $sql = "DELETE FROM aula WHERE ID_Aula = ?";
+            $sql = "DELETE FROM Aula WHERE ID_Aula = ?";
             $stmt = $this->conect->prepare($sql);
             $stmt->bind_param("i", $id);
             if ($stmt->execute()) {
