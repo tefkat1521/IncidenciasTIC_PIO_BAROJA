@@ -30,8 +30,9 @@ function comprobarCredenciales() {
                 console.log(response);
             }
         },
-        error: function (xhr, status, error) {
-            console.error('Error en la solicitud:', status, error);
+        error: function () {
+            // Si hay un error en la solicitud AJAX, mostrar un mensaje de alerta
+            alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo.');
         }
     });
 }
