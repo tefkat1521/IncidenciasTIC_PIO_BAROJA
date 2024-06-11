@@ -40,7 +40,6 @@ function consultarIncidencias() {
 
         // Obtener el valor del botón pulsado
         value = $(this).data('value');
-        console.log(value);
 
         // Realizar la solicitud AJAX
         realizarSolicitud();

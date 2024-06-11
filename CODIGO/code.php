@@ -1,20 +1,15 @@
 <?php
-    require "clases/incidencias.php";
+require "clases/incidencias.php";
     require "clases/aulas.php";
     require "clases/ciclo.php";
     require "clases/profesor.php";
     require "clases/tipo_incidencia.php";
-
-// Inicializamos la base de datos.
-// $conexion = mysqli_connect('127.0.0.1', 'admindb', 'admin', 'incidencias_tic');
-// mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
 
 session_start(); // Inicializamos variables de sesión
 
 if (isset($_POST['user'])) {
     comprobarCredenciales();
 }
-
 
 if (isset($_POST['PaginaPrincipal'])) {
     mostrarIncidencias();
@@ -57,9 +52,7 @@ function comprobarCredenciales()
     } else {
         // Si no contiene un símbolo "@", buscar coincidencias con la primera parte del correo electrónico
         $bool = $prof->comprobar_correo_contrasena_sin_arroba($user,$pass);
-
     }
-    // error.log($user ." ". $pass);
 
     if ($bool) {
         // Usuario y contraseña válidos
@@ -80,16 +73,13 @@ function comprobarCredenciales()
 
 function mostrarIncidencias()
 {
-    $out = ""; // Inicializamos la variable fuera del bloque if
-
+    $out = ""; 
     $incidencia = new incidencias();
     $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-
     if ($resultado) {
-
         $incidencia = new incidencias();
         $resultado = $incidencia->get_incidencias_por_profesor($_SESSION['usuario']);
-        
+
         if ($resultado) {
             $out .= "<table>";
             $out .= "<thead><tr><th>ID</th><th>Fecha</th><th>Tipo</th><th>Aula</th><th>Ciclo</th><th>Descripci&oacute;n</th><th>Estado</th></tr></thead>";
@@ -125,7 +115,6 @@ function mostrarIncidencias()
                 $out .= "<td data-label='Estado' style='" . $colorFondo . "'>" . $estado . "</td>";
                 $out .= "</tr>";
             }
-        
             $out .= "</tbody>";
             $out .= "</table>";
         }
@@ -148,15 +137,11 @@ function returnUser()
         else
         {
             echo "exit";
-        }
+        }      
     } else {
         echo "exit";
     }
 }
-
-
-
-
 
 
 

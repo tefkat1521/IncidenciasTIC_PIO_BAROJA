@@ -41,14 +41,9 @@
   .navbar-inverse .navbar-nav > li > a {
     color: #fff; 
     font-size: 1em; 
-  
+   
   }
   
-  /*Cambiar el estilo del texto en los enlaces al pasar el mouse */
-  .navbar-inverse .navbar-nav > li > a:hover {
-    color: #ccc; 
-  }
-
 
 /* Cambiar el estilo del texto en los elementos de la barra de navegación */
 .navbar-inverse .navbar-nav > li > a#enlace_usuario {
@@ -57,7 +52,7 @@
 
 /* Cambiar el estilo del texto del saludo */
 .navbar-inverse .navbar-nav > li > a#enlace_usuario .textopequeño {
-  font-size: 0.75em; /* Ajusta el tamaño según tus necesidades */
+  font-size: 0.75em; 
 }
 
 /* Estilo normal del elemento <li> */
@@ -133,7 +128,8 @@
 
 /* Cambia el color de fondo del menú desplegable en todos sus estados */
 .dropdown-menu {
-  background-color:#376937; 
+  background-color:#376937;
+  color: #ffffff;  
 }
 
 
@@ -150,10 +146,6 @@
   color: #ffffff; 
 }
 
-.fonfo:active{
-  background-color: #6ed36e; 
-
-}
 
 /* Estilos para cuando el dropdown está abierto */
 li.dropdown.open .dropdown-toggle {
@@ -441,15 +433,30 @@ body{
   }
 
   .navbar-collapse.in {
-    /* Estilos para los elementos de la lista cuando el menú de hamburguesa está desplegado */
-    .nav li {
-      width: 50%; /* Establece el ancho al 50% */
-    }
-    
+ 
     .navbar-nav {
-      width: 50%; /* Establece el ancho al 50% */
+      width: fit-content; /* Establece el ancho al 50% */
     }
   }
 
+  .backNewsletter{
+    padding: 0px;
+  }
+.formulariocrearincidencia{
+  padding: 0px;
 }
+
+.dropdown-menu {
+  
+  width: 50%;
+}
+.dropdown-menu li a:hover {
+  background-color:#376937; 
+  color: #ffffff; 
+
+}
+}
+
+
+
 

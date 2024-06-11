@@ -82,15 +82,6 @@
     height: 80%;
   }
 
-/* Estilo normal del elemento <li> */
-/* .navbar-inverse .navbar-nav > li.uno > a {
-    color: #fff !important;  } */
-  
-  /* Eliminar efecto hover del elemento <li> */
-  /* .navbar-inverse .navbar-nav > li.uno > a:hover {
-    color: inherit;
-  }
-   */
 
 #form1, #form2 {
     display: none; /* Ocultar formularios inicialmente */
@@ -106,11 +97,12 @@ li.dropdown.open .dropdown-toggle {
 [class^="dropdown"] {
     color: #e9ecef;
     background-color: #2d642d;
+    width: fit-content;
 }
 
 [class^="dropdown"]:hover {
     color: #2d642d;
-    background-color: #e9ecef;
+    /* background-color: #e9ecef; */
 }
 
 /* Estilos para cuando cualquier elemento con clases que comienzan con "dropdown" está pulsado o enfocado */
@@ -160,19 +152,6 @@ li.dropdown.open .dropdown-toggle {
     text-decoration: none;
 }
 
-
-/* 
-#botonlapiz
-{
-    width: 1.8em;
-} */
-
-
-
-/* #botonlapiz:hover
-{
-    filter: drop-shadow(0px 0px 5px rgb(0, 68, 255));
-} */
 
 /* ******************************************************** BODY ************************************************************ */
 
@@ -615,23 +594,6 @@ float: right;
 }
 
 
-
-/* Estilos para el cuadro de mensaje */
-/* .message-box {
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #f44336; 
-    background-color: #fdd;
-    color: #f44336;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 4px;
-    text-align: center;
-} */
-
-
 /* ******************************************************** RESPONSIVE ************************************************************ */
 /* Estilos para dispositivos de escritorio */
 @media (min-width: 992px) {
@@ -686,5 +648,6 @@ float: right;
         margin: 0;
     }
    
+    
 }
 

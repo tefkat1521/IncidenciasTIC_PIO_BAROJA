@@ -1,32 +1,40 @@
+
 $(document).ready(function () {
-    $(".login-box").fadeIn(1500);
+
+    $(".login-box").fadeIn(1500, function () {
+        $(this).css("display", "block");
+    });
 
     $('#loginForm').submit(function (event) {
         event.preventDefault();
         comprobarCredenciales(); // Llamada a la función para comprobar credenciales
+        
     });
 });
 
 function comprobarCredenciales() {
-    var user = $("#username").val();
-    var pass = $("#password").val();
-    console.log(user);
-    console.log(pass);
+    var user = $('#username').val();
+    var pass = $('#password').val();
 
     $.ajax({
         type: 'POST',
-        url: "code.php",
+        url: 'code.php',
         data: {
             user: user,
             pass: pass
         },
         success: function (response) {
             if (response === 'admin') {
+                // Si las credenciales son para el administrador, redirige a admin.html
                 window.location.href = 'admin.html';
             } else if (response === 'true') {
+                // Si las credenciales son correctas, redirige a index.html
                 window.location.href = 'index.html';
             } else {
+                // Si las credenciales son incorrectas, mostrar un mensaje de alerta
                 alert('Usuario y/o contraseña incorrectos');
+                // console.log(user);
+                // console.log(pass);
                 console.log(response);
             }
         },
@@ -36,3 +44,4 @@ function comprobarCredenciales() {
         }
     });
 }
+

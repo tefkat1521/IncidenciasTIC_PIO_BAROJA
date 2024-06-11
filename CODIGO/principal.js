@@ -88,3 +88,17 @@ document.addEventListener("DOMContentLoaded", function () {
     insertarIncidencia();   
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
