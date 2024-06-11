@@ -6,41 +6,14 @@ function validatePasswords() {
 
     // Validar la contraseña
     if (!passwordPattern.test(password)) {
-        // alert('La nueva contraseña no cumple los requisitos establecidos');
-        // return false;
-        $('#mens').text("La nueva contraseña no cumple los requisitos establecidos.");
-        $('#mens').css('visibility', 'visible');
-
-        // Limpiar los campos de contraseña
-        $('#password').val('');
-        $('#confirmPassword').val('');
-
-        // Ocultar el mensaje después de 8 segundos
-        setTimeout(function () {
-            $('#mens').css('visibility', 'hidden');
-        }, 8000);
-
-        return false; // Detener el envío del formulario
+        alert('La nueva contraseña no cumple los requisitos establecidos');
+        return false;
     }
 
     // Verificar que ambas contraseñas coincidan
     if (password !== confirmPassword) {
-        // alert('Las contraseñas no coinciden.');
-        // return false;
-         // Mostrar mensaje en el div #mens y hacerlo visible
-         $('#mens').text("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
-         $('#mens').css('visibility', 'visible');
-
-         // Limpiar los campos de contraseña
-         $('#password').val('');
-         $('#confirmPassword').val('');
-
-         // Ocultar el mensaje después de 8 segundos
-         setTimeout(function () {
-             $('#mens').css('visibility', 'hidden');
-         }, 8000);
-
-         return false; // Detener el envío del formulario
+        alert('Las contraseñas no coinciden.');
+        return false;
     }
 
     return true;
@@ -55,7 +28,33 @@ $(document).ready(function () {
         if (validatePasswords()) {
             var password1 = $('#password').val();
             var password2 = $('#confirmPassword').val();
-{
+
+            if (password1 !== password2) {
+                // Mostrar mensaje en el div #mens y hacerlo visible
+                $('#mens').text("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                $('#mens').css('visibility', 'visible');
+
+                // Limpiar los campos de contraseña
+                $('#password').val('');
+                $('#confirmPassword').val('');
+
+                // Ocultar el mensaje después de 8 segundos
+                setTimeout(function () {
+                    $('#mens').css('visibility', 'hidden');
+                }, 8000);
+
+                return false; // Detener el envío del formulario
+
+            } else if (password1 == "" || password2 == "") {
+                $('#mens').text("Hay campos sin rellenar.");
+                $('#mens').css('visibility', 'visible');
+
+                // Ocultar el mensaje después de 8 segundos
+                setTimeout(function () {
+                    $('#mens').css('visibility', 'hidden');
+                }, 8000);
+            }
+            else {
                 // Desactivar el botón de Aceptar para evitar clics adicionales
                 $('#pswdButton').prop('disabled', true);
 

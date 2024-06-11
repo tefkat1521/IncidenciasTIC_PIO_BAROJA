@@ -10,6 +10,7 @@ $(document).ready(function () {
 });
 
 function comprobarCredenciales() {
+<<<<<<< HEAD
     var user = $("#username").val();
     var pass = $("#password").val();
     console.log(user);
@@ -18,6 +19,14 @@ function comprobarCredenciales() {
     $.ajax({
         type: 'POST',
         url: "code.php",
+=======
+    var user = $('#username').val();
+    var pass = $('#password').val();
+
+    $.ajax({
+        type: 'POST',
+        url: 'code.php',
+>>>>>>> parent of c7114a4 (a)
         data: {
             user: user,
             pass: pass
@@ -29,6 +38,7 @@ function comprobarCredenciales() {
                 window.location.href = 'index.html';
             } else {
                 alert('Usuario y/o contraseña incorrectos');
+<<<<<<< HEAD
                 console.log(response+"hola");
             }
         },
@@ -37,5 +47,12 @@ function comprobarCredenciales() {
             console.error('Status: ' + status);
             console.error('Error: ' + error);
         }
+=======
+                // console.log(user);
+                // console.log(pass);
+                console.log(response);
+            }
+        },
+>>>>>>> parent of c7114a4 (a)
     });
 }
