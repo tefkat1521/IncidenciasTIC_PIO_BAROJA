@@ -10,34 +10,9 @@
 // mysqli_select_db($conexion, "incidencias_tic") or die("No se puede seleccionar la BD");
 
 session_start(); // Inicializamos variables de sesión
-<<<<<<< HEAD
-echo("uno");
-
-// Habilitar la visualización de errores para depuración
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Comprobar si la solicitud es POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar si los datos necesarios están presentes en la solicitud POST
-    if (isset($_POST['user']) && isset($_POST['pass'])) {
-        $user = $_POST['user'];
-        echo $user;
-        comprobarCredenciales();
-    } else {
-        // Manejar el caso en que los datos POST no estén presentes
-        http_response_code(400); // Bad Request
-        echo "Faltan parámetros.";
-    }
-} else {
-    // Manejar el caso en que la solicitud no sea POST
-    http_response_code(405); // Method Not Allowed
-    echo "Método no permitido.";
-=======
 
 if (isset($_POST['user'])) {
     comprobarCredenciales();
->>>>>>> parent of c7114a4 (a)
 }
 
 
