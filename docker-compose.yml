@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80" # Mapea el puerto 8080 en tu máquina al puerto 80 del contenedor
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db # Asegura que el servicio de MySQL esté disponible antes de iniciar PHP
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: incidencias_tic
+      MYSQL_USER: admindb
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306" # Expone el puerto de MySQL para conexiones externas
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
