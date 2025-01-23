@@ -315,7 +315,7 @@ function generarFormulario($array_deps) {
     $out .= '<form id="loginform" action="admin.php" method="post">';
     $out .= '<input type="text" name="nombre" class="form-control myInputFooter required" required placeholder="Nombre completo"/><br>';
     $out .= '<input type="text" name="correo" class="form-control myInputFooter required" required placeholder="Correo"/><br>';
-    $out .= '<select id="mi-select" name="dept" class="form-control myInputFooter required" required>';
+    $out .= '<select id="mi-select" name="dept" class="form-control myInputFooter " >';
     $out .= '<option value="" selected disabled hidden style="color: #999;">Departamento</option>'; // Placeholder
     foreach($array_deps as $depart) {
         $out .= "<option value='".$depart['dep']."'>".$depart['Nombre_dep']."</option>";

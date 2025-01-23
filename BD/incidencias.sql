@@ -162,7 +162,7 @@ INSERT INTO Aula (ID_Aula, Nombre_aula, Num_Aula) VALUES
 
 -- Inserta varias ciclos 
 INSERT INTO Ciclo (id_ciclo, ciclo, turno) VALUES
-(1, '1º COMERCIO INTERNACIONAL-DUAL','Matutino'),
+(1, '1º COMERCIO-INT','Matutino'),
 (2, '1º ASIR-DUAL','Matutino'),
 (3, '1º DAW-DUAL','Matutino'),
 (5, '1º APD','Matutino'),

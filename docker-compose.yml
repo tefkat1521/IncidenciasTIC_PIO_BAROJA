@@ -6,11 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:80" # Mapea el puerto 8080 en tu máquina al puerto 80 del contenedor
+      - "9090:80"
     volumes:
-      - .:/var/www/html
+      - ./CODIGO:/var/www/html
     depends_on:
-      - db # Asegura que el servicio de MySQL esté disponible antes de iniciar PHP
+      - db
 
   db:
     image: mysql:8.0
@@ -22,9 +22,10 @@ services:
       MYSQL_USER: admindb
       MYSQL_PASSWORD: admin
     ports:
-      - "3306:3306" # Expone el puerto de MySQL para conexiones externas
+      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./BD:/docker-entrypoint-initdb.d # Mapea el directorio con el archivo .sql al contenedor
 
 volumes:
   db_data:
